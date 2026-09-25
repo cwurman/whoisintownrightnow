@@ -11,6 +11,16 @@ import MapKit
 // MARK: - Design tokens
 
 enum Theme {
+    /// System green and semantic surfaces follow iOS appearance and accessibility settings.
+    static let accent = Color.green
+    static let label = Color.primary
+    #if os(iOS)
+    static let background = Color(uiColor: .systemGroupedBackground)
+    static let surface = Color(uiColor: .secondarySystemGroupedBackground)
+    #else
+    static let background = Color(nsColor: .windowBackgroundColor)
+    static let surface = Color(nsColor: .controlBackgroundColor)
+    #endif
     /// Signal yellow — the app's single accent (#f2c230)
     static let signalYellow = Color(hex: 0xF2C230)
     /// Ink black (#111)

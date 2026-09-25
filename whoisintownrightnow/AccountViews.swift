@@ -4,7 +4,6 @@ import SwiftUI
 
 struct AccountRootView: View {
     @State private var store = AccountStore()
-    @State private var showSettings = false
 
     var body: some View {
         Group {
@@ -25,18 +24,12 @@ struct AccountRootView: View {
             case .setup:
                 AccountSettingsView(store: store, isOnboarding: true)
             case .ready:
-                MapHomeView(profile: store.account?.profile, avatarData: store.avatarData) { showSettings = true }
+                MapHomeView(profile: store.account?.profile, avatarData: store.avatarData, accountStore: store)
                     .id(store.account?.profile.id)
-                    .sheet(isPresented: $showSettings) {
-                        AccountSettingsView(store: store, isOnboarding: false)
-                    }
             }
         }
         .tint(Theme.ink)
         .task { await store.observeSession() }
-        .onChange(of: store.phase) { _, phase in
-            if phase == .signedOut { showSettings = false }
-        }
     }
 }
 
