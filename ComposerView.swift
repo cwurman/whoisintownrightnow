@@ -193,9 +193,10 @@ struct PlacePickerView: View {
                                     Text(place.sub).font(.caption).foregroundStyle(.secondary)
                                 }
                                 Spacer()
-                                if draft.chosenPlace == place.name { Image(systemName: "checkmark").fontWeight(.semibold) }
+                                if draft.chosenPlace == place.name { Image(systemName: "checkmark").fontWeight(.semibold).foregroundStyle(Theme.accent) }
                             }.padding(.vertical, 4)
                         }
+                        .buttonStyle(.plain)
                         .accessibilityAddTraits(draft.chosenPlace == place.name ? .isSelected : [])
                     }
                     if places.isEmpty {
@@ -294,6 +295,7 @@ struct RecipientsView: View {
                                 .font(.title2).foregroundStyle(draft.recipientIDs.contains(friend.id) ? Theme.accent : Color.secondary)
                         }.padding(.vertical, 4)
                     }
+                    .buttonStyle(.plain)
                     .accessibilityAddTraits(draft.recipientIDs.contains(friend.id) ? .isSelected : [])
                 }
             } header: { Text("\(draft.selectedFriends.count) selected") } footer: { Text("Sample friends. No invitations or notifications are sent in this preview.") }

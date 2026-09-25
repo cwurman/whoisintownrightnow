@@ -6,6 +6,7 @@ struct MapHomeView: View {
     var avatarData: Data? = nil
     var accountStore: AccountStore? = nil
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var signals = Signal.mock
     @State private var section: MapSection = .people
     @State private var selectedSignalID: Signal.ID?
@@ -48,7 +49,13 @@ struct MapHomeView: View {
         map
             .overlay(alignment: .topTrailing) { mapControls.padding(16) }
             .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { viewportHeight = $0 }
-            .task { showPanel = true }
+            .task {
+                if dynamicTypeSize.isAccessibilitySize { panelDetent = .large }
+                showPanel = true
+            }
+            .onChange(of: dynamicTypeSize) {
+                if dynamicTypeSize.isAccessibilitySize { panelDetent = .large }
+            }
             .task(id: "\(selectedSignalID ?? selectedFriend?.id ?? "")-\(Int(panelHeight))") {
                 guard hasSelection else { return }
                 // Fit after the native sheet settles, using its actual occupied map area.
@@ -146,7 +153,7 @@ struct MapHomeView: View {
                         Text("Satellite").tag(true)
                     }
                 } label: {
-                    Image(systemName: "map").font(.title3).frame(width: 30, height: 30)
+                    Image(systemName: "map").font(.system(size: 20)).frame(width: 30, height: 30)
                 }
                 .buttonStyle(.glass)
                 .buttonBorderShape(.circle)
@@ -155,7 +162,7 @@ struct MapHomeView: View {
                     clearFocus()
                     withAnimation(focusAnimation) { cameraPosition = .rect(Self.overviewRect) }
                 } label: {
-                    Image(systemName: "location.fill").font(.title3).frame(width: 30, height: 30)
+                    Image(systemName: "location.fill").font(.system(size: 20)).frame(width: 30, height: 30)
                 }
                 .buttonStyle(.glass)
                 .buttonBorderShape(.circle)
@@ -187,7 +194,16 @@ struct MapHomeView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     if !hasSelection {
-                        Button("Your settings", systemImage: "person.crop.circle") { showSettings = true }
+                        Button {
+                            showSettings = true
+                        } label: {
+                            if let profile {
+                                AccountAvatar(data: avatarData, initials: profile.initials, size: 26)
+                            } else {
+                                Image(systemName: "person.crop.circle")
+                            }
+                        }
+                        .accessibilityLabel("Your settings")
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -300,14 +316,14 @@ struct MapHomeView: View {
         rememberOverview()
         selectedFriend = nil
         selectedSignalID = signal.id
-        panelDetent = .medium
+        panelDetent = dynamicTypeSize.isAccessibilitySize ? .large : .medium
     }
 
     private func focus(on friend: Friend) {
         rememberOverview()
         selectedSignalID = nil
         selectedFriend = friend
-        panelDetent = .medium
+        panelDetent = dynamicTypeSize.isAccessibilitySize ? .large : .medium
     }
 
     private func clearFocus() {
@@ -392,6 +408,7 @@ private struct PersonMapMarker: View {
                 .background(.regularMaterial, in: Capsule())
         }
         .fixedSize()
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
     }
 }
 
@@ -423,19 +440,25 @@ struct SignalDestinationView: View {
 
 struct PersonRow: View {
     let friend: Friend
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     var body: some View {
-        HStack(spacing: 14) {
+        HStack(alignment: dynamicTypeSize.isAccessibilitySize ? .top : .center, spacing: 14) {
             PersonAvatar(initials: friend.initials, color: friend.color)
             VStack(alignment: .leading, spacing: 4) {
                 Text(friend.name).font(.headline)
                 Text(friend.hood).font(.subheadline).foregroundStyle(.secondary)
+                if dynamicTypeSize.isAccessibilitySize { status }
             }
             Spacer(minLength: 8)
-            VStack(alignment: .trailing, spacing: 5) {
-                Text(friend.distanceLabel).font(.subheadline).foregroundStyle(.secondary)
-                if friend.isFree { Text("Free now").font(.caption).foregroundStyle(Theme.accent) }
-            }
+            if !dynamicTypeSize.isAccessibilitySize { status }
         }.padding(.vertical, 5).foregroundStyle(.primary).contentShape(Rectangle())
+    }
+
+    private var status: some View {
+        VStack(alignment: dynamicTypeSize.isAccessibilitySize ? .leading : .trailing, spacing: 5) {
+            Text(friend.distanceLabel).font(.subheadline).foregroundStyle(.secondary)
+            if friend.isFree { Text("Free now").font(.caption).foregroundStyle(Theme.accent) }
+        }
     }
 }
 
@@ -443,13 +466,17 @@ struct SignalRowView: View {
     let signal: Signal
     let onJoin: () -> Void
     let onTap: () -> Void
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     var body: some View {
-        HStack(spacing: 12) {
+        let layout = dynamicTypeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(alignment: .leading, spacing: 12))
+            : AnyLayout(HStackLayout(spacing: 12))
+        layout {
             Button(action: onTap) {
                 HStack(spacing: 12) {
                     PersonAvatar(initials: signal.hostInitials, color: signal.hostColor)
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(signal.title).font(.headline).lineLimit(2)
+                        Text(signal.title).font(.headline).lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 2)
                         Text("\(signal.hostFirstName) · \(signal.window)").font(.subheadline).foregroundStyle(.secondary)
                     }
                     Spacer(minLength: 0)

@@ -71,6 +71,7 @@ private struct WelcomeView: View {
                     Task { await store.completeAppleSignIn(result) }
                 }
                 .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
+                .id(colorScheme)
                 .frame(height: 54).clipShape(Capsule())
                 .disabled(store.isWorking)
                 if store.isWorking { ProgressView("Signing in…") }
