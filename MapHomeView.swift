@@ -56,7 +56,7 @@ struct MapHomeView: View {
     private var selectedSignal: Signal? { signals.first { $0.id == selectedSignalID } }
     private var hasSelection: Bool { selectedSignal != nil || selectedFriend != nil }
     private var panelTitle: String {
-        selectedSignal != nil ? "Hang" : selectedFriend?.firstName ?? (section == .signals ? "Happening now" : "People")
+        selectedSignal != nil ? "" : selectedFriend?.firstName ?? (section == .signals ? "Happening now" : "People")
     }
     private var focusAnimation: Animation? { reduceMotion ? nil : .smooth(duration: 0.4) }
     private var mapSignals: [Signal] {
@@ -520,10 +520,12 @@ struct SignalRowView: View {
 struct SignalDetailSheet: View {
     let signal: Signal
     let onJoin: () -> Void
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     var body: some View {
-        List {
-            Section {
-                VStack(alignment: .leading, spacing: 16) {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 12) {
                         PersonAvatar(initials: signal.hostInitials, color: signal.hostColor)
                         VStack(alignment: .leading, spacing: 3) {
@@ -532,15 +534,21 @@ struct SignalDetailSheet: View {
                         }
                     }
                     Text(signal.title).font(.title2.bold())
+                        .accessibilityAddTraits(.isHeader)
+                }
+                VStack(alignment: .leading, spacing: 10) {
                     Label(signal.place, systemImage: "mappin.and.ellipse")
                     Label(signal.window, systemImage: "clock")
                         .foregroundStyle(.secondary)
-                }.padding(.vertical, 8)
-                LabeledContent("Going", value: "\(signal.going.count)")
-                if signal.seats > 0 { LabeledContent("Group limit", value: "\(signal.seats)") }
+                }
+                attendance
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 24)
+            .padding(.top, 8)
+            .padding(.bottom, 20)
         }
-        .scrollContentBackground(.hidden)
+        .accessibilityIdentifier("signal-detail")
         .safeAreaInset(edge: .bottom) {
             VStack(spacing: 8) {
                 Button(action: onJoin) {
@@ -553,7 +561,18 @@ struct SignalDetailSheet: View {
                 Text("Preview only · No notifications sent").font(.caption).foregroundStyle(.secondary)
             }.padding(.horizontal, 20).padding(.vertical, 12).background(.regularMaterial)
         }
-        .accessibilityIdentifier("signal-detail")
+    }
+
+    private var attendance: some View {
+        let layout = dynamicTypeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(alignment: .leading, spacing: 8))
+            : AnyLayout(HStackLayout(spacing: 20))
+        return layout {
+            Label("\(signal.going.count) going", systemImage: "person.2")
+            if signal.seats > 0 { Text("Group limit: \(signal.seats)") }
+        }
+        .font(.subheadline)
+        .foregroundStyle(.secondary)
     }
 }
 
