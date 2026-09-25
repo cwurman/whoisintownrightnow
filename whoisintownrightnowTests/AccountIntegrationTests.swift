@@ -1,4 +1,5 @@
 import AuthenticationServices
+import ImageIO
 import Supabase
 import UIKit
 import XCTest
@@ -48,6 +49,17 @@ final class AccountIntegrationTests: XCTestCase {
         XCTAssertEqual(restored.account?.settings.notificationMode, .directOnly)
         XCTAssertEqual(restored.avatarData, photo)
 
+        let photoOfflineConfiguration = URLSessionConfiguration.ephemeral
+        photoOfflineConfiguration.protocolClasses = [PhotoOfflineURLProtocol.self]
+        let photoOfflineClient = SupabaseClient(supabaseURL: config.url, supabaseKey: config.key,
+            options: .init(auth: .init(storage: storage, autoRefreshToken: false, emitLocalSessionAsInitialSession: true),
+                           global: .init(session: URLSession(configuration: photoOfflineConfiguration))))
+        let photoOffline = AccountStore(client: photoOfflineClient)
+        await photoOffline.loadAccount()
+        XCTAssertEqual(photoOffline.phase, .ready, "An avatar failure must not block the whole account")
+        XCTAssertNil(photoOffline.avatarData)
+        XCTAssertNotNil(photoOffline.avatarErrorMessage, "A failed photo download needs a visible retry path")
+
         let offlineConfiguration = URLSessionConfiguration.ephemeral
         offlineConfiguration.protocolClasses = [OfflineURLProtocol.self]
         let offlineClient = SupabaseClient(supabaseURL: config.url, supabaseKey: config.key,
@@ -89,6 +101,28 @@ final class AccountIntegrationTests: XCTestCase {
         XCTAssertFalse(store.isWorking)
     }
 
+    func testAvatarNormalizesOrientationAndStripsLocationMetadata() throws {
+        let image = UIGraphicsImageRenderer(size: CGSize(width: 900, height: 600)).image { context in
+            UIColor.blue.setFill(); context.fill(CGRect(x: 0, y: 0, width: 900, height: 600))
+        }
+        let original = NSMutableData()
+        let writer = try XCTUnwrap(CGImageDestinationCreateWithData(original, "public.jpeg" as CFString, 1, nil))
+        CGImageDestinationAddImage(writer, try XCTUnwrap(image.cgImage), [
+            kCGImagePropertyOrientation: 6,
+            kCGImagePropertyGPSDictionary: [kCGImagePropertyGPSLatitude: 37.0, kCGImagePropertyGPSLatitudeRef: "N",
+                                          kCGImagePropertyGPSLongitude: 122.0, kCGImagePropertyGPSLongitudeRef: "W"],
+        ] as CFDictionary)
+        XCTAssertTrue(CGImageDestinationFinalize(writer))
+        let output = try AvatarImage.jpeg(from: original as Data)
+        let source = try XCTUnwrap(CGImageSourceCreateWithData(output as CFData, nil))
+        let properties = try XCTUnwrap(CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [CFString: Any])
+        XCTAssertNil(properties[kCGImagePropertyGPSDictionary])
+        let decoded = try XCTUnwrap(UIImage(data: output))
+        XCTAssertEqual(decoded.size.height, 512, "Orientation must be baked into the image pixels")
+        XCTAssertLessThan(decoded.size.width, decoded.size.height)
+        XCTAssertThrowsError(try AvatarImage.jpeg(from: Data("not an image".utf8)))
+    }
+
     struct LocalConfig: Sendable {
         let url: URL
         let key: String
@@ -118,9 +152,13 @@ final class AccountIntegrationTests: XCTestCase {
     }
 }
 
-private final class OfflineURLProtocol: URLProtocol {
+private class OfflineURLProtocol: URLProtocol {
     override class func canInit(with request: URLRequest) -> Bool { true }
     override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
     override func startLoading() { client?.urlProtocol(self, didFailWithError: URLError(.notConnectedToInternet)) }
     override func stopLoading() {}
+}
+
+private final class PhotoOfflineURLProtocol: OfflineURLProtocol {
+    override class func canInit(with request: URLRequest) -> Bool { request.url?.path.hasPrefix("/storage/v1/") == true }
 }

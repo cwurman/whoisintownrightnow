@@ -1,6 +1,7 @@
 import AuthenticationServices
 import CryptoKit
 import Foundation
+import ImageIO
 import Observation
 import Security
 import Supabase
@@ -14,6 +15,7 @@ final class AccountStore {
     private(set) var avatarData: Data?
     private(set) var isWorking = false
     private(set) var needsReload = false
+    private(set) var avatarErrorMessage: String?
     var errorMessage: String?
     private let client: SupabaseClient
     private var nonce: String?
@@ -142,6 +144,7 @@ final class AccountStore {
             account = snapshot
             phase = .ready
             avatarData = photoData ?? (removePhoto ? nil : avatarData)
+            if photoData != nil || removePhoto { avatarErrorMessage = nil }
             if let oldPath = current.profile.avatarPath, oldPath != path {
                 // A failed cleanup doesn't invalidate a successfully saved profile. RLS protects the active photo.
                 _ = try? await client.storage.from("avatars").remove(paths: [oldPath])
@@ -178,15 +181,30 @@ final class AccountStore {
 
     private func loadAvatar(path: String?, userID: UUID) async {
         avatarData = nil
+        avatarErrorMessage = nil
         guard let path else { return }
-        let data = try? await client.storage.from("avatars").download(path: path)
-        guard client.auth.currentUser?.id == userID, account?.profile.avatarPath == path else { return }
-        avatarData = data
+        do {
+            let data = try await client.storage.from("avatars").download(path: path)
+            guard client.auth.currentUser?.id == userID, account?.profile.avatarPath == path else { return }
+            guard UIImage(data: data) != nil else { throw AccountError.message("The saved photo couldn’t be read.") }
+            avatarData = data
+        } catch {
+            guard client.auth.currentUser?.id == userID, account?.profile.avatarPath == path else { return }
+            avatarErrorMessage = "Your saved photo couldn’t load. Check your connection and try again."
+        }
+    }
+
+    func retryAvatar() async {
+        guard let account, !isWorking else { return }
+        isWorking = true
+        defer { isWorking = false }
+        await loadAvatar(path: account.profile.avatarPath, userID: account.profile.id)
     }
 
     private func clearAccount() {
         account = nil
         avatarData = nil
+        avatarErrorMessage = nil
         loadedUserID = nil
         needsReload = false
         appleName = nil
@@ -204,11 +222,18 @@ enum AccountError: LocalizedError {
 enum AvatarImage {
     /// Draw into a new image to normalize orientation, bound memory/storage, and omit source EXIF/GPS.
     static func jpeg(from data: Data) throws -> Data {
-        guard let image = UIImage(data: data), image.size.width > 0, image.size.height > 0 else {
+        // Decode a thumbnail directly; decoding the full original first can exhaust memory.
+        guard let source = CGImageSourceCreateWithData(data as CFData, [kCGImageSourceShouldCache: false] as CFDictionary),
+              let thumbnail = CGImageSourceCreateThumbnailAtIndex(source, 0, [
+                kCGImageSourceCreateThumbnailFromImageAlways: true,
+                kCGImageSourceCreateThumbnailWithTransform: true,
+                kCGImageSourceThumbnailMaxPixelSize: 512,
+                kCGImageSourceShouldCacheImmediately: true,
+              ] as CFDictionary) else {
             throw AccountError.message("Choose a supported photo.")
         }
-        let scale = min(1, 512 / max(image.size.width, image.size.height))
-        let size = CGSize(width: image.size.width * scale, height: image.size.height * scale)
+        let image = UIImage(cgImage: thumbnail)
+        let size = CGSize(width: thumbnail.width, height: thumbnail.height)
         let format = UIGraphicsImageRendererFormat()
         format.scale = 1
         format.opaque = true

@@ -42,14 +42,17 @@ struct AccountRootView: View {
 
 private struct WelcomeView: View {
     @Bindable var store: AccountStore
+    @ScaledMetric(relativeTo: .largeTitle) private var titleSize = 46.0
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 24) {
-            Spacer()
+        GeometryReader { geometry in
+          ScrollView {
+           VStack(alignment: .leading, spacing: 24) {
+            Spacer(minLength: 20)
             Image(systemName: "location.circle.fill")
                 .font(.system(size: 72)).foregroundStyle(Theme.signalYellow, Theme.ink)
             Text("Who’s in town\nright now?")
-                .font(.system(size: 46, weight: .bold, design: .rounded)).minimumScaleFactor(0.7)
+                .font(.system(size: titleSize, weight: .bold, design: .rounded))
             Text("Your people. Your plans.\nSee who’s around and make something happen.")
                 .font(.title3).foregroundStyle(.secondary)
             Spacer()
@@ -71,7 +74,9 @@ private struct WelcomeView: View {
         }
         .padding(28)
         .padding(.bottom, 16)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, minHeight: geometry.size.height, alignment: .leading)
+          }
+        }
         .background(Theme.cream)
     }
 }
@@ -112,6 +117,10 @@ struct AccountSettingsView: View {
                     TextField("Your name", text: $name)
                         .textContentType(.name).textInputAutocapitalization(.words)
                         .accessibilityIdentifier("displayName")
+                    if let error = store.avatarErrorMessage, pendingPhoto == nil, !removePhoto {
+                        Text(error).font(.footnote).foregroundStyle(.secondary)
+                        Button("Retry photo download") { Task { await store.retryAvatar() } }
+                    }
                 } header: { Text("You") } footer: {
                     Text("Use the name your friends know. A photo is optional.")
                 }
@@ -191,19 +200,20 @@ struct AccountSettingsView: View {
             didLoad = true
         }
         .task(id: photoItem) {
-            guard let photoItem else { return }
+            guard let selectedPhoto = photoItem else { loadingPhoto = false; return }
             loadingPhoto = true
             photoError = nil
-            defer { loadingPhoto = false }
+            defer { if photoItem == selectedPhoto { loadingPhoto = false } }
             do {
-                guard let data = try await photoItem.loadTransferable(type: Data.self) else {
+                guard let data = try await selectedPhoto.loadTransferable(type: Data.self) else {
                     throw AccountError.message("Couldn’t read this photo. Try another one.")
                 }
                 try Task.checkCancellation()
+                guard photoItem == selectedPhoto else { return }
                 pendingPhoto = try AvatarImage.jpeg(from: data)
                 removePhoto = false
             } catch is CancellationError { }
-            catch { photoError = error.localizedDescription }
+            catch { if photoItem == selectedPhoto { photoError = error.localizedDescription } }
         }
     }
 
