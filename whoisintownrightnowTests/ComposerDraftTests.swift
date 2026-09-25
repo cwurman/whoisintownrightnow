@@ -22,6 +22,20 @@ final class ComposerDraftTests: XCTestCase {
         XCTAssertEqual(draft.placeCoordinate.longitude, -122.4269)
     }
 
+    func testPostingWaitsForVideoImportAndCancellationRestoresTextOnlyPosting() {
+        let draft = ComposerDraft()
+        draft.text = "Coffee?"
+        XCTAssertTrue(draft.canPost)
+        draft.videoAttachment.prepare {
+            try await Task.sleep(for: .seconds(30))
+            throw HangVideoError.exportFailed
+        }
+        XCTAssertFalse(draft.canPost)
+        draft.videoAttachment.cancelImport()
+        XCTAssertTrue(draft.canPost)
+        XCTAssertNil(draft.videoAttachment.video)
+    }
+
     func testPostingRequiresTextAndAFutureScheduledTime() {
         let draft = ComposerDraft()
         draft.text = " \n\t "

@@ -380,7 +380,7 @@ struct MapHomeView: View {
         rememberOverview()
         selectedFriend = nil
         selectedSignalID = signal.id
-        panelDetent = dynamicTypeSize.isAccessibilitySize ? .large : .medium
+        panelDetent = dynamicTypeSize.isAccessibilitySize || signal.video != nil ? .large : .medium
     }
 
     private func focus(on friend: Friend) {
@@ -417,7 +417,8 @@ struct MapHomeView: View {
             title: draft.text.trimmingCharacters(in: .whitespacesAndNewlines), place: draft.placeText,
             window: draft.whenText, distance: "you", seats: draft.seats,
             going: [activeProfile?.initials ?? "You"], isJoined: true, isMine: true,
-            anchorCoordinate: Friend.youCoordinate, anchorPlace: "Mission", destinationCoordinate: draft.placeCoordinate)
+            anchorCoordinate: Friend.youCoordinate, anchorPlace: "Mission", destinationCoordinate: draft.placeCoordinate,
+            video: draft.videoAttachment.video)
         signals.insert(signal, at: 0)
         section = .signals
         clearFocus()
@@ -540,13 +541,20 @@ struct SignalRowView: View {
             Button(action: onTap) {
                 HStack(spacing: 12) {
                     PersonAvatar(initials: signal.hostInitials, color: signal.hostColor)
+                        .overlay(alignment: .bottomTrailing) {
+                            if signal.video != nil {
+                                Image(systemName: "play.fill").font(.system(size: 9, weight: .bold))
+                                    .foregroundStyle(Theme.ink).padding(5)
+                                    .background(Theme.orchid, in: Circle()).accessibilityHidden(true)
+                            }
+                        }
                     VStack(alignment: .leading, spacing: 4) {
                         Text(signal.title).font(.headline).lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 2)
                         Text("\(signal.hostFirstName) · \(signal.window)").font(.subheadline).foregroundStyle(Theme.secondaryLabel)
                     }
                     Spacer(minLength: 0)
                 }.contentShape(Rectangle()).foregroundStyle(Theme.label)
-            }.buttonStyle(.plain).accessibilityHint("Show hang details")
+            }.buttonStyle(.plain).accessibilityHint(signal.video == nil ? "Show hang details" : "Show hang details and video invitation")
             Button(action: onJoin) {
                 if signal.isJoined || signal.isMine { Image(systemName: "checkmark") }
                 else { Text("Join").fontWeight(.semibold) }
@@ -566,17 +574,18 @@ struct SignalDetailSheet: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack(spacing: 12) {
-                        PersonAvatar(initials: signal.hostInitials, color: signal.hostColor)
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text(signal.isMine ? "Your hang" : "\(signal.hostFirstName)’s hang").font(.headline)
-                            Text(signal.anchorPlace).font(.subheadline).foregroundStyle(Theme.secondaryLabel)
-                        }
+                HStack(spacing: 12) {
+                    PersonAvatar(initials: signal.hostInitials, color: signal.hostColor)
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text(signal.isMine ? "Your invitation" : "\(signal.hostFirstName) wants to hang").font(.headline)
+                        Text(signal.anchorPlace).font(.subheadline).foregroundStyle(Theme.secondaryLabel)
                     }
-                    Text(signal.title).font(.title2.bold())
-                        .accessibilityAddTraits(.isHeader)
                 }
+                if let video = signal.video {
+                    HangVideoPoster(video: video, title: signal.isMine ? "your invitation" : "\(signal.hostFirstName)’s invitation")
+                }
+                Text(signal.title).font(.title2.bold())
+                    .accessibilityAddTraits(.isHeader)
                 VStack(alignment: .leading, spacing: 10) {
                     Label(signal.place, systemImage: "mappin.and.ellipse")
                     Label(signal.window, systemImage: "clock")

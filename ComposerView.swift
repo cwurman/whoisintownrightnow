@@ -41,6 +41,7 @@ final class ComposerDraft {
     var durHrs = 3
     var seats = 0
     var recipientIDs: Set<String> = ComposerDraft.defaultRecipients
+    let videoAttachment = HangVideoAttachment()
 
     static let defaultRecipients: Set<String> = ["mk", "rs"]
     static let radii: [RadiusOption] = [
@@ -59,7 +60,7 @@ final class ComposerDraft {
     ]
 
     var canPost: Bool {
-        !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && (timeMode == .now || scheduledAt > Date())
+        !videoAttachment.isPreparing && !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && (timeMode == .now || scheduledAt > Date())
     }
     var radius: RadiusOption { Self.radii[radiusIdx] }
     var whenText: String {
@@ -89,6 +90,11 @@ struct ComposerView: View {
     var body: some View {
         NavigationStack {
             ThemedForm {
+                Section {
+                    HangVideoComposer(attachment: draft.videoAttachment)
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.clear)
+                }
                 Section("What’s the plan?") {
                     TextField("Dinner, a walk, a quick coffee…", text: $draft.text, axis: .vertical)
                         .lineLimit(2...4)
@@ -130,13 +136,13 @@ struct ComposerView: View {
                         LabeledContent("Group limit", value: draft.seatsLabel)
                     }
                 } footer: {
-                    Text("This is a preview. Plans stay on this device until you leave the map. Invitations, expiration, and group limits aren’t active yet.")
+                    Text("Preview · Your plan and video stay on this device until you leave the map. No invitations are sent. Expiration and group limits aren’t active yet.")
                 }
             }
             .navigationTitle("New hang")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
+                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { draft.videoAttachment.cancelImport(); dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Post") { if draft.canPost { onPost(draft) } }
                         .buttonStyle(.glassProminent)
@@ -148,6 +154,7 @@ struct ComposerView: View {
             .scrollDismissesKeyboard(.interactively)
         }
         .tint(Theme.accent)
+        .interactiveDismissDisabled(draft.videoAttachment.isPreparing)
     }
 }
 
