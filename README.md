@@ -2,9 +2,11 @@
 
 Account implementation and local test instructions: [Account setup](docs/account-setup.md). Current account decisions supersede the older granularity and notification text below: Exact/all-friends or half-mile Vicinity; notifications Off, Direct invites only, or All; Apple sign-in first. The map/social features remain a prototype while accounts and settings now use Supabase.
 
-Current product language: **hangs**. The home panel opens to “Today,” with a prominent “Create hang” action. The earlier product draft below uses the former “signal” terminology.
+Current product language: **hangs**. The home panel opens to “Today,” with a prominent “Let’s hang” action. The earlier product draft below uses the former “signal” terminology.
 
 Hangs now support optional video invitations in the local preview: record or choose a short clip, preview it, and play it from the hang detail. See [video invitations](docs/video-invitations.md) for behavior, testing, and remaining delivery work.
+
+Recording now supports on-device live transcription and Jev-assisted draft review; uncertain fields stay blank. See [AI pipeline and verification limits](docs/invitation-ai-research.md).
 
 Optional contact sync and the People invite list: [contact discovery setup](docs/contact-discovery.md). Verified-phone matching is implemented; SMS-provider configuration and an invite download link are still needed.
 

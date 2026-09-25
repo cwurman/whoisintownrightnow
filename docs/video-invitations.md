@@ -1,12 +1,12 @@
 # Video invitations
 
-Creating a hang starts with a personal video invitation. The composer opens the native recorder on supported devices; after saving a clip, the user reviews the form before posting. A hang with video leads with its poster and play button. The title, place, and time remain readable without playing audio, and Join stays pinned below the detail content. “Write it instead” keeps text-only hangs available.
+Creating a hang starts with a personal video invitation. The composer opens the AVFoundation recorder on supported devices; after saving a clip, the user reviews the form before posting. A hang with video leads with its poster and play button. The title, place, and time remain readable without playing audio, and Join stays pinned below the detail content. “Write it instead” keeps text-only hangs available.
 
 ## Current behavior
 
-- Opening Create hang prompts for camera and microphone access and opens the front camera when available. It never starts recording automatically. Canceling the recorder returns to the video introduction. Devices without a camera offer Photos and manual entry. Choosing from Photos does not require access to the whole library.
-- The composer has recording, processing, failure, and review states. The analysis operation is injectable, with cancellation and protection against late results overwriting manual edits. **No live analysis provider is connected yet.** The introduction says so; saving a clip currently opens manual review without uploading audio or calling an absent backend endpoint.
-- The typed suggestion contract supports title, place name, start mode, ISO-8601 start time, duration, and group limit. AI place names require a confirmed map location, including names matching a sample place. Missing or invalid start times remain unset. Post requires a title, location, and valid start choice. Invalid numeric suggestions fall back to the visible form defaults.
+- Tapping Let’s hang prompts for camera and microphone access and opens the front camera when available. It never starts recording automatically. Canceling the recorder returns to the video introduction. Devices without a camera offer Photos and manual entry. Choosing from Photos does not require access to the whole library.
+- The composer has recording, processing, failure, and review states. The analysis operation is connected to an authenticated Supabase Edge Function that calls Jev with finalized transcript text. Cancellation protects manual edits from late results. Capture feeds Apple on-device speech analysis while recording; a retake starts a fresh transcript. The recorder shows provisional captions and reviews the saved clip before sending text for drafting. No video/audio is uploaded to Jev.
+- The typed suggestion contract supports title, place name, start mode, ISO-8601 start time, duration, and group limit. AI place names require a confirmed map location, including names matching a sample place. Missing or invalid start times remain unset. Post requires a title, location, and valid start choice. Missing or invalid numeric suggestions stay visibly unset, rather than inheriting manual-form defaults.
 - Clips are limited to 15 seconds. Longer imports are rejected with a suggestion to trim in Photos; the app does not silently cut off someone's invitation. A quarter-second recording tolerance is trimmed to exactly 15 seconds.
 - Selected files are copied before the picker releases its temporary URL, exported to a 720p MP4 with exported asset metadata cleared, and given an orientation-correct poster. Inputs over 250 MB and outputs over 50 MB are rejected.
 - Post is disabled during import. Canceling or failing a replacement keeps the previous clip. Canceling the draft releases its media; posting retains it with the hang. The last owner releasing a clip removes its temporary file. On startup, files from terminated sessions older than a day are removed.
@@ -27,7 +27,7 @@ Product decisions to revisit with real use:
 
 These decisions do not block trying the current recording/import and playback interface. Real camera capture, permission denial, microphone audio, and capture interruptions still need testing on an iPhone. Sign-in and cross-user delivery remain separate from this Simulator preview.
 
-AI provider research and the recommended transcription approach are in [invitation-ai-research.md](invitation-ai-research.md). Connecting live extraction remains outstanding while that architecture is being chosen.
+AI provider research and the recommended transcription approach are in [invitation-ai-research.md](invitation-ai-research.md). The pipeline is connected; real-device end-to-end validation and the venue-search provider decision remain outstanding.
 
 ## Verification
 

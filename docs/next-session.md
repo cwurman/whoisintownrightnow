@@ -2,11 +2,21 @@
 
 Updated September 25, 2026. Work is on `codex/account-foundation`; commits are local and have not been pushed.
 
+## Latest capture and AI work
+
+Live camera/audio capture now streams audio into Apple on-device speech transcription. Saving a clip sends its final transcript to the deployed `draft-hang` Edge Function and Jev; uncertain fields stay blank, and place names require map confirmation. The private request-budget migration is deployed. Videos remain local. See [the implementation and device-test checklist](invitation-ai-research.md).
+
+The user's venue-retrieval proposal is to search nearby places by the spoken name and let Jev select from the top candidates. Provider choice is pending: Apple search fits the current MapKit map; Google Places map results require switching to a Google map. Do not use the prototype SF coordinate as actual user context.
+
+Latest verification: `build/check.YIFhyE` passed local account/contact/quota API tests, 12 backend unit tests, 24 Swift tests, unsigned Release iPhone build and map geometry checks. These tests use a mocked Jev response; a signed-in physical iPhone → live transcription → live Jev test remains outstanding.
+
+New commits: `c329338` (capture/transcription), `6d3c173` (Jev backend/quota), `2153b13` (editable draft integration). Hosted `draft-hang` version 1 requires JWT verification; migration `20260925195503_hang_draft_limits.sql` matches local and hosted history.
+
 ## Ready to review
 
 - Optional contact sync follows profile setup. People shows matched, verified/discoverable contacts first and other contacts below with Invite actions. Full/limited access, skipping, later opt-in, search, stop sync, and native invitation composers are implemented. The private phone-matching backend is deployed; **SMS-provider setup and a real invite download URL are still needed**. See [contacts setup and limits](contact-discovery.md).
 - The Cocoa & Orchid palette uses orchid actions/highlights and warm cocoa/ivory surfaces. **The map panel must keep native Liquid Glass in light mode and a dark translucent surface in dark mode; no opaque black/cocoa light-mode panel.** See [palette details](ux-refinement.md#cocoa--orchid-palette).
-- Product wording is now **hangs** throughout the app: tabs, composer, details, friend notes, notification descriptions, and accessibility labels. The default heading is **Today**, with a full-width orchid **Create hang** button pinned below both overview tabs. The small toolbar plus and redundant count row are removed. Today anticipates future time browsing; it does not add date filtering or schedule persistence. Internal Swift model names and stable automation identifiers retain `Signal`/`signal`.
+- Product wording is now **hangs** throughout the app: tabs, composer, details, friend notes, notification descriptions, and accessibility labels. The default heading is **Today**, with a full-width orchid **Let’s hang** button pinned below both overview tabs. The small toolbar plus and redundant count row are removed. Today anticipates future time browsing; it does not add date filtering or schedule persistence. Internal Swift model names and stable automation identifiers retain `Signal`/`signal`.
 - Hang markers use activity emoji badges instead of the green broadcast symbol. A title emoji takes priority; otherwise local keyword matching chooses an activity emoji, with 👋 for an unspecified hang. This applies to sample and newly posted hangs, the focused marker, and hang links on friend profiles. Debug build passed (`build/ux/hang-emoji-build.log`); the simulator showed 🍝 for dinner, 🚶 for walking, and ☕️ on a newly posted coffee hang.
 - Hang details sit directly on the main sheet: no redundant “Hang” navigation title or nested shaded card. Attendance and group limit share a compact row, stacking at accessibility text sizes, and Join remains pinned below the scrollable content. Debug build passed (`build/ux/flat-hang-details-build.log`); simulator checks covered the half-height layout, joining, and expanded dark appearance with accessibility-large text.
 - The repository opens and builds in Xcode with the existing Apple team `36P3GQ337U` and bundle ID `wurms.whoisintownrightnow`.
