@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct whoisintownrightnowApp: App {
+    init() { HangVideoImporter.removeExpiredFiles() }
+
     var body: some Scene {
         WindowGroup {
             ContentView()

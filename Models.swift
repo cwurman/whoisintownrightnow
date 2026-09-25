@@ -165,7 +165,31 @@ enum HangActivity {
 
 // MARK: - Signal
 
-/// The only object in the app: text + place + time window (+ optional seat cap).
+/// Owns a temporary clip until the last draft, hang, or player releases it.
+nonisolated final class HangVideoFile: Sendable {
+    let url: URL
+    static var directory: URL {
+        FileManager.default.temporaryDirectory.appendingPathComponent("HangInvitationVideos", isDirectory: true)
+    }
+
+    init(url: URL) { self.url = url }
+
+    deinit {
+        guard url.deletingLastPathComponent().standardizedFileURL == Self.directory.standardizedFileURL else { return }
+        try? FileManager.default.removeItem(at: url)
+    }
+}
+
+nonisolated struct HangVideo: Identifiable, Sendable {
+    let id = UUID()
+    let file: HangVideoFile
+    let poster: Data
+    let duration: Double
+
+    var durationLabel: String { "0:\(String(format: "%02d", Int(duration.rounded(.up))))" }
+}
+
+/// A hang with an optional personal video invitation.
 struct Signal: Identifiable {
     let id: String
     let hostID: String
@@ -185,6 +209,7 @@ struct Signal: Identifiable {
     let anchorPlace: String
     /// Kept separate from the host anchor; only revealed on the map in focus.
     let destinationCoordinate: CLLocationCoordinate2D
+    var video: HangVideo? = nil
 
     var hostFirstName: String { hostName.split(separator: " ").first.map(String.init) ?? hostName }
     var activityEmoji: String { HangActivity.emoji(for: title) }
