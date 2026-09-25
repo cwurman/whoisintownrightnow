@@ -9,7 +9,7 @@ struct AccountRootView: View {
         Group {
             switch store.phase {
             case .loading:
-                ProgressView("Getting your account…").frame(maxWidth: .infinity, maxHeight: .infinity).background(Theme.cream)
+                ProgressView("Getting your account…").frame(maxWidth: .infinity, maxHeight: .infinity).background(Theme.background)
             case .signedOut:
                 WelcomeView(store: store)
             case .failed:
@@ -28,49 +28,61 @@ struct AccountRootView: View {
                     .id(store.account?.profile.id)
             }
         }
-        .tint(Theme.ink)
+        .tint(Theme.accent)
         .task { await store.observeSession() }
     }
 }
 
 private struct WelcomeView: View {
     @Bindable var store: AccountStore
-    @ScaledMetric(relativeTo: .largeTitle) private var titleSize = 46.0
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
-        GeometryReader { geometry in
-          ScrollView {
-           VStack(alignment: .leading, spacing: 24) {
-            Spacer(minLength: 20)
-            Image(systemName: "location.circle.fill")
-                .font(.system(size: 72)).foregroundStyle(Theme.signalYellow, Theme.ink)
-            Text("Who’s in town\nright now?")
-                .font(.system(size: titleSize, weight: .bold, design: .rounded))
-            Text("Your people. Your plans.\nSee who’s around and make something happen.")
-                .font(.title3).foregroundStyle(.secondary)
-            Spacer()
-            if let error = store.errorMessage {
-                Text(error).font(.callout).foregroundStyle(.red).accessibilityIdentifier("accountError")
+        ScrollView {
+            VStack(spacing: 24) {
+                Image(systemName: "location.circle.fill")
+                    .font(.system(size: 88))
+                    .symbolRenderingMode(.palette)
+                    .foregroundStyle(.white, Theme.accent)
+                    .accessibilityHidden(true)
+                    .padding(.top, 56)
+                Text("Who’s in town?")
+                    .font(.largeTitle.bold())
+                Text("See who’s nearby and turn a free moment into a plan.")
+                    .font(.title3).foregroundStyle(.secondary)
+                VStack(alignment: .leading, spacing: 16) {
+                    Label("Share your location on your terms", systemImage: "location")
+                    Label("Choose which invites reach you", systemImage: "bell.badge")
+                }
+                .font(.subheadline).foregroundStyle(.secondary)
+                .padding(.top, 16)
             }
-            SignInWithAppleButton(.continue) { request in
-                store.prepareAppleRequest(request)
-            } onCompletion: { result in
-                Task { await store.completeAppleSignIn(result) }
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: 440)
+            .padding(32)
+            .frame(maxWidth: .infinity)
+        }
+        .safeAreaInset(edge: .bottom) {
+            VStack(spacing: 16) {
+                if let error = store.errorMessage {
+                    Text(error).font(.callout).foregroundStyle(.red).accessibilityIdentifier("accountError")
+                }
+                SignInWithAppleButton(.continue) { store.prepareAppleRequest($0) } onCompletion: { result in
+                    Task { await store.completeAppleSignIn(result) }
+                }
+                .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
+                .frame(height: 54).clipShape(Capsule())
+                .disabled(store.isWorking)
+                if store.isWorking { ProgressView("Signing in…") }
+                Text("Your people. Your plans. Your choice.")
+                    .font(.footnote).foregroundStyle(.secondary)
             }
-            .signInWithAppleButtonStyle(.black)
-            .frame(height: 54)
-            .clipShape(RoundedRectangle(cornerRadius: 14))
-            .disabled(store.isWorking)
-            if store.isWorking { ProgressView("Signing in…").frame(maxWidth: .infinity) }
-            Text("You choose how much location detail to share and which invitations reach you.")
-                .font(.footnote).foregroundStyle(.secondary)
+            .frame(maxWidth: 440)
+            .padding(.horizontal, 28).padding(.top, 16).padding(.bottom, 20)
+            .frame(maxWidth: .infinity)
+            .background(Theme.background)
         }
-        .padding(28)
-        .padding(.bottom, 16)
-        .frame(maxWidth: .infinity, minHeight: geometry.size.height, alignment: .leading)
-          }
-        }
-        .background(Theme.cream)
+        .background(Theme.background)
     }
 }
 
@@ -119,17 +131,13 @@ struct AccountSettingsView: View {
                 }
 
                 Section {
-                    Picker("Share", selection: $location) {
-                        ForEach(LocationSharingMode.allCases) { Text($0.title).tag($0) }
-                    }
-                    .pickerStyle(.inline)
+                    if isOnboarding { locationPicker.pickerStyle(.inline) }
+                    else { locationPicker.pickerStyle(.navigationLink) }
                 } header: { Text("Location sharing") } footer: { Text(location.detail) }
 
                 Section {
-                    Picker("Receive", selection: $notifications) {
-                        ForEach(NotificationMode.allCases) { Text($0.title).tag($0) }
-                    }
-                    .pickerStyle(.inline)
+                    if isOnboarding { notificationPicker.pickerStyle(.inline) }
+                    else { notificationPicker.pickerStyle(.navigationLink) }
                 } header: { Text("Notifications & invites") } footer: { Text(notifications.detail) }
 
                 Section {
@@ -152,40 +160,33 @@ struct AccountSettingsView: View {
                 }
 
                 Section {
-                    Button {
-                        Task {
-                            let saved = await store.save(name: name, location: location, notifications: notifications, photoData: pendingPhoto, removePhoto: removePhoto)
-                            if saved && !isOnboarding { dismiss() }
-                        }
-                    } label: {
-                        HStack {
-                            Spacer()
-                            if store.isWorking { ProgressView() }
-                            Text(isOnboarding ? "Let’s go" : "Save changes").fontWeight(.semibold)
-                            Spacer()
-                        }
-                    }
-                    .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || name.trimmingCharacters(in: .whitespacesAndNewlines).unicodeScalars.count > 80 || store.isWorking || loadingPhoto || store.needsReload)
-                    .accessibilityIdentifier("saveAccount")
                     Button("Sign out", role: .destructive) { confirmSignOut = true }
                         .disabled(store.isWorking)
                 }
             }
             .disabled(store.isWorking)
-            .scrollContentBackground(.hidden)
-            .background(Theme.cream)
-            .navigationTitle(isOnboarding ? "Make yourself known" : "Your settings")
+            .navigationTitle(isOnboarding ? "Your profile" : "Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 if !isOnboarding {
                     ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() }.disabled(store.isWorking) }
+                    ToolbarItem(placement: .confirmationAction) { saveButton }
                 }
             }
+            .safeAreaInset(edge: .bottom) {
+                if isOnboarding {
+                    saveButton.buttonStyle(.glassProminent).controlSize(.large)
+                        .padding(.horizontal, 24).padding(.vertical, 12)
+                        .frame(maxWidth: .infinity).background(.regularMaterial)
+                }
+            }
+            .scrollDismissesKeyboard(.interactively)
             .interactiveDismissDisabled(store.isWorking)
             .confirmationDialog("Sign out of this account? Unsaved changes will be discarded.", isPresented: $confirmSignOut, titleVisibility: .visible) {
                 Button("Sign out", role: .destructive) { Task { await store.signOut() } }
             }
         }
+        .tint(Theme.accent)
         .onAppear {
             guard !didLoad else { return }
             copySavedAccount()
@@ -210,6 +211,34 @@ struct AccountSettingsView: View {
         }
     }
 
+    private var locationPicker: some View {
+        Picker("Location", selection: $location) {
+            ForEach(LocationSharingMode.allCases) { Text($0.title).tag($0) }
+        }
+    }
+
+    private var notificationPicker: some View {
+        Picker("Notifications", selection: $notifications) {
+            ForEach(NotificationMode.allCases) { Text($0.title).tag($0) }
+        }
+    }
+
+    private var saveButton: some View {
+        Button {
+            Task {
+                let saved = await store.save(name: name, location: location, notifications: notifications, photoData: pendingPhoto, removePhoto: removePhoto)
+                if saved && !isOnboarding { dismiss() }
+            }
+        } label: {
+            HStack {
+                if store.isWorking { ProgressView() }
+                Text(isOnboarding ? "Continue" : "Save").fontWeight(.semibold)
+            }.frame(maxWidth: isOnboarding ? .infinity : nil)
+        }
+        .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || name.trimmingCharacters(in: .whitespacesAndNewlines).unicodeScalars.count > 80 || store.isWorking || loadingPhoto || store.needsReload)
+        .accessibilityIdentifier("saveAccount")
+    }
+
     private func copySavedAccount() {
         guard let account = store.account else { return }
         name = account.profile.displayName
@@ -232,7 +261,8 @@ struct AccountAvatar: View {
                 Image(uiImage: image).resizable().scaledToFill()
             } else {
                 Text(initials).font(.system(size: size * 0.32, weight: .semibold))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity).background(Theme.signalYellow)
+                    .foregroundStyle(Theme.accent)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity).background(Theme.accent.opacity(0.12))
             }
         }
         .frame(width: size, height: size)

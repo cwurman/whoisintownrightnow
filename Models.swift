@@ -21,14 +21,8 @@ enum Theme {
     static let background = Color(nsColor: .windowBackgroundColor)
     static let surface = Color(nsColor: .controlBackgroundColor)
     #endif
-    /// Signal yellow — the app's single accent (#f2c230)
-    static let signalYellow = Color(hex: 0xF2C230)
-    /// Ink black (#111)
+    /// A fixed avatar color; text and surfaces use semantic system colors.
     static let ink = Color(hex: 0x111111)
-    /// Warm paper background (#f4f2ee)
-    static let cream = Color(hex: 0xF4F2EE)
-    /// Sheet surface (#fcfbf9)
-    static let sheetSurface = Color(hex: 0xFCFBF9)
 }
 
 extension Color {
