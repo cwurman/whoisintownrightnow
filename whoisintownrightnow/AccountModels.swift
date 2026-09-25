@@ -19,7 +19,7 @@ enum NotificationMode: String, Codable, CaseIterable, Identifiable {
         switch self {
         case .off: "Friends won’t be able to send you direct invites."
         case .directOnly: "Allow direct invites from friends and alerts for those invites."
-        case .all: "Allow direct invites and alerts about nearby signals."
+        case .all: "Allow direct invites and alerts about nearby hangs."
         }
     }
 }

@@ -4,6 +4,7 @@ Updated September 25, 2026. Work is on `codex/account-foundation`; commits are l
 
 ## Ready to review
 
+- Product wording is now **hangs** throughout the app: tabs, counts, composer, details, friend notes, notification descriptions, and accessibility labels. “Happening now” remains the default heading. Internal Swift model names and stable automation identifiers retain `Signal`/`signal`; this is a copy change, not a data migration.
 - The repository opens and builds in Xcode with the existing Apple team `36P3GQ337U` and bundle ID `wurms.whoisintownrightnow`.
 - Supabase has private profiles, account settings, and avatars. Native Apple sign-in, resumable onboarding, editable name/photo, and Settings are implemented in Swift. Real Apple authorization still needs the configuration below.
 - Settings preserve Exact/Vicinity and Off/Direct invites only/All. Saves are atomic and reject stale versions, including simultaneous saves from two devices.

@@ -52,11 +52,11 @@ struct MapHomeView: View {
         let bounds = points.reduce(MKMapRect.null) { $0.union(MKMapRect(origin: $1, size: MKMapSize(width: 1, height: 1))) }
         return bounds.insetBy(dx: -bounds.width * 0.12, dy: -bounds.height * 0.12)
     }
-    private enum MapSection: String, CaseIterable { case signals = "Signals", people = "People" }
+    private enum MapSection: String, CaseIterable { case signals = "Hangs", people = "People" }
     private var selectedSignal: Signal? { signals.first { $0.id == selectedSignalID } }
     private var hasSelection: Bool { selectedSignal != nil || selectedFriend != nil }
     private var panelTitle: String {
-        selectedSignal != nil ? "Signal" : selectedFriend?.firstName ?? (section == .signals ? "Happening now" : "People")
+        selectedSignal != nil ? "Hang" : selectedFriend?.firstName ?? (section == .signals ? "Happening now" : "People")
     }
     private var focusAnimation: Animation? { reduceMotion ? nil : .smooth(duration: 0.4) }
     private var mapSignals: [Signal] {
@@ -128,7 +128,7 @@ struct MapHomeView: View {
                         Button { focus(on: signal) } label: { SignalPinView(signal: signal) }
                             .buttonStyle(.plain)
                             .opacity(selectedSignalID == signal.id ? 0 : selectedSignalID == nil ? 1 : 0.35)
-                            .accessibilityLabel("\(signal.hostName)’s signal: \(signal.title)")
+                            .accessibilityLabel("\(signal.hostName)’s hang: \(signal.title)")
                             .accessibilityIdentifier("signal-pin-\(signal.id)")
                     }.annotationTitles(.hidden)
                 }
@@ -224,7 +224,7 @@ struct MapHomeView: View {
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("New signal", systemImage: "plus") { showComposer = true }
+                    Button("New hang", systemImage: "plus") { showComposer = true }
                         .accessibilityIdentifier("new-signal")
                 }
             }
@@ -290,7 +290,7 @@ struct MapHomeView: View {
                     ForEach(MapSection.allCases, id: \.self) { Text($0.rawValue).tag($0) }
                 }.pickerStyle(.segmented)
                 HStack {
-                    Text(section == .people ? "\(Friend.mock.count) friends" : "\(signals.count) signals")
+                    Text(section == .people ? "\(Friend.mock.count) friends" : "\(signals.count) \(signals.count == 1 ? "hang" : "hangs")")
                     Spacer()
                     Text("Preview")
                 }.font(.caption).foregroundStyle(.secondary)
@@ -316,7 +316,7 @@ struct MapHomeView: View {
             }
             let hosted = signals.filter { $0.hostID == friend.id }
             if !hosted.isEmpty {
-                Section("Signals") {
+                Section("Hangs") {
                     ForEach(hosted) { signal in
                         Button { focus(on: signal) } label: {
                             Label(signal.title, systemImage: "antenna.radiowaves.left.and.right")
@@ -502,14 +502,14 @@ struct SignalRowView: View {
                     }
                     Spacer(minLength: 0)
                 }.contentShape(Rectangle()).foregroundStyle(.primary)
-            }.buttonStyle(.plain).accessibilityHint("Show signal details")
+            }.buttonStyle(.plain).accessibilityHint("Show hang details")
             Button(action: onJoin) {
                 if signal.isJoined || signal.isMine { Image(systemName: "checkmark") }
                 else { Text("Join").fontWeight(.semibold) }
             }
             .buttonStyle(.bordered).buttonBorderShape(.capsule)
             .disabled(signal.isJoined || signal.isMine)
-            .accessibilityLabel(signal.isMine ? "Your signal" : signal.isJoined ? "Already joined" : "Join \(signal.hostFirstName)’s signal")
+            .accessibilityLabel(signal.isMine ? "Your hang" : signal.isJoined ? "Already joined" : "Join \(signal.hostFirstName)’s hang")
         }.padding(.vertical, 5)
     }
 }
@@ -524,7 +524,7 @@ struct SignalDetailSheet: View {
                     HStack(spacing: 12) {
                         PersonAvatar(initials: signal.hostInitials, color: signal.hostColor)
                         VStack(alignment: .leading, spacing: 3) {
-                            Text(signal.isMine ? "Your signal" : "\(signal.hostFirstName)’s signal").font(.headline)
+                            Text(signal.isMine ? "Your hang" : "\(signal.hostFirstName)’s hang").font(.headline)
                             Text(signal.anchorPlace).font(.subheadline).foregroundStyle(.secondary)
                         }
                     }
@@ -541,7 +541,7 @@ struct SignalDetailSheet: View {
         .safeAreaInset(edge: .bottom) {
             VStack(spacing: 8) {
                 Button(action: onJoin) {
-                    Label(signal.isMine ? "Your signal" : signal.isJoined ? "You’re in" : "Join \(signal.hostFirstName)",
+                    Label(signal.isMine ? "Your hang" : signal.isJoined ? "You’re in" : "Join \(signal.hostFirstName)",
                           systemImage: signal.isJoined ? "checkmark.circle.fill" : "person.badge.plus")
                         .frame(maxWidth: .infinity).font(.headline).padding(.vertical, 6)
                 }

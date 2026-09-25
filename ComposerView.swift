@@ -2,7 +2,7 @@
 //  ComposerView.swift
 //  whoisintownrightnow
 //
-//  Screen 02: the bat-signal composer, plus its two sub-screens
+//  Screen 02: the hang composer, plus its two sub-screens
 //  (place picker, recipients picker) and the post confirmation.
 //
 
@@ -27,7 +27,7 @@ struct RadiusOption {
     let meters: CLLocationDistance
 }
 
-/// Everything the composer collects before a signal goes up.
+/// Everything the composer collects before a hang is posted.
 @Observable
 final class ComposerDraft {
     var text = ""
@@ -133,7 +133,7 @@ struct ComposerView: View {
                     Text("This is a preview. Plans stay on this device until you leave the map. Invitations, expiration, and group limits aren’t active yet.")
                 }
             }
-            .navigationTitle("New signal")
+            .navigationTitle("New hang")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }

@@ -62,7 +62,7 @@ struct Friend: Identifiable {
         hood: "Hayes Valley",
         coordinate: CLLocationCoordinate2D(latitude: 37.7765, longitude: -122.4262),
         distanceMiles: 1.1, isFree: true,
-        note: "Out walking with no destination. Put out a signal 20 minutes ago."
+        note: "Out walking with no destination. Posted a hang 20 minutes ago."
     )
 
     static let mock: [Friend] = [
@@ -76,7 +76,7 @@ struct Friend: Identifiable {
                hood: "Nob Hill",
                coordinate: CLLocationCoordinate2D(latitude: 37.7930, longitude: -122.4155),
                distanceMiles: 2.3, isFree: false,
-               note: "Home-ish. No signal out tonight."),
+               note: "Home-ish. No hangs tonight."),
         Friend(id: "dv", name: "Devi Rao", initials: "DV", color: Color(hex: 0x5C8A6A),
                hood: "North Beach",
                coordinate: CLLocationCoordinate2D(latitude: 37.8003, longitude: -122.4098),
