@@ -4,7 +4,7 @@ set -euo pipefail
 umask 077
 cd "$(dirname "$0")/.."
 
-for check_tool in xcodebuild xcrun docker supabase python3; do
+for check_tool in xcodebuild xcrun docker supabase python3 node; do
   command -v "$check_tool" >/dev/null || { echo "Missing required tool: $check_tool" >&2; exit 1; }
 done
 docker info >/dev/null 2>&1 || { echo "Start Docker before running these checks." >&2; exit 1; }
@@ -45,6 +45,8 @@ supabase migration up --local > "$check_logs/migrations.log" 2>&1
 echo "Checking account isolation, settings conflicts, Auth, and Storage..."
 python3 -u Tests/account_backend_test.py
 python3 -u Tests/contacts_backend_test.py
+python3 -u Tests/hang_draft_backend_test.py
+node --experimental-strip-types --test Tests/hang_draft_test.mts
 check_wrote_fixture=true
 supabase status -o json > "$check_fixture" 2> "$check_logs/supabase-status.log"
 

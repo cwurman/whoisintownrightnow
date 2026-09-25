@@ -4,3 +4,7 @@ DerivedData/
 build/
 *.xcuserstate
 whoisintownrightnowTests/LocalSupabase.json
+
+# Local service credentials
+.env
+.env.*
