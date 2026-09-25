@@ -147,8 +147,8 @@ struct MapHomeView: View {
     }
 
     private var mapControls: some View {
-        GlassEffectContainer(spacing: 12) {
-            HStack(spacing: 12) {
+        GlassEffectContainer(spacing: 6) {
+            HStack(spacing: 6) {
                 Menu {
                     Picker("Map appearance", selection: $satellite) {
                         Text("Standard").tag(false)
@@ -169,6 +169,19 @@ struct MapHomeView: View {
                 .buttonStyle(.glass)
                 .buttonBorderShape(.circle)
                 .accessibilityLabel("Show everyone on the map")
+                Button { showSettings = true } label: {
+                    Group {
+                        if let profile {
+                            AccountAvatar(data: avatarData, initials: profile.initials, size: 26)
+                        } else {
+                            Image(systemName: "person.crop.circle").font(.system(size: 20))
+                        }
+                    }.frame(width: 30, height: 30)
+                }
+                .buttonStyle(.glass)
+                .buttonBorderShape(.circle)
+                .accessibilityLabel("Profile and settings")
+                .accessibilityIdentifier("profile-settings")
             }
             .tint(.primary)
         }
@@ -192,20 +205,6 @@ struct MapHomeView: View {
                     if hasSelection {
                         Button("Back", systemImage: "chevron.left", action: clearFocus)
                             .accessibilityIdentifier("close-signal-detail")
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    if !hasSelection {
-                        Button {
-                            showSettings = true
-                        } label: {
-                            if let profile {
-                                AccountAvatar(data: avatarData, initials: profile.initials, size: 26)
-                            } else {
-                                Image(systemName: "person.crop.circle")
-                            }
-                        }
-                        .accessibilityLabel("Your settings")
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
