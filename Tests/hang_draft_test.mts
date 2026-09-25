@@ -114,3 +114,36 @@ test('provider failures preserve a retryable error without disclosing its respon
     assert.ok([502, 503].includes(response.status)); assert.deepEqual(await response.json(), { code: 'drafting_unavailable' });
   }
 });
+
+test('Apple venue selection returns only an ID and metadata from this request', () => {
+  const venueCandidates = [
+    { id: 'apple-sf', name: 'Lucia SF', address: 'San Francisco, CA', category: 'restaurant', distanceMeters: 400 },
+    { id: 'apple-oakland', name: 'Lucia Oakland', address: 'Oakland, CA', category: 'restaurant', distanceMeters: 14000 },
+  ];
+  const value = validateInput({ ...input, venueCandidates }, now);
+  const qs = buildQuestions(value);
+  assert.ok(qs.place.instructions.includes('takes priority over proximity'));
+  assert.ok(qs.place.criteria.venue_1.includes('Oakland'));
+  const draft = mapAnswers(value, qs, { answers: { place: choice('venue_1') } }, now);
+  assert.equal(draft.placeID, 'apple-oakland'); assert.equal(draft.placeName, 'Lucia Oakland');
+  assert.ok(!('latitude' in draft)); assert.ok(!('longitude' in draft));
+  for (const answer of [choice('venue_1', .5), choice('venue_9'), choice('span_0')]) {
+    const blank = mapAnswers(value, qs, { answers: { place: answer } }, now);
+    assert.equal(blank.placeID, null); assert.equal(blank.placeName, null);
+  }
+});
+test('empty or missing venue matches never fall back to an unverified name for new clients', () => {
+  const value = validateInput({ ...input, venueCandidates: [] }, now);
+  const draft = mapAnswers(value, buildQuestions(value), { answers: { place: choice('span_0') } }, now);
+  assert.equal(draft.placeID, null); assert.equal(draft.placeName, null);
+});
+test('venue metadata is bounded, uniquely identified, and strips unknown fields', () => {
+  const venue = { id: 'apple-id', name: 'Lucia', address: 'SF', category: 'restaurant', distanceMeters: 400 };
+  for (const entries of [Array(9).fill(venue), [venue, venue], [{ ...venue, distanceMeters: -1 }],
+    [{ ...venue, distanceMeters: 1.5 }], [{ ...venue, id: '' }], [{ ...venue, name: 'a'.repeat(161) }],
+    [{ ...venue, address: {} }], [{ ...venue, distanceMeters: Infinity }]]) {
+    assert.throws(() => validateInput({ ...input, venueCandidates: entries }, now));
+  }
+  const clean = validateInput({ ...input, venueCandidates: [{ ...venue, latitude: 37, secret: 'do not forward' }] }, now);
+  assert.deepEqual(clean.venueCandidates, [venue]);
+});

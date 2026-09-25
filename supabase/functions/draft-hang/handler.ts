@@ -37,7 +37,7 @@ export function createHandler(config: Config, request: typeof fetch = fetch) {
       const user = await auth.json();
       if (!user.id || user.is_anonymous === true) return reply(403, "sign_in_required");
       let input;
-      try { input = validateInput(await boundedJSON(req, 12_000)); }
+      try { input = validateInput(await boundedJSON(req, 32_000)); }
       catch { return reply(400, "invalid_input"); }
       if (!config.typesafeKey) return reply(503, "drafting_unavailable");
       const budget = await request(`${config.supabaseURL}/rest/v1/rpc/consume_hang_draft`, {
