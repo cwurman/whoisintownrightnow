@@ -246,7 +246,10 @@ struct MapHomeView: View {
             confirmation = pendingConfirmation
             pendingConfirmation = nil
         }) {
-            ComposerView(onPost: handlePost)
+            ComposerView(analyzeInvitation: { video in
+                guard let accountStore else { throw HangAnalysisError.signInRequired }
+                return try await accountStore.draftHang(from: video)
+            }, onPost: handlePost)
                 .presentationBackground(Theme.background)
                 .presentationDragIndicator(.visible)
         }
@@ -432,7 +435,7 @@ struct MapHomeView: View {
             hostID: activeProfile?.id.uuidString.lowercased() ?? "you", hostName: activeProfile?.displayName ?? "You",
             hostInitials: activeProfile?.initials ?? "You", hostColor: Theme.cocoa,
             title: draft.text.trimmingCharacters(in: .whitespacesAndNewlines), place: draft.placeText,
-            window: draft.whenText, distance: "you", seats: draft.seats,
+            window: draft.whenText, distance: "you", seats: draft.seats ?? 0,
             going: [activeProfile?.initials ?? "You"], isJoined: true, isMine: true,
             anchorCoordinate: Friend.youCoordinate, anchorPlace: "Mission", destinationCoordinate: draft.placeCoordinate,
             video: draft.videoAttachment.video)

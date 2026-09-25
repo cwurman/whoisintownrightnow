@@ -9,6 +9,7 @@ nonisolated struct HangDraftSuggestion: Codable, Sendable {
     let startsAt: String?
     let durationMinutes: Int?
     let groupLimit: Int?
+    var confidence: [String: Double]? = nil
 }
 
 nonisolated enum HangAnalysisError: LocalizedError {
@@ -54,7 +55,8 @@ final class HangDraftAssistant {
                 self.stage = .review
             } catch {
                 guard let self, self.generation == current, !Task.isCancelled else { return }
-                self.errorMessage = (error as? HangAnalysisError)?.localizedDescription ?? HangAnalysisError.unavailable.localizedDescription
+                self.errorMessage = (error as? HangAnalysisError)?.localizedDescription
+                    ?? (error as? HangSpeechError)?.localizedDescription ?? HangAnalysisError.unavailable.localizedDescription
                 self.stage = .failed
             }
             self?.task = nil

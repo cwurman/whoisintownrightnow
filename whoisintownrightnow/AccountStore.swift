@@ -24,6 +24,36 @@ final class AccountStore {
 
     init(client: SupabaseClient? = nil) { self.client = client ?? SupabaseConfiguration.makeClient() }
 
+    func draftHang(from video: HangVideo) async throws -> HangDraftSuggestion {
+        guard phase == .ready, let userID = account?.profile.id else { throw HangAnalysisError.signInRequired }
+        let transcript: HangTranscript
+        if let recorded = video.transcript { transcript = recorded }
+        else if video.capturedInApp { throw HangAnalysisError.noSpeech }
+        else { transcript = try await HangSpeechSession.transcribe(video) }
+        let session = try await client.auth.session
+        guard session.user.id == userID else { throw HangAnalysisError.signInRequired }
+        struct Request: Encodable {
+            let transcript: String
+            let timeZone: String
+            let recordedAt: String
+            let locale: String
+            let placeCandidates: [String]
+        }
+        do {
+            let draft: HangDraftSuggestion = try await client.functions.invoke("draft-hang", options: .init(
+                body: Request(transcript: transcript.text, timeZone: TimeZone.current.identifier,
+                    recordedAt: ISO8601DateFormatter().string(from: transcript.recordedAt), locale: transcript.locale,
+                    placeCandidates: HangPlaceCandidates.extract(from: transcript.text)), timeoutInterval: 45), decoder: JSONDecoder())
+            try Task.checkCancellation()
+            guard account?.profile.id == userID, client.auth.currentUser?.id == userID else { throw HangAnalysisError.signInRequired }
+            return draft
+        } catch FunctionsError.httpError(let code, _) {
+            if code == 401 || code == 403 { throw HangAnalysisError.signInRequired }
+            if code == 429 { throw HangAnalysisError.rateLimited }
+            throw HangAnalysisError.unavailable
+        }
+    }
+
     // The SDK stores and refreshes sessions in Keychain on iOS.
     func observeSession() async {
         for await (event, session) in client.auth.authStateChanges {

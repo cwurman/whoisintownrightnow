@@ -82,8 +82,8 @@ final class ComposerDraftTests: XCTestCase {
         draft.apply(HangDraftSuggestion(transcript: "Dinner", title: nil, placeName: nil,
             startMode: "scheduled", startsAt: "invalid", durationMinutes: -1, groupLimit: 900), now: now)
         XCTAssertEqual(draft.timeMode, .unspecified)
-        XCTAssertEqual(draft.durationMinutes, 180)
-        XCTAssertEqual(draft.seats, 0)
+        XCTAssertNil(draft.durationMinutes)
+        XCTAssertNil(draft.seats)
         XCTAssertFalse(draft.canPost)
     }
 }

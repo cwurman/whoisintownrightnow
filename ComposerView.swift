@@ -39,8 +39,8 @@ final class ComposerDraft {
     var scheduledAt = Date().addingTimeInterval(3600)
     var droppedCoordinate: CLLocationCoordinate2D?
     var requiresPlaceConfirmation = false
-    var durationMinutes = 180
-    var seats = 0
+    var durationMinutes: Int? = 180
+    var seats: Int? = 0
     var recipientIDs: Set<String> = ComposerDraft.defaultRecipients
     let videoAttachment = HangVideoAttachment()
 
@@ -71,15 +71,16 @@ final class ComposerDraft {
     var whenText: String {
         switch timeMode {
         case .unspecified: "Choose a time"
-        case .now: "Next \(durationLabel)"
+        case .now: durationMinutes == nil ? "Now" : "Next \(durationLabel)"
         case .later: scheduledAt.formatted(date: .abbreviated, time: .shortened)
         }
     }
     var durationLabel: String {
-        durationMinutes.isMultiple(of: 60) ? "\(durationMinutes / 60) \(durationMinutes == 60 ? "hour" : "hours")" : "\(durationMinutes) minutes"
+        guard let durationMinutes else { return "Not set" }
+        return durationMinutes.isMultiple(of: 60) ? "\(durationMinutes / 60) \(durationMinutes == 60 ? "hour" : "hours")" : "\(durationMinutes) minutes"
     }
     var placeText: String { mode == .pin ? (chosenPlace.isEmpty ? "Choose a place" : chosenPlace) : "Within \(radius.label)" }
-    var seatsLabel: String { seats == 0 ? "No limit" : "\(seats) people" }
+    var seatsLabel: String { seats.map { $0 == 0 ? "No limit" : "\($0) people" } ?? "Not set" }
 
     var selectedFriends: [Friend] { Friend.mock.filter { recipientIDs.contains($0.id) } }
     var autoCount: Int { selectedFriends.filter { $0.distanceMiles < 2 }.count }
@@ -107,8 +108,8 @@ final class ComposerDraft {
             timeMode = .later
             scheduledAt = date
         }
-        durationMinutes = suggestion.durationMinutes.flatMap { (1...360).contains($0) ? $0 : nil } ?? 180
-        seats = suggestion.groupLimit.flatMap { (1...12).contains($0) ? $0 : nil } ?? 0
+        durationMinutes = suggestion.durationMinutes.flatMap { (1...360).contains($0) ? $0 : nil }
+        seats = suggestion.groupLimit.flatMap { (0...12).contains($0) ? $0 : nil }
     }
 
     func choosePlace(_ place: PlaceOption) {
@@ -176,7 +177,7 @@ struct ComposerView: View {
                 HangVideoComposer(attachment: draft.videoAttachment, autoRecordOnAppear: true)
                 Text("Say what you’re planning, where, and when. Then review the details before posting.")
                     .font(.body).multilineTextAlignment(.center)
-                Text(analyzeInvitation == nil ? "Automatic details aren’t connected yet. You can add them after recording." : "Your invitation will be used to prepare a draft for you to review.")
+                Text("Your voice is transcribed on this device. After you save, the transcript goes to Jev to draft the details. Anything unclear stays blank.")
                     .font(.footnote).foregroundStyle(Theme.secondaryLabel).multilineTextAlignment(.center)
                 Button("Write it instead") { assistant.reviewManually() }
                     .font(.subheadline).disabled(draft.videoAttachment.isPreparing)
@@ -264,8 +265,9 @@ struct ComposerView: View {
                         DatePicker("Starts", selection: $draft.scheduledAt, in: Date()..., displayedComponents: [.date, .hourAndMinute])
                     }
                     Picker("Duration", selection: $draft.durationMinutes) {
-                        ForEach(Array(Set([15, 30, 45, 60, 90, 120, 180, 240, 300, 360, draft.durationMinutes])).sorted(), id: \.self) {
-                            Text($0.isMultiple(of: 60) ? "\($0 / 60) \($0 == 60 ? "hour" : "hours")" : "\($0) minutes").tag($0)
+                        Text("Not set").tag(Int?.none)
+                        ForEach(Array(Set([15, 30, 45, 60, 90, 120, 180, 240, 300, 360] + (draft.durationMinutes.map { [$0] } ?? []))).sorted(), id: \.self) {
+                            Text($0.isMultiple(of: 60) ? "\($0 / 60) \($0 == 60 ? "hour" : "hours")" : "\($0) minutes").tag(Optional($0))
                         }
                     }
                 } header: { Text("Time") } footer: {
@@ -273,8 +275,10 @@ struct ComposerView: View {
                     if draft.timeMode == .later && draft.scheduledAt <= Date() { Text("Choose a future start time.").foregroundStyle(.red) }
                 }
                 Section {
-                    Stepper(value: $draft.seats, in: 0...12) {
-                        LabeledContent("Group limit", value: draft.seatsLabel)
+                    Picker("Group limit", selection: $draft.seats) {
+                        Text("Not set").tag(Int?.none)
+                        Text("No limit").tag(Optional(0))
+                        ForEach(1...12, id: \.self) { Text("\($0) people").tag(Optional($0)) }
                     }
                 } footer: {
                     Text("Preview · Your hang stays on this device until you leave the map. No invitations are sent. Expiration and group limits aren’t active yet.")

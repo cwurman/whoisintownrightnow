@@ -51,6 +51,14 @@ final class HangDraftAssistantTests: XCTestCase {
         XCTAssertNil(assistant.suggestion)
     }
 
+    func testNamedEntityProposalsStayVerbatimBoundedAndUnique() {
+        let text = "Dinner in San Francisco at Golden Gate Park, then back to San Francisco."
+        let values = HangPlaceCandidates.extract(from: text)
+        XCTAssertLessThanOrEqual(values.count, 24)
+        XCTAssertEqual(Set(values).count, values.count)
+        for value in values { XCTAssertTrue(text.contains(value)); XCTAssertLessThanOrEqual(value.count, 72) }
+    }
+
     private func finish(_ assistant: HangDraftAssistant) async throws {
         let deadline = ContinuousClock.now.advanced(by: .seconds(3))
         while assistant.stage == .processing && ContinuousClock.now < deadline {
