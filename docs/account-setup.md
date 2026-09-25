@@ -16,7 +16,7 @@ The hosted migrations are `20260925052021_account_foundation.sql` and `202609250
 
 Conflicts use the explicit HTTP error `PT409`. Do not replace it with the PostgreSQL serialization error: PostgREST can automatically retry that error indefinitely. [Supabase troubleshooting guidance](https://supabase.com/docs/guides/troubleshooting/high-cpu-and-infinite-transaction-retries-when-using-custom-error-codes-in-rpc-functions-77326b)
 
-Verified: Debug simulator build and launch, unsigned Release iPhone build, both simulator XCTest cases (0 failures), the local Auth/REST/Storage integration suite, and the existing signal-geometry tests. The simulator suite also verifies that an offline load preserves the session and presents a retry state. The local Supabase stack was stopped after testing, retaining its volumes.
+Verified: Debug simulator build and launch, unsigned Release iPhone build, three simulator XCTest cases (0 failures), the local Auth/REST/Storage integration suite, and the existing signal-geometry tests. The simulator suite also verifies that an offline load preserves the session, a photo-only failure allows account access with a retry, stale saves are rejected, and avatar processing removes GPS metadata while preserving orientation. The local Supabase stack was stopped after testing, retaining its volumes.
 
 Signed-device verification is blocked by Xcode configuration: even with `-allowProvisioningUpdates`, Xcode reports **No Account for Team "36P3GQ337U"** and no development profile for `wurms.whoisintownrightnow`. Add an Apple Developer account belonging to that team in Xcode Settings → Accounts before provisioning a device build.
 
@@ -34,6 +34,10 @@ This uses native identity-token exchange. A web Services ID, `.p8` key, and rota
 ## Local checks
 
 Local Supabase ports are 55421 (API) and 55422 (database), keeping them separate from the default stack. Docker must be running.
+
+The full check is now `./scripts/check.sh` (Xcode 26.5 with a compatible iPhone Simulator, Docker, Supabase CLI, and Python 3). It starts this repository’s local stack if needed, applies local migrations, runs the API tests and simulator XCTest suite, builds unsigned Release for iPhone, and runs geometry checks. Set `SIMULATOR_ID` to choose a particular installed simulator. It restores any existing local test fixture and stops the stack only if it started it. Logs/results are under ignored `build/check.*` directories; local service keys remain in ignored, private files.
+
+To run the account checks individually:
 
 ```sh
 supabase start -x realtime,imgproxy,mailpit,postgres-meta,studio,edge-runtime,logflare,vector,supavisor
