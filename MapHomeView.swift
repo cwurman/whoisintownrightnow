@@ -219,19 +219,14 @@ struct MapHomeView: View {
                     overviewList
                 }
             }
-            .navigationTitle(panelTitle)
-            .toolbarTitleDisplayMode(hasSelection ? .inline : .inlineLarge)
+            .navigationTitle(hasSelection ? panelTitle : "")
+            .toolbarTitleDisplayMode(.inline)
+            .toolbarVisibility(hasSelection ? .visible : .hidden, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     if hasSelection {
                         Button("Back", systemImage: "chevron.left", action: clearFocus)
                             .accessibilityIdentifier("close-signal-detail")
-                    }
-                }
-                if section == .people && !hasSelection {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("Manage contacts", systemImage: "person.crop.rectangle") { showContactsSettings = true }
-                            .labelStyle(.iconOnly)
                     }
                 }
             }
@@ -306,11 +301,31 @@ struct MapHomeView: View {
         .scrollContentBackground(.hidden)
         .contentMargins(.top, 0)
         .safeAreaInset(edge: .top, spacing: 0) {
-            Picker("Map content", selection: $section) {
-                ForEach(MapSection.allCases, id: \.self) { Text($0.rawValue).tag($0) }
+            VStack(alignment: .leading, spacing: 16) {
+                HStack(spacing: 16) {
+                    Text(panelTitle)
+                        .font(.largeTitle.bold())
+                        .foregroundStyle(Theme.label)
+                        .accessibilityAddTraits(.isHeader)
+                    Spacer(minLength: 0)
+                    if section == .people {
+                        Button("Manage contacts", systemImage: "person.crop.rectangle") { showContactsSettings = true }
+                            .labelStyle(.iconOnly)
+                            .frame(minWidth: 44, minHeight: 44)
+                            .buttonStyle(.glass)
+                            .buttonBorderShape(.circle)
+                    }
+                }
+                .padding(.horizontal, 28)
+
+                Picker("Map content", selection: $section) {
+                    ForEach(MapSection.allCases, id: \.self) { Text($0.rawValue).tag($0) }
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal, 20)
             }
-            .pickerStyle(.segmented)
-            .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 12)
+            .padding(.top, 24)
+            .padding(.bottom, 16)
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             Button { showComposer = true } label: {
