@@ -4,7 +4,7 @@ September 24, 2026. This pass takes visual cues from Find My and uses the iOS 26
 
 ## Map and people
 
-- A full-screen MapKit map with quieter circular people markers, names, and small signal badges. The original yellow/black cards and bat-shaped floating button are replaced with system green, SF Symbols, and semantic colors.
+- A full-screen MapKit map with quieter circular people markers, names, and activity emoji badges. The original yellow/black cards and bat-shaped floating button are replaced with native controls and the Cocoa & Orchid palette described below.
 - Native sheet detents (compact, medium, expanded), system corner treatment and material, scrollable People/Signals lists, and background map interaction. System sheets own their presentation rather than imitating a sheet with a fixed overlay.
 - September 25 correction: the bottom panel opens to signals under “Happening now.” People remains a secondary tab; Find My informs the styling, while plans remain the default focus.
 - Liquid Glass map appearance/recenter controls and native glass toolbar actions. Glass is concentrated in controls and navigation; lists and forms use standard system surfaces.
@@ -27,6 +27,14 @@ September 24, 2026. This pass takes visual cues from Find My and uses the iOS 26
 ## Scope
 
 This is a presentation and interaction pass. Auth, account persistence, privacy choices, and the deployed schema are unchanged. Apple developer provisioning and a real authorization test are still required; the Supabase Apple provider was enabled and checked on September 25. Friends, coordinates, signals, and joins remain local preview data. No invitation delivery, social audience rule, background location behavior, or capacity policy was added.
+
+## Cocoa & Orchid palette
+
+- Based on the user's September 25 reference: pastel orchid (`#E6B5F4`) for filled actions, avatar rings, and map highlights; cocoa (`#332521`) for text on orchid. Avatar fills stay within cocoa, clay, and muted purple tones.
+- **Keep the map panel's native Liquid Glass appearance:** translucent light material in light mode, dark translucent material in dark mode. Do not force dark appearance or an opaque cocoa/black panel in light mode. This is an explicit user correction.
+- Profile/settings, the composer, and selection lists use warm ivory surfaces in light mode and dark cocoa surfaces in dark mode. Native controls, system Apple sign-in colors, and semantic destructive/error colors are retained.
+- Adaptive colors live in the asset catalog: AccentColor, AppBackground, AppSurface, AppLabel, and AppSecondaryLabel. Plain text actions use a deeper orchid in light mode for legibility; filled orchid actions use cocoa text. The base solid-color contrast is 8.60:1 for cocoa on orchid and 5.47:1 for the light-mode accent on ivory.
+- Verification: Debug simulator and unsigned Release iPhone builds passed (`build/ux/cocoa-orchid-debug.log`, `cocoa-orchid-release.log`), along with the standalone geometry checks. Visual checks covered the native light/dark glass map panel, hang details, composer, and profile/settings surfaces. The corrected panel screenshots are `build/ux/cocoa-orchid-map-light.jpg` and `cocoa-orchid-map-dark.jpg`.
 
 ## Verification
 
