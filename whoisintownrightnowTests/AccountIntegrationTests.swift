@@ -7,6 +7,40 @@ import XCTest
 
 @MainActor
 final class AccountIntegrationTests: XCTestCase {
+    func testContactDiscoveryUsesVerifiedNumbersAndKeepsProfilesPrivate() async throws {
+        let config = try localConfig()
+        let client = SupabaseClient(supabaseURL: config.url, supabaseKey: config.key,
+            options: .init(auth: .init(storage: KeychainLocalStorage(service: "contact-tests-\(UUID())"), autoRefreshToken: false)))
+        let email = "swift-contacts-\(UUID())@example.test"
+        let password = UUID().uuidString + "Aa1!"
+        let data = try await adminRequest(config: config, path: "users", method: "POST",
+            body: ["email": email, "password": password, "email_confirm": true])
+        let id = try XCTUnwrap((try JSONSerialization.jsonObject(with: data) as? [String: Any])?["id"] as? String)
+        addTeardownBlock { _ = try await self.adminRequest(config: config, path: "users/\(id)", method: "DELETE") }
+        _ = try await client.auth.signIn(email: email, password: password)
+        let store = AccountStore(client: client)
+        await store.loadAccount()
+        let saved = await store.save(name: "Contact Test", location: .vicinity, notifications: .off, photoData: nil, removePhoto: false)
+        XCTAssertTrue(saved)
+        let before = try await store.contactDiscoveryStatus()
+        XCTAssertFalse(before.enabled)
+        XCTAssertNil(before.verifiedPhone)
+        do {
+            _ = try await store.contactDiscoveryStatus(enabled: true)
+            XCTFail("Unverified numbers cannot become discoverable")
+        } catch { }
+        _ = try await adminRequest(config: config, path: "users/\(id)", method: "PUT",
+            body: ["phone": "+14155550120", "phone_confirm": true])
+        let after = try await store.contactDiscoveryStatus(enabled: true)
+        XCTAssertTrue(after.enabled)
+        XCTAssertEqual(after.verifiedPhone, "+14155550120")
+        let matches = try await store.matchContacts(["+14155550120", "+14155550999"])
+        XCTAssertTrue(matches.isEmpty, "Own and nonexistent numbers are not account matches")
+        let disabled = try await store.contactDiscoveryStatus(enabled: false)
+        XCTAssertFalse(disabled.enabled)
+        await store.signOut()
+    }
+
     func testProfileSettingsPhotoAndSessionRestore() async throws {
         let config = try localConfig()
         let storage = KeychainLocalStorage(service: "account-tests-\(UUID().uuidString)")

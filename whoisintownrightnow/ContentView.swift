@@ -10,7 +10,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         #if DEBUG
-        if ProcessInfo.processInfo.arguments.contains("--preview-map") {
+        if ProcessInfo.processInfo.arguments.contains("--preview-contacts-onboarding") {
+            ContactsOnboardingPreview()
+        } else if ProcessInfo.processInfo.arguments.contains("--preview-map") {
             MapHomeView()
         } else {
             AccountRootView()
@@ -20,6 +22,16 @@ struct ContentView: View {
         #endif
     }
 }
+
+#if DEBUG
+private struct ContactsOnboardingPreview: View {
+    @State private var contacts = ContactsStore(accountID: nil)
+    var body: some View {
+        if contacts.didChoose { MapHomeView(contactsStore: contacts) }
+        else { ContactsOnboardingView(contacts: contacts, account: nil) }
+    }
+}
+#endif
 
 #Preview {
     ContentView()

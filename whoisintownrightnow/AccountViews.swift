@@ -25,7 +25,7 @@ struct AccountRootView: View {
             case .setup:
                 AccountSettingsView(store: store, isOnboarding: true)
             case .ready:
-                MapHomeView(profile: store.account?.profile, avatarData: store.avatarData, accountStore: store)
+                ContactAccountView(account: store)
                     .id(store.account?.profile.id)
             }
         }
@@ -162,6 +162,7 @@ private enum AccountSettingsSource {
 struct AccountSettingsView: View {
     private let source: AccountSettingsSource
     let isOnboarding: Bool
+    var contacts: ContactsStore? = nil
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
     @State private var location: LocationSharingMode = .vicinity
@@ -174,15 +175,17 @@ struct AccountSettingsView: View {
     @State private var photoError: String?
     @State private var confirmSignOut = false
 
-    init(store: AccountStore, isOnboarding: Bool) {
+    init(store: AccountStore, isOnboarding: Bool, contacts: ContactsStore? = nil) {
         source = .account(store)
         self.isOnboarding = isOnboarding
+        self.contacts = contacts
     }
 
     #if DEBUG
-    init(preview: PreviewAccountSettings) {
+    init(preview: PreviewAccountSettings, contacts: ContactsStore? = nil) {
         source = .preview(preview)
         isOnboarding = false
+        self.contacts = contacts
     }
     #endif
 
@@ -249,6 +252,14 @@ struct AccountSettingsView: View {
                     if isOnboarding { notificationPicker.pickerStyle(.inline) }
                     else { notificationPicker.pickerStyle(.navigationLink) }
                 } header: { Text("Notifications & invites") } footer: { Text(notifications.detail) }
+
+                if let contacts {
+                    Section {
+                        NavigationLink {
+                            ContactsSettingsView(contacts: contacts, account: store)
+                        } label: { Label("Contacts", systemImage: "person.crop.circle.badge.checkmark") }
+                    }
+                }
 
                 Section {
                     Text(store == nil

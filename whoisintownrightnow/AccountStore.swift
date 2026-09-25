@@ -179,6 +179,32 @@ final class AccountStore {
         } catch { errorMessage = error.localizedDescription }
     }
 
+    func matchContacts(_ phones: [String]) async throws -> [String] {
+        guard let id = account?.profile.id, client.auth.currentUser?.id == id else {
+            throw AccountError.message("Sign in to find your contacts.")
+        }
+        struct Parameters: Encodable { let p_phones: [String] }
+        let matches: [String] = try await client.rpc("match_contacts", params: Parameters(p_phones: phones)).execute().value
+        guard client.auth.currentUser?.id == id else { throw CancellationError() }
+        return matches
+    }
+
+    func contactDiscoveryStatus(enabled: Bool? = nil) async throws -> ContactDiscoveryStatus {
+        struct Parameters: Encodable { let p_enabled: Bool? }
+        return try await client.rpc("contact_discovery_settings", params: Parameters(p_enabled: enabled)).execute().value
+    }
+
+    func requestContactPhone(_ phone: String) async throws {
+        guard let id = account?.profile.id, client.auth.currentUser?.id == id else { throw CancellationError() }
+        _ = try await client.auth.update(user: UserAttributes(phone: phone))
+    }
+
+    func verifyContactPhone(_ phone: String, code: String) async throws {
+        guard let id = account?.profile.id, client.auth.currentUser?.id == id else { throw CancellationError() }
+        _ = try await client.auth.verifyOTP(phone: phone, token: code, type: .phoneChange)
+        guard client.auth.currentUser?.id == id else { throw CancellationError() }
+    }
+
     private func loadAvatar(path: String?, userID: UUID) async {
         avatarData = nil
         avatarErrorMessage = nil

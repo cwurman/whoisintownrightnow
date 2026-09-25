@@ -5,6 +5,9 @@ struct MapHomeView: View {
     var profile: AccountProfile? = nil
     var avatarData: Data? = nil
     var accountStore: AccountStore? = nil
+    var contactsStore: ContactsStore? = nil
+    @State private var previewContacts = ContactsStore(accountID: nil)
+    private var activeContacts: ContactsStore { contactsStore ?? previewContacts }
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var signals = Signal.mock
@@ -17,6 +20,8 @@ struct MapHomeView: View {
     @State private var viewportHeight: CGFloat = 800
     @State private var showComposer = false
     @State private var showSettings = false
+    @State private var showContactsSettings = false
+    @State private var invitedContact: DeviceContact?
     @State private var confirmation: PostedConfirmation?
     @State private var pendingConfirmation: PostedConfirmation?
     @State private var satellite = false
@@ -223,6 +228,12 @@ struct MapHomeView: View {
                             .accessibilityIdentifier("close-signal-detail")
                     }
                 }
+                if section == .people && !hasSelection {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Manage contacts", systemImage: "person.crop.rectangle") { showContactsSettings = true }
+                            .labelStyle(.iconOnly)
+                    }
+                }
             }
             .safeAreaInset(edge: .bottom) {
                 if let toast {
@@ -250,10 +261,10 @@ struct MapHomeView: View {
         }
         .sheet(isPresented: $showSettings) {
             if let accountStore {
-                AccountSettingsView(store: accountStore, isOnboarding: false)
+                AccountSettingsView(store: accountStore, isOnboarding: false, contacts: activeContacts)
             } else {
                 #if DEBUG
-                AccountSettingsView(preview: previewSettings)
+                AccountSettingsView(preview: previewSettings, contacts: activeContacts)
                 #else
                 NavigationStack {
                     ContentUnavailableView("Your account", systemImage: "person.crop.circle", description: Text("Sign in to personalize your profile and sharing preferences. You’re viewing the map preview."))
@@ -262,26 +273,34 @@ struct MapHomeView: View {
                 #endif
             }
         }
+        .sheet(isPresented: $showContactsSettings) {
+            NavigationStack {
+                ContactsSettingsView(contacts: activeContacts, account: accountStore)
+                    .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { showContactsSettings = false } } }
+            }
+            .presentationBackground(Theme.background)
+        }
+        .sheet(item: $invitedContact) { contact in
+            InviteContactView(contact: contact, isPreview: accountStore == nil)
+        }
     }
 
     private var overviewList: some View {
         List {
-            Section {
-                if section == .people {
-                    ForEach(Friend.mock) { friend in
-                        Button { focus(on: friend) } label: { PersonRow(friend: friend) }
-                            .buttonStyle(.plain)
-                    }
-                } else {
+            if section == .people {
+                ContactsPeopleSections(contacts: activeContacts, account: accountStore,
+                    onManage: { showContactsSettings = true }, onInvite: { invitedContact = $0 })
+            } else {
+                Section {
                     ForEach(signals) { signal in
                         SignalRowView(signal: signal, onJoin: { join(signal) }, onTap: { focus(on: signal) })
                     }
+                } footer: {
+                    Label("Preview · sample people and plans", systemImage: "info.circle")
+                        .font(.footnote).padding(.top, 8)
                 }
-            } footer: {
-                Label("Preview · sample people and plans", systemImage: "info.circle")
-                    .font(.footnote).padding(.top, 8)
+                .listRowBackground(Theme.panelRow)
             }
-            .listRowBackground(Theme.panelRow)
         }
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
@@ -308,6 +327,14 @@ struct MapHomeView: View {
             .background(.regularMaterial)
         }
         .animation(focusAnimation, value: section)
+        .onChange(of: section) {
+            if section == .people && panelDetent == .height(300) { panelDetent = .medium }
+        }
+        .task(id: section) {
+            guard section == .people else { return }
+            if accountStore == nil && !activeContacts.didChoose { await activeContacts.connect(account: nil) }
+            else { await activeContacts.refresh(account: accountStore) }
+        }
     }
 
     private func friendDetails(_ friend: Friend) -> some View {
