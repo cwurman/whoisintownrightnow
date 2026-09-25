@@ -6,7 +6,7 @@ Creating a hang starts with a personal video invitation. The composer opens the 
 
 - Tapping Let’s hang prompts for camera and microphone access and opens the front camera when available. It never starts recording automatically. Canceling the recorder returns to the video introduction. Devices without a camera offer Photos and manual entry. Choosing from Photos does not require access to the whole library.
 - The composer has recording, processing, failure, and review states. The analysis operation is connected to an authenticated Supabase Edge Function that calls Jev with finalized transcript text. Cancellation protects manual edits from late results. Capture feeds Apple on-device speech analysis while recording; a retake starts a fresh transcript. The recorder shows provisional captions and reviews the saved clip before sending text for drafting. No video/audio is uploaded to Jev.
-- The typed suggestion contract supports title, place name, start mode, ISO-8601 start time, duration, and group limit. AI place names require a confirmed map location, including names matching a sample place. Missing or invalid start times remain unset. Post requires a title, location, and valid start choice. Missing or invalid numeric suggestions stay visibly unset, rather than inheriting manual-form defaults.
+- The typed suggestion contract supports title, place name, start mode, ISO-8601 start time, duration, and group limit. Confident Apple venue matches fill their name/address and retrieved coordinates for user review. Uncertain matches leave the place unset; the user can search Apple Maps or choose a point on the map. Missing or invalid start times remain unset. Post requires a title, location, and valid start choice. Missing or invalid numeric suggestions stay visibly unset, rather than inheriting manual-form defaults.
 - Clips are limited to 15 seconds. Longer imports are rejected with a suggestion to trim in Photos; the app does not silently cut off someone's invitation. A quarter-second recording tolerance is trimmed to exactly 15 seconds.
 - Selected files are copied before the picker releases its temporary URL, exported to a 720p MP4 with exported asset metadata cleared, and given an orientation-correct poster. Inputs over 250 MB and outputs over 50 MB are rejected.
 - Post is disabled during import. Canceling or failing a replacement keeps the previous clip. Canceling the draft releases its media; posting retains it with the hang. The last owner releasing a clip removes its temporary file. On startup, files from terminated sessions older than a day are removed.
@@ -27,7 +27,7 @@ Product decisions to revisit with real use:
 
 These decisions do not block trying the current recording/import and playback interface. Real camera capture, permission denial, microphone audio, and capture interruptions still need testing on an iPhone. Sign-in and cross-user delivery remain separate from this Simulator preview.
 
-AI provider research and the recommended transcription approach are in [invitation-ai-research.md](invitation-ai-research.md). The pipeline is connected; real-device end-to-end validation and the venue-search provider decision remain outstanding.
+AI provider research and the recommended transcription approach are in [invitation-ai-research.md](invitation-ai-research.md). The pipeline includes Apple venue search; real-device end-to-end validation remains outstanding.
 
 ## Verification
 

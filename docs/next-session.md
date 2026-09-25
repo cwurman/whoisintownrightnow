@@ -6,11 +6,15 @@ Updated September 25, 2026. Work is on `codex/account-foundation`; commits are l
 
 Live camera/audio capture now streams audio into Apple on-device speech transcription. Saving a clip sends its final transcript to the deployed `draft-hang` Edge Function and Jev; uncertain fields stay blank, and place names require map confirmation. The private request-budget migration is deployed. Videos remain local. See [the implementation and device-test checklist](invitation-ai-research.md).
 
-The user's venue-retrieval proposal is to search nearby places by the spoken name and let Jev select from the top candidates. Provider choice is pending: Apple search fits the current MapKit map; Google Places map results require switching to a Google map. Do not use the prototype SF coordinate as actual user context.
+Apple place search is now implemented: spoken venue queries use a fresh foreground location fix and return at most eight candidates for Jev. The selected ID resolves to Apple's coordinates on device; uncertain matches stay blank. The location picker uses real Apple search, optional GPS, and a map fallback. It no longer treats sample places as confirmed venues. Hosted `draft-hang` is version 2, with the existing authentication/quota checks. No new database migration or API key is needed.
 
-Latest verification: `build/check.YIFhyE` passed local account/contact/quota API tests, 12 backend unit tests, 24 Swift tests, unsigned Release iPhone build and map geometry checks. These tests use a mocked Jev response; a signed-in physical iPhone → live transcription → live Jev test remains outstanding.
+Earlier capture verification: `build/check.YIFhyE` passed local account/contact/quota API tests, 12 backend unit tests, 24 Swift tests, unsigned Release iPhone build and map geometry checks. These tests use a mocked Jev response; a signed-in physical iPhone → live transcription → live Jev test remains outstanding.
 
-New commits: `c329338` (capture/transcription), `6d3c173` (Jev backend/quota), `2153b13` (editable draft integration). Hosted `draft-hang` version 1 requires JWT verification; migration `20260925195503_hang_draft_limits.sql` matches local and hosted history.
+New commits: `c329338` (capture/transcription), `6d3c173` (Jev backend/quota), `2153b13` (editable draft integration). Hosted `draft-hang` version 2 requires JWT verification; migration `20260925195503_hang_draft_limits.sql` matches local and hosted history.
+
+Apple-search commits: `b88bb96` (bounded venue classification), `dae2b0d` (client lookup and review).
+
+Latest Apple-search verification: `build/apple-places/` has 15 passing backend tests, 15 passing focused Swift tests, and successful Debug/unsigned Release builds. Live Apple search and allowed/denied location paths were checked in Simulator. Real iPhone capture → Jev classification remains unverified.
 
 ## Ready to review
 
