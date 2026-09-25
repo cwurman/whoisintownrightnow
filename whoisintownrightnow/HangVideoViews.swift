@@ -5,6 +5,8 @@ import UniformTypeIdentifiers
 
 struct HangVideoComposer: View {
     @Bindable var attachment: HangVideoAttachment
+    var autoRecordOnAppear = false
+    @State private var attemptedAutomaticRecording = false
     @State private var selection: PhotosPickerItem?
     @State private var showCamera = false
     @State private var requestingCamera = false
@@ -38,7 +40,7 @@ struct HangVideoComposer: View {
                         Text("Invite them yourself").font(.title2.bold()).foregroundStyle(Theme.label)
                         Text("A quick video makes it personal.")
                             .font(.subheadline).foregroundStyle(Theme.secondaryLabel)
-                        Text("Optional · Up to 15 seconds")
+                        Text("Up to 15 seconds")
                             .font(.caption).foregroundStyle(Theme.secondaryLabel)
                     }.multilineTextAlignment(.center)
                     recordButton
@@ -63,6 +65,13 @@ struct HangVideoComposer: View {
             }
         }
         .buttonStyle(.borderless)
+        .task {
+            guard autoRecordOnAppear, !attemptedAutomaticRecording else { return }
+            attemptedAutomaticRecording = true
+            // Keep Photos and manual entry available on devices without a camera.
+            guard UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
+            await openCamera()
+        }
         .onChange(of: selection) { _, item in
             if let item { attachment.choose(item); selection = nil }
         }

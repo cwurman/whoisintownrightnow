@@ -12,7 +12,7 @@ import MapKit
 // MARK: - Draft model
 
 enum PlaceMode: Equatable { case pin, region }
-enum TimeMode: Equatable { case now, later }
+enum TimeMode: Equatable { case unspecified, now, later }
 
 struct PlaceOption: Identifiable {
     let name: String
@@ -32,18 +32,19 @@ struct RadiusOption {
 final class ComposerDraft {
     var text = ""
     var mode: PlaceMode = .pin
-    var chosenPlace = "Lucia"
+    var chosenPlace = ""
     var placeQuery = ""
     var radiusIdx = 1
-    var timeMode: TimeMode = .now
+    var timeMode: TimeMode = .unspecified
     var scheduledAt = Date().addingTimeInterval(3600)
     var droppedCoordinate: CLLocationCoordinate2D?
-    var durHrs = 3
+    var requiresPlaceConfirmation = false
+    var durationMinutes = 180
     var seats = 0
     var recipientIDs: Set<String> = ComposerDraft.defaultRecipients
     let videoAttachment = HangVideoAttachment()
 
-    static let defaultRecipients: Set<String> = ["mk", "rs"]
+    static let defaultRecipients: Set<String> = []
     static let radii: [RadiusOption] = [
         RadiusOption(label: "0.2 mi", meters: 322),
         RadiusOption(label: "0.5 mi", meters: 805),
@@ -60,13 +61,24 @@ final class ComposerDraft {
     ]
 
     var canPost: Bool {
-        !videoAttachment.isPreparing && !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && (timeMode == .now || scheduledAt > Date())
+        !videoAttachment.isPreparing && !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            && hasPlace && (timeMode == .now || (timeMode == .later && scheduledAt > Date()))
+    }
+    var hasPlace: Bool {
+        mode == .region || (!requiresPlaceConfirmation && (droppedCoordinate != nil || Self.places.contains { $0.name == chosenPlace }))
     }
     var radius: RadiusOption { Self.radii[radiusIdx] }
     var whenText: String {
-        timeMode == .now ? "Next \(durHrs) \(durHrs == 1 ? "hour" : "hours")" : scheduledAt.formatted(date: .abbreviated, time: .shortened)
+        switch timeMode {
+        case .unspecified: "Choose a time"
+        case .now: "Next \(durationLabel)"
+        case .later: scheduledAt.formatted(date: .abbreviated, time: .shortened)
+        }
     }
-    var placeText: String { mode == .pin ? chosenPlace : "Within \(radius.label)" }
+    var durationLabel: String {
+        durationMinutes.isMultiple(of: 60) ? "\(durationMinutes / 60) \(durationMinutes == 60 ? "hour" : "hours")" : "\(durationMinutes) minutes"
+    }
+    var placeText: String { mode == .pin ? (chosenPlace.isEmpty ? "Choose a place" : chosenPlace) : "Within \(radius.label)" }
     var seatsLabel: String { seats == 0 ? "No limit" : "\(seats) people" }
 
     var selectedFriends: [Friend] { Friend.mock.filter { recipientIDs.contains($0.id) } }
@@ -75,8 +87,42 @@ final class ComposerDraft {
 
     var placeCoordinate: CLLocationCoordinate2D {
         if mode == .region { return Friend.youCoordinate }
-        if chosenPlace == "Dropped pin", let droppedCoordinate { return droppedCoordinate }
+        if let droppedCoordinate { return droppedCoordinate }
         return Self.places.first(where: { $0.name == chosenPlace })?.coordinate ?? Friend.youCoordinate
+    }
+
+    func apply(_ suggestion: HangDraftSuggestion, now: Date = Date()) {
+        text = suggestion.title ?? ""
+        chosenPlace = suggestion.placeName ?? ""
+        placeQuery = chosenPlace
+        droppedCoordinate = nil
+        requiresPlaceConfirmation = true
+        mode = .pin
+        timeMode = .unspecified
+        if suggestion.startMode == "now" { timeMode = .now }
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions.insert(.withFractionalSeconds)
+        if suggestion.startMode == "scheduled", let value = suggestion.startsAt,
+           let date = formatter.date(from: value) ?? ISO8601DateFormatter().date(from: value), date > now {
+            timeMode = .later
+            scheduledAt = date
+        }
+        durationMinutes = suggestion.durationMinutes.flatMap { (1...360).contains($0) ? $0 : nil } ?? 180
+        seats = suggestion.groupLimit.flatMap { (1...12).contains($0) ? $0 : nil } ?? 0
+    }
+
+    func choosePlace(_ place: PlaceOption) {
+        chosenPlace = place.name
+        droppedCoordinate = nil
+        requiresPlaceConfirmation = false
+        mode = .pin
+    }
+
+    func choosePin(_ coordinate: CLLocationCoordinate2D) {
+        droppedCoordinate = coordinate
+        if !requiresPlaceConfirmation || chosenPlace.isEmpty { chosenPlace = "Dropped pin" }
+        requiresPlaceConfirmation = false
+        mode = .pin
     }
 }
 
@@ -85,11 +131,100 @@ final class ComposerDraft {
 struct ComposerView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var draft = ComposerDraft()
+    @State private var assistant = HangDraftAssistant()
+    var analyzeInvitation: (@MainActor (HangVideo) async throws -> HangDraftSuggestion)? = nil
     let onPost: (ComposerDraft) -> Void
 
     var body: some View {
         NavigationStack {
-            ThemedForm {
+            Group {
+                switch assistant.stage {
+                case .record: recordStep
+                case .processing: processingStep
+                case .failed: failureStep
+                case .review: reviewForm
+                }
+            }
+            .navigationTitle(assistant.stage == .review ? "Review your hang" : "New hang")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") { assistant.cancel(); draft.videoAttachment.cancelImport(); dismiss() }
+                }
+                if assistant.stage == .review {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Post") { if draft.canPost { onPost(draft) } }
+                            .buttonStyle(.glassProminent)
+                            .tint(Theme.orchid).foregroundStyle(Theme.ink)
+                            .disabled(!draft.canPost)
+                            .accessibilityIdentifier("post-signal")
+                    }
+                }
+            }
+            .onChange(of: draft.videoAttachment.video?.id) { _, id in
+                if id != nil { analyzeVideo() }
+                else if assistant.stage != .review { assistant.recordAgain() }
+            }
+        }
+        .tint(Theme.accent)
+        .interactiveDismissDisabled(draft.videoAttachment.isPreparing || assistant.stage == .processing)
+    }
+
+    private var recordStep: some View {
+        ScrollView {
+            VStack(spacing: 24) {
+                HangVideoComposer(attachment: draft.videoAttachment, autoRecordOnAppear: true)
+                Text("Say what you’re planning, where, and when. Then review the details before posting.")
+                    .font(.body).multilineTextAlignment(.center)
+                Text(analyzeInvitation == nil ? "Automatic details aren’t connected yet. You can add them after recording." : "Your invitation will be used to prepare a draft for you to review.")
+                    .font(.footnote).foregroundStyle(Theme.secondaryLabel).multilineTextAlignment(.center)
+                Button("Write it instead") { assistant.reviewManually() }
+                    .font(.subheadline).disabled(draft.videoAttachment.isPreparing)
+            }.padding(24)
+        }.background(Theme.background)
+    }
+
+    private var processingStep: some View {
+        ScrollView {
+            VStack(spacing: 24) {
+                if let video = draft.videoAttachment.video { HangVideoPoster(video: video, title: "your invitation", height: 260) }
+                ProgressView().controlSize(.large)
+                Text("Putting your hang together…").font(.title2.bold()).multilineTextAlignment(.center)
+                Text("We’re listening for the plan, place, and time. You’ll review everything before posting.")
+                    .foregroundStyle(Theme.secondaryLabel).multilineTextAlignment(.center)
+                Button("Fill in the details myself") { assistant.reviewManually() }
+            }.padding(24)
+        }.background(Theme.background)
+    }
+
+    private var failureStep: some View {
+        ScrollView {
+            VStack(spacing: 24) {
+                if let video = draft.videoAttachment.video { HangVideoPoster(video: video, title: "your invitation", height: 260) }
+                Text("Your video is ready").font(.title2.bold())
+                Text(assistant.errorMessage ?? HangAnalysisError.unavailable.localizedDescription)
+                    .multilineTextAlignment(.center).foregroundStyle(Theme.secondaryLabel)
+                Button("Try again", action: analyzeVideo).buttonStyle(.glassProminent).tint(Theme.orchid).foregroundStyle(Theme.ink)
+                Button("Fill in the details myself") { assistant.reviewManually() }
+                Button("Record again") { assistant.recordAgain() }
+            }.padding(24)
+        }.background(Theme.background)
+    }
+
+    private func analyzeVideo() {
+        guard let video = draft.videoAttachment.video else { return }
+        guard let analyzeInvitation else { assistant.reviewManually(); return }
+        assistant.analyze({
+            try await analyzeInvitation(video)
+        }, apply: { draft.apply($0) })
+    }
+
+    private var reviewForm: some View {
+        ThemedForm {
+                Section {
+                    Label(assistant.suggestion == nil ? "Review the details before posting." : "Drafted from your video. Check the details and fill in anything we missed.", systemImage: "sparkles")
+                        .font(.subheadline).foregroundStyle(Theme.secondaryLabel)
+                }
                 Section {
                     HangVideoComposer(attachment: draft.videoAttachment)
                         .listRowInsets(EdgeInsets())
@@ -116,19 +251,25 @@ struct ComposerView: View {
                             LabeledContent("Invite friends", value: draft.selectedFriends.isEmpty ? "None" : "\(draft.selectedFriends.count) selected")
                         } icon: { Image(systemName: "person.2").foregroundStyle(Theme.accent) }
                     }
+                } footer: {
+                    if !draft.hasPlace { Text(draft.chosenPlace.isEmpty ? "Choose where you’re meeting." : "Confirm this place on the map before posting.") }
                 }
                 Section {
                     Picker("When", selection: $draft.timeMode) {
+                        if draft.timeMode == .unspecified { Text("Not set").tag(TimeMode.unspecified) }
                         Text("Now").tag(TimeMode.now)
                         Text("Scheduled").tag(TimeMode.later)
                     }.pickerStyle(.segmented)
                     if draft.timeMode == .later {
                         DatePicker("Starts", selection: $draft.scheduledAt, in: Date()..., displayedComponents: [.date, .hourAndMinute])
                     }
-                    Picker("Duration", selection: $draft.durHrs) {
-                        ForEach(1...6, id: \.self) { Text("\($0) \($0 == 1 ? "hour" : "hours")").tag($0) }
+                    Picker("Duration", selection: $draft.durationMinutes) {
+                        ForEach(Array(Set([15, 30, 45, 60, 90, 120, 180, 240, 300, 360, draft.durationMinutes])).sorted(), id: \.self) {
+                            Text($0.isMultiple(of: 60) ? "\($0 / 60) \($0 == 60 ? "hour" : "hours")" : "\($0) minutes").tag($0)
+                        }
                     }
                 } header: { Text("Time") } footer: {
+                    if draft.timeMode == .unspecified { Text("Choose when your hang starts.") }
                     if draft.timeMode == .later && draft.scheduledAt <= Date() { Text("Choose a future start time.").foregroundStyle(.red) }
                 }
                 Section {
@@ -136,25 +277,13 @@ struct ComposerView: View {
                         LabeledContent("Group limit", value: draft.seatsLabel)
                     }
                 } footer: {
-                    Text("Preview · Your plan and video stay on this device until you leave the map. No invitations are sent. Expiration and group limits aren’t active yet.")
+                    Text("Preview · Your hang stays on this device until you leave the map. No invitations are sent. Expiration and group limits aren’t active yet.")
                 }
-            }
-            .navigationTitle("New hang")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { draft.videoAttachment.cancelImport(); dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Post") { if draft.canPost { onPost(draft) } }
-                        .buttonStyle(.glassProminent)
-                        .tint(Theme.orchid).foregroundStyle(Theme.ink)
-                        .disabled(!draft.canPost)
-                        .accessibilityIdentifier("post-signal")
+                if let transcript = assistant.suggestion?.transcript, !transcript.isEmpty {
+                    Section { DisclosureGroup("What we heard") { Text(transcript).font(.body).textSelection(.enabled) } }
                 }
             }
             .scrollDismissesKeyboard(.interactively)
-        }
-        .tint(Theme.accent)
-        .interactiveDismissDisabled(draft.videoAttachment.isPreparing)
     }
 }
 
@@ -176,7 +305,7 @@ struct PlacePickerView: View {
                     if draft.mode == .region {
                         MapCircle(center: draft.placeCoordinate, radius: draft.radius.meters)
                             .foregroundStyle(Theme.orchid.opacity(0.15)).stroke(Theme.orchid, lineWidth: 2)
-                    } else { Marker(draft.chosenPlace, coordinate: draft.placeCoordinate).tint(Theme.orchid) }
+                    } else if draft.hasPlace { Marker(draft.chosenPlace, coordinate: draft.placeCoordinate).tint(Theme.orchid) }
                 }
                 .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
                 .frame(height: 190)
@@ -191,7 +320,7 @@ struct PlacePickerView: View {
                 Section("Suggested places") {
                     ForEach(places) { place in
                         Button {
-                            draft.chosenPlace = place.name
+                            draft.choosePlace(place)
                         } label: {
                             HStack(spacing: 14) {
                                 Image(systemName: place.name.contains("Park") ? "tree.fill" : "fork.knife")
@@ -264,9 +393,7 @@ private struct PinPickerView: View {
                     ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Use pin") {
-                            draft.droppedCoordinate = coordinate
-                            draft.chosenPlace = "Dropped pin"
-                            draft.mode = .pin
+                            draft.choosePin(coordinate)
                             dismiss()
                         }.buttonStyle(.glassProminent)
                             .tint(Theme.orchid).foregroundStyle(Theme.ink)

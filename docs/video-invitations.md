@@ -1,10 +1,12 @@
 # Video invitations
 
-Hangs can include an optional, personal video invitation. The composer leads with recording or choosing a clip; a hang with video leads with its poster and play button. The title, place, and time remain readable without playing audio, and Join stays pinned below the detail content. Text-only hangs remain supported.
+Creating a hang starts with a personal video invitation. The composer opens the native recorder on supported devices; after saving a clip, the user reviews the form before posting. A hang with video leads with its poster and play button. The title, place, and time remain readable without playing audio, and Join stays pinned below the detail content. “Write it instead” keeps text-only hangs available.
 
 ## Current behavior
 
-- Record with the native camera, starting on the front camera when available, or choose a video with the system Photos picker. Camera and microphone access are requested only after tapping Record; choosing from Photos does not require access to the whole library.
+- Opening Create hang prompts for camera and microphone access and opens the front camera when available. It never starts recording automatically. Canceling the recorder returns to the video introduction. Devices without a camera offer Photos and manual entry. Choosing from Photos does not require access to the whole library.
+- The composer has recording, processing, failure, and review states. The analysis operation is injectable, with cancellation and protection against late results overwriting manual edits. **No live analysis provider is connected yet.** The introduction says so; saving a clip currently opens manual review without uploading audio or calling an absent backend endpoint.
+- The typed suggestion contract supports title, place name, start mode, ISO-8601 start time, duration, and group limit. AI place names require a confirmed map location, including names matching a sample place. Missing or invalid start times remain unset. Post requires a title, location, and valid start choice. Invalid numeric suggestions fall back to the visible form defaults.
 - Clips are limited to 15 seconds. Longer imports are rejected with a suggestion to trim in Photos; the app does not silently cut off someone's invitation. A quarter-second recording tolerance is trimmed to exactly 15 seconds.
 - Selected files are copied before the picker releases its temporary URL, exported to a 720p MP4 with exported asset metadata cleared, and given an orientation-correct poster. Inputs over 250 MB and outputs over 50 MB are rejected.
 - Post is disabled during import. Canceling or failing a replacement keeps the previous clip. Canceling the draft releases its media; posting retains it with the hang. The last owner releasing a clip removes its temporary file. On startup, files from terminated sessions older than a day are removed.
@@ -19,14 +21,16 @@ Before cross-user delivery, implement durable hangs and private media storage wi
 
 Product decisions to revisit with real use:
 
-- Is optional video and a 15-second limit the right starting point?
+- Is the 15-second limit the right starting point?
 - Should a video disappear when the hang ends, or stay in a history?
 - Should we offer captions, a poster selector, or in-app trimming?
 
 These decisions do not block trying the current recording/import and playback interface. Real camera capture, permission denial, microphone audio, and capture interruptions still need testing on an iPhone. Sign-in and cross-user delivery remain separate from this Simulator preview.
 
+AI provider research and the recommended transcription approach are in [invitation-ai-research.md](invitation-ai-research.md). Connecting live extraction remains outstanding while that architecture is being chosen.
+
 ## Verification
 
-`HangVideoTests` covers playable export and portrait posters, removal of source location metadata, overlong and unreadable files, replacement failures, cancellation races, and file ownership after posting. `ComposerDraftTests` covers Post being unavailable until import completes or is canceled.
+`HangVideoTests` covers playable export and portrait posters, removal of source location metadata, overlong and unreadable files, replacement failures, cancellation races, and file ownership after posting. `ComposerDraftTests` covers required details, place confirmation, date parsing, and suggestion bounds. `HangDraftAssistantTests` covers successful review, failure recovery, and a late analysis result arriving after manual editing begins.
 
 Simulator checks: choose a synthetic six-second clip, preview it, post a titled hang, open its detail, and play the retained clip. The fixture contains no personal footage. Also check no-camera messaging, light/dark appearance, and accessibility text sizes. Debug Simulator and unsigned Release iOS builds pass; the Release build does not validate provisioning or device camera behavior.
