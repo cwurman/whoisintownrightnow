@@ -4,6 +4,8 @@ Account implementation and local test instructions: [Account setup](docs/account
 
 Current product language: **hangs**. The home panel opens to “Today,” with a prominent “Create hang” action. The earlier product draft below uses the former “signal” terminology.
 
+Optional contact sync and the People invite list: [contact discovery setup](docs/contact-discovery.md). Verified-phone matching is implemented; SMS-provider configuration and an invite download link are still needed.
+
 A friend map you already know how to use, plus a way to say *I'm doing this thing, come find me*. Find My Friends is the chassis. The bat signal is the engine.
 
 iOS · always-on location · one screen, one object, one button
