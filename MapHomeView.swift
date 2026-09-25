@@ -56,7 +56,7 @@ struct MapHomeView: View {
     private var selectedSignal: Signal? { signals.first { $0.id == selectedSignalID } }
     private var hasSelection: Bool { selectedSignal != nil || selectedFriend != nil }
     private var panelTitle: String {
-        selectedSignal != nil ? "" : selectedFriend?.firstName ?? (section == .signals ? "Happening now" : "People")
+        selectedSignal != nil ? "" : selectedFriend?.firstName ?? (section == .signals ? "Today" : "People")
     }
     private var focusAnimation: Animation? { reduceMotion ? nil : .smooth(duration: 0.4) }
     private var mapSignals: [Signal] {
@@ -223,10 +223,6 @@ struct MapHomeView: View {
                             .accessibilityIdentifier("close-signal-detail")
                     }
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("New hang", systemImage: "plus") { showComposer = true }
-                        .accessibilityIdentifier("new-signal")
-                }
             }
             .safeAreaInset(edge: .bottom) {
                 if let toast {
@@ -291,16 +287,25 @@ struct MapHomeView: View {
         .scrollContentBackground(.hidden)
         .contentMargins(.top, 0)
         .safeAreaInset(edge: .top, spacing: 0) {
-            VStack(spacing: 10) {
-                Picker("Map content", selection: $section) {
-                    ForEach(MapSection.allCases, id: \.self) { Text($0.rawValue).tag($0) }
-                }.pickerStyle(.segmented)
-                HStack {
-                    Text(section == .people ? "\(Friend.mock.count) friends" : "\(signals.count) \(signals.count == 1 ? "hang" : "hangs")")
-                    Spacer()
-                    Text("Preview")
-                }.font(.caption).foregroundStyle(Theme.secondaryLabel)
-            }.padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 12)
+            Picker("Map content", selection: $section) {
+                ForEach(MapSection.allCases, id: \.self) { Text($0.rawValue).tag($0) }
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 12)
+        }
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            Button { showComposer = true } label: {
+                Label("Create hang", systemImage: "plus")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, minHeight: 36)
+            }
+            .buttonStyle(.glassProminent)
+            .buttonBorderShape(.capsule)
+            .tint(Theme.orchid)
+            .foregroundStyle(Theme.ink)
+            .accessibilityIdentifier("new-signal")
+            .padding(.horizontal, 20).padding(.vertical, 12)
+            .background(.regularMaterial)
         }
         .animation(focusAnimation, value: section)
     }
