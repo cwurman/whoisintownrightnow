@@ -88,7 +88,7 @@ struct ComposerView: View {
 
     var body: some View {
         NavigationStack {
-            Form {
+            ThemedForm {
                 Section("What’s the plan?") {
                     TextField("Dinner, a walk, a quick coffee…", text: $draft.text, axis: .vertical)
                         .lineLimit(2...4)
@@ -140,6 +140,7 @@ struct ComposerView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Post") { if draft.canPost { onPost(draft) } }
                         .buttonStyle(.glassProminent)
+                        .tint(Theme.orchid).foregroundStyle(Theme.ink)
                         .disabled(!draft.canPost)
                         .accessibilityIdentifier("post-signal")
                 }
@@ -160,15 +161,15 @@ struct PlacePickerView: View {
     }
 
     var body: some View {
-        List {
+        ThemedList {
             Section {
                 Map(initialPosition: .region(MKCoordinateRegion(center: draft.placeCoordinate,
                     latitudinalMeters: draft.mode == .region ? draft.radius.meters * 3 : 1800,
                     longitudinalMeters: draft.mode == .region ? draft.radius.meters * 3 : 1800)), interactionModes: []) {
                     if draft.mode == .region {
                         MapCircle(center: draft.placeCoordinate, radius: draft.radius.meters)
-                            .foregroundStyle(Theme.accent.opacity(0.15)).stroke(Theme.accent, lineWidth: 2)
-                    } else { Marker(draft.chosenPlace, coordinate: draft.placeCoordinate).tint(Theme.accent) }
+                            .foregroundStyle(Theme.orchid.opacity(0.15)).stroke(Theme.orchid, lineWidth: 2)
+                    } else { Marker(draft.chosenPlace, coordinate: draft.placeCoordinate).tint(Theme.orchid) }
                 }
                 .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
                 .frame(height: 190)
@@ -189,8 +190,8 @@ struct PlacePickerView: View {
                                 Image(systemName: place.name.contains("Park") ? "tree.fill" : "fork.knife")
                                     .foregroundStyle(Theme.accent).frame(width: 24)
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text(place.name).foregroundStyle(.primary)
-                                    Text(place.sub).font(.caption).foregroundStyle(.secondary)
+                                    Text(place.name).foregroundStyle(Theme.label)
+                                    Text(place.sub).font(.caption).foregroundStyle(Theme.secondaryLabel)
                                 }
                                 Spacer()
                                 if draft.chosenPlace == place.name { Image(systemName: "checkmark").fontWeight(.semibold).foregroundStyle(Theme.accent) }
@@ -243,7 +244,7 @@ private struct PinPickerView: View {
                 .mapStyle(.standard(elevation: .flat))
                 .onMapCameraChange(frequency: .continuous) { coordinate = $0.region.center }
                 .overlay {
-                    Image(systemName: "plus").font(.title3.weight(.light)).foregroundStyle(.primary)
+                    Image(systemName: "plus").font(.title3.weight(.light)).foregroundStyle(Theme.label)
                         .padding(6).background(.regularMaterial, in: Circle()).allowsHitTesting(false)
                 }
                 .safeAreaInset(edge: .bottom) {
@@ -261,6 +262,7 @@ private struct PinPickerView: View {
                             draft.mode = .pin
                             dismiss()
                         }.buttonStyle(.glassProminent)
+                            .tint(Theme.orchid).foregroundStyle(Theme.ink)
                     }
                 }
         }
@@ -277,7 +279,7 @@ struct RecipientsView: View {
         return Friend.mock.filter { trimmed.isEmpty || $0.name.localizedCaseInsensitiveContains(trimmed) }
     }
     var body: some View {
-        List {
+        ThemedList {
             Section {
                 ForEach(friends) { friend in
                     Button {
@@ -287,12 +289,12 @@ struct RecipientsView: View {
                         HStack(spacing: 14) {
                             PersonAvatar(initials: friend.initials, color: friend.color)
                             VStack(alignment: .leading, spacing: 4) {
-                                Text(friend.name).foregroundStyle(.primary)
-                                Text(friend.hood).font(.subheadline).foregroundStyle(.secondary)
+                                Text(friend.name).foregroundStyle(Theme.label)
+                                Text(friend.hood).font(.subheadline).foregroundStyle(Theme.secondaryLabel)
                             }
                             Spacer()
                             Image(systemName: draft.recipientIDs.contains(friend.id) ? "checkmark.circle.fill" : "circle")
-                                .font(.title2).foregroundStyle(draft.recipientIDs.contains(friend.id) ? Theme.accent : Color.secondary)
+                                .font(.title2).foregroundStyle(draft.recipientIDs.contains(friend.id) ? Theme.accent : Theme.secondaryLabel)
                         }.padding(.vertical, 4)
                     }
                     .buttonStyle(.plain)
@@ -329,16 +331,19 @@ struct ConfirmationView: View {
                         Text("Added to your map").font(.title2.bold())
                         Text(confirmation.signal.title).font(.headline)
                         Text("\(confirmation.signal.place) · \(confirmation.signal.window)")
-                            .font(.subheadline).foregroundStyle(.secondary)
+                            .font(.subheadline).foregroundStyle(Theme.secondaryLabel)
                     }.multilineTextAlignment(.center)
                     ShareLink(item: "\(confirmation.signal.title)\n\(confirmation.signal.place) · \(confirmation.signal.window)") {
                         Label("Share this plan", systemImage: "square.and.arrow.up")
                             .font(.headline).frame(maxWidth: .infinity).padding(.vertical, 8)
                     }.buttonStyle(.glassProminent)
+                        .tint(Theme.orchid).foregroundStyle(Theme.ink)
                     Text("\(confirmation.note). No invitations have been sent in this preview.")
-                        .font(.footnote).foregroundStyle(.secondary).multilineTextAlignment(.center)
+                        .font(.footnote).foregroundStyle(Theme.secondaryLabel).multilineTextAlignment(.center)
                 }.padding(.horizontal, 28).padding(.bottom, 24)
             }
+            .background(Theme.background)
+            .foregroundStyle(Theme.label)
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done", action: onClose) } }
         }.tint(Theme.accent)
     }

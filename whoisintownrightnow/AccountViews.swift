@@ -18,7 +18,8 @@ struct AccountRootView: View {
                 } description: {
                     Text(store.errorMessage ?? "Please check your connection and try again.")
                 } actions: {
-                    Button("Try again") { Task { await store.loadAccount() } }.buttonStyle(.borderedProminent)
+                    Button("Try again") { Task { await store.loadAccount() } }
+                        .buttonStyle(.borderedProminent).tint(Theme.orchid).foregroundStyle(Theme.ink)
                     Button("Sign out") { Task { await store.signOut() } }
                 }
             case .setup:
@@ -29,6 +30,7 @@ struct AccountRootView: View {
             }
         }
         .tint(Theme.accent)
+        .background(Theme.background)
         .task { await store.observeSession() }
     }
 }
@@ -43,18 +45,18 @@ private struct WelcomeView: View {
                 Image(systemName: "location.circle.fill")
                     .font(.system(size: 88))
                     .symbolRenderingMode(.palette)
-                    .foregroundStyle(.white, Theme.accent)
+                    .foregroundStyle(Theme.ink, Theme.orchid)
                     .accessibilityHidden(true)
                     .padding(.top, 56)
                 Text("Who’s in town?")
                     .font(.largeTitle.bold())
                 Text("See who’s nearby and turn a free moment into a plan.")
-                    .font(.title3).foregroundStyle(.secondary)
+                    .font(.title3).foregroundStyle(Theme.secondaryLabel)
                 VStack(alignment: .leading, spacing: 16) {
                     Label("Share your location on your terms", systemImage: "location")
                     Label("Choose which invites reach you", systemImage: "bell.badge")
                 }
-                .font(.subheadline).foregroundStyle(.secondary)
+                .font(.subheadline).foregroundStyle(Theme.secondaryLabel)
                 .padding(.top, 16)
             }
             .multilineTextAlignment(.center)
@@ -76,7 +78,7 @@ private struct WelcomeView: View {
                 .disabled(store.isWorking)
                 if store.isWorking { ProgressView("Signing in…") }
                 Text("Your people. Your plans. Your choice.")
-                    .font(.footnote).foregroundStyle(.secondary)
+                    .font(.footnote).foregroundStyle(Theme.secondaryLabel)
             }
             .frame(maxWidth: 440)
             .padding(.horizontal, 28).padding(.top, 16).padding(.bottom, 20)
@@ -195,12 +197,12 @@ struct AccountSettingsView: View {
 
     var body: some View {
         NavigationStack {
-            Form {
+            ThemedForm {
                 if store == nil {
                     Section {
                         Label("Preview profile", systemImage: "info.circle")
                         Text("Try your name, photo, and preferences. Changes last for this map preview and aren’t saved to an account.")
-                            .font(.footnote).foregroundStyle(.secondary)
+                            .font(.footnote).foregroundStyle(Theme.secondaryLabel)
                     }
                 }
                 Section {
@@ -231,7 +233,7 @@ struct AccountSettingsView: View {
                             .accessibilityIdentifier("displayName")
                     }
                     if let store, let error = store.avatarErrorMessage, pendingPhoto == nil, !removePhoto {
-                        Text(error).font(.footnote).foregroundStyle(.secondary)
+                        Text(error).font(.footnote).foregroundStyle(Theme.secondaryLabel)
                         Button("Retry photo download") { Task { await store.retryAvatar() } }
                     }
                 } header: { Text("Profile") } footer: {
@@ -252,7 +254,7 @@ struct AccountSettingsView: View {
                     Text(store == nil
                          ? "Live location sharing and notification delivery aren’t available in this preview."
                          : "Your preferences are saved to your account. Live location sharing and notification delivery aren’t available yet.")
-                        .font(.footnote).foregroundStyle(.secondary)
+                        .font(.footnote).foregroundStyle(Theme.secondaryLabel)
                 }
 
                 if let error = photoError ?? store?.errorMessage {
@@ -288,8 +290,9 @@ struct AccountSettingsView: View {
             .safeAreaInset(edge: .bottom) {
                 if isOnboarding {
                     saveButton.buttonStyle(.glassProminent).controlSize(.large)
+                        .tint(Theme.orchid).foregroundStyle(Theme.ink)
                         .padding(.horizontal, 24).padding(.vertical, 12)
-                        .frame(maxWidth: .infinity).background(.regularMaterial)
+                        .frame(maxWidth: .infinity).background(Theme.background)
                 }
             }
             .scrollDismissesKeyboard(.interactively)

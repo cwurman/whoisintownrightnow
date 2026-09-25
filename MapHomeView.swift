@@ -109,8 +109,8 @@ struct MapHomeView: View {
                 ForEach(Friend.mock) { friend in
                     if selectedFriend?.id == friend.id {
                         MapCircle(center: friend.coordinate, radius: 805)
-                            .foregroundStyle(Theme.accent.opacity(0.10))
-                            .stroke(Theme.accent.opacity(0.35), lineWidth: 1)
+                            .foregroundStyle(Theme.orchid.opacity(0.15))
+                            .stroke(Theme.orchid.opacity(0.65), lineWidth: 1)
                     }
                     if !mapSignals.contains(where: { $0.hostID == friend.id }) {
                         Annotation(friend.name, coordinate: friend.coordinate) {
@@ -198,9 +198,9 @@ struct MapHomeView: View {
             .accessibilityIdentifier("profile-settings")
         }
         .buttonStyle(.plain)
-        .tint(.primary)
+        .tint(Theme.label)
         .padding(4)
-        .glassEffect(.regular, in: .capsule)
+        .glassEffect(.regular.tint(Theme.cocoa.opacity(0.18)), in: .capsule)
     }
 
     private var panel: some View {
@@ -230,7 +230,7 @@ struct MapHomeView: View {
             }
             .safeAreaInset(edge: .bottom) {
                 if let toast {
-                    Text(toast).font(.footnote).foregroundStyle(.secondary)
+                    Text(toast).font(.footnote).foregroundStyle(Theme.secondaryLabel)
                         .padding().frame(maxWidth: .infinity)
                         .background(.regularMaterial)
                         .accessibilityIdentifier("preview-status")
@@ -241,9 +241,14 @@ struct MapHomeView: View {
         .sheet(isPresented: $showComposer, onDismiss: {
             confirmation = pendingConfirmation
             pendingConfirmation = nil
-        }) { ComposerView(onPost: handlePost).presentationDragIndicator(.visible) }
+        }) {
+            ComposerView(onPost: handlePost)
+                .presentationBackground(Theme.background)
+                .presentationDragIndicator(.visible)
+        }
         .sheet(item: $confirmation) { posted in
             ConfirmationView(confirmation: posted) { confirmation = nil }
+                .presentationBackground(Theme.background)
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
         }
@@ -280,6 +285,7 @@ struct MapHomeView: View {
                 Label("Preview · sample people and plans", systemImage: "info.circle")
                     .font(.footnote).padding(.top, 8)
             }
+            .listRowBackground(Theme.panelRow)
         }
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
@@ -293,7 +299,7 @@ struct MapHomeView: View {
                     Text(section == .people ? "\(Friend.mock.count) friends" : "\(signals.count) \(signals.count == 1 ? "hang" : "hangs")")
                     Spacer()
                     Text("Preview")
-                }.font(.caption).foregroundStyle(.secondary)
+                }.font(.caption).foregroundStyle(Theme.secondaryLabel)
             }.padding(.horizontal, 20).padding(.top, 8).padding(.bottom, 12)
         }
         .animation(focusAnimation, value: section)
@@ -307,13 +313,14 @@ struct MapHomeView: View {
                     VStack(alignment: .leading, spacing: 5) {
                         Text(friend.name).font(.title2.bold())
                         Label(friend.isFree ? "Free to hang out" : "Not available", systemImage: friend.isFree ? "circle.fill" : "moon.fill")
-                            .font(.subheadline).foregroundStyle(friend.isFree ? Theme.accent : .secondary)
+                            .font(.subheadline).foregroundStyle(friend.isFree ? Theme.accent : Theme.secondaryLabel)
                     }
                 }.padding(.vertical, 8)
                 Label(friend.hood, systemImage: "location")
                 LabeledContent("Distance", value: friend.distanceLabel)
-                Text(friend.note).foregroundStyle(.secondary)
+                Text(friend.note).foregroundStyle(Theme.secondaryLabel)
             }
+            .listRowBackground(Theme.panelRow)
             let hosted = signals.filter { $0.hostID == friend.id }
             if !hosted.isEmpty {
                 Section("Hangs") {
@@ -325,8 +332,10 @@ struct MapHomeView: View {
                         }
                     }
                 }
+                .listRowBackground(Theme.panelRow)
             }
-            Section { Text("This is a sample profile and location.").font(.footnote).foregroundStyle(.secondary) }
+            Section { Text("This is a sample profile and location.").font(.footnote).foregroundStyle(Theme.secondaryLabel) }
+                .listRowBackground(Theme.panelRow)
         }
         .scrollContentBackground(.hidden)
     }
@@ -372,7 +381,7 @@ struct MapHomeView: View {
         guard showComposer, draft.canPost else { return }
         let signal = Signal(id: "me-\(UUID().uuidString)",
             hostID: activeProfile?.id.uuidString.lowercased() ?? "you", hostName: activeProfile?.displayName ?? "You",
-            hostInitials: activeProfile?.initials ?? "You", hostColor: .teal,
+            hostInitials: activeProfile?.initials ?? "You", hostColor: Theme.cocoa,
             title: draft.text.trimmingCharacters(in: .whitespacesAndNewlines), place: draft.placeText,
             window: draft.whenText, distance: "you", seats: draft.seats,
             going: [activeProfile?.initials ?? "You"], isJoined: true, isMine: true,
@@ -417,14 +426,14 @@ private struct PersonMapMarker: View {
     var body: some View {
         VStack(spacing: 4) {
             PersonAvatar(initials: initials, color: color, size: 42)
-                .padding(3).background(.white, in: Circle())
+                .padding(3).background(Theme.orchid, in: Circle())
                 .shadow(color: .black.opacity(0.18), radius: 5, y: 2)
                 .overlay(alignment: .bottomTrailing) {
                     if let activityEmoji {
                         Text(activityEmoji)
                             .font(.system(size: 18))
                             .frame(width: 26, height: 26).background(Theme.surface, in: Circle())
-                            .overlay(Circle().stroke(.white, lineWidth: 1.5))
+                            .overlay(Circle().stroke(Theme.orchid, lineWidth: 1.5))
                             .accessibilityHidden(true)
                     }
                 }
@@ -454,7 +463,7 @@ struct SignalDestinationView: View {
     var body: some View {
         VStack(spacing: 5) {
             Image(systemName: "mappin.circle.fill").font(.system(size: 38))
-                .symbolRenderingMode(.palette).foregroundStyle(.white, Theme.accent)
+                .symbolRenderingMode(.palette).foregroundStyle(Theme.ink, Theme.orchid)
                 .shadow(color: .black.opacity(0.15), radius: 4, y: 2)
             Text(signal.place).font(.caption.weight(.semibold)).padding(8)
                 .background(.regularMaterial, in: Capsule())
@@ -470,17 +479,17 @@ struct PersonRow: View {
             PersonAvatar(initials: friend.initials, color: friend.color)
             VStack(alignment: .leading, spacing: 4) {
                 Text(friend.name).font(.headline)
-                Text(friend.hood).font(.subheadline).foregroundStyle(.secondary)
+                Text(friend.hood).font(.subheadline).foregroundStyle(Theme.secondaryLabel)
                 if dynamicTypeSize.isAccessibilitySize { status }
             }
             Spacer(minLength: 8)
             if !dynamicTypeSize.isAccessibilitySize { status }
-        }.padding(.vertical, 5).foregroundStyle(.primary).contentShape(Rectangle())
+        }.padding(.vertical, 5).foregroundStyle(Theme.label).contentShape(Rectangle())
     }
 
     private var status: some View {
         VStack(alignment: dynamicTypeSize.isAccessibilitySize ? .leading : .trailing, spacing: 5) {
-            Text(friend.distanceLabel).font(.subheadline).foregroundStyle(.secondary)
+            Text(friend.distanceLabel).font(.subheadline).foregroundStyle(Theme.secondaryLabel)
             if friend.isFree { Text("Free now").font(.caption).foregroundStyle(Theme.accent) }
         }
     }
@@ -501,10 +510,10 @@ struct SignalRowView: View {
                     PersonAvatar(initials: signal.hostInitials, color: signal.hostColor)
                     VStack(alignment: .leading, spacing: 4) {
                         Text(signal.title).font(.headline).lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 2)
-                        Text("\(signal.hostFirstName) · \(signal.window)").font(.subheadline).foregroundStyle(.secondary)
+                        Text("\(signal.hostFirstName) · \(signal.window)").font(.subheadline).foregroundStyle(Theme.secondaryLabel)
                     }
                     Spacer(minLength: 0)
-                }.contentShape(Rectangle()).foregroundStyle(.primary)
+                }.contentShape(Rectangle()).foregroundStyle(Theme.label)
             }.buttonStyle(.plain).accessibilityHint("Show hang details")
             Button(action: onJoin) {
                 if signal.isJoined || signal.isMine { Image(systemName: "checkmark") }
@@ -530,7 +539,7 @@ struct SignalDetailSheet: View {
                         PersonAvatar(initials: signal.hostInitials, color: signal.hostColor)
                         VStack(alignment: .leading, spacing: 3) {
                             Text(signal.isMine ? "Your hang" : "\(signal.hostFirstName)’s hang").font(.headline)
-                            Text(signal.anchorPlace).font(.subheadline).foregroundStyle(.secondary)
+                            Text(signal.anchorPlace).font(.subheadline).foregroundStyle(Theme.secondaryLabel)
                         }
                     }
                     Text(signal.title).font(.title2.bold())
@@ -539,7 +548,7 @@ struct SignalDetailSheet: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Label(signal.place, systemImage: "mappin.and.ellipse")
                     Label(signal.window, systemImage: "clock")
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Theme.secondaryLabel)
                 }
                 attendance
             }
@@ -557,8 +566,9 @@ struct SignalDetailSheet: View {
                         .frame(maxWidth: .infinity).font(.headline).padding(.vertical, 6)
                 }
                 .buttonStyle(.glassProminent).buttonBorderShape(.capsule)
+                .tint(Theme.orchid).foregroundStyle(Theme.ink)
                 .disabled(signal.isMine || signal.isJoined).accessibilityIdentifier("join-signal")
-                Text("Preview only · No notifications sent").font(.caption).foregroundStyle(.secondary)
+                Text("Preview only · No notifications sent").font(.caption).foregroundStyle(Theme.secondaryLabel)
             }.padding(.horizontal, 20).padding(.vertical, 12).background(.regularMaterial)
         }
     }
@@ -572,15 +582,15 @@ struct SignalDetailSheet: View {
             if signal.seats > 0 { Text("Group limit: \(signal.seats)") }
         }
         .font(.subheadline)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Theme.secondaryLabel)
     }
 }
 
 struct YouDotView: View {
     var body: some View {
-        Circle().fill(.blue).frame(width: 16, height: 16)
+        Circle().fill(Theme.orchid).frame(width: 16, height: 16)
             .overlay(Circle().stroke(.white, lineWidth: 3))
-            .padding(12).background(.blue.opacity(0.12), in: Circle())
+            .padding(12).background(Theme.orchid.opacity(0.20), in: Circle())
             .accessibilityLabel("Your sample location")
     }
 }
@@ -618,7 +628,7 @@ private struct SignalFocusOverlay: View {
                         .stroke(.white.opacity(0.95), style: StrokeStyle(lineWidth: 8, lineCap: .round, lineJoin: .round))
                     connectionPath
                         .trim(from: 0, to: progress)
-                        .stroke(Theme.accent, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+                        .stroke(Theme.orchid, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
                 }
                 .animation(reduceMotion ? nil : .easeOut(duration: 0.9), value: progress)
 

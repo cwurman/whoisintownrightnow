@@ -11,18 +11,37 @@ import MapKit
 // MARK: - Design tokens
 
 enum Theme {
-    /// System green and semantic surfaces follow iOS appearance and accessibility settings.
-    static let accent = Color.green
-    static let label = Color.primary
-    #if os(iOS)
-    static let background = Color(uiColor: .systemGroupedBackground)
-    static let surface = Color(uiColor: .secondarySystemGroupedBackground)
-    #else
-    static let background = Color(nsColor: .windowBackgroundColor)
-    static let surface = Color(nsColor: .controlBackgroundColor)
-    #endif
-    /// A fixed avatar color; text and surfaces use semantic system colors.
-    static let ink = Color(hex: 0x111111)
+    /// Cocoa & Orchid. Text accents deepen on ivory; filled actions keep the pastel orchid.
+    static let accent = Color("AccentColor")
+    static let label = Color("AppLabel")
+    static let secondaryLabel = Color("AppSecondaryLabel")
+    static let background = Color("AppBackground")
+    static let surface = Color("AppSurface")
+    static let orchid = Color(hex: 0xE6B5F4)
+    static let cocoa = Color(hex: 0x4A3630)
+    static let ink = Color(hex: 0x332521)
+    static let panelRow = surface.opacity(0.42)
+}
+
+/// Shared native surfaces keep composer, pickers, and account screens in the same palette.
+struct ThemedForm<Content: View>: View {
+    @ViewBuilder var content: Content
+
+    var body: some View {
+        Form { content.listRowBackground(Theme.surface) }
+            .scrollContentBackground(.hidden)
+            .background(Theme.background)
+    }
+}
+
+struct ThemedList<Content: View>: View {
+    @ViewBuilder var content: Content
+
+    var body: some View {
+        List { content.listRowBackground(Theme.surface) }
+            .scrollContentBackground(.hidden)
+            .background(Theme.background)
+    }
 }
 
 extension Color {
@@ -58,7 +77,7 @@ struct Friend: Identifiable {
         distanceMiles: 0.9, isFree: true, note: "Heading out for dinner."
     )
     static let rae = Friend(
-        id: "rs", name: "Rae Solis", initials: "RS", color: Color(hex: 0x4A6C96),
+        id: "rs", name: "Rae Solis", initials: "RS", color: Color(hex: 0x79608F),
         hood: "Hayes Valley",
         coordinate: CLLocationCoordinate2D(latitude: 37.7765, longitude: -122.4262),
         distanceMiles: 1.1, isFree: true,
@@ -67,22 +86,22 @@ struct Friend: Identifiable {
 
     static let mock: [Friend] = [
         tara, rae,
-        Friend(id: "mk", name: "Maya Kwan", initials: "MK", color: Color(hex: 0xC96F4A),
+        Friend(id: "mk", name: "Maya Kwan", initials: "MK", color: Color(hex: 0x956558),
                hood: "Mission",
                coordinate: CLLocationCoordinate2D(latitude: 37.7614, longitude: -122.4216),
                distanceMiles: 0.6, isFree: true,
                note: "Free for the next couple hours. Somewhere around 18th & Valencia."),
-        Friend(id: "al", name: "Alex Lund", initials: "AL", color: Color(hex: 0x7B6BA8),
+        Friend(id: "al", name: "Alex Lund", initials: "AL", color: Color(hex: 0x82577F),
                hood: "Nob Hill",
                coordinate: CLLocationCoordinate2D(latitude: 37.7930, longitude: -122.4155),
                distanceMiles: 2.3, isFree: false,
                note: "Home-ish. No hangs tonight."),
-        Friend(id: "dv", name: "Devi Rao", initials: "DV", color: Color(hex: 0x5C8A6A),
+        Friend(id: "dv", name: "Devi Rao", initials: "DV", color: Color(hex: 0x6B596F),
                hood: "North Beach",
                coordinate: CLLocationCoordinate2D(latitude: 37.8003, longitude: -122.4098),
                distanceMiles: 3.0, isFree: false,
                note: "Neighborhood only — this is as close as the map gets."),
-        Friend(id: "jp", name: "Jonas Pike", initials: "JP", color: Color(hex: 0xA8734A),
+        Friend(id: "jp", name: "Jonas Pike", initials: "JP", color: Color(hex: 0x87695A),
                hood: "Presidio",
                coordinate: CLLocationCoordinate2D(latitude: 37.7989, longitude: -122.4550),
                distanceMiles: 4.2, isFree: false,
@@ -188,7 +207,7 @@ struct Signal: Identifiable {
                distance: "0.4 mi", seats: 2, going: ["TW", "MK"], isJoined: false, isMine: false,
                anchorCoordinate: Friend.tara.coordinate, anchorPlace: Friend.tara.hood,
                destinationCoordinate: CLLocationCoordinate2D(latitude: 37.7635, longitude: -122.4395)),
-        Signal(id: "s2", hostID: Friend.rae.id, hostName: "Rae Solis", hostInitials: "RS", hostColor: Color(hex: 0x4A6C96),
+        Signal(id: "s2", hostID: Friend.rae.id, hostName: "Rae Solis", hostInitials: "RS", hostColor: Friend.rae.color,
                title: "Aimless, walking around", place: "Hayes Valley", window: "next 2 hrs",
                distance: "1.1 mi", seats: 0, going: ["RS"], isJoined: false, isMine: false,
                anchorCoordinate: Friend.rae.coordinate, anchorPlace: Friend.rae.hood,
