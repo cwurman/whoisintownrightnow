@@ -6,6 +6,7 @@ September 24, 2026. This pass takes visual cues from Find My and uses the iOS 26
 
 - A full-screen MapKit map with quieter circular people markers, names, and small signal badges. The original yellow/black cards and bat-shaped floating button are replaced with system green, SF Symbols, and semantic colors.
 - Native sheet detents (compact, medium, expanded), system corner treatment and material, scrollable People/Signals lists, and background map interaction. System sheets own their presentation rather than imitating a sheet with a fixed overlay.
+- September 25 correction: the bottom panel opens to signals under “Happening now.” People remains a secondary tab; Find My informs the styling, while plans remain the default focus.
 - Liquid Glass map appearance/recenter controls and native glass toolbar actions. Glass is concentrated in controls and navigation; lists and forms use standard system surfaces.
 - At accessibility text sizes the sheet opens expanded; people metadata and signal actions stack vertically. Marker labels remain bounded while the full names are available in accessible controls and the list.
 - People open a detail card with the existing profile/location fixture and links to their signals. Selecting a signal retains the animated host-to-destination connection.

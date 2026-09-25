@@ -8,7 +8,7 @@ struct MapHomeView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var signals = Signal.mock
-    @State private var section: MapSection = .people
+    @State private var section: MapSection = .signals
     @State private var selectedSignalID: Signal.ID?
     @State private var selectedFriend: Friend?
     @State private var showPanel = false
@@ -33,10 +33,12 @@ struct MapHomeView: View {
         let bounds = points.reduce(MKMapRect.null) { $0.union(MKMapRect(origin: $1, size: MKMapSize(width: 1, height: 1))) }
         return bounds.insetBy(dx: -bounds.width * 0.12, dy: -bounds.height * 0.12)
     }
-    private enum MapSection: String, CaseIterable { case people = "People", signals = "Signals" }
+    private enum MapSection: String, CaseIterable { case signals = "Signals", people = "People" }
     private var selectedSignal: Signal? { signals.first { $0.id == selectedSignalID } }
     private var hasSelection: Bool { selectedSignal != nil || selectedFriend != nil }
-    private var panelTitle: String { selectedSignal != nil ? "Signal" : selectedFriend?.firstName ?? section.rawValue }
+    private var panelTitle: String {
+        selectedSignal != nil ? "Signal" : selectedFriend?.firstName ?? (section == .signals ? "Happening now" : "People")
+    }
     private var focusAnimation: Animation? { reduceMotion ? nil : .smooth(duration: 0.4) }
     private var mapSignals: [Signal] {
         var seen = Set<String>()
