@@ -23,7 +23,7 @@ September 24, 2026. This pass takes visual cues from Find My and uses the iOS 26
 
 ## Scope
 
-This is a presentation and interaction pass. Auth, account persistence, privacy choices, and the deployed schema are unchanged. Apple provider/provisioning setup is still required. Friends, coordinates, signals, and joins remain local preview data. No invitation delivery, social audience rule, background location behavior, or capacity policy was added.
+This is a presentation and interaction pass. Auth, account persistence, privacy choices, and the deployed schema are unchanged. Apple developer provisioning and a real authorization test are still required; the Supabase Apple provider was enabled and checked on September 25. Friends, coordinates, signals, and joins remain local preview data. No invitation delivery, social audience rule, background location behavior, or capacity policy was added.
 
 ## Verification
 

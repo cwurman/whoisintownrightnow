@@ -1,6 +1,6 @@
 # Next session
 
-Updated September 24, 2026. Work is on `codex/account-foundation`; commits are local and have not been pushed.
+Updated September 25, 2026. Work is on `codex/account-foundation`; commits are local and have not been pushed.
 
 ## Ready to review
 
@@ -19,8 +19,10 @@ Final verification passed: all local API checks, five XCTest cases with zero fai
 ## Configuration needed to test real Apple sign-in
 
 1. Add an Apple Developer account belonging to team `36P3GQ337U` in Xcode Settings → Accounts. The signed-device build currently reports that this team has no account/profile available on this Mac.
-2. Enable Sign in with Apple for `wurms.whoisintownrightnow` in Apple Developer, and enable Apple in the [Supabase provider settings](https://supabase.com/dashboard/project/pqliwxrxmeycdjptqpks/auth/providers) with that bundle ID as a Client ID. Keep nonce checks enabled. The MCP connection is authenticated, but the separate dashboard browser login is still pending.
+2. Confirm Sign in with Apple is enabled for `wurms.whoisintownrightnow` in Apple Developer under the intended publishing team. **Supabase provider enablement is complete:** the live settings endpoint returned `external.apple: true` on September 25, and the user's screenshot shows the matching Client ID. Keep nonce checks enabled.
 3. Complete first authorization and a returning sign-in on a provisioned build. Confirm the name/photo and settings restore after relaunch and sign-out/sign-in.
+
+The September 25 native simulator attempt reached Apple's “Sign in to your Apple Account” prompt, which requires signing in through the simulator's Settings. No real Apple token exchange or hosted onboarding has been completed. A fresh device build with automatic provisioning updates still reports no account for the configured team and no development profile. See [verification details](account-setup.md#apple-sign-in-verification--september-25).
 
 ## Decisions for our next discussion
 

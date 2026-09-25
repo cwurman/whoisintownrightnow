@@ -20,12 +20,18 @@ Verified: Debug simulator build and launch, unsigned Release iPhone build, five 
 
 Signed-device verification is blocked by Xcode configuration: even with `-allowProvisioningUpdates`, Xcode reports **No Account for Team "36P3GQ337U"** and no development profile for `wurms.whoisintownrightnow`. Add an Apple Developer account belonging to that team in Xcode Settings → Accounts before provisioning a device build.
 
+## Apple sign-in verification — September 25
+
+The hosted `/auth/v1/settings` endpoint returned HTTP 200 with `external.apple: true` and signups enabled. The user's saved-settings screenshot shows `wurms.whoisintownrightnow` in Client IDs, matching the app target. Supabase provider enablement is confirmed; a real Apple token exchange is not yet verified.
+
+Launching the normal app in the iPhone 17 Pro simulator and tapping Continue with Apple opens Apple's native prompt: “You need to sign in to your Apple Account in Settings.” No Apple account is signed in on this simulator. A device build with `-allowProvisioningUpdates` also still fails with No Account for Team `36P3GQ337U` and no matching development provisioning profile. Logs are in ignored `build/apple-signin-provisioning-check.log`; the simulator prompt is captured in `build/ux/apple-account-required.jpg`.
+
 ## Apple configuration still needed
 
 User confirmed existing team `36P3GQ337U` and bundle ID `wurms.whoisintownrightnow`.
 
 1. In [Apple Developer → Identifiers](https://developer.apple.com/account/resources/identifiers/list/bundleId), select this App ID under this team and enable **Sign in with Apple**. A team member with the appropriate permissions must do this if it is not already enabled.
-2. In [Supabase → Authentication → Sign In / Providers](https://supabase.com/dashboard/project/pqliwxrxmeycdjptqpks/auth/providers), enable **Apple**, adding `wurms.whoisintownrightnow` under **Client IDs**. Keep nonce checks enabled.
+2. **Completed:** Apple is enabled in [Supabase → Authentication → Sign In / Providers](https://supabase.com/dashboard/project/pqliwxrxmeycdjptqpks/auth/providers). The configured Client ID must continue to match the app's bundle ID if the developer team/identifier changes. Keep nonce checks enabled.
 3. Open the Xcode project, select the confirmed team, and allow Xcode to obtain a provisioning profile containing the new capability. The entitlement is already in source control.
 4. On a signed build and a device/simulator with an Apple account, exercise first authorization, cancellation, returning sign-in without a name, app restart, name/photo edits, settings changes, and sign out.
 

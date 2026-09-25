@@ -1,6 +1,6 @@
 # Account, settings, and storage design
 
-Updated September 24, 2026. This records the product decisions and broader backend design. The first account slice is now implemented: Supabase project `pqliwxrxmeycdjptqpks`, profile/settings tables, private avatars, native Apple sign-in client, session restoration, onboarding, and Settings. The Apple provider still needs dashboard/Apple Developer configuration before a real Apple login can be verified. See [implementation and setup](account-setup.md).
+Updated September 25, 2026. This records the product decisions and broader backend design. The first account slice is now implemented: Supabase project `pqliwxrxmeycdjptqpks`, profile/settings tables, private avatars, native Apple sign-in client, session restoration, onboarding, and Settings. The Supabase Apple provider is enabled. Apple developer provisioning and an Apple Account on the test device/simulator are still needed to verify real authorization. See [implementation and setup](account-setup.md).
 
 Only `profiles`, `user_settings`, account RPCs, and the private `avatars` bucket are deployed so far. Friendships, shared locations, invitations, notifications, deletion, and the lifecycle rules described below remain future implementation work. Profile and avatar reads are currently owner-only. Defaults are Vicinity and Off; photo is optional in this first slice.
 
