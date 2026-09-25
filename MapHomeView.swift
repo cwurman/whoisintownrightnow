@@ -11,6 +11,13 @@ import SwiftUI
 import MapKit
 
 struct MapHomeView: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var viewportHeight: CGFloat = 800
+    @State private var selectedSignalID: Signal.ID?
+    @State private var connectionProgress = 0.0
+    @State private var lastCamera: MapCamera?
+    @State private var focusProjection: SignalMapProjection?
+    @State private var overviewCamera: MapCameraPosition?
     @State private var signals = Signal.mock
     @State private var sheetExpanded = false
     @State private var showComposer = false
@@ -33,43 +40,68 @@ struct MapHomeView: View {
     private var visibleSignals: [Signal] { Array(signals.prefix(sheetExpanded ? 4 : 2)) }
     private var hiddenCount: Int { signals.count - visibleSignals.count }
 
+    private var selectedSignal: Signal? { signals.first { $0.id == selectedSignalID } }
+    private var signalingHostIDs: Set<String> { Set(signals.map(\.hostID)) }
+
+    // A person has one anchor, even if they have sent several signals.
+    private var mapSignals: [Signal] {
+        var seen = Set<String>()
+        return signals.filter { seen.insert($0.hostID).inserted }.map { signal in
+            if let selectedSignal, selectedSignal.hostID == signal.hostID { return selectedSignal }
+            return signal
+        }
+    }
+
     /// Matches the prototype: peek is fixed, open grows with visible rows.
     private var sheetHeight: CGFloat {
-        sheetExpanded ? 168 + CGFloat(visibleSignals.count) * 76 : 262
+        if selectedSignal != nil { return min(374, viewportHeight * 0.48) }
+        return sheetExpanded ? 168 + CGFloat(visibleSignals.count) * 76 : 262
     }
 
     var body: some View {
         ZStack {
             map
 
-            // Top chrome: status pill, notifications, profile
+            // Keep the layout stable while overview controls fade out of focus.
             VStack(alignment: .leading, spacing: 10) {
                 topBar
                 Spacer()
             }
             .padding(.horizontal, 16)
             .padding(.top, 8)
+            .opacity(selectedSignalID == nil ? 1 : 0)
+            .allowsHitTesting(selectedSignalID == nil)
+            .accessibilityHidden(selectedSignalID != nil)
+            .animation(reduceMotion ? nil : .easeInOut(duration: 0.28), value: selectedSignalID != nil)
 
             // FAB rides just above the sheet and animates with it
             VStack(spacing: 18) {
                 Spacer()
-                HStack {
-                    Spacer()
-                    batSignalFAB
-                        .padding(.trailing, 16)
+                if let selectedSignal {
+                    SignalDetailSheet(signal: selectedSignal, onClose: clearFocus, onJoin: { join(selectedSignal) })
+                        .frame(height: sheetHeight)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                } else {
+                    HStack {
+                        Spacer()
+                        batSignalFAB
+                            .padding(.trailing, 16)
+                    }
+                    HappeningSheet(
+                        signals: visibleSignals,
+                        hiddenCount: hiddenCount,
+                        expanded: sheetExpanded,
+                        onToggle: toggleSheet,
+                        onJoin: join(_:),
+                        onRowTap: focus(on:)
+                    )
+                    .frame(height: sheetHeight)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
-                HappeningSheet(
-                    signals: visibleSignals,
-                    hiddenCount: hiddenCount,
-                    expanded: sheetExpanded,
-                    onToggle: toggleSheet,
-                    onJoin: join(_:),
-                    onRowTap: { _ in showToast("Signal detail — next screen") }
-                )
-                .frame(height: sheetHeight)
             }
             .ignoresSafeArea(edges: .bottom)
-            .animation(.spring(response: 0.34, dampingFraction: 0.86), value: sheetExpanded)
+            .animation(focusAnimation, value: sheetExpanded)
+            .animation(focusAnimation, value: selectedSignalID)
 
             if let toast {
                 ToastView(message: toast)
@@ -78,7 +110,21 @@ struct MapHomeView: View {
                     .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
         }
+        .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { viewportHeight = $0 }
         .animation(.easeInOut(duration: 0.22), value: toast)
+        .task(id: selectedSignalID) {
+            // Apply camera movement after the focus layout has updated. Animating
+            // the map's insets and its camera together makes MapKit refit twice.
+            withAnimation(focusAnimation) {
+                if let selectedSignal {
+                    cameraPosition = .rect(SignalConnection(signal: selectedSignal).mapRect)
+                } else if let overviewCamera {
+                    cameraPosition = overviewCamera
+                }
+            }
+            if selectedSignalID == nil { overviewCamera = nil }
+            await drawConnection()
+        }
         .sheet(isPresented: $showComposer) {
             ComposerView(onPost: handlePost(_:))
                 .presentationDragIndicator(.hidden)
@@ -95,41 +141,117 @@ struct MapHomeView: View {
     // MARK: Map
 
     private var map: some View {
+        MapReader { proxy in
+            mapContent
+                .onMapCameraChange(frequency: .continuous) { context in
+                    lastCamera = context.camera
+                    updateFocusProjection(using: proxy)
+                }
+                .onChange(of: selectedSignalID) {
+                    updateFocusProjection(using: proxy)
+                }
+                .overlay {
+                    GeometryReader { geometry in
+                        ZStack {
+                            // A screen-sized layer fades without being retiled during zoom.
+                            Color.black
+                                .opacity(selectedSignalID == nil ? 0 : 0.22)
+                                .animation(reduceMotion ? nil : .easeInOut(duration: 0.28), value: selectedSignalID != nil)
+
+                            if let selectedSignal, let focusProjection,
+                               focusProjection.signalID == selectedSignal.id {
+                                SignalFocusOverlay(
+                                    signal: selectedSignal,
+                                    projection: focusProjection,
+                                    progress: connectionProgress,
+                                    reduceMotion: reduceMotion
+                                )
+                                .id(selectedSignal.id)
+                                // Convert global projection points into this overlay's frame.
+                                .offset(x: -geometry.frame(in: .global).minX,
+                                        y: -geometry.frame(in: .global).minY)
+                                // The live camera already animates these positions.
+                                .transaction { $0.animation = nil }
+                            }
+                        }
+                    }
+                    .allowsHitTesting(false)
+                    .accessibilityHidden(true)
+                }
+                .ignoresSafeArea()
+        }
+    }
+
+    private func updateFocusProjection(using proxy: MapProxy) {
+        focusProjection = selectedSignal.flatMap { SignalMapProjection(signal: $0, proxy: proxy) }
+    }
+
+    private var mapContent: some View {
         Map(position: $cameraPosition) {
-            // Neighborhood-granularity blobs — everyone sees the same fuzz
             ForEach(Friend.mock) { friend in
                 MapCircle(center: friend.coordinate, radius: 850)
-                    .foregroundStyle(Theme.signalYellow.opacity(0.10))
-                    .stroke(Theme.signalYellow.opacity(0.22), lineWidth: 1)
+                    .foregroundStyle(Theme.signalYellow.opacity(selectedSignalID == nil ? 0.10 : 0.02))
+                    .stroke(Theme.signalYellow.opacity(selectedSignalID == nil ? 0.22 : 0.04), lineWidth: 1)
 
-                Annotation(friend.name, coordinate: friend.coordinate) {
-                    FriendAvatarView(friend: friend)
-                        .onTapGesture {
-                            showToast("\(friend.firstName)'s card — next screen")
-                        }
+                if !signalingHostIDs.contains(friend.id) {
+                    Annotation(friend.name, coordinate: friend.coordinate) {
+                        FriendAvatarView(friend: friend)
+                            .blur(radius: selectedSignalID == nil ? 0 : 4)
+                            .opacity(selectedSignalID == nil ? 1 : 0.25)
+                            .animation(focusAnimation, value: selectedSignalID)
+                            .onTapGesture {
+                                if selectedSignalID == nil {
+                                    showToast("\(friend.firstName)'s card — next screen")
+                                }
+                            }
+                    }
+                    .annotationTitles(.hidden)
+                }
+            }
+
+            ForEach(mapSignals) { signal in
+                Annotation(signal.hostName, coordinate: signal.anchorCoordinate) {
+                    Button { focus(on: signal) } label: {
+                        SignalPinView(signal: signal, isFocused: selectedSignalID == signal.id)
+                    }
+                    .buttonStyle(.plain)
+                    .blur(radius: isDimmed(signal) ? 4 : 0)
+                    .opacity(isDimmed(signal) ? 0.25 : 1)
+                    .animation(focusAnimation, value: selectedSignalID)
+                    // The focused pin is drawn above the dimming layer instead.
+                    .opacity(selectedSignalID == signal.id ? 0 : 1)
+                    .animation(nil, value: selectedSignalID == signal.id)
+                    .accessibilityLabel("\(signal.isMine ? "Your" : signal.hostName + "'s") bat signal: \(signal.title)")
+                    .accessibilityHint("Show their location, destination, and event details")
+                    .accessibilityIdentifier("signal-pin-\(signal.id)")
                 }
                 .annotationTitles(.hidden)
             }
 
-            // Live signals as pill pins
-            ForEach(signals) { signal in
-                Annotation(signal.title, coordinate: signal.coordinate, anchor: .bottom) {
-                    SignalPinView(signal: signal)
-                        .onTapGesture {
-                            showToast("Signal detail — next screen")
-                        }
+            if !signalingHostIDs.contains("you") {
+                Annotation("You", coordinate: Friend.youCoordinate) {
+                    YouDotView()
+                        .blur(radius: selectedSignalID == nil ? 0 : 4)
+                        .opacity(selectedSignalID == nil ? 1 : 0.25)
+                        .animation(focusAnimation, value: selectedSignalID)
                 }
                 .annotationTitles(.hidden)
             }
-
-            // You: black dot with a pulsing yellow ring
-            Annotation("You", coordinate: Friend.youCoordinate) {
-                YouDotView()
-            }
-            .annotationTitles(.hidden)
         }
         .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll, showsTraffic: false))
+        // Camera fitting reserves room for the event panel and the floating labels.
+        .safeAreaPadding(.top, selectedSignalID == nil ? 0 : min(110, viewportHeight * 0.15))
+        .safeAreaPadding(.bottom, selectedSignalID == nil ? 0 : sheetHeight + 45)
+        .safeAreaPadding(.horizontal, selectedSignalID == nil ? 0 : 70)
         .ignoresSafeArea()
+    }
+
+    private var focusAnimation: Animation? {
+        reduceMotion ? nil : .spring(response: 0.42, dampingFraction: 0.88)
+    }
+
+    private func isDimmed(_ signal: Signal) -> Bool {
+        selectedSignalID != nil && selectedSignalID != signal.id
     }
 
     // MARK: Top chrome
@@ -145,6 +267,8 @@ struct MapHomeView: View {
                         .background(Circle().fill(Theme.signalYellow).frame(width: 15, height: 15))
                     Text("\(nearbyCount) friends nearby")
                         .font(.system(size: 14, weight: .semibold))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
                         .foregroundStyle(Theme.ink)
                     Spacer()
                     Text("\(freeCount) free")
@@ -223,20 +347,53 @@ struct MapHomeView: View {
     // MARK: Actions
 
     private func toggleSheet() {
-        sheetExpanded.toggle()
+        if selectedSignalID != nil { clearFocus() }
+        else { sheetExpanded.toggle() }
+    }
+
+    private func focus(on signal: Signal) {
+        guard selectedSignalID != signal.id else { return }
+        if selectedSignalID == nil {
+            overviewCamera = lastCamera.map { .camera($0) } ?? cameraPosition
+        }
+        connectionProgress = 0
+        selectedSignalID = signal.id
+    }
+
+    private func clearFocus() {
+        selectedSignalID = nil
+        connectionProgress = 0
+    }
+
+    @MainActor
+    private func drawConnection() async {
+        guard let selectedSignal, !selectedSignal.destinationIsAtAnchor else { return }
+        connectionProgress = 0
+        if reduceMotion {
+            connectionProgress = 1
+            return
+        }
+        // Let the camera start settling, then reveal the arc from the host outward.
+        // The view task is cancelled automatically when focus changes or closes.
+        do {
+            try await Task.sleep(for: .milliseconds(300))
+            try Task.checkCancellation()
+            connectionProgress = 1
+        } catch { /* A new selection owns the next drawing. */ }
     }
 
     private func handlePost(_ draft: ComposerDraft) {
         let signal = Signal(
             id: "me-\(UUID().uuidString)",
-            hostName: "You", hostInitials: "JD", hostColor: Theme.ink,
+            hostID: "you", hostName: "You", hostInitials: "JD", hostColor: Theme.ink,
             title: draft.text.trimmingCharacters(in: .whitespaces),
             place: draft.placeText,
             window: draft.whenText,
             distance: "you",
             seats: draft.seats,
             going: ["JD"], isJoined: true, isMine: true,
-            coordinate: draft.placeCoordinate
+            anchorCoordinate: Friend.youCoordinate, anchorPlace: "Mission",
+            destinationCoordinate: draft.placeCoordinate
         )
         signals.insert(signal, at: 0)
         showComposer = false
@@ -271,6 +428,61 @@ struct MapHomeView: View {
     }
 }
 
+// MARK: - Focus presentation above the dimmed map
+
+private struct SignalMapProjection {
+    let signalID: Signal.ID
+    let origin: CGPoint
+    let destination: CGPoint
+    let connection: [CGPoint]
+
+    init?(signal: Signal, proxy: MapProxy) {
+        guard let origin = proxy.convert(signal.anchorCoordinate, to: .global),
+              let destination = proxy.convert(signal.destinationCoordinate, to: .global) else { return nil }
+        self.signalID = signal.id
+        self.origin = origin
+        self.destination = destination
+        self.connection = SignalConnection(signal: signal).coordinates(through: 1).compactMap {
+            proxy.convert($0, to: .global)
+        }
+    }
+}
+
+private struct SignalFocusOverlay: View {
+    let signal: Signal
+    let projection: SignalMapProjection
+    let progress: Double
+    let reduceMotion: Bool
+
+    var body: some View {
+        ZStack {
+            if !signal.destinationIsAtAnchor {
+                ZStack {
+                    connectionPath
+                        .trim(from: 0, to: progress)
+                        .stroke(.white.opacity(0.95), style: StrokeStyle(lineWidth: 8, lineCap: .round, lineJoin: .round))
+                    connectionPath
+                        .trim(from: 0, to: progress)
+                        .stroke(Theme.ink, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+                }
+                .animation(reduceMotion ? nil : .easeOut(duration: 0.9), value: progress)
+
+                SignalDestinationView(signal: signal)
+                    .position(projection.destination)
+            }
+
+            SignalPinView(signal: signal, isFocused: true)
+                .position(projection.origin)
+        }
+    }
+
+    private var connectionPath: Path {
+        Path { path in
+            path.addLines(projection.connection)
+        }
+    }
+}
+
 // MARK: - Friend avatar
 
 struct FriendAvatarView: View {
@@ -291,40 +503,195 @@ struct FriendAvatarView: View {
 
 struct SignalPinView: View {
     let signal: Signal
+    var isFocused = false
 
     private var pillColor: Color { signal.isMine ? Theme.ink : Theme.signalYellow }
     private var labelColor: Color { signal.isMine ? Theme.signalYellow : Theme.ink }
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 7) {
-                Text(signal.hostInitials)
-                    .font(.system(size: 10, weight: .bold))
-                    .foregroundStyle(pillColor)
-                    .frame(width: 22, height: 22)
-                    .background(Circle().fill(labelColor))
-                Text(signal.pinLabel)
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(labelColor)
-                    .lineLimit(1)
-                    .fixedSize()
+        Text(signal.hostInitials)
+            .font(.system(size: 14, weight: .bold))
+            .foregroundStyle(.white)
+            .frame(width: 42, height: 42)
+            .background(Circle().fill(signal.hostColor))
+            .overlay(Circle().stroke(.white, lineWidth: 3))
+            .padding(4)
+            .background(Circle().fill(Theme.signalYellow))
+            .shadow(color: .black.opacity(0.18), radius: 6, y: 3)
+            .overlay(alignment: .top) {
+                // Focus shows event details in the panel, leaving the avatar clear.
+                if !isFocused {
+                    HStack(spacing: 4) {
+                        BatSignalShape().fill(labelColor).frame(width: 13, height: 6)
+                        Text(signal.pinTitle)
+                            .font(.system(size: 10, weight: .semibold))
+                            .foregroundStyle(labelColor)
+                            .lineLimit(1)
+                            .frame(maxWidth: 100)
+                    }
+                    .fixedSize(horizontal: true, vertical: false)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 3)
+                    .background(Capsule().fill(pillColor))
+                    .shadow(color: .black.opacity(0.12), radius: 3, y: 1)
+                    .offset(y: -4)
+                }
             }
-            .padding(.leading, 9)
-            .padding(.trailing, 12)
-            .padding(.vertical, 8)
-            .background(Capsule().fill(pillColor))
-            .shadow(color: Theme.signalYellow.opacity(0.4), radius: 8, y: 5)
+            .overlay(alignment: .bottom) {
+                if isFocused {
+                    Text("\(signal.hostFirstName) · now")
+                        .font(.system(size: 11, weight: .bold))
+                        .foregroundStyle(Theme.ink)
+                        .padding(.horizontal, 9)
+                        .padding(.vertical, 5)
+                        .background(.white, in: Capsule())
+                        .fixedSize()
+                        .offset(y: 29)
+                }
+            }
+    }
+}
 
-            Rectangle()
-                .fill(pillColor)
-                .frame(width: 2, height: 13)
+struct SignalDestinationView: View {
+    let signal: Signal
 
-            Circle()
-                .fill(pillColor)
-                .frame(width: 9, height: 9)
-                .overlay(Circle().stroke(.white, lineWidth: 2))
-                .offset(y: -2)
+    var body: some View {
+        Image(systemName: "mappin")
+            .font(.system(size: 19, weight: .bold))
+            .foregroundStyle(Theme.signalYellow)
+            .frame(width: 42, height: 42)
+            .background(Theme.ink, in: Circle())
+            .overlay(Circle().stroke(.white, lineWidth: 3))
+            .shadow(color: .black.opacity(0.2), radius: 6, y: 3)
+            .overlay(alignment: .bottom) {
+                VStack(spacing: 2) {
+                    Text(signal.place).font(.system(size: 12, weight: .bold))
+                    Text(signal.window).font(.system(size: 11))
+                }
+                .foregroundStyle(Theme.ink)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 7)
+                .background(.white, in: RoundedRectangle(cornerRadius: 12))
+                .fixedSize()
+                .offset(y: 52)
+            }
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("Destination: \(signal.place), \(signal.window)")
+    }
+}
+
+// MARK: - Event focus panel
+
+struct SignalDetailSheet: View {
+    let signal: Signal
+    let onClose: () -> Void
+    let onJoin: () -> Void
+
+    var body: some View {
+        VStack(spacing: 0) {
+            Capsule()
+                .fill(.black.opacity(0.16))
+                .frame(width: 38, height: 5)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 13)
+                .contentShape(Rectangle())
+                .onTapGesture(perform: onClose)
+                .gesture(DragGesture().onEnded { value in
+                    if value.translation.height > 35 { onClose() }
+                })
+                .accessibilityLabel("Close event details")
+                .accessibilityAddTraits(.isButton)
+
+            ScrollView {
+                VStack(alignment: .leading, spacing: 17) {
+                    HStack(spacing: 10) {
+                        Text(signal.hostInitials)
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundStyle(.white)
+                            .frame(width: 34, height: 34)
+                            .background(signal.hostColor, in: Circle())
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(signal.isMine ? "Your bat signal" : "\(signal.hostFirstName)'s bat signal")
+                                .font(.system(size: 13, weight: .semibold))
+                            Text("Around \(signal.anchorPlace) right now")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                        }
+                        Spacer()
+                        Button(action: onClose) {
+                            Image(systemName: "xmark")
+                                .font(.system(size: 12, weight: .bold))
+                                .foregroundStyle(Theme.ink)
+                                .frame(width: 36, height: 36)
+                                .background(.black.opacity(0.05), in: Circle())
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel("Close event details")
+                        .accessibilityIdentifier("close-signal-detail")
+                    }
+
+                    Text(signal.title)
+                        .font(.system(size: 25, weight: .bold))
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    HStack(alignment: .top, spacing: 12) {
+                        Image(systemName: "mappin.and.ellipse")
+                            .accessibilityHidden(true)
+                            .font(.system(size: 20))
+                            .frame(width: 36, height: 40)
+                            .background(Theme.signalYellow.opacity(0.24), in: RoundedRectangle(cornerRadius: 10))
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(signal.destinationIsAtAnchor ? "MEETING HERE" : "HEADING TO")
+                                .font(.system(size: 9, weight: .bold))
+                                .tracking(1.4)
+                                .foregroundStyle(.secondary)
+                            Text(signal.place).font(.system(size: 15, weight: .semibold))
+                            Label(signal.window, systemImage: "clock")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                        }
+                        Spacer(minLength: 0)
+                    }
+
+                    HStack {
+                        Label("\(signal.going.count) going", systemImage: "person.2")
+                        if signal.seats > 0 {
+                            Text("·")
+                            Text("\(signal.seats) seats")
+                        }
+                        Spacer()
+                    }
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundStyle(.secondary)
+
+                    Button(action: onJoin) {
+                        HStack {
+                            Text(signal.isMine ? "Your signal is live" : signal.isJoined ? "You're in" : "Join \(signal.hostFirstName)")
+                            Spacer()
+                            Image(systemName: signal.isMine || signal.isJoined ? "checkmark" : "arrow.up.right")
+                        }
+                        .font(.system(size: 15, weight: .bold))
+                        .foregroundStyle(Theme.signalYellow)
+                        .padding(16)
+                        .background(Theme.ink, in: RoundedRectangle(cornerRadius: 15))
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(signal.isMine || signal.isJoined)
+                    .accessibilityIdentifier("join-signal")
+                }
+                .padding(.horizontal, 22)
+                .padding(.bottom, 34)
+            }
+            .scrollIndicators(.hidden)
         }
+        .foregroundStyle(Theme.ink)
+        .frame(maxWidth: .infinity)
+        .background(
+            UnevenRoundedRectangle(topLeadingRadius: 26, topTrailingRadius: 26)
+                .fill(Theme.sheetSurface)
+                .shadow(color: .black.opacity(0.14), radius: 18, y: -5)
+        )
+        .accessibilityIdentifier("signal-detail")
     }
 }
 

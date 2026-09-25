@@ -907,10 +907,11 @@ func cardBackground(cornerRadius: CGFloat) -> some View {
     ConfirmationView(
         confirmation: PostedConfirmation(
             signal: Signal(
-                id: "preview", hostName: "You", hostInitials: "JD", hostColor: Theme.ink,
+                id: "preview", hostID: "you", hostName: "You", hostInitials: "JD", hostColor: Theme.ink,
                 title: "dinner at Lucia, 2 seats", place: "Lucia", window: "next 3 hrs",
                 distance: "you", seats: 2, going: ["JD"], isJoined: true, isMine: true,
-                coordinate: Friend.youCoordinate
+                anchorCoordinate: Friend.youCoordinate, anchorPlace: "Mission",
+                destinationCoordinate: Friend.youCoordinate
             ),
             pinged: Array(Friend.mock.prefix(2)),
             note: "2 nearby"
