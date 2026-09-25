@@ -2,7 +2,7 @@
 
 Account implementation and local test instructions: [Account setup](docs/account-setup.md). Current account decisions supersede the older granularity and notification text below: Exact/all-friends or half-mile Vicinity; notifications Off, Direct invites only, or All; Apple sign-in first. The map/social features remain a prototype while accounts and settings now use Supabase.
 
-Current product language: **hangs**. The app uses “Hangs,” “New hang,” and “Your hang”; the home panel stays “Happening now.” The earlier product draft below uses the former “signal” terminology.
+Current product language: **hangs**. The home panel opens to “Today,” with a prominent “Create hang” action. The earlier product draft below uses the former “signal” terminology.
 
 A friend map you already know how to use, plus a way to say *I'm doing this thing, come find me*. Find My Friends is the chassis. The bat signal is the engine.
 
