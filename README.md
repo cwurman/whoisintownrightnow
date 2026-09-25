@@ -1,5 +1,7 @@
 # whoisintownrightnow
 
+Account implementation and local test instructions: [Account setup](docs/account-setup.md). Current account decisions supersede the older granularity and notification text below: Exact/all-friends or half-mile Vicinity; notifications Off, Direct invites only, or All; Apple sign-in first. The map/social features remain a prototype while accounts and settings now use Supabase.
+
 A friend map you already know how to use, plus a way to say *I'm doing this thing, come find me*. Find My Friends is the chassis. The bat signal is the engine.
 
 iOS · always-on location · one screen, one object, one button
@@ -44,10 +46,12 @@ Cut from v1: **Idea** (no-place-yet posts) and **Trip** (city + dates). Both are
 
 ## Roadmap, in order
 
-Deliberately deferred, not forgotten.
+Deliberately deferred, not forgotten. All of these are outside v1. Sequence: browse future plans before adding travel; turn tentative ideas into signals before adding shared hosting.
 
-- **v1.1 Travel.** "I'm in NYC Fri–Mon" as a glowing city bubble when you pinch the map out. Zoom-is-time is still the plan; the map should be built so it can drop in later without a new tab.
-- **v1.2 Ideas.** Placeless posts ("bike ride this weekend?") that a friend can convert into a real signal by adding a place.
+- **v1.1 Time browsing.** Give the map and its sheet a time dimension: now, tonight, this weekend, or a future date range. Browse signals whose windows overlap that period, including in another city ("what's happening in NYC this weekend?"). This comes before Travel so a future visit has useful plans to explore. Future plans must be distinguishable from friends' live locations; being somewhere now doesn't mean being there this weekend. Zoom-is-time remains a direction to explore; the exact interaction is deferred.
+- **v1.2 Travel.** "I'm in NYC Fri–Mon" as a glowing city bubble when you pinch the map out. Build on time browsing to see declared visits alongside signals for the same city and dates, without a new tab.
+- **v1.3 Ideas.** Placeless posts ("bike ride this weekend?") that a friend can convert into a real signal by adding a place.
+- **v1.4 Co-host invitations.** Tap a friend's avatar or friend card even when they haven't put out a bat signal, and privately propose hosting something together. They can accept or decline; appearing on the map alone doesn't mean they're asking to hang out. Once both agree on the plan, publish a shared signal. This follows Ideas because it extends the tentative-plan-to-signal flow to two hosts. Invitation behavior, shared editing, and who publishes or cancels remain design work for this phase.
 - **v2 Circles.** Per-circle granularity and per-signal audience. Asymmetric and opaque when it lands: nobody ever sees their tier.
 - **Unsolved.**
   - The flop (nobody answers your signal)
