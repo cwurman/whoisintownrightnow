@@ -115,7 +115,7 @@ struct MapHomeView: View {
                     if !mapSignals.contains(where: { $0.hostID == friend.id }) {
                         Annotation(friend.name, coordinate: friend.coordinate) {
                             Button { focus(on: friend) } label: {
-                                PersonMapMarker(initials: friend.initials, name: friend.firstName, color: friend.color, hasSignal: false)
+                                PersonMapMarker(initials: friend.initials, name: friend.firstName, color: friend.color)
                             }
                             .buttonStyle(.plain)
                             .opacity(selectedSignalID == nil ? 1 : 0.35)
@@ -319,7 +319,9 @@ struct MapHomeView: View {
                 Section("Hangs") {
                     ForEach(hosted) { signal in
                         Button { focus(on: signal) } label: {
-                            Label(signal.title, systemImage: "antenna.radiowaves.left.and.right")
+                            Label { Text(signal.title) } icon: {
+                                Text(signal.activityEmoji).accessibilityHidden(true)
+                            }
                         }
                     }
                 }
@@ -411,18 +413,19 @@ private struct PersonMapMarker: View {
     let initials: String
     let name: String
     let color: Color
-    let hasSignal: Bool
+    var activityEmoji: String? = nil
     var body: some View {
         VStack(spacing: 4) {
             PersonAvatar(initials: initials, color: color, size: 42)
                 .padding(3).background(.white, in: Circle())
                 .shadow(color: .black.opacity(0.18), radius: 5, y: 2)
                 .overlay(alignment: .bottomTrailing) {
-                    if hasSignal {
-                        Image(systemName: "antenna.radiowaves.left.and.right")
-                            .font(.system(size: 9, weight: .bold)).foregroundStyle(.white)
-                            .frame(width: 20, height: 20).background(Theme.accent, in: Circle())
-                            .overlay(Circle().stroke(.white, lineWidth: 2))
+                    if let activityEmoji {
+                        Text(activityEmoji)
+                            .font(.system(size: 18))
+                            .frame(width: 26, height: 26).background(Theme.surface, in: Circle())
+                            .overlay(Circle().stroke(.white, lineWidth: 1.5))
+                            .accessibilityHidden(true)
                     }
                 }
             Text(name).font(.caption2.weight(.semibold)).padding(.horizontal, 7).padding(.vertical, 3)
@@ -442,7 +445,7 @@ struct SignalPinView: View {
     let signal: Signal
     var isFocused = false
     var body: some View {
-        PersonMapMarker(initials: signal.hostInitials, name: signal.hostFirstName, color: signal.hostColor, hasSignal: true)
+        PersonMapMarker(initials: signal.hostInitials, name: signal.hostFirstName, color: signal.hostColor, activityEmoji: signal.activityEmoji)
     }
 }
 

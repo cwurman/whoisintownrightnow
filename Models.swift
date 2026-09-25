@@ -93,6 +93,57 @@ struct Friend: Identifiable {
     static let youCoordinate = CLLocationCoordinate2D(latitude: 37.7599, longitude: -122.4148)
 }
 
+// MARK: - Hang activity
+
+enum HangActivity {
+    /// A title emoji takes precedence; otherwise use familiar activity words.
+    static func emoji(for title: String) -> String {
+        if let emoji = title.first(where: { character in
+            character.unicodeScalars.contains { $0.properties.isEmojiPresentation }
+        }) {
+            return String(emoji)
+        }
+
+        let normalized = title.folding(options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "en_US_POSIX"))
+        let words = Set(normalized.split(whereSeparator: { !$0.isLetter }).map(String.init))
+        return suggestions.first { !words.isDisjoint(with: $0.words) }?.emoji ?? "👋"
+    }
+
+    private static let suggestions: [(emoji: String, words: Set<String>)] = [
+        ("☕️", ["coffee", "cafe", "caffeine", "espresso", "latte", "tea", "matcha"]),
+        ("🍕", ["pizza", "pizzeria"]),
+        ("🌮", ["taco", "tacos", "burrito", "burritos"]),
+        ("🍣", ["sushi", "omakase"]),
+        ("🍜", ["ramen", "noodles", "pho"]),
+        ("🍔", ["burger", "burgers"]),
+        ("🍦", ["icecream", "gelato", "dessert"]),
+        ("🥐", ["breakfast", "brunch", "bakery", "pastries"]),
+        ("🍝", ["dinner", "pasta", "italian"]),
+        ("🥪", ["lunch", "sandwich", "sandwiches", "food", "eat", "eating"]),
+        ("🍺", ["beer", "beers", "brewery", "pub"]),
+        ("🍷", ["wine", "winery"]),
+        ("🍹", ["drinks", "cocktail", "cocktails", "bar"]),
+        ("🥾", ["hike", "hikes", "hiking", "trail", "trails"]),
+        ("🚴", ["bike", "bikes", "biking", "bicycle", "cycling"]),
+        ("🏃", ["run", "running", "jog", "jogging"]),
+        ("🚶", ["walk", "walks", "walking", "stroll", "strolling", "wandering"]),
+        ("🎬", ["movie", "movies", "cinema", "film"]),
+        ("🎮", ["gaming", "videogames"]),
+        ("🎲", ["game", "games", "boardgames", "cards"]),
+        ("💃", ["dance", "dancing", "clubbing"]),
+        ("🎵", ["music", "concert", "gig", "karaoke", "jazz"]),
+        ("🏋️", ["gym", "workout", "lifting"]),
+        ("🧘", ["yoga", "meditation", "pilates"]),
+        ("🎾", ["tennis", "pickleball"]),
+        ("🏀", ["basketball", "hoops"]),
+        ("⚽️", ["soccer", "football"]),
+        ("🏖️", ["beach", "surf", "surfing"]),
+        ("🧺", ["picnic", "park"]),
+        ("🛍️", ["shopping", "thrifting", "market"]),
+        ("📚", ["study", "studying", "reading", "library", "bookstore"]),
+    ]
+}
+
 // MARK: - Signal
 
 /// The only object in the app: text + place + time window (+ optional seat cap).
@@ -117,6 +168,7 @@ struct Signal: Identifiable {
     let destinationCoordinate: CLLocationCoordinate2D
 
     var hostFirstName: String { hostName.split(separator: " ").first.map(String.init) ?? hostName }
+    var activityEmoji: String { HangActivity.emoji(for: title) }
 
     var destinationIsAtAnchor: Bool {
         MKMapPoint(anchorCoordinate).distance(to: MKMapPoint(destinationCoordinate)) < 1
