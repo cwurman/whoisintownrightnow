@@ -14,14 +14,6 @@ import MapKit
 enum PlaceMode: Equatable { case pin, region }
 enum TimeMode: Equatable { case unspecified, now, later }
 
-struct PlaceOption: Identifiable {
-    let name: String
-    let sub: String
-    let dist: String
-    let coordinate: CLLocationCoordinate2D?
-    var id: String { name }
-}
-
 struct RadiusOption {
     let label: String
     let meters: CLLocationDistance
@@ -39,6 +31,10 @@ final class ComposerDraft {
     var scheduledAt = Date().addingTimeInterval(3600)
     var droppedCoordinate: CLLocationCoordinate2D?
     var requiresPlaceConfirmation = false
+    var selectedVenue: HangVenue?
+    var venueChoices: [HangVenue] = []
+    var searchCenter: CLLocationCoordinate2D?
+    var areaCoordinate: CLLocationCoordinate2D?
     var durationMinutes: Int? = 180
     var seats: Int? = 0
     var recipientIDs: Set<String> = ComposerDraft.defaultRecipients
@@ -51,21 +47,13 @@ final class ComposerDraft {
         RadiusOption(label: "1 mi", meters: 1609),
         RadiusOption(label: "2 mi", meters: 3219),
     ]
-    static let places: [PlaceOption] = [
-        PlaceOption(name: "Lucia", sub: "18th St · italian, loud", dist: "0.4 mi",
-                    coordinate: CLLocationCoordinate2D(latitude: 37.7648, longitude: -122.4290)),
-        PlaceOption(name: "Dolores Park", sub: "the good side of the hill", dist: "0.5 mi",
-                    coordinate: CLLocationCoordinate2D(latitude: 37.7596, longitude: -122.4269)),
-        PlaceOption(name: "Bar Part Time", sub: "Van Ness · records", dist: "0.9 mi",
-                    coordinate: CLLocationCoordinate2D(latitude: 37.7744, longitude: -122.4183)),
-    ]
 
     var canPost: Bool {
         !videoAttachment.isPreparing && !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
             && hasPlace && (timeMode == .now || (timeMode == .later && scheduledAt > Date()))
     }
     var hasPlace: Bool {
-        mode == .region || (!requiresPlaceConfirmation && (droppedCoordinate != nil || Self.places.contains { $0.name == chosenPlace }))
+        mode == .region ? areaCoordinate != nil : !requiresPlaceConfirmation && droppedCoordinate != nil
     }
     var radius: RadiusOption { Self.radii[radiusIdx] }
     var whenText: String {
@@ -87,18 +75,22 @@ final class ComposerDraft {
     var extraCount: Int { selectedFriends.count - autoCount }
 
     var placeCoordinate: CLLocationCoordinate2D {
-        if mode == .region { return Friend.youCoordinate }
-        if let droppedCoordinate { return droppedCoordinate }
-        return Self.places.first(where: { $0.name == chosenPlace })?.coordinate ?? Friend.youCoordinate
+        // (0, 0) is a viewport fallback only. It never makes hasPlace true.
+        if mode == .region { return areaCoordinate ?? searchCenter ?? CLLocationCoordinate2D(latitude: 0, longitude: 0) }
+        return droppedCoordinate ?? searchCenter ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
     }
 
     func apply(_ suggestion: HangDraftSuggestion, now: Date = Date()) {
         text = suggestion.title ?? ""
         chosenPlace = suggestion.placeName ?? ""
-        placeQuery = chosenPlace
+        placeQuery = suggestion.placeSearchHint ?? chosenPlace
         droppedCoordinate = nil
+        areaCoordinate = nil
         requiresPlaceConfirmation = true
+        selectedVenue = nil
+        venueChoices = suggestion.venueChoices ?? []
         mode = .pin
+        if let venue = suggestion.resolvedVenue, venue.isValid { chooseVenue(venue) }
         timeMode = .unspecified
         if suggestion.startMode == "now" { timeMode = .now }
         let formatter = ISO8601DateFormatter()
@@ -112,14 +104,18 @@ final class ComposerDraft {
         seats = suggestion.groupLimit.flatMap { (0...12).contains($0) ? $0 : nil }
     }
 
-    func choosePlace(_ place: PlaceOption) {
-        chosenPlace = place.name
-        droppedCoordinate = nil
+    func chooseVenue(_ venue: HangVenue) {
+        guard venue.isValid else { return }
+        selectedVenue = venue
+        chosenPlace = venue.candidate.name
+        droppedCoordinate = venue.coordinate
         requiresPlaceConfirmation = false
         mode = .pin
     }
 
     func choosePin(_ coordinate: CLLocationCoordinate2D) {
+        guard CLLocationCoordinate2DIsValid(coordinate) else { return }
+        selectedVenue = nil
         droppedCoordinate = coordinate
         if !requiresPlaceConfirmation || chosenPlace.isEmpty { chosenPlace = "Dropped pin" }
         requiresPlaceConfirmation = false
@@ -148,6 +144,7 @@ struct ComposerView: View {
             }
             .navigationTitle(assistant.stage == .review ? "Review your hang" : "New hang")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbarVisibility(.visible, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { assistant.cancel(); draft.videoAttachment.cancelImport(); dismiss() }
@@ -177,7 +174,7 @@ struct ComposerView: View {
                 HangVideoComposer(attachment: draft.videoAttachment, autoRecordOnAppear: true)
                 Text("Say what you’re planning, where, and when. Then review the details before posting.")
                     .font(.body).multilineTextAlignment(.center)
-                Text("Your voice is transcribed on this device. After you save, the transcript goes to Jev to draft the details. Anything unclear stays blank.")
+                Text("Your voice is transcribed on this device. Apple Maps finds nearby places, and Jev uses the transcript and place options to draft the details. Anything unclear stays blank.")
                     .font(.footnote).foregroundStyle(Theme.secondaryLabel).multilineTextAlignment(.center)
                 Button("Write it instead") { assistant.reviewManually() }
                     .font(.subheadline).disabled(draft.videoAttachment.isPreparing)
@@ -245,6 +242,9 @@ struct ComposerView: View {
                             LabeledContent("Location", value: draft.placeText)
                         } icon: { Image(systemName: "mappin.and.ellipse").foregroundStyle(Theme.accent) }
                     }
+                    if let venue = draft.selectedVenue, draft.mode == .pin {
+                        Text(venue.candidate.address).font(.footnote).foregroundStyle(Theme.secondaryLabel)
+                    }
                     NavigationLink {
                         RecipientsView(draft: draft)
                     } label: {
@@ -295,73 +295,105 @@ struct PlacePickerView: View {
     @Bindable var draft: ComposerDraft
     @Environment(\.dismiss) private var dismiss
     @State private var showPinPicker = false
-    private var places: [PlaceOption] {
-        let query = draft.placeQuery.trimmingCharacters(in: .whitespacesAndNewlines)
-        return query.isEmpty ? ComposerDraft.places : ComposerDraft.places.filter { $0.name.localizedCaseInsensitiveContains(query) }
-    }
+    @State private var search = HangPlacePickerSearch()
+    @State private var nearby: CLLocation?
+    @State private var locating = false
+    @State private var locationRequest = 0
+    private var searchKey: String { "\(draft.placeQuery)|\(nearby?.coordinate.latitude ?? 999)|\(nearby?.coordinate.longitude ?? 999)" }
+    private var visiblePlaces: [HangVenue] { draft.placeQuery.isEmpty ? draft.venueChoices : search.results }
 
     var body: some View {
         ThemedList {
             Section {
-                Map(initialPosition: .region(MKCoordinateRegion(center: draft.placeCoordinate,
-                    latitudinalMeters: draft.mode == .region ? draft.radius.meters * 3 : 1800,
-                    longitudinalMeters: draft.mode == .region ? draft.radius.meters * 3 : 1800)), interactionModes: []) {
-                    if draft.mode == .region {
-                        MapCircle(center: draft.placeCoordinate, radius: draft.radius.meters)
-                            .foregroundStyle(Theme.orchid.opacity(0.15)).stroke(Theme.orchid, lineWidth: 2)
-                    } else if draft.hasPlace { Marker(draft.chosenPlace, coordinate: draft.placeCoordinate).tint(Theme.orchid) }
+                if draft.hasPlace || draft.searchCenter != nil {
+                    Map(initialPosition: .region(MKCoordinateRegion(center: draft.placeCoordinate,
+                        latitudinalMeters: draft.mode == .region ? draft.radius.meters * 3 : 1800,
+                        longitudinalMeters: draft.mode == .region ? draft.radius.meters * 3 : 1800)), interactionModes: []) {
+                        if draft.mode == .region, let center = draft.areaCoordinate {
+                            MapCircle(center: center, radius: draft.radius.meters)
+                                .foregroundStyle(Theme.orchid.opacity(0.15)).stroke(Theme.orchid, lineWidth: 2)
+                        } else if draft.hasPlace { Marker(draft.chosenPlace, coordinate: draft.placeCoordinate).tint(Theme.orchid) }
+                    }
+                    .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
+                    .frame(height: 190)
+                    .id("\(draft.mode)-\(draft.placeCoordinate.latitude)-\(draft.placeCoordinate.longitude)-\(draft.radiusIdx)")
+                    .listRowInsets(EdgeInsets())
                 }
-                .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
-                .frame(height: 190)
-                .id("\(draft.mode)-\(draft.placeCoordinate.latitude)-\(draft.placeCoordinate.longitude)-\(draft.radiusIdx)")
-                .listRowInsets(EdgeInsets())
                 Picker("Location type", selection: $draft.mode) {
                     Text("Exact spot").tag(PlaceMode.pin)
                     Text("An area").tag(PlaceMode.region)
                 }.pickerStyle(.segmented)
             }
             if draft.mode == .pin {
-                Section("Suggested places") {
-                    ForEach(places) { place in
-                        Button {
-                            draft.choosePlace(place)
-                        } label: {
+                Section("Places") {
+                    if let selected = draft.selectedVenue, !visiblePlaces.contains(where: { $0.id == selected.id }) {
+                        Label { VStack(alignment: .leading, spacing: 4) {
+                            Text(selected.candidate.name)
+                            Text(selected.candidate.address).font(.caption).foregroundStyle(Theme.secondaryLabel)
+                        } } icon: { Image(systemName: "checkmark.circle.fill").foregroundStyle(Theme.accent) }
+                    }
+                    if search.isSearching { ProgressView("Searching Apple Maps…") }
+                    ForEach(visiblePlaces) { venue in
+                        Button { draft.chooseVenue(venue) } label: {
                             HStack(spacing: 14) {
-                                Image(systemName: place.name.contains("Park") ? "tree.fill" : "fork.knife")
-                                    .foregroundStyle(Theme.accent).frame(width: 24)
+                                Image(systemName: "mappin.circle.fill").foregroundStyle(Theme.accent)
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text(place.name).foregroundStyle(Theme.label)
-                                    Text(place.sub).font(.caption).foregroundStyle(Theme.secondaryLabel)
+                                    Text(venue.candidate.name).foregroundStyle(Theme.label)
+                                    Text(venue.candidate.address).font(.caption).foregroundStyle(Theme.secondaryLabel)
+                                    if let meters = venue.candidate.distanceMeters {
+                                        Text("About \(Double(meters) / 1609.344, specifier: "%.1f") mi away")
+                                            .font(.caption).foregroundStyle(Theme.secondaryLabel)
+                                    }
                                 }
                                 Spacer()
-                                if draft.chosenPlace == place.name { Image(systemName: "checkmark").fontWeight(.semibold).foregroundStyle(Theme.accent) }
+                                if draft.selectedVenue?.id == venue.id { Image(systemName: "checkmark").foregroundStyle(Theme.accent) }
                             }.padding(.vertical, 4)
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityAddTraits(draft.chosenPlace == place.name ? .isSelected : [])
+                        }.buttonStyle(.plain)
+                        .accessibilityAddTraits(draft.selectedVenue?.id == venue.id ? .isSelected : [])
                     }
-                    if places.isEmpty {
-                        ContentUnavailableView.search(text: draft.placeQuery)
+                    if let error = search.errorMessage { Text(error).foregroundStyle(Theme.secondaryLabel) }
+                    else if !search.isSearching && visiblePlaces.isEmpty {
+                        Text(draft.placeQuery.isEmpty ? "Search for a restaurant, park, or address." : "No places found. Try adding a city or choose a spot on the map.")
+                            .foregroundStyle(Theme.secondaryLabel)
                     }
                 }
-                Section {
-                    Button { showPinPicker = true } label: {
-                        Label(draft.chosenPlace == "Dropped pin" ? "Adjust dropped pin" : "Choose a spot on the map", systemImage: "mappin.circle")
-                    }
-                } footer: { Text("Suggested places are samples near the Mission. You can place a pin anywhere on the map.") }
             } else {
                 Section {
                     Picker("Radius", selection: $draft.radiusIdx) {
                         ForEach(ComposerDraft.radii.indices, id: \.self) { Text(ComposerDraft.radii[$0].label).tag($0) }
                     }.pickerStyle(.inline)
-                } footer: { Text("Centered on your sample location in the Mission. This is the plan’s area, separate from your account’s location-sharing preference.") }
+                    if let nearby { Button("Center on my location") { draft.areaCoordinate = nearby.coordinate } }
+                } footer: { Text("Choose the center of your hang’s area. This is separate from your account’s location-sharing preference.") }
+            }
+            Section {
+                Button { showPinPicker = true } label: {
+                    Label(draft.mode == .region ? "Choose the area on the map" : "Choose a spot on the map", systemImage: "mappin.circle")
+                }
+                Button { locationRequest += 1 } label: {
+                    Label(locating ? "Finding your location…" : "Use my location for search", systemImage: "location")
+                }.disabled(locating)
+            } footer: {
+                Text(nearby == nil ? "Location is optional. Add a city to your search, or choose a spot on the map." : "Search uses your location to find nearby places. It doesn’t share your location with friends.")
             }
         }
-        .searchable(text: $draft.placeQuery, prompt: "Search sample places")
+        .searchable(text: $draft.placeQuery, prompt: "Search places or addresses")
         .navigationTitle("Location")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
         .sheet(isPresented: $showPinPicker) { PinPickerView(draft: draft) }
+        .task(id: locationRequest) { await locate() }
+        .task(id: searchKey) { await search.run(draft.placeQuery, near: nearby) }
+    }
+
+    private func locate() async {
+        guard !locating else { return }
+        locating = true
+        defer { locating = false }
+        let locator = HangSearchLocation()
+        let location = await locator.locate()
+        guard !Task.isCancelled else { return }
+        nearby = location
+        if let location { draft.searchCenter = location.coordinate }
     }
 }
 
@@ -374,8 +406,8 @@ private struct PinPickerView: View {
     init(draft: ComposerDraft) {
         self.draft = draft
         _coordinate = State(initialValue: draft.placeCoordinate)
-        _camera = State(initialValue: .region(MKCoordinateRegion(center: draft.placeCoordinate,
-            latitudinalMeters: 1600, longitudinalMeters: 1600)))
+        _camera = State(initialValue: draft.hasPlace || draft.searchCenter != nil
+            ? .region(MKCoordinateRegion(center: draft.placeCoordinate, latitudinalMeters: 1600, longitudinalMeters: 1600)) : .automatic)
     }
 
     var body: some View {
@@ -397,7 +429,8 @@ private struct PinPickerView: View {
                     ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Use pin") {
-                            draft.choosePin(coordinate)
+                            if draft.mode == .region { draft.areaCoordinate = coordinate }
+                            else { draft.choosePin(coordinate) }
                             dismiss()
                         }.buttonStyle(.glassProminent)
                             .tint(Theme.orchid).foregroundStyle(Theme.ink)

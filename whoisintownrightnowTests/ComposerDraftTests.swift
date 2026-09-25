@@ -4,6 +4,11 @@ import XCTest
 
 @MainActor
 final class ComposerDraftTests: XCTestCase {
+    private var park: HangVenue {
+        HangVenue(candidate: HangVenueCandidate(id: "test-park", name: "Dolores Park", address: "San Francisco", category: "park", distanceMeters: 800),
+            latitude: 37.7596, longitude: -122.4269)
+    }
+
     func testChosenPinAndAreaUseTheCoordinatesShownInThePicker() {
         let draft = ComposerDraft()
         let selected = CLLocationCoordinate2D(latitude: 37.81, longitude: -122.46)
@@ -13,11 +18,13 @@ final class ComposerDraftTests: XCTestCase {
         XCTAssertEqual(draft.placeCoordinate.longitude, selected.longitude)
 
         draft.mode = .region
-        XCTAssertEqual(draft.placeCoordinate.latitude, Friend.youCoordinate.latitude)
-        XCTAssertEqual(draft.placeCoordinate.longitude, Friend.youCoordinate.longitude)
+        XCTAssertFalse(draft.hasPlace, "An area requires an explicitly chosen center")
+        draft.areaCoordinate = selected
+        XCTAssertEqual(draft.placeCoordinate.latitude, selected.latitude)
+        XCTAssertEqual(draft.placeCoordinate.longitude, selected.longitude)
 
         draft.mode = .pin
-        draft.choosePlace(ComposerDraft.places[1])
+        draft.chooseVenue(park)
         XCTAssertEqual(draft.placeCoordinate.latitude, 37.7596)
         XCTAssertEqual(draft.placeCoordinate.longitude, -122.4269)
     }
@@ -25,7 +32,7 @@ final class ComposerDraftTests: XCTestCase {
     func testPostingWaitsForVideoImportAndCancellationRestoresTextOnlyPosting() {
         let draft = ComposerDraft()
         draft.text = "Coffee?"
-        draft.choosePlace(ComposerDraft.places[1])
+        draft.chooseVenue(park)
         draft.timeMode = .now
         XCTAssertTrue(draft.canPost)
         draft.videoAttachment.prepare {
@@ -44,7 +51,7 @@ final class ComposerDraftTests: XCTestCase {
         XCTAssertFalse(draft.canPost)
         draft.text = "Coffee in the park"
         XCTAssertFalse(draft.canPost)
-        draft.choosePlace(ComposerDraft.places[1])
+        draft.chooseVenue(park)
         XCTAssertFalse(draft.canPost)
         draft.timeMode = .now
         XCTAssertTrue(draft.canPost)

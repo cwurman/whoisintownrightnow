@@ -4,12 +4,17 @@ import Observation
 nonisolated struct HangDraftSuggestion: Codable, Sendable {
     let transcript: String
     let title: String?
-    let placeName: String?
+    var placeName: String?
     let startMode: String
     let startsAt: String?
     let durationMinutes: Int?
     let groupLimit: Int?
     var confidence: [String: Double]? = nil
+    var placeID: String? = nil
+    // Hydrated only from this request's Apple search results, never from AI-generated coordinates.
+    var resolvedVenue: HangVenue? = nil
+    var venueChoices: [HangVenue]? = nil
+    var placeSearchHint: String? = nil
 }
 
 nonisolated enum HangAnalysisError: LocalizedError {

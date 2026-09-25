@@ -291,6 +291,7 @@
 				DEVELOPMENT_TEAM = 36P3GQ337U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Find nearby places for your hang. Your location is used for place search, not shared with friends.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Record a short video inviting your friends to a hang.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Include your voice in your video invitation.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Show your contacts in People so you can find people on Who’s in town and invite the rest. Only contacts you allow are read.";
@@ -327,6 +328,7 @@
 				DEVELOPMENT_TEAM = 36P3GQ337U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Find nearby places for your hang. Your location is used for place search, not shared with friends.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Record a short video inviting your friends to a hang.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Include your voice in your video invitation.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Show your contacts in People so you can find people on Who’s in town and invite the rest. Only contacts you allow are read.";

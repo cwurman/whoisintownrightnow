@@ -30,6 +30,11 @@ final class AccountStore {
         if let recorded = video.transcript { transcript = recorded }
         else if video.capturedInApp { throw HangAnalysisError.noSpeech }
         else { transcript = try await HangSpeechSession.transcribe(video) }
+        let queries = HangPlaceCandidates.searchQueries(from: transcript.text)
+        let locator = HangSearchLocation()
+        let location = queries.isEmpty ? nil : await locator.locate()
+        let venues = if let location { await HangPlaceSearch.candidates(for: transcript.text, near: location) } else { [HangVenue]() }
+        try Task.checkCancellation()
         let session = try await client.auth.session
         guard session.user.id == userID else { throw HangAnalysisError.signInRequired }
         struct Request: Encodable {
@@ -38,14 +43,21 @@ final class AccountStore {
             let recordedAt: String
             let locale: String
             let placeCandidates: [String]
+            let venueCandidates: [HangVenueCandidate]
         }
         do {
-            let draft: HangDraftSuggestion = try await client.functions.invoke("draft-hang", options: .init(
+            var draft: HangDraftSuggestion = try await client.functions.invoke("draft-hang", options: .init(
                 body: Request(transcript: transcript.text, timeZone: TimeZone.current.identifier,
                     recordedAt: ISO8601DateFormatter().string(from: transcript.recordedAt), locale: transcript.locale,
-                    placeCandidates: HangPlaceCandidates.extract(from: transcript.text)), timeoutInterval: 45), decoder: JSONDecoder())
+                    placeCandidates: HangPlaceCandidates.extract(from: transcript.text),
+                    venueCandidates: venues.map(\.candidate)), timeoutInterval: 45), decoder: JSONDecoder())
             try Task.checkCancellation()
             guard account?.profile.id == userID, client.auth.currentUser?.id == userID else { throw HangAnalysisError.signInRequired }
+            draft.resolvedVenue = venues.first { $0.id == draft.placeID }
+            draft.venueChoices = venues
+            draft.placeSearchHint = queries.first
+            // No match means no location; do not trust a free-text place name from an older endpoint.
+            draft.placeName = draft.resolvedVenue?.candidate.name
             return draft
         } catch FunctionsError.httpError(let code, _) {
             if code == 401 || code == 403 { throw HangAnalysisError.signInRequired }
