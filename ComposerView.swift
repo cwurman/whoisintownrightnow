@@ -60,7 +60,7 @@ final class ComposerDraft {
         PlaceOption(name: "Drop a pin on the map", sub: "wherever you land", dist: "", coordinate: nil),
     ]
 
-    var canPost: Bool { !text.trimmingCharacters(in: .whitespaces).isEmpty }
+    var canPost: Bool { !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
     var radius: RadiusOption { Self.radii[radiusIdx] }
     var startLabel: String { Self.formatMinutes(startMins) }
 
@@ -130,6 +130,7 @@ final class ComposerDraft {
 
 struct ComposerView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var draft = ComposerDraft()
     @State private var route: Route = .form
     let onPost: (ComposerDraft) -> Void
@@ -151,7 +152,7 @@ struct ComposerView: View {
                     .transition(.move(edge: .trailing).combined(with: .opacity))
             }
         }
-        .animation(.spring(response: 0.32, dampingFraction: 0.9), value: route)
+        .animation(reduceMotion ? nil : .spring(response: 0.32, dampingFraction: 0.9), value: route)
     }
 
     private var formScreen: some View {
@@ -172,6 +173,8 @@ struct ComposerView: View {
                     }
                     .font(.system(size: 15, weight: .semibold))
                     .foregroundStyle(draft.canPost ? Theme.ink : .black.opacity(0.25))
+                    .disabled(!draft.canPost)
+                    .accessibilityIdentifier("post-signal")
                 }
             }
             .buttonStyle(.plain)
@@ -247,6 +250,9 @@ struct ComposerView: View {
                         Spacer()
                         StepperControl(
                             value: draft.seatsLabel,
+                            label: "Group capacity",
+                            canDecrease: draft.seats > 0,
+                            canIncrease: draft.seats < 12,
                             onDecrement: { draft.seats = max(0, draft.seats - 1) },
                             onIncrement: { draft.seats = min(12, draft.seats + 1) }
                         )
@@ -325,6 +331,9 @@ struct ComposerView: View {
                     StepperControl(
                         value: draft.startLabel,
                         valueWidth: 66,
+                        label: "Start time",
+                        canDecrease: draft.startMins > 360,
+                        canIncrease: draft.startMins < 1410,
                         onDecrement: { draft.startMins = max(360, draft.startMins - 30) },
                         onIncrement: { draft.startMins = min(1410, draft.startMins + 30) }
                     )
@@ -352,6 +361,8 @@ struct ComposerView: View {
                     in: 1...6, step: 1
                 )
                 .tint(Theme.ink)
+                .accessibilityLabel("Signal duration")
+                .accessibilityValue("\(draft.durHrs) hours")
                 .padding(.top, 4)
                 HStack {
                     Text("1 hr")
@@ -630,7 +641,7 @@ struct RecipientsView: View {
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("Friends within 2 miles get a push automatically. Everyone else can still see the signal on their map — add them here if you want their phone to buzz.")
+                    Text("Choose friends for this preview. Invitations and push notifications aren’t connected yet.")
                         .font(.system(size: 13))
                         .foregroundStyle(.black.opacity(0.6))
                         .padding(.horizontal, 14)
@@ -639,7 +650,7 @@ struct RecipientsView: View {
                         .background(cardBackground(cornerRadius: 14))
                         .padding(.bottom, 14)
 
-                    SectionLabel("Nearby right now · auto")
+                    SectionLabel("Nearby sample friends")
                     recipientList(nearbyFriends)
                         .padding(.bottom, 16)
 
@@ -652,7 +663,7 @@ struct RecipientsView: View {
             Button {
                 onDone()
             } label: {
-                Text(draft.selectedFriends.isEmpty ? "Signal nobody" : "Signal these \(draft.selectedFriends.count)")
+                Text(draft.selectedFriends.isEmpty ? "Use no recipients" : "Use these \(draft.selectedFriends.count)")
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundStyle(Theme.signalYellow)
                     .frame(maxWidth: .infinity)
@@ -709,6 +720,7 @@ struct RecipientsView: View {
                     .padding(.vertical, 12)
                 }
                 .buttonStyle(.plain)
+                .accessibilityAddTraits(isOn ? .isSelected : [])
                 if friend.id != friends.last?.id {
                     Divider().opacity(0.5).padding(.leading, 63)
                 }
@@ -745,7 +757,7 @@ struct ConfirmationView: View {
                 .padding(.top, 26)
                 .padding(.bottom, 14)
 
-            Text("Bat signal's up")
+            Text("Added to your preview")
                 .font(.system(size: 22, weight: .bold))
                 .foregroundStyle(Theme.ink)
 
@@ -758,7 +770,7 @@ struct ConfirmationView: View {
                 .padding(.bottom, 18)
 
             VStack(alignment: .leading, spacing: 9) {
-                Text("PINGED JUST NOW")
+                Text("SELECTED FRIENDS · NO INVITES SENT")
                     .font(.system(size: 10.5, weight: .medium, design: .monospaced))
                     .tracking(0.8)
                     .foregroundStyle(.black.opacity(0.35))
@@ -777,8 +789,8 @@ struct ConfirmationView: View {
             .padding(.horizontal, 18)
             .padding(.bottom, 10)
 
-            Button(action: onClose) {
-                Text("Also text the group")
+            ShareLink(item: "\(confirmation.signal.title)\n\(confirmation.signal.place) · \(confirmation.signal.window)") {
+                Text("Share this plan")
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundStyle(Theme.signalYellow)
                     .frame(maxWidth: .infinity)
@@ -825,17 +837,26 @@ struct SectionLabel: View {
 struct StepperControl: View {
     let value: String
     var valueWidth: CGFloat = 18
+    let label: String
+    var canDecrease = true
+    var canIncrease = true
     let onDecrement: () -> Void
     let onIncrement: () -> Void
 
     var body: some View {
         HStack(spacing: 14) {
             stepButton("−", action: onDecrement)
+                .accessibilityLabel("Decrease \(label.lowercased())")
+                .disabled(!canDecrease)
             Text(value)
                 .font(.system(size: 15, weight: .semibold, design: .monospaced))
                 .foregroundStyle(Theme.ink)
                 .frame(minWidth: valueWidth)
+                .accessibilityLabel(label)
+                .accessibilityValue(value)
             stepButton("+", action: onIncrement)
+                .accessibilityLabel("Increase \(label.lowercased())")
+                .disabled(!canIncrease)
         }
     }
 
@@ -871,6 +892,7 @@ struct TabButton: View {
                 )
         }
         .buttonStyle(.plain)
+        .accessibilityAddTraits(selected ? .isSelected : [])
     }
 }
 

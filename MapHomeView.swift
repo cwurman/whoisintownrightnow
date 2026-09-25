@@ -25,6 +25,7 @@ struct MapHomeView: View {
     @State private var sheetExpanded = false
     @State private var showComposer = false
     @State private var confirmation: PostedConfirmation?
+    @State private var pendingConfirmation: PostedConfirmation?
     @State private var toast: String?
     @State private var toastTask: Task<Void, Never>?
     @State private var cameraPosition: MapCameraPosition = .region(
@@ -40,7 +41,7 @@ struct MapHomeView: View {
 
     private var nearbyCount: Int { Friend.mock.filter { $0.distanceMiles < 2 }.count }
     private var freeCount: Int { Friend.mock.filter { $0.isFree }.count }
-    private var visibleSignals: [Signal] { Array(signals.prefix(sheetExpanded ? 4 : 2)) }
+    private var visibleSignals: [Signal] { sheetExpanded ? signals : Array(signals.prefix(2)) }
     private var hiddenCount: Int { signals.count - visibleSignals.count }
 
     private var selectedSignal: Signal? { signals.first { $0.id == selectedSignalID } }
@@ -58,7 +59,7 @@ struct MapHomeView: View {
     /// Matches the prototype: peek is fixed, open grows with visible rows.
     private var sheetHeight: CGFloat {
         if selectedSignal != nil { return min(374, viewportHeight * 0.48) }
-        return sheetExpanded ? 168 + CGFloat(visibleSignals.count) * 76 : 262
+        return sheetExpanded ? min(168 + CGFloat(visibleSignals.count) * 76, viewportHeight * 0.65) : 262
     }
 
     var body: some View {
@@ -68,6 +69,11 @@ struct MapHomeView: View {
             // Keep the layout stable while overview controls fade out of focus.
             VStack(alignment: .leading, spacing: 10) {
                 topBar
+                Text("Preview · sample people and plans")
+                    .font(.caption.weight(.medium))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(chromeBackground(cornerRadius: 10))
                 Spacer()
             }
             .padding(.horizontal, 16)
@@ -114,7 +120,7 @@ struct MapHomeView: View {
             }
         }
         .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { viewportHeight = $0 }
-        .animation(.easeInOut(duration: 0.22), value: toast)
+        .animation(reduceMotion ? nil : .easeInOut(duration: 0.22), value: toast)
         .task(id: selectedSignalID) {
             // Apply camera movement after the focus layout has updated. Animating
             // the map's insets and its camera together makes MapKit refit twice.
@@ -128,7 +134,10 @@ struct MapHomeView: View {
             if selectedSignalID == nil { overviewCamera = nil }
             await drawConnection()
         }
-        .sheet(isPresented: $showComposer) {
+        .sheet(isPresented: $showComposer, onDismiss: {
+            confirmation = pendingConfirmation
+            pendingConfirmation = nil
+        }) {
             ComposerView(onPost: handlePost(_:))
                 .presentationDragIndicator(.hidden)
                 .presentationBackground(Theme.sheetSurface)
@@ -139,6 +148,7 @@ struct MapHomeView: View {
                 .presentationDragIndicator(.visible)
                 .presentationBackground(Theme.sheetSurface)
         }
+        .onDisappear { toastTask?.cancel() }
     }
 
     // MARK: Map
@@ -284,24 +294,18 @@ struct MapHomeView: View {
             }
             .buttonStyle(.plain)
 
-            // Notifications bell with unread dot
+            // Activity isn't connected yet; don't imply unread notifications exist.
             Button {
-                showToast("The sky — next screen")
+                showToast("Your activity feed isn’t available yet.")
             } label: {
                 Image(systemName: "bell")
                     .font(.system(size: 15, weight: .semibold))
                     .foregroundStyle(Theme.ink)
                     .frame(width: 40, height: 40)
                     .background(chromeBackground(cornerRadius: 12))
-                    .overlay(alignment: .topTrailing) {
-                        Circle()
-                            .fill(Theme.signalYellow)
-                            .frame(width: 9, height: 9)
-                            .overlay(Circle().stroke(.white, lineWidth: 1.5))
-                            .padding(7)
-                    }
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("Activity")
 
             // Profile
             Button {
@@ -384,10 +388,11 @@ struct MapHomeView: View {
     }
 
     private func handlePost(_ draft: ComposerDraft) {
+        guard showComposer, draft.canPost else { return }
         let signal = Signal(
             id: "me-\(UUID().uuidString)",
             hostID: profile?.id.uuidString.lowercased() ?? "you", hostName: profile?.displayName ?? "You", hostInitials: profile?.initials ?? "You", hostColor: Theme.ink,
-            title: draft.text.trimmingCharacters(in: .whitespaces),
+            title: draft.text.trimmingCharacters(in: .whitespacesAndNewlines),
             place: draft.placeText,
             window: draft.whenText,
             distance: "you",
@@ -400,15 +405,10 @@ struct MapHomeView: View {
         showComposer = false
 
         let confirmationNote = draft.selectedFriends.isEmpty
-            ? "nobody — map only"
+            ? "No friends selected"
             : "\(draft.autoCount) nearby" + (draft.extraCount > 0 ? " + \(draft.extraCount) you added" : "")
-        let posted = PostedConfirmation(signal: signal, pinged: draft.selectedFriends, note: confirmationNote)
-
-        // Let the composer sheet finish dismissing before presenting the confirmation.
-        Task {
-            try? await Task.sleep(for: .milliseconds(600))
-            confirmation = posted
-        }
+        // Presentation follows actual sheet dismissal, rather than a guessed animation duration.
+        pendingConfirmation = PostedConfirmation(signal: signal, pinged: draft.selectedFriends, note: confirmationNote)
     }
 
     private func join(_ signal: Signal) {
@@ -416,7 +416,7 @@ struct MapHomeView: View {
         if signals[index].isJoined || signals[index].isMine { return }
         signals[index].isJoined = true
         signals[index].going.append(profile?.initials ?? "You")
-        showToast("Opening Messages with \(signal.hostFirstName)…")
+        showToast("Joined in this preview. \(signal.hostFirstName) hasn’t been notified.")
     }
 
     private func showToast(_ message: String) {
@@ -699,6 +699,7 @@ struct SignalDetailSheet: View {
 // MARK: - You dot
 
 struct YouDotView: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var pulsing = false
 
     var body: some View {
@@ -707,8 +708,9 @@ struct YouDotView: View {
             Circle()
                 .fill(Theme.signalYellow.opacity(0.35))
                 .frame(width: 42, height: 42)
-                .scaleEffect(pulsing ? 1.9 : 0.6)
-                .opacity(pulsing ? 0 : 0.55)
+                .scaleEffect(reduceMotion ? 1 : pulsing ? 1.9 : 0.6)
+                .opacity(reduceMotion ? 0.3 : pulsing ? 0 : 0.55)
+                .animation(reduceMotion ? nil : .easeOut(duration: 2.6).repeatForever(autoreverses: false), value: pulsing)
 
             // Soft halo + dot
             Circle()
@@ -721,11 +723,7 @@ struct YouDotView: View {
                 .shadow(color: .black.opacity(0.2), radius: 4, y: 2)
         }
         .frame(width: 80, height: 80)
-        .onAppear {
-            withAnimation(.easeOut(duration: 2.6).repeatForever(autoreverses: false)) {
-                pulsing = true
-            }
-        }
+        .task(id: reduceMotion) { pulsing = !reduceMotion }
     }
 }
 
@@ -752,19 +750,21 @@ struct HappeningSheet: View {
                     .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
+            .accessibilityLabel(expanded ? "Collapse signals" : "Show all signals")
 
             HStack(alignment: .firstTextBaseline) {
                 Text("Happening")
                     .font(.system(size: 19, weight: .bold))
                     .foregroundStyle(Theme.ink)
                 Spacer()
-                Text(expanded ? "expiring within 4 hrs" : "tonight")
+                Text("\(signals.count + hiddenCount) signals")
                     .font(.system(size: 13))
                     .foregroundStyle(.black.opacity(0.4))
             }
             .padding(.bottom, 12)
 
-            VStack(spacing: 9) {
+            ScrollView {
+              LazyVStack(spacing: 9) {
                 ForEach(signals) { signal in
                     SignalRowView(
                         signal: signal,
@@ -772,7 +772,7 @@ struct HappeningSheet: View {
                         onTap: { onRowTap(signal) }
                     )
                 }
-                if hiddenCount > 0 {
+                if !expanded && hiddenCount > 0 {
                     Button(action: onToggle) {
                         Text("+\(hiddenCount) more")
                             .font(.system(size: 13, weight: .semibold))
@@ -780,9 +780,10 @@ struct HappeningSheet: View {
                     }
                     .buttonStyle(.plain)
                 }
+              }
+              .padding(.bottom, 34)
             }
-
-            Spacer(minLength: 0)
+            .scrollIndicators(.hidden)
         }
         .padding(.horizontal, 18)
         .frame(maxWidth: .infinity)
@@ -817,8 +818,9 @@ struct SignalRowView: View {
     }
 
     var body: some View {
-        Button(action: onTap) {
-            HStack(spacing: 11) {
+        HStack(spacing: 11) {
+            Button(action: onTap) {
+              HStack(spacing: 11) {
                 Text(signal.hostInitials)
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundStyle(.white)
@@ -836,8 +838,13 @@ struct SignalRowView: View {
                         .lineLimit(1)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
+              }
+              .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityHint("Show signal details")
 
-                Button(action: onJoin) {
+            Button(action: onJoin) {
                     Text(ctaLabel)
                         .font(.system(size: 13, weight: .semibold))
                         .foregroundStyle(ctaForeground)
@@ -846,7 +853,9 @@ struct SignalRowView: View {
                         .background(RoundedRectangle(cornerRadius: 9).fill(ctaBackground))
                 }
                 .buttonStyle(.plain)
-            }
+                .disabled(signal.isMine || signal.isJoined)
+                .accessibilityLabel(signal.isMine ? "Your signal" : signal.isJoined ? "Already joined" : "Join \(signal.hostFirstName)’s signal")
+        }
             .padding(.horizontal, 13)
             .padding(.vertical, 12)
             .background(
@@ -857,8 +866,6 @@ struct SignalRowView: View {
                         lineWidth: 1
                     )
             )
-        }
-        .buttonStyle(.plain)
     }
 }
 
