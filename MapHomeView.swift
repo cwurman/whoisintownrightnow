@@ -130,7 +130,9 @@ struct MapHomeView: View {
                 }
                 ForEach(mapSignals) { signal in
                     Annotation(signal.hostName, coordinate: signal.anchorCoordinate) {
-                        Button { focus(on: signal) } label: { SignalPinView(signal: signal) }
+                        Button { focus(on: signal) } label: {
+                            SignalPinView(signal: signal, animatesHalo: selectedSignalID == nil)
+                        }
                             .buttonStyle(.plain)
                             .opacity(selectedSignalID == signal.id ? 0 : selectedSignalID == nil ? 1 : 0.35)
                             .accessibilityLabel("\(signal.hostName)’s hang: \(signal.title)")
@@ -471,11 +473,15 @@ private struct PersonMapMarker: View {
     let name: String
     let color: Color
     var activityEmoji: String? = nil
+    var animatesHalo = true
     var body: some View {
         VStack(spacing: 4) {
             PersonAvatar(initials: initials, color: color, size: 42)
                 .padding(3).background(Theme.orchid, in: Circle())
                 .shadow(color: .black.opacity(0.18), radius: 5, y: 2)
+                .background {
+                    if activityEmoji != nil { ActiveHangHalo(animates: animatesHalo) }
+                }
                 .overlay(alignment: .bottomTrailing) {
                     if let activityEmoji {
                         Text(activityEmoji)
@@ -493,6 +499,42 @@ private struct PersonMapMarker: View {
     }
 }
 
+/// Decorative waves stay behind the avatar without changing its layout or tap target.
+private struct ActiveHangHalo: View {
+    var animates = true
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.scenePhase) private var scenePhase
+
+    var body: some View {
+        ZStack {
+            Circle()
+                .fill(RadialGradient(colors: [Theme.orchid.opacity(0.5), Theme.orchid.opacity(0)],
+                                     center: .center, startRadius: 22, endRadius: 43))
+                .frame(width: 86, height: 86)
+            if animates && !reduceMotion && scenePhase == .active {
+                TimelineView(.animation(minimumInterval: 1.0 / 30)) { timeline in
+                    let cycle = timeline.date.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 2.8) / 2.8
+                    ZStack {
+                        ForEach(0..<2) { index in
+                            let progress = (cycle + Double(index) / 2).truncatingRemainder(dividingBy: 1)
+                            Circle()
+                                .stroke(Theme.accent.opacity(0.5 * pow(1 - progress, 1.5)), lineWidth: 1.5)
+                                .frame(width: 48 + 36 * progress, height: 48 + 36 * progress)
+                        }
+                    }
+                    .frame(width: 86, height: 86)
+                }
+            } else {
+                Circle().stroke(Theme.orchid.opacity(0.5), lineWidth: 1.5)
+                    .frame(width: 58, height: 58)
+            }
+        }
+        .frame(width: 48, height: 48)
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
+    }
+}
+
 struct FriendAvatarView: View {
     let friend: Friend
     var body: some View { PersonAvatar(initials: friend.initials, color: friend.color) }
@@ -500,9 +542,10 @@ struct FriendAvatarView: View {
 
 struct SignalPinView: View {
     let signal: Signal
-    var isFocused = false
+    var animatesHalo = true
     var body: some View {
-        PersonMapMarker(initials: signal.hostInitials, name: signal.hostFirstName, color: signal.hostColor, activityEmoji: signal.activityEmoji)
+        PersonMapMarker(initials: signal.hostInitials, name: signal.hostFirstName, color: signal.hostColor,
+                        activityEmoji: signal.activityEmoji, animatesHalo: animatesHalo)
     }
 }
 
@@ -692,7 +735,7 @@ private struct SignalFocusOverlay: View {
                     .position(projection.destination)
             }
 
-            SignalPinView(signal: signal, isFocused: true)
+            SignalPinView(signal: signal)
                 .position(projection.origin)
         }
     }
