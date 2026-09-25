@@ -331,7 +331,7 @@ struct MapHomeView: View {
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             Button { showComposer = true } label: {
-                Label("Create hang", systemImage: "plus")
+                Label("Let’s hang", systemImage: "plus")
                     .font(.headline)
                     .frame(maxWidth: .infinity, minHeight: 36)
             }
