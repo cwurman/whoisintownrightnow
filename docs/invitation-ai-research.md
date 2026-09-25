@@ -38,6 +38,8 @@ Sources: [Jev model limits](https://docs.typesafe.ai/models), [question and resp
 
 ## Form contract
 
+See [candidate-based drafting beyond places](hang-field-candidates.md) for the proposed treatment of titles, time, duration, group size, recipients, and areas, including observed gaps in the current implementation. Those recommendations are not yet implemented.
+
 The app owns the final schema, independent of the AI vendor. For example, this illustrative draft could follow “Dinner at Lucia tonight at eight” with a September 25, 2026 reference date in Los Angeles:
 
 ```json
