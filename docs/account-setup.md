@@ -10,7 +10,7 @@ Implemented September 24, 2026 against Supabase project `pqliwxrxmeycdjptqpks`.
 - Private avatar uploads with bounded image dimensions, newly encoded JPEG bytes, unique versioned paths, and cleanup of the previous image after a successful save. Profile stores a path rather than a public URL.
 - Atomic `save_account` RPC and idempotent `bootstrap_account`. Database constraints, grants, and RLS isolate each user’s profile/settings; Storage policies isolate avatar reads/writes.
 - Both account rows carry server-managed revisions. Saves require the versions originally loaded; a stale device receives a conflict and must explicitly discard edits/reload before saving. Simultaneous saves cannot silently undo newer privacy choices. Failed photo saves attempt to remove their unused upload; the active image is protected by Storage policy.
-- The map’s profile button opens Settings and uses the signed-in user’s photo/initials. Local prototype posts and joins use that identity.
+- The top-right map control group includes the profile button, which opens Profile & settings and uses the signed-in user’s photo/initials. Local prototype posts and joins use that identity.
 
 The hosted migrations are `20260925052021_account_foundation.sql` and `20260925054407_account_save_conflicts.sql`, matching the repository and local migration history. Security and performance advisors returned no findings after deployment. No real user accounts were created by tests.
 
@@ -56,7 +56,7 @@ xcodebuild -project whoisintownrightnow.xcodeproj -scheme whoisintownrightnow \
 
 `LocalSupabase.json` is ignored and included only in the test bundle, never the app. Tests refuse hosted URLs. The API tests create disposable local accounts and clean them up; they cover idempotency, settings validation/rollback, session refresh, cross-user and anonymous denial, private avatars, and cascading profile cleanup. The simulator integration test exercises the actual Swift store, JPEG processing, save, Keychain-backed restoration, photo download/removal, and logout. Native Apple authorization itself cannot be substituted by these tests.
 
-Run `supabase stop` from this repository to stop its local stack while retaining local data. For map-only design review, add `--preview-map` to the Xcode scheme’s launch arguments in Debug; this bypass is absent in Release.
+Run `supabase stop` from this repository to stop its local stack while retaining local data. For design review, add `--preview-map` to the Xcode scheme’s launch arguments in Debug. The map’s top-right profile button opens the same editor with explicitly labeled, in-memory preview data: name, photo, and preferences can be saved during that preview, but reset when the app relaunches. Cancel discards the current edits. This path does not create an account, contact Auth/Storage, or bypass authentication in Release; the preview model and launch argument are absent in Release.
 
 ## Remaining scope and decisions
 

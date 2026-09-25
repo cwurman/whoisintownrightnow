@@ -9,12 +9,15 @@ Updated September 25, 2026. Work is on `codex/account-foundation`; commits are l
 - Settings preserve Exact/Vicinity and Off/Direct invites only/All. Saves are atomic and reject stale versions, including simultaneous saves from two devices.
 - Sessions restore through Keychain. Network failures preserve the session and show retry. Photo failures have their own retry, and image processing downsizes, normalizes orientation, and strips location metadata.
 - The [native iOS refinement](ux-refinement.md) adds a Find My-inspired map, Liquid Glass controls, real system sheet detents, People/Signals lists, profile cards, and native composer/settings forms. Larger accessibility text uses expanded sheets and stacked rows.
+- Map appearance, recenter, and profile/settings form a compact glass group at the top right. The default panel stays “Happening now.” The profile editor is also usable in Debug map preview with clearly labeled, temporary name/photo/preferences; authenticated saves still use Supabase.
 - Map focus follows a signal from its host to its destination. The expanded list scrolls through every signal. Row and Join actions are separate, and joined/owned signals cannot be joined again.
 - Posting waits for actual composer dismissal before presenting confirmation. Preview copy identifies sample data and does not claim invites or texts were sent. “Share this plan” opens the native share sheet with plan text.
 
 Run `./scripts/check.sh` for local database/API tests, simulator XCTest, an unsigned Release iPhone build, and signal geometry checks. It uses disposable local accounts and does not test against the hosted project. See [account setup](account-setup.md) for prerequisites and detailed coverage.
 
 Final verification passed: all local API checks, five XCTest cases with zero failures/skips (three account integration cases and two composer draft cases), Debug simulator and unsigned Release device builds, and geometry checks. Simulator interaction checks covered separate Join/row actions, three consecutive posts, reaching/opening the fifth list item, and the native share sheet. Hosted security/performance advisors reported no findings after the second migration. The local test stack is stopped with its volumes retained; disposable test accounts were removed. The only build warning was Xcode skipping App Intents extraction because the app has no App Intents dependency.
+
+The September 25 profile/toolbar pass repeated the full check successfully in `build/check.gBVeBl`. Manual checks covered saving/reopening profile preferences and a sample photo, canceling edits, opening the editor from the compact toolbar, dark appearance, and accessibility-large text. See [UX verification](ux-refinement.md#verification).
 
 ## Configuration needed to test real Apple sign-in
 
@@ -65,5 +68,8 @@ The [original product audit](product-audit.md) inventories every code path and r
 | `b763aec` | Native composer and pickers, actual draft dates and pin coordinates, and draft tests. |
 | `be05189` | Native welcome/onboarding/settings presentation. |
 | `8c46ba2` | Larger-text row layouts, appearance refresh, profile avatar, and selection contrast. |
+| `8508676` | Restore Happening now and signals as the default panel. |
+| `1bcf741` | Move profile/settings beside the top-right map controls. |
+| `ed9e421` | Complete the shared profile editor, isolated Debug preview editing, and compact glass control group. |
 
 Documentation updates are separate from implementation. No social backend or unresolved product rule was added in this UX pass.
