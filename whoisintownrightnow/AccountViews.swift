@@ -87,8 +87,78 @@ private struct WelcomeView: View {
     }
 }
 
+// Preview data is isolated from Auth and Storage and never included in a Release build.
+#if DEBUG
+@MainActor @Observable
+final class PreviewAccountSettings {
+    var profile = AccountProfile(id: UUID(), displayName: "You", avatarPath: nil, onboardingCompletedAt: nil, revision: 1)
+    var settings = AccountSettings(locationMode: .vicinity, notificationMode: .off, locationSharingConfirmedAt: nil, revision: 1)
+    var avatarData: Data?
+}
+#endif
+
+@MainActor
+private enum AccountSettingsSource {
+    case account(AccountStore)
+    #if DEBUG
+    case preview(PreviewAccountSettings)
+    #endif
+
+    var store: AccountStore? {
+        switch self {
+        case .account(let store): store
+        #if DEBUG
+        case .preview: nil
+        #endif
+        }
+    }
+
+    var profile: AccountProfile? {
+        switch self {
+        case .account(let store): store.account?.profile
+        #if DEBUG
+        case .preview(let preview): preview.profile
+        #endif
+        }
+    }
+
+    var settings: AccountSettings? {
+        switch self {
+        case .account(let store): store.account?.settings
+        #if DEBUG
+        case .preview(let preview): preview.settings
+        #endif
+        }
+    }
+
+    var avatarData: Data? {
+        switch self {
+        case .account(let store): store.avatarData
+        #if DEBUG
+        case .preview(let preview): preview.avatarData
+        #endif
+        }
+    }
+
+    func save(name: String, location: LocationSharingMode, notifications: NotificationMode, photoData: Data?, removePhoto: Bool) async -> Bool {
+        switch self {
+        case .account(let store):
+            return await store.save(name: name, location: location, notifications: notifications, photoData: photoData, removePhoto: removePhoto)
+        #if DEBUG
+        case .preview(let preview):
+            preview.profile.displayName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+            preview.settings.locationMode = location
+            preview.settings.notificationMode = notifications
+            if removePhoto { preview.avatarData = nil }
+            if let photoData { preview.avatarData = photoData }
+            return true
+        #endif
+        }
+    }
+}
+
 struct AccountSettingsView: View {
-    @Bindable var store: AccountStore
+    private let source: AccountSettingsSource
     let isOnboarding: Bool
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
@@ -102,32 +172,69 @@ struct AccountSettingsView: View {
     @State private var photoError: String?
     @State private var confirmSignOut = false
 
+    init(store: AccountStore, isOnboarding: Bool) {
+        source = .account(store)
+        self.isOnboarding = isOnboarding
+    }
+
+    #if DEBUG
+    init(preview: PreviewAccountSettings) {
+        source = .preview(preview)
+        isOnboarding = false
+    }
+    #endif
+
+    private var store: AccountStore? { source.store }
+    private var isWorking: Bool { store?.isWorking ?? false }
+    private var needsReload: Bool { store?.needsReload ?? false }
+    private var hasSavedPhoto: Bool { source.avatarData != nil || source.profile?.avatarPath != nil }
+    private var initials: String {
+        let letters = name.split(whereSeparator: \.isWhitespace).prefix(2).compactMap(\.first).map(String.init).joined().uppercased()
+        return letters.isEmpty ? "You" : letters
+    }
+
     var body: some View {
         NavigationStack {
             Form {
+                if store == nil {
+                    Section {
+                        Label("Preview profile", systemImage: "info.circle")
+                        Text("Try your name, photo, and preferences. Changes last for this map preview and aren’t saved to an account.")
+                            .font(.footnote).foregroundStyle(.secondary)
+                    }
+                }
                 Section {
-                    HStack(spacing: 18) {
-                        AccountAvatar(data: pendingPhoto ?? (removePhoto ? nil : store.avatarData), initials: store.account?.profile.initials ?? "You", size: 64)
-                        VStack(alignment: .leading, spacing: 8) {
+                    VStack(spacing: 12) {
+                        AccountAvatar(data: pendingPhoto ?? (removePhoto ? nil : source.avatarData), initials: initials, size: 88)
+                        HStack(spacing: 20) {
                             PhotosPicker(selection: $photoItem, matching: .images) {
-                                Text(loadingPhoto ? "Preparing photo…" : "Choose photo")
+                                Text(loadingPhoto ? "Preparing photo…" : (hasSavedPhoto && !removePhoto) || pendingPhoto != nil ? "Change photo" : "Add photo")
                             }
+                            .buttonStyle(.borderless)
                             .disabled(loadingPhoto)
-                            if pendingPhoto != nil || (!removePhoto && store.account?.profile.avatarPath != nil) {
+                            if pendingPhoto != nil || (!removePhoto && hasSavedPhoto) {
                                 Button("Remove photo", role: .destructive) {
                                     pendingPhoto = nil; photoItem = nil; removePhoto = true
-                                }.font(.footnote)
+                                }.buttonStyle(.borderless)
                             }
                         }
+                        .font(.subheadline)
                     }
-                    TextField("Your name", text: $name)
-                        .textContentType(.name).textInputAutocapitalization(.words)
-                        .accessibilityIdentifier("displayName")
-                    if let error = store.avatarErrorMessage, pendingPhoto == nil, !removePhoto {
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
+                    .listRowSeparator(.hidden)
+                    LabeledContent("Name") {
+                        TextField("Your name", text: $name)
+                            .multilineTextAlignment(.trailing)
+                            .textContentType(.name).textInputAutocapitalization(.words)
+                            .accessibilityLabel("Your name")
+                            .accessibilityIdentifier("displayName")
+                    }
+                    if let store, let error = store.avatarErrorMessage, pendingPhoto == nil, !removePhoto {
                         Text(error).font(.footnote).foregroundStyle(.secondary)
                         Button("Retry photo download") { Task { await store.retryAvatar() } }
                     }
-                } header: { Text("You") } footer: {
+                } header: { Text("Profile") } footer: {
                     Text("Use the name your friends know. A photo is optional.")
                 }
 
@@ -142,15 +249,17 @@ struct AccountSettingsView: View {
                 } header: { Text("Notifications & invites") } footer: { Text(notifications.detail) }
 
                 Section {
-                    Text("Your preferences are saved to your account. Live location sharing and notification delivery aren’t available yet.")
+                    Text(store == nil
+                         ? "Live location sharing and notification delivery aren’t available in this preview."
+                         : "Your preferences are saved to your account. Live location sharing and notification delivery aren’t available yet.")
                         .font(.footnote).foregroundStyle(.secondary)
                 }
 
-                if let error = photoError ?? store.errorMessage {
+                if let error = photoError ?? store?.errorMessage {
                     Section { Text(error).foregroundStyle(.red).font(.callout) }
                 }
 
-                if store.needsReload {
+                if let store, store.needsReload {
                     Section {
                         Button("Discard edits and reload saved settings") {
                             Task {
@@ -160,17 +269,19 @@ struct AccountSettingsView: View {
                     }
                 }
 
-                Section {
-                    Button("Sign out", role: .destructive) { confirmSignOut = true }
-                        .disabled(store.isWorking)
+                if store != nil {
+                    Section {
+                        Button("Sign out", role: .destructive) { confirmSignOut = true }
+                            .disabled(isWorking)
+                    }
                 }
             }
-            .disabled(store.isWorking)
-            .navigationTitle(isOnboarding ? "Your profile" : "Settings")
+            .disabled(isWorking)
+            .navigationTitle(isOnboarding ? "Your profile" : "Profile & settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 if !isOnboarding {
-                    ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() }.disabled(store.isWorking) }
+                    ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() }.disabled(isWorking) }
                     ToolbarItem(placement: .confirmationAction) { saveButton }
                 }
             }
@@ -182,16 +293,16 @@ struct AccountSettingsView: View {
                 }
             }
             .scrollDismissesKeyboard(.interactively)
-            .interactiveDismissDisabled(store.isWorking)
+            .interactiveDismissDisabled(isWorking)
             .confirmationDialog("Sign out of this account? Unsaved changes will be discarded.", isPresented: $confirmSignOut, titleVisibility: .visible) {
-                Button("Sign out", role: .destructive) { Task { await store.signOut() } }
+                Button("Sign out", role: .destructive) { Task { await store?.signOut() } }
             }
         }
         .tint(Theme.accent)
         .onAppear {
             guard !didLoad else { return }
             copySavedAccount()
-            store.errorMessage = nil
+            store?.errorMessage = nil
             didLoad = true
         }
         .task(id: photoItem) {
@@ -227,24 +338,24 @@ struct AccountSettingsView: View {
     private var saveButton: some View {
         Button {
             Task {
-                let saved = await store.save(name: name, location: location, notifications: notifications, photoData: pendingPhoto, removePhoto: removePhoto)
+                let saved = await source.save(name: name, location: location, notifications: notifications, photoData: pendingPhoto, removePhoto: removePhoto)
                 if saved && !isOnboarding { dismiss() }
             }
         } label: {
             HStack {
-                if store.isWorking { ProgressView() }
+                if isWorking { ProgressView() }
                 Text(isOnboarding ? "Continue" : "Save").fontWeight(.semibold)
             }.frame(maxWidth: isOnboarding ? .infinity : nil)
         }
-        .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || name.trimmingCharacters(in: .whitespacesAndNewlines).unicodeScalars.count > 80 || store.isWorking || loadingPhoto || store.needsReload)
+        .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || name.trimmingCharacters(in: .whitespacesAndNewlines).unicodeScalars.count > 80 || isWorking || loadingPhoto || needsReload)
         .accessibilityIdentifier("saveAccount")
     }
 
     private func copySavedAccount() {
-        guard let account = store.account else { return }
-        name = account.profile.displayName
-        location = account.settings.locationMode
-        notifications = account.settings.notificationMode
+        guard let profile = source.profile, let settings = source.settings else { return }
+        name = profile.displayName
+        location = settings.locationMode
+        notifications = settings.notificationMode
         photoItem = nil
         pendingPhoto = nil
         removePhoto = false

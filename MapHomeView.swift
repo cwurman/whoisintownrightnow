@@ -27,6 +27,25 @@ struct MapHomeView: View {
     @State private var connectionProgress = 0.0
     @State private var toast: String?
     @State private var toastTask: Task<Void, Never>?
+    #if DEBUG
+    @State private var previewSettings = PreviewAccountSettings()
+    #endif
+
+    private var activeProfile: AccountProfile? {
+        #if DEBUG
+        profile ?? previewSettings.profile
+        #else
+        profile
+        #endif
+    }
+
+    private var activeAvatarData: Data? {
+        #if DEBUG
+        accountStore == nil ? previewSettings.avatarData : avatarData
+        #else
+        avatarData
+        #endif
+    }
 
     private static var overviewRect: MKMapRect {
         let points = (Friend.mock.map(\.coordinate) + [Friend.youCoordinate]).map(MKMapPoint.init)
@@ -113,7 +132,7 @@ struct MapHomeView: View {
                             .accessibilityIdentifier("signal-pin-\(signal.id)")
                     }.annotationTitles(.hidden)
                 }
-                if !mapSignals.contains(where: { $0.hostID == (profile?.id.uuidString.lowercased() ?? "you") }) {
+                if !mapSignals.contains(where: { $0.hostID == (activeProfile?.id.uuidString.lowercased() ?? "you") }) {
                     Annotation("You", coordinate: Friend.youCoordinate) { YouDotView() }
                         .annotationTitles(.hidden)
                 }
@@ -147,44 +166,41 @@ struct MapHomeView: View {
     }
 
     private var mapControls: some View {
-        GlassEffectContainer(spacing: 6) {
-            HStack(spacing: 6) {
-                Menu {
-                    Picker("Map appearance", selection: $satellite) {
-                        Text("Standard").tag(false)
-                        Text("Satellite").tag(true)
-                    }
-                } label: {
-                    Image(systemName: "map").font(.system(size: 20)).frame(width: 30, height: 30)
+        HStack(spacing: 2) {
+            Menu {
+                Picker("Map appearance", selection: $satellite) {
+                    Text("Standard").tag(false)
+                    Text("Satellite").tag(true)
                 }
-                .buttonStyle(.glass)
-                .buttonBorderShape(.circle)
-                .accessibilityLabel("Map appearance")
-                Button {
-                    clearFocus()
-                    withAnimation(focusAnimation) { cameraPosition = .rect(Self.overviewRect) }
-                } label: {
-                    Image(systemName: "location.fill").font(.system(size: 20)).frame(width: 30, height: 30)
-                }
-                .buttonStyle(.glass)
-                .buttonBorderShape(.circle)
-                .accessibilityLabel("Show everyone on the map")
-                Button { showSettings = true } label: {
-                    Group {
-                        if let profile {
-                            AccountAvatar(data: avatarData, initials: profile.initials, size: 26)
-                        } else {
-                            Image(systemName: "person.crop.circle").font(.system(size: 20))
-                        }
-                    }.frame(width: 30, height: 30)
-                }
-                .buttonStyle(.glass)
-                .buttonBorderShape(.circle)
-                .accessibilityLabel("Profile and settings")
-                .accessibilityIdentifier("profile-settings")
+            } label: {
+                Image(systemName: "map").font(.system(size: 20))
+                    .frame(width: 44, height: 44).contentShape(Rectangle())
             }
-            .tint(.primary)
+            .accessibilityLabel("Map appearance")
+            Button {
+                clearFocus()
+                withAnimation(focusAnimation) { cameraPosition = .rect(Self.overviewRect) }
+            } label: {
+                Image(systemName: "location.fill").font(.system(size: 20))
+                    .frame(width: 44, height: 44).contentShape(Rectangle())
+            }
+            .accessibilityLabel("Show everyone on the map")
+            Button { showSettings = true } label: {
+                Group {
+                    if let profile = activeProfile, accountStore != nil || profile.displayName != "You" || activeAvatarData != nil {
+                        AccountAvatar(data: activeAvatarData, initials: profile.initials, size: 30)
+                    } else {
+                        Image(systemName: "person.crop.circle").font(.system(size: 20))
+                    }
+                }.frame(width: 44, height: 44).contentShape(Rectangle())
+            }
+            .accessibilityLabel("Profile and settings")
+            .accessibilityIdentifier("profile-settings")
         }
+        .buttonStyle(.plain)
+        .tint(.primary)
+        .padding(4)
+        .glassEffect(.regular, in: .capsule)
     }
 
     private var panel: some View {
@@ -235,10 +251,14 @@ struct MapHomeView: View {
             if let accountStore {
                 AccountSettingsView(store: accountStore, isOnboarding: false)
             } else {
+                #if DEBUG
+                AccountSettingsView(preview: previewSettings)
+                #else
                 NavigationStack {
                     ContentUnavailableView("Your account", systemImage: "person.crop.circle", description: Text("Sign in to personalize your profile and sharing preferences. You’re viewing the map preview."))
                         .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { showSettings = false } } }
                 }
+                #endif
             }
         }
     }
@@ -349,11 +369,11 @@ struct MapHomeView: View {
     private func handlePost(_ draft: ComposerDraft) {
         guard showComposer, draft.canPost else { return }
         let signal = Signal(id: "me-\(UUID().uuidString)",
-            hostID: profile?.id.uuidString.lowercased() ?? "you", hostName: profile?.displayName ?? "You",
-            hostInitials: profile?.initials ?? "You", hostColor: .teal,
+            hostID: activeProfile?.id.uuidString.lowercased() ?? "you", hostName: activeProfile?.displayName ?? "You",
+            hostInitials: activeProfile?.initials ?? "You", hostColor: .teal,
             title: draft.text.trimmingCharacters(in: .whitespacesAndNewlines), place: draft.placeText,
             window: draft.whenText, distance: "you", seats: draft.seats,
-            going: [profile?.initials ?? "You"], isJoined: true, isMine: true,
+            going: [activeProfile?.initials ?? "You"], isJoined: true, isMine: true,
             anchorCoordinate: Friend.youCoordinate, anchorPlace: "Mission", destinationCoordinate: draft.placeCoordinate)
         signals.insert(signal, at: 0)
         section = .signals
@@ -366,7 +386,7 @@ struct MapHomeView: View {
     private func join(_ signal: Signal) {
         guard let index = signals.firstIndex(where: { $0.id == signal.id }), !signals[index].isJoined, !signals[index].isMine else { return }
         signals[index].isJoined = true
-        signals[index].going.append(profile?.initials ?? "You")
+        signals[index].going.append(activeProfile?.initials ?? "You")
         toastTask?.cancel()
         toast = "Joined in this preview. \(signal.hostFirstName) hasn’t been notified."
         toastTask = Task {
