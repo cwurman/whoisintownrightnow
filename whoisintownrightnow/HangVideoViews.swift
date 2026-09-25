@@ -76,13 +76,10 @@ struct HangVideoComposer: View {
             if let item { attachment.choose(item); selection = nil }
         }
         .fullScreenCover(isPresented: $showCamera) {
-            HangVideoCamera { result in
+            HangVideoCamera { video in
                 showCamera = false
-                switch result {
-                case .success(let source): if let source { attachment.recorded(source) }
-                case .failure(let error): attachment.errorMessage = error.localizedDescription
-                }
-            }.ignoresSafeArea()
+                if let video { attachment.prepare { video } }
+            }
         }
         .alert("Can’t record a video", isPresented: Binding(get: { cameraError != nil }, set: { if !$0 { cameraError = nil } })) {
             if offerSettings {
@@ -137,38 +134,6 @@ struct HangVideoComposer: View {
             return
         }
         showCamera = true
-    }
-}
-
-private struct HangVideoCamera: UIViewControllerRepresentable {
-    let completion: (Result<HangVideoSource?, Error>) -> Void
-
-    func makeCoordinator() -> Coordinator { Coordinator(completion: completion) }
-
-    func makeUIViewController(context: Context) -> UIImagePickerController {
-        let camera = UIImagePickerController()
-        camera.sourceType = .camera
-        camera.mediaTypes = [UTType.movie.identifier]
-        camera.cameraCaptureMode = .video
-        if UIImagePickerController.isCameraDeviceAvailable(.front) { camera.cameraDevice = .front }
-        camera.videoMaximumDuration = HangVideoImporter.maximumDuration
-        camera.videoQuality = .typeHigh
-        camera.delegate = context.coordinator
-        return camera
-    }
-
-    func updateUIViewController(_ controller: UIImagePickerController, context: Context) { }
-
-    final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        let completion: (Result<HangVideoSource?, Error>) -> Void
-        init(completion: @escaping (Result<HangVideoSource?, Error>) -> Void) { self.completion = completion }
-
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) { completion(.success(nil)) }
-
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-            guard let url = info[.mediaURL] as? URL else { completion(.failure(HangVideoError.unreadable)); return }
-            completion(Result { try HangVideoSource.copy(from: url) })
-        }
     }
 }
 

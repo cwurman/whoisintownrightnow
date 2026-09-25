@@ -180,11 +180,19 @@ nonisolated final class HangVideoFile: Sendable {
     }
 }
 
+nonisolated struct HangTranscript: Codable, Sendable {
+    let text: String
+    let locale: String
+    let recordedAt: Date
+}
+
 nonisolated struct HangVideo: Identifiable, Sendable {
     let id = UUID()
     let file: HangVideoFile
     let poster: Data
     let duration: Double
+    var transcript: HangTranscript? = nil
+    var capturedInApp = false
 
     var durationLabel: String { "0:\(String(format: "%02d", Int(duration.rounded(.up))))" }
 }
