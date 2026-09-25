@@ -1,5 +1,7 @@
 # Product functionality audit
 
+**UX update:** the [native iOS refinement](ux-refinement.md) replaces the custom map/composer surfaces, adds people details, real draft dates, and map pin selection. The historical inventory below retains the initial behavior.
+
 **Current status:** see [next-session notes](next-session.md) for the completed account foundation, save/photo reliability, map list/action fixes, native sharing, validation results, and remaining decisions. The inventory below is the original audit, preserved for traceability; it includes behavior that has since been fixed.
 
 Implementation update, September 24: the account foundation described in [account setup](account-setup.md) now replaces the hardcoded identity/profile entry point. Name, photo, and sharing/notification preferences persist in Supabase; Apple provider setup remains pending. The inventory below is the original audit, retained as a record of the remaining social/map work. It is not a statement that the new account code is still mocked.
