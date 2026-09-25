@@ -9,7 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        MapHomeView()
+        #if DEBUG
+        if ProcessInfo.processInfo.arguments.contains("--preview-map") {
+            MapHomeView()
+        } else {
+            AccountRootView()
+        }
+        #else
+        AccountRootView()
+        #endif
     }
 }
 

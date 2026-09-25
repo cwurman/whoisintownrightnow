@@ -11,6 +11,9 @@ import SwiftUI
 import MapKit
 
 struct MapHomeView: View {
+    var profile: AccountProfile? = nil
+    var avatarData: Data? = nil
+    var onSettings: (() -> Void)? = nil
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var viewportHeight: CGFloat = 800
     @State private var selectedSignalID: Signal.ID?
@@ -228,7 +231,7 @@ struct MapHomeView: View {
                 .annotationTitles(.hidden)
             }
 
-            if !signalingHostIDs.contains("you") {
+            if !signalingHostIDs.contains(profile?.id.uuidString.lowercased() ?? "you") {
                 Annotation("You", coordinate: Friend.youCoordinate) {
                     YouDotView()
                         .blur(radius: selectedSignalID == nil ? 0 : 4)
@@ -302,15 +305,13 @@ struct MapHomeView: View {
 
             // Profile
             Button {
-                showToast("You screen — next screen")
+                onSettings?()
             } label: {
-                Text("JD")
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(Theme.ink)
-                    .frame(width: 40, height: 40)
+                AccountAvatar(data: avatarData, initials: profile?.initials ?? "You")
                     .background(chromeBackground(cornerRadius: 12))
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("Your settings")
         }
     }
 
@@ -385,13 +386,13 @@ struct MapHomeView: View {
     private func handlePost(_ draft: ComposerDraft) {
         let signal = Signal(
             id: "me-\(UUID().uuidString)",
-            hostID: "you", hostName: "You", hostInitials: "JD", hostColor: Theme.ink,
+            hostID: profile?.id.uuidString.lowercased() ?? "you", hostName: profile?.displayName ?? "You", hostInitials: profile?.initials ?? "You", hostColor: Theme.ink,
             title: draft.text.trimmingCharacters(in: .whitespaces),
             place: draft.placeText,
             window: draft.whenText,
             distance: "you",
             seats: draft.seats,
-            going: ["JD"], isJoined: true, isMine: true,
+            going: [profile?.initials ?? "You"], isJoined: true, isMine: true,
             anchorCoordinate: Friend.youCoordinate, anchorPlace: "Mission",
             destinationCoordinate: draft.placeCoordinate
         )
@@ -414,7 +415,7 @@ struct MapHomeView: View {
         guard let index = signals.firstIndex(where: { $0.id == signal.id }) else { return }
         if signals[index].isJoined || signals[index].isMine { return }
         signals[index].isJoined = true
-        signals[index].going.append("JD")
+        signals[index].going.append(profile?.initials ?? "You")
         showToast("Opening Messages with \(signal.hostFirstName)…")
     }
 

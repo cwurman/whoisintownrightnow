@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ACA000000000000000000001 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = ACA000000000000000000002 /* Supabase */; };
 		EE67F92230336674007DD8DC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE67F92130336673007DD8DC /* Models.swift */; };
 		EE67F924303366B9007DD8DC /* MapHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE67F923303366B9007DD8DC /* MapHomeView.swift */; };
 		EE67F92630336A9A007DD8DC /* ComposerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE67F92530336A9A007DD8DC /* ComposerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ACA100000000000000000001 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = whoisintownrightnowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE67F91330334477007DD8DC /* whoisintownrightnow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whoisintownrightnow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE67F92130336673007DD8DC /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		EE67F923303366B9007DD8DC /* MapHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHomeView.swift; sourceTree = "<group>"; };
@@ -20,6 +22,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		ACA100000000000000000002 = {isa = PBXFileSystemSynchronizedRootGroup; path = whoisintownrightnowTests; sourceTree = "<group>"; };
 		EE67F91530334477007DD8DC /* whoisintownrightnow */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = whoisintownrightnow;
@@ -28,10 +31,12 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		ACA100000000000000000005 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		EE67F91030334477007DD8DC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA000000000000000000001 /* Supabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +46,7 @@
 		EE67F90A30334477007DD8DC = {
 			isa = PBXGroup;
 			children = (
+				ACA100000000000000000002 /* whoisintownrightnowTests */,
 				EE67F91530334477007DD8DC /* whoisintownrightnow */,
 				EE67F91430334477007DD8DC /* Products */,
 				EE67F92130336673007DD8DC /* Models.swift */,
@@ -52,6 +58,7 @@
 		EE67F91430334477007DD8DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				ACA100000000000000000001,
 				EE67F91330334477007DD8DC /* whoisintownrightnow.app */,
 			);
 			name = Products;
@@ -60,6 +67,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		ACA100000000000000000009 = {isa = PBXNativeTarget; buildConfigurationList = ACA10000000000000000000C; buildPhases = (ACA100000000000000000004, ACA100000000000000000005, ACA100000000000000000006,); buildRules = (); dependencies = (ACA100000000000000000008,); fileSystemSynchronizedGroups = (ACA100000000000000000002,); name = whoisintownrightnowTests; packageProductDependencies = (); productName = whoisintownrightnowTests; productReference = ACA100000000000000000001; productType = "com.apple.product-type.bundle.unit-test"; };
 		EE67F91230334477007DD8DC /* whoisintownrightnow */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE67F91E30334478007DD8DC /* Build configuration list for PBXNativeTarget "whoisintownrightnow" */;
@@ -77,6 +85,7 @@
 			);
 			name = whoisintownrightnow;
 			packageProductDependencies = (
+				ACA000000000000000000002 /* Supabase */,
 			);
 			productName = whoisintownrightnow;
 			productReference = EE67F91330334477007DD8DC /* whoisintownrightnow.app */;
@@ -94,6 +103,7 @@
 				TargetAttributes = {
 					EE67F91230334477007DD8DC = {
 						CreatedOnToolsVersion = 26.6;
+						SystemCapabilities = { com.apple.SignInWithApple = { enabled = 1; }; };
 					};
 				};
 			};
@@ -107,16 +117,19 @@
 			mainGroup = EE67F90A30334477007DD8DC;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
+			packageReferences = (ACA000000000000000000003 /* supabase-swift */,);
 			productRefGroup = EE67F91430334477007DD8DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				ACA100000000000000000009,
 				EE67F91230334477007DD8DC /* whoisintownrightnow */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		ACA100000000000000000006 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		EE67F91130334477007DD8DC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -127,6 +140,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		ACA100000000000000000004 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		EE67F90F30334477007DD8DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -140,6 +154,8 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		ACA10000000000000000000B = {isa = XCBuildConfiguration; buildSettings = { BUNDLE_LOADER = "$(TEST_HOST)"; CODE_SIGN_STYLE = Automatic; DEVELOPMENT_TEAM = 36P3GQ337U; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 26.5; PRODUCT_BUNDLE_IDENTIFIER = wurms.whoisintownrightnowTests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/whoisintownrightnow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/whoisintownrightnow"; }; name = Release; };
+		ACA10000000000000000000A = {isa = XCBuildConfiguration; buildSettings = { BUNDLE_LOADER = "$(TEST_HOST)"; CODE_SIGN_STYLE = Automatic; DEVELOPMENT_TEAM = 36P3GQ337U; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 26.5; PRODUCT_BUNDLE_IDENTIFIER = wurms.whoisintownrightnowTests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/whoisintownrightnow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/whoisintownrightnow"; }; name = Debug; };
 		EE67F91C30334478007DD8DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -267,6 +283,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = whoisintownrightnow/whoisintownrightnow.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 36P3GQ337U;
 				ENABLE_PREVIEWS = YES;
@@ -299,6 +316,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = whoisintownrightnow/whoisintownrightnow.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 36P3GQ337U;
 				ENABLE_PREVIEWS = YES;
@@ -327,7 +345,24 @@
 		};
 /* End XCBuildConfiguration section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		ACA000000000000000000003 /* supabase-swift */ = {isa = XCRemoteSwiftPackageReference; repositoryURL = "https://github.com/supabase/supabase-swift.git"; requirement = {kind = exactVersion; version = 2.55.2; }; };
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ACA000000000000000000002 /* Supabase */ = {isa = XCSwiftPackageProductDependency; package = ACA000000000000000000003 /* supabase-swift */; productName = Supabase; };
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin PBXContainerItemProxy section */
+		ACA100000000000000000007 = {isa = PBXContainerItemProxy; containerPortal = EE67F90B30334477007DD8DC; proxyType = 1; remoteGlobalIDString = EE67F91230334477007DD8DC; remoteInfo = whoisintownrightnow; };
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		ACA100000000000000000008 = {isa = PBXTargetDependency; target = EE67F91230334477007DD8DC; targetProxy = ACA100000000000000000007; };
+/* End PBXTargetDependency section */
+
 /* Begin XCConfigurationList section */
+		ACA10000000000000000000C = {isa = XCConfigurationList; buildConfigurations = (ACA10000000000000000000A, ACA10000000000000000000B,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 		EE67F90E30334477007DD8DC /* Build configuration list for PBXProject "whoisintownrightnow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
