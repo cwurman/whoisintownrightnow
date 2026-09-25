@@ -9,9 +9,12 @@ Implemented September 24, 2026 against Supabase project `pqliwxrxmeycdjptqpks`.
 - Resumable onboarding and Settings: display name, optional photo, Exact/Vicinity, Off/Direct invites only/All, save failure handling, and sign out of this device.
 - Private avatar uploads with bounded image dimensions, newly encoded JPEG bytes, unique versioned paths, and cleanup of the previous image after a successful save. Profile stores a path rather than a public URL.
 - Atomic `save_account` RPC and idempotent `bootstrap_account`. Database constraints, grants, and RLS isolate each user’s profile/settings; Storage policies isolate avatar reads/writes.
+- Both account rows carry server-managed revisions. Saves require the versions originally loaded; a stale device receives a conflict and must explicitly discard edits/reload before saving. Simultaneous saves cannot silently undo newer privacy choices. Failed photo saves attempt to remove their unused upload; the active image is protected by Storage policy.
 - The map’s profile button opens Settings and uses the signed-in user’s photo/initials. Local prototype posts and joins use that identity.
 
-The hosted migration version is `20260925052021_account_foundation.sql`, matching the repository and local migration history. Security and performance advisors returned no findings after deployment. No real user accounts were created by tests.
+The hosted migrations are `20260925052021_account_foundation.sql` and `20260925054407_account_save_conflicts.sql`, matching the repository and local migration history. Security and performance advisors returned no findings after deployment. No real user accounts were created by tests.
+
+Conflicts use the explicit HTTP error `PT409`. Do not replace it with the PostgreSQL serialization error: PostgREST can automatically retry that error indefinitely. [Supabase troubleshooting guidance](https://supabase.com/docs/guides/troubleshooting/high-cpu-and-infinite-transaction-retries-when-using-custom-error-codes-in-rpc-functions-77326b)
 
 Verified: Debug simulator build and launch, unsigned Release iPhone build, both simulator XCTest cases (0 failures), the local Auth/REST/Storage integration suite, and the existing signal-geometry tests. The simulator suite also verifies that an offline load preserves the session and presents a retry state. The local Supabase stack was stopped after testing, retaining its volumes.
 

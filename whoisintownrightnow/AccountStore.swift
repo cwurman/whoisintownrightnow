@@ -13,6 +13,7 @@ final class AccountStore {
     private(set) var account: AccountSnapshot?
     private(set) var avatarData: Data?
     private(set) var isWorking = false
+    private(set) var needsReload = false
     var errorMessage: String?
     private let client: SupabaseClient
     private var nonce: String?
@@ -94,6 +95,7 @@ final class AccountStore {
         let snapshot: AccountSnapshot = try await client.rpc("bootstrap_account", params: Parameters(p_initial_name: name)).execute().value
         guard client.auth.currentUser?.id == session.user.id else { return }
         account = snapshot
+        needsReload = false
         loadedUserID = snapshot.profile.id
         phase = snapshot.needsSetup ? .setup : .ready
         appleName = nil
@@ -101,24 +103,28 @@ final class AccountStore {
     }
 
     func save(name: String, location: LocationSharingMode, notifications: NotificationMode, photoData: Data?, removePhoto: Bool) async -> Bool {
-        guard let current = account, !isWorking else { return false }
+        guard let current = account, !isWorking, !needsReload else { return false }
         isWorking = true
         errorMessage = nil
         defer { isWorking = false }
+        var uploadedPath: String?
         do {
             let cleanName = name.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !cleanName.isEmpty, cleanName.count <= 80 else { throw AccountError.message("Enter a name of 1–80 characters.") }
+            guard !cleanName.isEmpty, cleanName.unicodeScalars.count <= 80 else { throw AccountError.message("Enter a name of 1–80 characters.") }
             var path = removePhoto ? nil : current.profile.avatarPath
             if let photoData {
                 let newPath = "\(current.profile.id.uuidString.lowercased())/\(UUID().uuidString.lowercased()).jpg"
                 try await client.storage.from("avatars").upload(newPath, data: photoData, options: FileOptions(contentType: "image/jpeg", upsert: false))
                 path = newPath
+                uploadedPath = newPath
             }
             struct Parameters: Encodable {
                 let p_display_name: String
                 let p_avatar_path: String?
                 let p_location_mode: String
                 let p_notification_mode: String
+                let p_profile_revision: Int64
+                let p_settings_revision: Int64
                 // RPC needs explicit null to remove an avatar (synthesized optional encoding omits it).
                 func encode(to encoder: Encoder) throws {
                     var values = encoder.container(keyedBy: CodingKeys.self)
@@ -126,10 +132,12 @@ final class AccountStore {
                     try values.encode(p_avatar_path, forKey: .p_avatar_path)
                     try values.encode(p_location_mode, forKey: .p_location_mode)
                     try values.encode(p_notification_mode, forKey: .p_notification_mode)
+                    try values.encode(p_profile_revision, forKey: .p_profile_revision)
+                    try values.encode(p_settings_revision, forKey: .p_settings_revision)
                 }
-                enum CodingKeys: String, CodingKey { case p_display_name, p_avatar_path, p_location_mode, p_notification_mode }
+                enum CodingKeys: String, CodingKey { case p_display_name, p_avatar_path, p_location_mode, p_notification_mode, p_profile_revision, p_settings_revision }
             }
-            let snapshot: AccountSnapshot = try await client.rpc("save_account", params: Parameters(p_display_name: cleanName, p_avatar_path: path, p_location_mode: location.rawValue, p_notification_mode: notifications.rawValue)).execute().value
+            let snapshot: AccountSnapshot = try await client.rpc("save_account", params: Parameters(p_display_name: cleanName, p_avatar_path: path, p_location_mode: location.rawValue, p_notification_mode: notifications.rawValue, p_profile_revision: current.profile.revision, p_settings_revision: current.settings.revision)).execute().value
             guard client.auth.currentUser?.id == current.profile.id else { return false }
             account = snapshot
             phase = .ready
@@ -140,9 +148,22 @@ final class AccountStore {
             }
             return true
         } catch {
-            errorMessage = error.localizedDescription
+            // If a response was lost after commit, RLS prevents deletion of the active photo.
+            if let uploadedPath { _ = try? await client.storage.from("avatars").remove(paths: [uploadedPath]) }
+            needsReload = (error as? PostgrestError)?.code == "PT409"
+            errorMessage = needsReload ? "Your account changed on another device. Reload the saved settings before making more changes." : error.localizedDescription
             return false
         }
+    }
+
+    /// Refresh without replacing the root view and dismissing the settings form.
+    func reloadSavedAccount() async -> Bool {
+        guard !isWorking else { return false }
+        isWorking = true
+        errorMessage = nil
+        defer { isWorking = false }
+        do { try await fetchAccount(); return true }
+        catch { errorMessage = error.localizedDescription; return false }
     }
 
     func signOut() async {
@@ -167,6 +188,7 @@ final class AccountStore {
         account = nil
         avatarData = nil
         loadedUserID = nil
+        needsReload = false
         appleName = nil
         nonce = nil
         errorMessage = nil

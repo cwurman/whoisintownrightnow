@@ -11,6 +11,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import uuid
+from concurrent.futures import ThreadPoolExecutor
 
 config = json.loads(subprocess.check_output(["supabase", "status", "-o", "json"], stderr=subprocess.DEVNULL))
 base = config["API_URL"]
@@ -27,7 +28,7 @@ def request(method, path, body=None, token=None, raw=False, content_type="applic
         headers["Authorization"] = "Bearer " + token
     req = urllib.request.Request(base + path, data=data, method=method, headers=headers)
     try:
-        with urllib.request.urlopen(req) as response:
+        with urllib.request.urlopen(req, timeout=15) as response:
             payload = response.read()
             return response.status, payload if raw else (json.loads(payload) if payload else None)
     except urllib.error.HTTPError as error:
@@ -53,10 +54,13 @@ def bootstrap(token, name=""):
     return ok("POST", "/rest/v1/rpc/bootstrap_account", {"p_initial_name": name}, token)
 
 
-def save(token, name="Changed Name", location="exact", notifications="all", photo=None):
+def save(token, name="Changed Name", location="exact", notifications="all", photo=None, snapshot=None):
+    snapshot = snapshot or bootstrap(token)
     return request("POST", "/rest/v1/rpc/save_account", {
         "p_display_name": name, "p_avatar_path": photo,
         "p_location_mode": location, "p_notification_mode": notifications,
+        "p_profile_revision": snapshot["profile"]["revision"],
+        "p_settings_revision": snapshot["settings"]["revision"],
     }, token)
 
 
@@ -92,6 +96,27 @@ try:
     status, _ = request("PATCH", f"/rest/v1/user_settings?user_id=eq.{a}", {"privacy_revision": 0}, at)
     assert status == 403
     print("PASS: all notification modes, invalid values, transaction rollback, server-managed revision")
+
+    stale = bootstrap(at)
+    assert save(at, notifications="off")[0] == 200
+    current = bootstrap(at)
+    status, error = save(at, notifications="all", snapshot=stale)
+    assert status == 409 and json.loads(error)["code"] == "PT409"
+    assert bootstrap(at) == current, "A stale session must not undo Off or other saved changes"
+    for table, column in [("profiles", "id"), ("user_settings", "user_id")]:
+        assert request("PATCH", f"/rest/v1/{table}?{column}=eq.{a}", {"revision": 0}, at)[0] == 403
+    # Direct owner updates must also invalidate the snapshot used by the RPC.
+    ok("PATCH", f"/rest/v1/user_settings?user_id=eq.{a}", {"notification_mode": "direct_only"}, at)
+    assert save(at, snapshot=current)[0] == 409
+    current = bootstrap(at)
+    ok("PATCH", f"/rest/v1/profiles?id=eq.{a}", {"display_name": "Newer Name"}, at)
+    assert save(at, snapshot=current)[0] == 409
+    current = bootstrap(at)
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        results = list(pool.map(lambda name: save(at, name=name, snapshot=current), ["Device One", "Device Two"]))
+    assert sorted(status for status, _ in results) == [200, 409], results
+    assert bootstrap(at)["profile"]["revision"] == current["profile"]["revision"] + 1
+    print("PASS: stale saves preserve privacy, both rows invalidate snapshots, simultaneous saves have one winner")
 
     assert ok("GET", f"/rest/v1/profiles?id=eq.{a}", token=bt) == []
     assert ok("GET", f"/rest/v1/user_settings?user_id=eq.{a}", token=bt) == []

@@ -63,7 +63,12 @@ final class AccountIntegrationTests: XCTestCase {
         XCTAssertTrue(removed, restored.errorMessage ?? "Remove failed")
         XCTAssertNil(restored.account?.profile.avatarPath)
         XCTAssertNil(restored.avatarData)
-        await store.loadAccount()
+        let staleSave = await store.save(name: "Stale Name", location: .exact, notifications: .all, photoData: photo, removePhoto: false)
+        XCTAssertFalse(staleSave, "An older device must not overwrite newer privacy choices")
+        XCTAssertTrue(store.needsReload)
+        let reloaded = await store.reloadSavedAccount()
+        XCTAssertTrue(reloaded)
+        XCTAssertFalse(store.needsReload)
         XCTAssertEqual(store.account?.profile.displayName, "Renamed Person")
         XCTAssertEqual(store.account?.settings.notificationMode, .off)
 

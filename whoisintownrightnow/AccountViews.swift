@@ -139,6 +139,16 @@ struct AccountSettingsView: View {
                     Section { Text(error).foregroundStyle(.red).font(.callout) }
                 }
 
+                if store.needsReload {
+                    Section {
+                        Button("Discard edits and reload saved settings") {
+                            Task {
+                                if await store.reloadSavedAccount() { copySavedAccount() }
+                            }
+                        }
+                    }
+                }
+
                 Section {
                     Button {
                         Task {
@@ -153,7 +163,7 @@ struct AccountSettingsView: View {
                             Spacer()
                         }
                     }
-                    .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || name.count > 80 || store.isWorking || loadingPhoto)
+                    .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || name.trimmingCharacters(in: .whitespacesAndNewlines).unicodeScalars.count > 80 || store.isWorking || loadingPhoto || store.needsReload)
                     .accessibilityIdentifier("saveAccount")
                     Button("Sign out", role: .destructive) { confirmSignOut = true }
                         .disabled(store.isWorking)
@@ -175,10 +185,8 @@ struct AccountSettingsView: View {
             }
         }
         .onAppear {
-            guard !didLoad, let account = store.account else { return }
-            name = account.profile.displayName
-            location = account.settings.locationMode
-            notifications = account.settings.notificationMode
+            guard !didLoad else { return }
+            copySavedAccount()
             store.errorMessage = nil
             didLoad = true
         }
@@ -197,6 +205,17 @@ struct AccountSettingsView: View {
             } catch is CancellationError { }
             catch { photoError = error.localizedDescription }
         }
+    }
+
+    private func copySavedAccount() {
+        guard let account = store.account else { return }
+        name = account.profile.displayName
+        location = account.settings.locationMode
+        notifications = account.settings.notificationMode
+        photoItem = nil
+        pendingPhoto = nil
+        removePhoto = false
+        photoError = nil
     }
 }
 

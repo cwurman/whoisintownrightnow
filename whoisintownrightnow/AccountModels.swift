@@ -29,6 +29,7 @@ struct AccountProfile: Codable, Identifiable {
     var displayName: String
     var avatarPath: String?
     var onboardingCompletedAt: String?
+    let revision: Int64
 
     var initials: String {
         let words = displayName.split(whereSeparator: \.isWhitespace)
@@ -37,7 +38,7 @@ struct AccountProfile: Codable, Identifiable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case id, displayName = "display_name", avatarPath = "avatar_path", onboardingCompletedAt = "onboarding_completed_at"
+        case id, revision, displayName = "display_name", avatarPath = "avatar_path", onboardingCompletedAt = "onboarding_completed_at"
     }
 }
 
@@ -45,8 +46,9 @@ struct AccountSettings: Codable {
     var locationMode: LocationSharingMode
     var notificationMode: NotificationMode
     var locationSharingConfirmedAt: String?
+    let revision: Int64
     enum CodingKeys: String, CodingKey {
-        case locationMode = "location_mode", notificationMode = "notification_mode", locationSharingConfirmedAt = "location_sharing_confirmed_at"
+        case revision, locationMode = "location_mode", notificationMode = "notification_mode", locationSharingConfirmedAt = "location_sharing_confirmed_at"
     }
 }
 
