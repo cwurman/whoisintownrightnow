@@ -44,6 +44,7 @@ fi
 supabase migration up --local > "$check_logs/migrations.log" 2>&1
 echo "Checking account isolation, settings conflicts, Auth, and Storage..."
 python3 -u Tests/account_backend_test.py
+python3 -u Tests/contacts_backend_test.py
 check_wrote_fixture=true
 supabase status -o json > "$check_fixture" 2> "$check_logs/supabase-status.log"
 
