@@ -1,0 +1,410 @@
+[
+  {
+    "photo_id": "google:ChIJ-1uTdCJ-j4ARISbvdAfwjPk:photo:52b14b61b5657e68",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/52b14b61b5657e68.jpg",
+    "sha256": "17d14ad2f3c28905ebb27c1194180230f5e482bfd5d6031313880b8e80acd33c",
+    "extraction": {
+      "photo_type": "food",
+      "caption": "Crispy fried crust with a honey-gold glaze, set on a bed of greens with dipping sauce nearby.",
+      "visible_foods": [
+        "crispy fried dish with layered texture",
+        "green lettuce/leafy greens",
+        "orange dipping sauce/pate"
+      ],
+      "visible_features": [
+        "plate",
+        "fork",
+        "side dish sauce",
+        "leafy greens",
+        "sunlight/bright lighting",
+        "restaurant table setting",
+        "bowl in background"
+      ],
+      "ocr_text": "\n",
+      "uncertainties": [
+        "Exact dish name not identifiable",
+        "Possible fried meat or pastry with flaky crust"
+      ],
+      "use_for_search": false
+    }
+  },
+  {
+    "photo_id": "google:ChIJ-1uTdCJ-j4ARISbvdAfwjPk:photo:8fbba8d251f0ef51",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/8fbba8d251f0ef51.jpg",
+    "sha256": "df59548a294896a6f50e16bf371fcdac842d3b633f30072536b991182087f02f",
+    "extraction": {
+      "photo_type": "food",
+      "caption": "Close-up of a dish with saut\u00e9ed meat, onions, and greens, on a bed of lettuce.",
+      "visible_foods": [
+        "beef or dark meat",
+        "onions",
+        "green onions/scallions",
+        "lettuce"
+      ],
+      "visible_features": [
+        "fresh greens",
+        "sliced onions",
+        "thin white onion rings",
+        "celery or green onions garnish",
+        "brown saut\u00e9ed sauce",
+        "leafy lettuce",
+        "metal or plate edge partially visible"
+      ],
+      "ocr_text": "\" (no legible menu text clearly readable in this crop) \"",
+      "uncertainties": [
+        "Exact protein unknown (appears as beef)",
+        "specific dish name unknown",
+        "restaurant interior or context not visible",
+        "no readable menu items or prices"
+      ],
+      "use_for_search": false
+    }
+  },
+  {
+    "photo_id": "google:ChIJ-1uTdCJ-j4ARISbvdAfwjPk:photo:f19a4bd4f3b05959",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/f19a4bd4f3b05959.jpg",
+    "sha256": "a9887b81ee15f98759cb5252b88ff9033a91d6aa1999d65ea777e22f49369e67",
+    "extraction": {
+      "photo_type": "food",
+      "caption": "A leafy green dish with stems, light brown sauce around the greens, and chopped nuts sprinkled on top.",
+      "visible_foods": [
+        "greens (leafy greens)",
+        "stems",
+        "brown sauce",
+        "crushed nuts"
+      ],
+      "visible_features": [
+        "greens with thick stems",
+        "slimy brown sauce surrounding",
+        "crushed nuts garnish",
+        "no visible plate edge or utensils",
+        "glossy greens",
+        "organic, fresh-cut look"
+      ],
+      "ocr_text": "(no legible menu or sign text detected)",
+      "uncertainties": [
+        "Exact dish name unknown",
+        "Possible ingredients inferred (greens, nuts, sauce)",
+        "No visible restaurant signage or menu text to transcribe"
+      ],
+      "use_for_search": true
+    }
+  },
+  {
+    "photo_id": "google:ChIJ02-7pOd_j4ARkYnm7_wuHx4:photo:525b92f6ceda9ce3",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/525b92f6ceda9ce3.jpg",
+    "sha256": "283bd0d96d83583761802dccdabf42c9e9cf8a92482714959ce58580690457c4",
+    "extraction": {
+      "photo_type": "food",
+      "caption": "Bowl of noodle salad with greens and vegetables",
+      "visible_foods": [
+        "noodles",
+        "carrots (shredded)",
+        "cherry tomatoes",
+        "greens/basil",
+        "microgreens",
+        "clouded sesame-like seeds? (unclear)"
+      ],
+      "visible_features": [
+        "wooden table",
+        "white bowl",
+        "dimly lit restaurant interior",
+        "plated salad with greens on top",
+        "background chalk-wall decor",
+        "person with hands together in prayer gesture",
+        "silver spoon in bowl",
+        "other diners in background"
+      ],
+      "ocr_text": "Cherry tomatoes, shredded carrot, noodles, greens, herbs, and microgreens on top of a noodle salad",
+      "uncertainties": [
+        "exact herbs",
+        "ingredient details",
+        "presence of sesame seeds",
+        "additional toppings"
+      ],
+      "use_for_search": true
+    }
+  },
+  {
+    "photo_id": "google:ChIJ-XUKKQB_j4ARrDajQ_NArOg:photo:4cd985a0e47331be",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/4cd985a0e47331be.jpg",
+    "sha256": "209cdc23d9c4c9d7fae9fd2ee8d798d01f6fa699d54b228752cf012d74a44f51",
+    "extraction": {
+      "photo_type": "food",
+      "caption": "Open-faced smoked salmon-like sandwich with pickled onions and cucumber on a bread base, served in a small takeout container with a lemon wedge.",
+      "visible_foods": [
+        "smoked salmon",
+        "pickled onions",
+        "cucumber",
+        "bread/brown bread base",
+        "lemon wedge",
+        "dill garnish"
+      ],
+      "visible_features": [
+        "to-go container",
+        "soft lighting",
+        "wooden surface",
+        "white paper bag",
+        "pink pickled onions",
+        "green cucumber slices",
+        "herb garnish (dill)",
+        "orange-pink salmon"
+      ],
+      "ocr_text": "Salmon sandwich with pickled onions and cucumber on dark bread. Dill garnish and lemon wedge.",
+      "uncertainties": [
+        "Exact type of salmon or fish",
+        "Slicing details of bread",
+        "Conclusive wrap or packaging details"
+      ],
+      "use_for_search": true
+    }
+  },
+  {
+    "photo_id": "google:ChIJ-XUKKQB_j4ARrDajQ_NArOg:photo:028aa6b35fb06a45",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/028aa6b35fb06a45.jpg",
+    "sha256": "4afff8107c5ac54869805b0f85a2c61712fb933dacbe01293344cf8bea9a508e",
+    "extraction": {
+      "photo_type": "food",
+      "caption": "A sandwich with cream cheese spread in a sesame-seeded bun.",
+      "visible_foods": [
+        "sandwich with white creamy filling",
+        "sesame-seed bun"
+      ],
+      "visible_features": [
+        "seeded multigrain bun with sesame and poppy seeds",
+        "light-colored creamy filling",
+        "wrapped in paper"
+      ],
+      "ocr_text": "",
+      "uncertainties": [
+        "type of sandwich filling (creamy)",
+        "specific ingredients in filling"
+      ],
+      "use_for_search": true
+    }
+  },
+  {
+    "photo_id": "google:ChIJ-XUKKQB_j4ARrDajQ_NArOg:photo:b1bc8ab8198d34e1",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/b1bc8ab8198d34e1.jpg",
+    "sha256": "1626adc530ae37959fd62be6f19bbf1c1c2ea7c0b807e4104eb7a107ae3aa45c",
+    "extraction": {
+      "photo_type": "menu",
+      "caption": "Handwritten menu board with drawings and drinks section.",
+      "visible_foods": [
+        "toast/egg items",
+        "sandwiches",
+        "sweets/treats",
+        "dumplings or bagels?",
+        "sliced meat option",
+        "vegetable dishes"
+      ],
+      "visible_features": [
+        "green wall",
+        "hanging scroll menu",
+        "tiled lower wall",
+        "plants on shelf",
+        "shelves with folded clothes",
+        "creamy lighting",
+        "drawn cat doodle on menu",
+        "roller banner at top of menu",
+        "small sign on right with \u2018wednesday special\u2019 style text"
+      ],
+      "ocr_text": "LOOSE SANDWICH BOARD\nDRINKS\n- Soyabean\n- Sesame\n- Everything bagel & cream cheese\n- Cream Cheese (bun?)\n- Toasted baguette\n- Veggie bagel\nFRIENDLY SANDWICHES\n- Sourdough\n- Veggie wrap\n- Salmon baguette\nSWEET TREATS\n- Cupcake\n- Cookie\n\nHOURS\nOPEN 8am - 5pm\n\n\"MONDAY SPECIAL\" 9.95\n\n(illustrations of a cup, bagel, and cat)",
+      "uncertainties": [
+        "some handwritten words may be partially obscured",
+        "possible misreadings of menu items due to handwriting",
+        "unclear items on the left side of board"
+      ],
+      "use_for_search": true
+    }
+  },
+  {
+    "photo_id": "google:ChIJ02-7pOd_j4ARkYnm7_wuHx4:photo:5515ed59b0216723",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/5515ed59b0216723.jpg",
+    "sha256": "e4516476182c88e88ab814d803e2d46feafafcb0c0701b5ca8191b5e3b8cdbfc",
+    "extraction": {
+      "photo_type": "interior",
+      "caption": "Table setup with decorative chicken figurine and a drink in a wooden container.",
+      "visible_foods": [
+        "drink with ice",
+        "fried snack/skewer garnish"
+      ],
+      "visible_features": [
+        "wooden table",
+        "chairs in background",
+        "decorative ceramic chicken jug",
+        "napkins on table",
+        "glasses",
+        "cutlery",
+        "potted plant in background"
+      ],
+      "ocr_text": "",
+      "uncertainties": [
+        "Exact dish of the drink unknown",
+        "Garnish specifics unclear"
+      ],
+      "use_for_search": true
+    }
+  },
+  {
+    "photo_id": "google:ChIJ02-7pOd_j4ARkYnm7_wuHx4:photo:959a7fc8cf75c3a2",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/959a7fc8cf75c3a2.jpg",
+    "sha256": "5ce8bb71969f993923cded634a92aa61bf40537b7d579e4fa9726af4279bb440",
+    "extraction": {
+      "photo_type": "food",
+      "caption": "Bowl of noodle soup with a large piece of sliced meat topped with chopped herbs.",
+      "visible_foods": [
+        "noodles",
+        "large meat piece",
+        "green onions",
+        "broth"
+      ],
+      "visible_features": [
+        "round ceramic bowl",
+        "green herb garnish",
+        "red-orange chopstick wrapper across the dish",
+        "metal spoon",
+        "tabletop with wood grain",
+        "background small plates and bowls",
+        "person in blue long-sleeve shirt"
+      ],
+      "ocr_text": "\n",
+      "uncertainties": [
+        "exact dish name not provided",
+        "protein type not explicitly identified",
+        "possible additional toppings not fully visible"
+      ],
+      "use_for_search": true
+    }
+  },
+  {
+    "photo_id": "google:ChIJ05ybYxN-j4ARhOtZ7jRvUg0:photo:81630827b3db36a5",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/81630827b3db36a5.jpg",
+    "sha256": "034a6200acfb5b07fb0211c72ed85a6b94e2653be1d9bc033fc94e6eec5aba05",
+    "extraction": {
+      "photo_type": "food",
+      "caption": "Grilled chicken with rice and salad in a takeout container",
+      "visible_foods": [
+        "grilled chicken",
+        "white rice",
+        "mixed greens salad",
+        "croutons/pieces of lettuce",
+        "creamy dressing",
+        "pink pickled onions or radish"
+      ],
+      "visible_features": [
+        "white takeout container with divided sections",
+        "folding plastic lid remnants",
+        "creamy sauce/dressing spill",
+        "light-toned countertop",
+        "fresh greens",
+        "small cup with dressing on the side",
+        "grilled markings on chicken"
+      ],
+      "ocr_text": "Grilled chicken over rice with salad and sauce\n",
+      "uncertainties": [
+        "type of dressing",
+        "exact ingredients in salad",
+        "whether the container is from a specific restaurant",
+        "whether the pink items are onions or radish"
+      ],
+      "use_for_search": true
+    }
+  },
+  {
+    "photo_id": "google:ChIJ0Qe-UNt_j4ARzWOguPXzYmw:photo:1e04a87b0e359434",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/1e04a87b0e359434.jpg",
+    "sha256": "3d8d629c0a2872c91a601573f2459af684c952a38851ae87d9804c61f95bbcd6",
+    "extraction": {
+      "photo_type": "menu",
+      "caption": "Display signboard outside restaurant with food images.",
+      "visible_foods": [
+        "sandwiches",
+        "salad",
+        "pasta?",
+        "rice dish?",
+        "wraps",
+        "salad bowl"
+      ],
+      "visible_features": [
+        "black signage board",
+        "white text",
+        "gold accent frame around photo collage",
+        "food photo collage (sandwiches, salad bowls)",
+        "QR code circle",
+        "text instruction about scanning code",
+        "outdoor sidewalk area",
+        "tree with grate",
+        "red metal chair in background"
+      ],
+      "ocr_text": "HEROIC ITALIAN ARTISAN SANDWICHES & SALADS\nSCAN OR CODE TO PLACE AN ORDER.\nWe will bring out your order when it\u2019s ready.\nNo QR code reader? bit.ly/leaf-heroic\nLOCATED INSIDE",
+      "uncertainties": [
+        "exact dishes in photos (images show sandwiches and bowls)",
+        "whether the dining area is active or open"
+      ],
+      "use_for_search": true
+    }
+  },
+  {
+    "photo_id": "google:ChIJ0Qe-UNt_j4ARzWOguPXzYmw:photo:640743e63524c1ff",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/640743e63524c1ff.jpg",
+    "sha256": "e28fc5267f26ad662f528529de7f9088a66b78a08826929ee0ed623c9b9e0599",
+    "extraction": {
+      "photo_type": "food",
+      "caption": "Wrapped item held in hand",
+      "visible_foods": [
+        "wrapped sandwich/burger",
+        "crumbled packaging?",
+        "none clearly visible"
+      ],
+      "visible_features": [
+        "hand holding package",
+        "paper wrapping with green text",
+        "printing/logo on wrapper",
+        "countertop surface",
+        "blue sleeve of person",
+        "brownish-cream wrapper colors"
+      ],
+      "ocr_text": "HEROIC DEMENT\nGolden\nS1661\nDienas\nEspen\nName\nWogonu",
+      "uncertainties": [
+        "text may be partially unreadable",
+        "brand / dish names unclear"
+      ],
+      "use_for_search": true
+    }
+  },
+  {
+    "photo_id": "google:ChIJ0Qe-UNt_j4ARzWOguPXzYmw:photo:d2f66647dcea35e5",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/d2f66647dcea35e5.jpg",
+    "sha256": "536be8c890e0a3eb4cee0ac17581cfd8c5f11ba0f5835e4d3dddcf53676f428c",
+    "extraction": {
+      "photo_type": "food",
+      "caption": "Cross-section sandwich with multiple thin meat slices and toppings inside toasted bread.",
+      "visible_foods": [
+        "sliced meat",
+        "lettuce",
+        "crusty bread",
+        "cheese or sauce",
+        "tomato bits",
+        "pickled vegetables (unclear)"
+      ],
+      "visible_features": [
+        "foil wrap",
+        "crumbs on plate",
+        "papery wrapper in background",
+        "soft lighting",
+        "rustic toasted bread crust",
+        "aluminum foil liner"
+      ],
+      "ocr_text": "(no readable menu/sign text detected)",
+      "uncertainties": [
+        "exact meat type",
+        "additional fillings",
+        "sauce details",
+        "toppings like cheese or relish",
+        "language of any visible branding"
+      ],
+      "use_for_search": true
+    }
+  }
+]

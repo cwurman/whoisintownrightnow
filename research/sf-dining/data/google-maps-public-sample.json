@@ -1,0 +1,87 @@
+{
+  "source": "Google Maps public rendered search results",
+  "query": "mediterranean restaurants San Francisco",
+  "retrieved_at": "2026-09-26T02:04:38.271Z",
+  "access": "signed-out limited view",
+  "customer_reviews_collected": 0,
+  "results": [
+    {
+      "links": [
+        {
+          "name": "Golden Mediterranean Cuisine",
+          "url": "https://www.google.com/maps/place/Golden+Mediterranean+Cuisine/data=!4m7!3m6!1s0x808587b4159129b3:0xa55ce305851b2515!8m2!3d37.7861745!4d-122.4536903!16s%2Fg%2F11myt5yfp1!19sChIJsymRFbSHhYARFSUbhQXjXKU?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1"
+        }
+      ],
+      "ratings": [
+        "4.9 stars",
+        "Wheelchair accessible entrance"
+      ],
+      "text": "Golden Mediterranean Cuisine\nGolden Mediterranean Cuisine\n4.9\nMediterranean restaurant ·  · 3611 California St\nOpen · Closes 9 PM\n \n\nOrder online"
+    },
+    {
+      "links": [
+        {
+          "name": "Falasteen",
+          "url": "https://www.google.com/maps/place/Falasteen/data=!4m7!3m6!1s0x808f7f0018bf7963:0xde411823e06ef0af!8m2!3d37.7515032!4d-122.4324516!16s%2Fg%2F11y115zfc1!19sChIJY3m_GAB_j4ARr_Bu4CMYQd4?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1"
+        }
+      ],
+      "ratings": [
+        "4.9 stars",
+        "Wheelchair accessible entrance"
+      ],
+      "text": "Falasteen\nFalasteen\n4.9\nPalestinian restaurant ·  · 4018 24th St\nOpen · Closes 10 PM\n \n\nReserve a table"
+    },
+    {
+      "links": [
+        {
+          "name": "SF Grill",
+          "url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1"
+        }
+      ],
+      "ratings": [
+        "4.8 stars",
+        "Wheelchair accessible entrance"
+      ],
+      "text": "SF Grill\nSF Grill\n4.8\nMediterranean restaurant ·  · 799 Valencia St\nOpen · Closes 10 PM\n \n\nOrder online"
+    },
+    {
+      "links": [
+        {
+          "name": "SUR Cafe Mediterranean",
+          "url": "https://www.google.com/maps/place/SUR+Cafe+Mediterranean/data=!4m7!3m6!1s0x808581910576abe5:0x9f89d4b89bdffc18!8m2!3d37.7897114!4d-122.4011703!16s%2Fg%2F11zg1c0dc8!19sChIJ5at2BZGBhYARGPzfm7jUiZ8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1"
+        }
+      ],
+      "ratings": [
+        "4.9 stars",
+        "Wheelchair accessible entrance"
+      ],
+      "text": "SUR Cafe Mediterranean\nSUR Cafe Mediterranean\n4.9\nMediterranean restaurant ·  · 564 Market St\nOpen · Closes 10 PM"
+    },
+    {
+      "links": [
+        {
+          "name": "Mezze and Mooore",
+          "url": "https://www.google.com/maps/place/Mezze+and+Mooore/data=!4m7!3m6!1s0x808f7fe5a2cc5b4f:0x8f558fbe4f375189!8m2!3d37.7681355!4d-122.424627!16s%2Fg%2F11ryln3r6c!19sChIJT1vMouV_j4ARiVE3T76PVY8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1"
+        }
+      ],
+      "ratings": [
+        "4.7 stars",
+        "Wheelchair accessible entrance"
+      ],
+      "text": "Mezze and Mooore\nMezze and Mooore\n4.7\nLebanese restaurant ·  · 198 Guerrero St\nOpen · Closes 9 PM\n \n\nOrder online"
+    },
+    {
+      "links": [
+        {
+          "name": "Novy Restaurant",
+          "url": "https://www.google.com/maps/place/Novy+Restaurant/data=!4m7!3m6!1s0x808f7e13a9f204ed:0xce3b222c0bf6742c!8m2!3d37.7515463!4d-122.4321476!16s%2Fg%2F11bx_d7l4y!19sChIJ7QTyqRN-j4ARLHT2CywiO84?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1"
+        }
+      ],
+      "ratings": [
+        "4.4 stars",
+        "Wheelchair accessible entrance"
+      ],
+      "text": "Novy Restaurant\nNovy Restaurant\n4.4\nGreek restaurant ·  · 4000 24th St\nPolished Mediterranean-American cafe\nOpen · Closes 9 PM\n \n\nReserve a table\n\nOrder online"
+    }
+  ]
+}

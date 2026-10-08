@@ -1,0 +1,42 @@
+{
+  "dry_run": false,
+  "scope": "nearby",
+  "model": "gpt-5-nano",
+  "eligible_pending": 917,
+  "selected": 10,
+  "completed_photos": 11,
+  "attempted_without_result": 0,
+  "preview": [
+    {
+      "restaurant_name": "Bones Bagels",
+      "photo_id": "google:ChIJ-XUKKQB_j4ARrDajQ_NArOg:photo:028aa6b35fb06a45"
+    },
+    {
+      "restaurant_name": "Bones Bagels",
+      "photo_id": "google:ChIJ-XUKKQB_j4ARrDajQ_NArOg:photo:4cd985a0e47331be"
+    },
+    {
+      "restaurant_name": "Bones Bagels",
+      "photo_id": "google:ChIJ-XUKKQB_j4ARrDajQ_NArOg:photo:b1bc8ab8198d34e1"
+    },
+    {
+      "restaurant_name": "Ka Kai Northern Thai",
+      "photo_id": "google:ChIJ02-7pOd_j4ARkYnm7_wuHx4:photo:525b92f6ceda9ce3"
+    },
+    {
+      "restaurant_name": "Ka Kai Northern Thai",
+      "photo_id": "google:ChIJ02-7pOd_j4ARkYnm7_wuHx4:photo:5515ed59b0216723"
+    }
+  ]
+}
+{"photo_id": "google:ChIJ02-7pOd_j4ARkYnm7_wuHx4:photo:525b92f6ceda9ce3", "status": "completed", "photo_type": "food", "use_for_search": true}
+{"photo_id": "google:ChIJ-XUKKQB_j4ARrDajQ_NArOg:photo:4cd985a0e47331be", "status": "completed", "photo_type": "food", "use_for_search": true}
+{"photo_id": "google:ChIJ-XUKKQB_j4ARrDajQ_NArOg:photo:028aa6b35fb06a45", "status": "completed", "photo_type": "food", "use_for_search": true}
+{"photo_id": "google:ChIJ-XUKKQB_j4ARrDajQ_NArOg:photo:b1bc8ab8198d34e1", "status": "completed", "photo_type": "menu", "use_for_search": true}
+{"photo_id": "google:ChIJ02-7pOd_j4ARkYnm7_wuHx4:photo:5515ed59b0216723", "status": "completed", "photo_type": "interior", "use_for_search": true}
+{"photo_id": "google:ChIJ02-7pOd_j4ARkYnm7_wuHx4:photo:959a7fc8cf75c3a2", "status": "completed", "photo_type": "food", "use_for_search": true}
+{"photo_id": "google:ChIJ05ybYxN-j4ARhOtZ7jRvUg0:photo:81630827b3db36a5", "status": "completed", "photo_type": "food", "use_for_search": true}
+{"photo_id": "google:ChIJ0Qe-UNt_j4ARzWOguPXzYmw:photo:1e04a87b0e359434", "status": "completed", "photo_type": "menu", "use_for_search": true}
+{"photo_id": "google:ChIJ0Qe-UNt_j4ARzWOguPXzYmw:photo:640743e63524c1ff", "status": "completed", "photo_type": "food", "use_for_search": true}
+{"photo_id": "google:ChIJ0Qe-UNt_j4ARzWOguPXzYmw:photo:d2f66647dcea35e5", "status": "completed", "photo_type": "food", "use_for_search": true}
+Batch saved. Run photo_search.py build to refresh the search index.

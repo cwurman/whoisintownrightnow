@@ -1,0 +1,64 @@
+{
+  "as_of": "2026-09-26T03:42:44.286697+00:00",
+  "scopes": {
+    "focus": {
+      "photo_references": 1187,
+      "existing_source_captions": 588,
+      "vision_processed": 599,
+      "useful_vision_descriptions": 596,
+      "excluded_by_vision": 3,
+      "ocr_records": 31,
+      "pending_without_source_caption": 0,
+      "source_caption_or_completed_analysis": 1187
+    },
+    "nearby": {
+      "photo_references": 1732,
+      "existing_source_captions": 804,
+      "vision_processed": 928,
+      "useful_vision_descriptions": 923,
+      "excluded_by_vision": 5,
+      "ocr_records": 50,
+      "pending_without_source_caption": 0,
+      "source_caption_or_completed_analysis": 1732
+    },
+    "all": {
+      "photo_references": 3373,
+      "existing_source_captions": 1652,
+      "vision_processed": 1721,
+      "useful_vision_descriptions": 1716,
+      "excluded_by_vision": 5,
+      "ocr_records": 99,
+      "pending_without_source_caption": 0,
+      "source_caption_or_completed_analysis": 3373
+    }
+  },
+  "extraction_methods": {
+    "assistant_visual_pilot": 8,
+    "openai_responses_vision_with_assistant_review": 4,
+    "openai_responses_vision": 1709
+  },
+  "photo_types": {
+    "other": 25,
+    "food": 1189,
+    "interior": 196,
+    "menu": 100,
+    "exterior": 121,
+    "drink": 90
+  },
+  "local_ocr_status": {
+    "assistant_pilot": 8,
+    "not_a_menu": 1614,
+    "completed": 99
+  },
+  "unresolved_attempts": [],
+  "openai_usage": {
+    "input_tokens": 1872321,
+    "cached_input_tokens": 0,
+    "output_tokens": 248667
+  },
+  "responses_with_usage": 1714,
+  "estimated_openai_cost_usd": 0.193083,
+  "unpriced_response_ids": [],
+  "pricing_source": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+  "cost_note": "Estimate from returned token usage at standard GPT-5 nano rates, not a billing invoice. Requests without returned usage are not measurable here."
+}

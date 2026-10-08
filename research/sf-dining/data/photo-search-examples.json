@@ -1,0 +1,2283 @@
+[
+  {
+    "query": "shishito peppers",
+    "scope": "nearby",
+    "photos_only": true,
+    "results": [
+      {
+        "restaurant_id": "google:ChIJ7d1kDkN-j4ARLXO5JZwg7NI",
+        "name": "Blue Plate",
+        "neighborhood": "Bernal Heights",
+        "area_priority": "nearby",
+        "source_url": "https://www.google.com/maps/place/Blue+Plate/data=!4m7!3m6!1s0x808f7e430e64dded:0xd2ec209c25b9732d!8m2!3d37.7451621!4d-122.4203773!16s%2Fm%2F04fj8lb!19sChIJ7d1kDkN-j4ARLXO5JZwg7NI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "shishito",
+          "peppers"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 18.958204,
+        "matched_sources": 1,
+        "matched_evidence": [
+          {
+            "evidence_id": "google:ChIJ7d1kDkN-j4ARLXO5JZwg7NI:photo:f12de52bb5375eae",
+            "restaurant_id": "google:ChIJ7d1kDkN-j4ARLXO5JZwg7NI",
+            "kind": "photo_source_caption",
+            "text": "Shishito peppers",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOHf-BiqKL7uK_b1al3LoMSptvuqJlYKCWHLJF65tSNni-XTYSZYFk7a0BFElcY0zJQuG9NmHGW-zvYpbVzWIsSXBqVdqP7w_mNMj9lC-ycEZV5x3w180DOjL_4sSmr_lyLloxVrTmfhLSw=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Blue+Plate/data=!4m7!3m6!1s0x808f7e430e64dded:0xd2ec209c25b9732d!8m2!3d37.7451621!4d-122.4203773!16s%2Fm%2F04fj8lb!19sChIJ7d1kDkN-j4ARLXO5JZwg7NI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Ying Zhang",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2pSaGVIaDZZM2xMYjFjMloxTm9jVXA0YWw5eWJXYxAB",
+            "retrieved_at": "2026-09-26T02:15:32.688Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJ7d1kDkN-j4ARLXO5JZwg7NI:photo:f12de52bb5375eae",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "peppers",
+              "shishito"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJ7d1kDkN-j4ARLXO5JZwg7NI:photo:f12de52bb5375eae",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOHf-BiqKL7uK_b1al3LoMSptvuqJlYKCWHLJF65tSNni-XTYSZYFk7a0BFElcY0zJQuG9NmHGW-zvYpbVzWIsSXBqVdqP7w_mNMj9lC-ycEZV5x3w180DOjL_4sSmr_lyLloxVrTmfhLSw=w600-h450-p-k-no",
+            "match_text": "Shishito peppers",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Blue+Plate/data=!4m7!3m6!1s0x808f7e430e64dded:0xd2ec209c25b9732d!8m2!3d37.7451621!4d-122.4203773!16s%2Fm%2F04fj8lb!19sChIJ7d1kDkN-j4ARLXO5JZwg7NI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJh8PT9xx-j4ARqcz9si6Mv-E",
+        "name": "Canela Bistro Bar",
+        "neighborhood": "Duboce Triangle",
+        "area_priority": "nearby",
+        "source_url": "https://www.google.com/maps/place/Canela+Bistro+Bar/data=!4m7!3m6!1s0x808f7e1cf7d3c387:0xe1bf8c2eb2fdcca9!8m2!3d37.764962!4d-122.4325827!16s%2Fg%2F1tgj918y!19sChIJh8PT9xx-j4ARqcz9si6Mv-E?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "shishito",
+          "peppers"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 7.603493,
+        "matched_sources": 1,
+        "matched_evidence": [
+          {
+            "restaurant_id": "google:ChIJh8PT9xx-j4ARqcz9si6Mv-E",
+            "photo_id": "google:ChIJh8PT9xx-j4ARqcz9si6Mv-E:photo:8952b773746e6b9a",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPsZmNftknQYciCkvjDwqQP6xKWTZRJ6QG-LwHkXSK-qfaRUWqwWq6n20m37ybgRnoHfMTE7BCm9Yij7XJ1u08qA2Sxy8pIZC-40bUXgFxw_Q2CKQp03ChT5P1j8lixsYksk3IE_JZfC0yK=w600-h900-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Canela+Bistro+Bar/data=!4m7!3m6!1s0x808f7e1cf7d3c387:0xe1bf8c2eb2fdcca9!8m2!3d37.764962!4d-122.4325827!16s%2Fg%2F1tgj918y!19sChIJh8PT9xx-j4ARqcz9si6Mv-E?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Rhishi Pethe",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tkbGQyZENhRzFuUVdWTlkxUjBjVWx0Y2pWc1JIYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "assistant_visual_pilot",
+            "photo_type": "menu",
+            "uncertainties": [
+              "Partial transcription: cropped or small text was omitted.",
+              "A photographed menu does not establish current availability or prices."
+            ],
+            "processed_at": "2026-09-26T03:02:45.545616+00:00",
+            "evidence_id": "google:ChIJh8PT9xx-j4ARqcz9si6Mv-E:photo:8952b773746e6b9a:ocr",
+            "kind": "photo_ocr",
+            "text": "Canela\nTAPAS MENU\nDESIGNED TO SHARE WITH THE TABLE\nPARA PICAR\nMARINATED SPANISH OLIVES\nCORTEZAS\nBOQUERONES\nTOSTADA DE SOBRASADA BELLOTA\nHAND CARVED JAMON IBERICO\nBAKED SPANISH GOAT CHEESE\nFLASH-FRIED SHISHITO PEPPERS\nBACON WRAPPED DATES\nVEGGIE CROQUETAS\nCROQUETAS DE JAMON\nCOCA FLATBREADS\nHOMEMADE NATURAL CHORIZO\nBOQUERONES & PIQUILLO\nROASTED BUTTERNUT SQUASH & CHARD\nQUESOS de ESPAÑA\nCHOICE OF CHEESES\nENSALADAS Y SOPAS\nSPANISH CAESAR\nMARKET STREET SALAD\nSTRAWBERRY & ALMOND GAZPACHO\nKALE & MUSHROOM SOUP",
+            "ocr_engine": "assistant_visual_pilot",
+            "matched_query_terms": [
+              "peppers",
+              "shishito"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJh8PT9xx-j4ARqcz9si6Mv-E:photo:8952b773746e6b9a",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPsZmNftknQYciCkvjDwqQP6xKWTZRJ6QG-LwHkXSK-qfaRUWqwWq6n20m37ybgRnoHfMTE7BCm9Yij7XJ1u08qA2Sxy8pIZC-40bUXgFxw_Q2CKQp03ChT5P1j8lixsYksk3IE_JZfC0yK=w600-h900-p-k-no",
+            "match_text": "Canela\nTAPAS MENU\nDESIGNED TO SHARE WITH THE TABLE\nPARA PICAR\nMARINATED SPANISH OLIVES\nCORTEZAS\nBOQUERONES\nTOSTADA DE SOBRASADA BELLOTA\nHAND CARVED JAMON IBERICO\nBAKED SPANISH GOAT CHEESE\nFLASH-FRIED SHISHITO PEPPERS\nBACON WRAPPED DATES\nVEGGIE CROQUETAS\nCROQUETAS DE JAMON\nCOCA FLATBREADS\nHOMEMADE NATURAL CHORIZO\nBOQUERONES & PIQUILLO\nROASTED BUTTERNUT SQUASH & CHARD\nQUESOS de ESPAÑA\nCHOICE OF CHEESES\nENSALADAS Y SOPAS\nSPANISH CAESAR\nMARKET STREET SALAD\nSTRAWBERRY & ALMOND GAZPACHO\nKALE & MUSHROOM SOUP",
+            "evidence_kind": "photo_ocr",
+            "source_url": "https://www.google.com/maps/place/Canela+Bistro+Bar/data=!4m7!3m6!1s0x808f7e1cf7d3c387:0xe1bf8c2eb2fdcca9!8m2!3d37.764962!4d-122.4325827!16s%2Fg%2F1tgj918y!19sChIJh8PT9xx-j4ARqcz9si6Mv-E?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "Partial transcription: cropped or small text was omitted.",
+              "A photographed menu does not establish current availability or prices."
+            ]
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso",
+        "name": "Henry's Hunan Restaurant",
+        "neighborhood": "Noe Valley",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Henry%27s+Hunan+Restaurant/data=!4m7!3m6!1s0x808f7e6855bccd57:0xca9a9df03b716aee!8m2!3d37.7434112!4d-122.4268617!16s%2Fg%2F1vzn5sy8!19sChIJV828VWh-j4AR7mpxO_Cdmso?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "peppers"
+        ],
+        "query_coverage": 0.5,
+        "match_type": "partial",
+        "score": 7.051258,
+        "matched_sources": 4,
+        "matched_evidence": [
+          {
+            "restaurant_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso",
+            "photo_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso:photo:9f0912caf6e940c5",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPIJB4aRpnrFmylAdjPDhUJ1bSL7DgbqjubOEoVaVBBLKrtP7OpppIhdYntej8I2rC1h243WfAZLhnJcQrkToTAEH1NM-qnJXgZpCicSIYaakndBUoWqO-OZDJ10kkJldGZDhnU=w600-h900-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Henry%27s+Hunan+Restaurant/data=!4m7!3m6!1s0x808f7e6855bccd57:0xca9a9df03b716aee!8m2!3d37.7434112!4d-122.4268617!16s%2Fg%2F1vzn5sy8!19sChIJV828VWh-j4AR7mpxO_Cdmso?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "YCD",
+            "source_review_id": "ChdDSUhNMG9nS0VPdVEzWm1UaHJXejdRRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "type of dish unknown",
+              "exact meats/vegetables unknown",
+              "specific cuisine not identifiable"
+            ],
+            "processed_at": "2026-09-26T03:28:46.356938+00:00",
+            "evidence_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso:photo:9f0912caf6e940c5:vision",
+            "kind": "photo_vision_caption",
+            "text": "Dish with sliced meat stir-fried with peppers and spices. sliced meat. green peppers. red peppers. yellow corn/crumbs. dried chili flakes or seeds. white plate. wooden table. dim lighting. pile of mixed vegetables and meat. glossy sauce. crushed chili bits",
+            "matched_query_terms": [
+              "peppers"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso",
+            "photo_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso:photo:bacbe42e570192db",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPF8U6U6LMTU9wtv986L75a-D1h9LgTDGHANw2_hSjtu9ByjeeoiDdlbtgdaQALrXhMv5LhL4U1T3W6CM6GPEHr7DsCbBGqivT3wdDzRZw7Wi_vIGb4vYUyRv9Kt21RRRdiqmJo=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Henry%27s+Hunan+Restaurant/data=!4m7!3m6!1s0x808f7e6855bccd57:0xca9a9df03b716aee!8m2!3d37.7434112!4d-122.4268617!16s%2Fg%2F1vzn5sy8!19sChIJV828VWh-j4AR7mpxO_Cdmso?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "YCD",
+            "source_review_id": "ChdDSUhNMG9nS0VPdVEzWm1UaHJXejdRRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "Exact dish name",
+              "Whether nuts are present",
+              "If there is cilantro or scallions",
+              "Specific sauces or seasonings"
+            ],
+            "processed_at": "2026-09-26T03:28:46.991357+00:00",
+            "evidence_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso:photo:bacbe42e570192db:vision",
+            "kind": "photo_vision_caption",
+            "text": "Stir-fried dish with sliced meat and vegetables. sliced meat. red bell pepper. onion. green bell pepper. carrot?. crushed nuts? (unclear). stir-fry sauce. wooden table. white plate. metal spoon. bit of sauce on plate. colorful vegetables. spoon resting in dish. dim lighting. mixed vegetables. crunchy-looking texture",
+            "matched_query_terms": [
+              "peppers"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso",
+            "photo_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso:photo:b57dd6f87f6e6e92",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMtTIga0Rz4K5-Hi2gRPsfby9KknkkdHviI3-N7jwMGZBXsFw_qfBkVtAsjD-lUN9kWReq4W66YDbOHIvEjHa2ktDJelRzle2PIHEH0pfOJDohU5xuG11b2JoxoDKr2ifm9_RY=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Henry%27s+Hunan+Restaurant/data=!4m7!3m6!1s0x808f7e6855bccd57:0xca9a9df03b716aee!8m2!3d37.7434112!4d-122.4268617!16s%2Fg%2F1vzn5sy8!19sChIJV828VWh-j4AR7mpxO_Cdmso?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "YCD",
+            "source_review_id": "ChdDSUhNMG9nS0VPdVEzWm1UaHJXejdRRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact proteins unknown (could be sliced meat or tofu)",
+              "specific vegetable identifications may vary (e.g., peppers, beans)"
+            ],
+            "processed_at": "2026-09-26T03:28:47.028650+00:00",
+            "evidence_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso:photo:b57dd6f87f6e6e92:vision",
+            "kind": "photo_vision_caption",
+            "text": "A stir-fry dish served on a white plate with a metal spoon.. sliced meat. green beans. red bell peppers. tofu or sliced tofu. slivered onions. crushed red chili flakes. round white plate. wooden table. metal spoon. dark sauce glaze. chopped herbs or scallions. varied colored vegetables. low lighting. kitchen/restaurant setting in background",
+            "matched_query_terms": [
+              "peppers"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso",
+            "photo_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso:photo:2332b1a05b8d8278",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPsRRydzq9Qlv48uf4LxzU_CDazqHpk5cGqS4XKvE1ez3VXkQehTE9xKN0hwfASmKPiM6nXEra9s_wM7ZhAD2sT5JVCsfWx0oXEEN3-pAXrvjTeYNjlsMZRkYHVSqNy5vRdc9tajC0UGV21=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Henry%27s+Hunan+Restaurant/data=!4m7!3m6!1s0x808f7e6855bccd57:0xca9a9df03b716aee!8m2!3d37.7434112!4d-122.4268617!16s%2Fg%2F1vzn5sy8!19sChIJV828VWh-j4AR7mpxO_Cdmso?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Ray Santiago",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tKeGFETmlOR0puVTNBd1YwcHhZMHRsT0ZoaWIwRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact dish name",
+              "whether there are additional ingredients not clearly visible"
+            ],
+            "processed_at": "2026-09-26T03:28:46.244860+00:00",
+            "evidence_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso:photo:2332b1a05b8d8278:vision",
+            "kind": "photo_vision_caption",
+            "text": "A stir-fry-style dish with vegetables and sliced meat on a white plate, with a spoon resting on the edge.. sliced meat. carrot chunks. onion chunks. potato chunks. bell pepper pieces. black olives? (small dark pieces). wooden table. metal spoon. rice in a separate bowl (top left). red soda can (top right). bowl of sauce/spill area on plate. glossy sauce coating the ingredients",
+            "matched_query_terms": [
+              "peppers"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso:photo:9f0912caf6e940c5",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPIJB4aRpnrFmylAdjPDhUJ1bSL7DgbqjubOEoVaVBBLKrtP7OpppIhdYntej8I2rC1h243WfAZLhnJcQrkToTAEH1NM-qnJXgZpCicSIYaakndBUoWqO-OZDJ10kkJldGZDhnU=w600-h900-p-k-no",
+            "match_text": "Dish with sliced meat stir-fried with peppers and spices. sliced meat. green peppers. red peppers. yellow corn/crumbs. dried chili flakes or seeds. white plate. wooden table. dim lighting. pile of mixed vegetables and meat. glossy sauce. crushed chili bits",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Henry%27s+Hunan+Restaurant/data=!4m7!3m6!1s0x808f7e6855bccd57:0xca9a9df03b716aee!8m2!3d37.7434112!4d-122.4268617!16s%2Fg%2F1vzn5sy8!19sChIJV828VWh-j4AR7mpxO_Cdmso?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "type of dish unknown",
+              "exact meats/vegetables unknown",
+              "specific cuisine not identifiable"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso:photo:bacbe42e570192db",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPF8U6U6LMTU9wtv986L75a-D1h9LgTDGHANw2_hSjtu9ByjeeoiDdlbtgdaQALrXhMv5LhL4U1T3W6CM6GPEHr7DsCbBGqivT3wdDzRZw7Wi_vIGb4vYUyRv9Kt21RRRdiqmJo=w600-h450-p-k-no",
+            "match_text": "Stir-fried dish with sliced meat and vegetables. sliced meat. red bell pepper. onion. green bell pepper. carrot?. crushed nuts? (unclear). stir-fry sauce. wooden table. white plate. metal spoon. bit of sauce on plate. colorful vegetables. spoon resting in dish. dim lighting. mixed vegetables. crunchy-looking texture",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Henry%27s+Hunan+Restaurant/data=!4m7!3m6!1s0x808f7e6855bccd57:0xca9a9df03b716aee!8m2!3d37.7434112!4d-122.4268617!16s%2Fg%2F1vzn5sy8!19sChIJV828VWh-j4AR7mpxO_Cdmso?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "Exact dish name",
+              "Whether nuts are present",
+              "If there is cilantro or scallions",
+              "Specific sauces or seasonings"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso:photo:b57dd6f87f6e6e92",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMtTIga0Rz4K5-Hi2gRPsfby9KknkkdHviI3-N7jwMGZBXsFw_qfBkVtAsjD-lUN9kWReq4W66YDbOHIvEjHa2ktDJelRzle2PIHEH0pfOJDohU5xuG11b2JoxoDKr2ifm9_RY=w600-h450-p-k-no",
+            "match_text": "A stir-fry dish served on a white plate with a metal spoon.. sliced meat. green beans. red bell peppers. tofu or sliced tofu. slivered onions. crushed red chili flakes. round white plate. wooden table. metal spoon. dark sauce glaze. chopped herbs or scallions. varied colored vegetables. low lighting. kitchen/restaurant setting in background",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Henry%27s+Hunan+Restaurant/data=!4m7!3m6!1s0x808f7e6855bccd57:0xca9a9df03b716aee!8m2!3d37.7434112!4d-122.4268617!16s%2Fg%2F1vzn5sy8!19sChIJV828VWh-j4AR7mpxO_Cdmso?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact proteins unknown (could be sliced meat or tofu)",
+              "specific vegetable identifications may vary (e.g., peppers, beans)"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJV828VWh-j4AR7mpxO_Cdmso:photo:2332b1a05b8d8278",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPsRRydzq9Qlv48uf4LxzU_CDazqHpk5cGqS4XKvE1ez3VXkQehTE9xKN0hwfASmKPiM6nXEra9s_wM7ZhAD2sT5JVCsfWx0oXEEN3-pAXrvjTeYNjlsMZRkYHVSqNy5vRdc9tajC0UGV21=w600-h450-p-k-no",
+            "match_text": "A stir-fry-style dish with vegetables and sliced meat on a white plate, with a spoon resting on the edge.. sliced meat. carrot chunks. onion chunks. potato chunks. bell pepper pieces. black olives? (small dark pieces). wooden table. metal spoon. rice in a separate bowl (top left). red soda can (top right). bowl of sauce/spill area on plate. glossy sauce coating the ingredients",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Henry%27s+Hunan+Restaurant/data=!4m7!3m6!1s0x808f7e6855bccd57:0xca9a9df03b716aee!8m2!3d37.7434112!4d-122.4268617!16s%2Fg%2F1vzn5sy8!19sChIJV828VWh-j4AR7mpxO_Cdmso?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact dish name",
+              "whether there are additional ingredients not clearly visible"
+            ]
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJu2L_tnyBhYARKaVNWBGlcKY",
+        "name": "Stoa",
+        "neighborhood": "Lower Haight",
+        "area_priority": "nearby",
+        "source_url": "https://www.google.com/maps/place/Stoa/data=!4m7!3m6!1s0x8085817cb6ff62bb:0xa670a511584da529!8m2!3d37.771455!4d-122.433855!16s%2Fg%2F11jzgskv5f!19sChIJu2L_tnyBhYARKaVNWBGlcKY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "peppers"
+        ],
+        "query_coverage": 0.5,
+        "match_type": "partial",
+        "score": 6.581797,
+        "matched_sources": 2,
+        "matched_evidence": [
+          {
+            "evidence_id": "google:ChIJu2L_tnyBhYARKaVNWBGlcKY:photo:3abfea8d7cc61d49",
+            "restaurant_id": "google:ChIJu2L_tnyBhYARKaVNWBGlcKY",
+            "kind": "photo_source_caption",
+            "text": "Crispy wings with arugula and peppers",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMj92dXGD9biGv-qK1xZPjE3CE3yIn4gfMv7fGUXRZQDG1A-5OyUjIlOKI9oCqNP3uMXphnZTBMALlekp60sW3sDgfwYUU3mLLSycy-0xUSvrJ_qhQSESyHFD1gGmpJDTt6H5YSjX3uwEhP=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Stoa/data=!4m7!3m6!1s0x8085817cb6ff62bb:0xa670a511584da529!8m2!3d37.771455!4d-122.433855!16s%2Fg%2F11jzgskv5f!19sChIJu2L_tnyBhYARKaVNWBGlcKY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Take Back Roads",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tKRFZtUlpNRFZ3WkV4elJsVnpkakp6UWtVMGNYYxAB",
+            "retrieved_at": "2026-09-26T02:35:35.337Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJu2L_tnyBhYARKaVNWBGlcKY:photo:3abfea8d7cc61d49",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "peppers"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJu2L_tnyBhYARKaVNWBGlcKY",
+            "photo_id": "google:ChIJu2L_tnyBhYARKaVNWBGlcKY:photo:15870ea3fcd8a55a",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmP9xiIA9wLRHwAUPQiNKcbJKRIH7Hb4-yTe6zAWHQsCi9tA_nyrRAgdw-EeHEYQf65Y6xmGbo6NZtol8b6nCvj-LW6Oifzoq-IIiChDo8tfpzHJfW0nxJ6Uqs7jhhF98SNdHh6fM3Y4cD0=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Stoa/data=!4m7!3m6!1s0x8085817cb6ff62bb:0xa670a511584da529!8m2!3d37.771455!4d-122.433855!16s%2Fg%2F11jzgskv5f!19sChIJu2L_tnyBhYARKaVNWBGlcKY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Holly Zhou",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25WTmVXRmtVRjl4Y0doSVdrVnJOVmRIUlZOUmQzYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact cuisine not identifiable",
+              "specific dish name not confirmed"
+            ],
+            "processed_at": "2026-09-26T03:36:23.841662+00:00",
+            "evidence_id": "google:ChIJu2L_tnyBhYARKaVNWBGlcKY:photo:15870ea3fcd8a55a:vision",
+            "kind": "photo_vision_caption",
+            "text": "Plated dish with crispy tofu, herbs, and vegetables on tortillas with lime wedge. tofu. cilantro. red onion. red chili peppers. lime. tortilla. soft lighting. round white bowl. green lime wedge. red chili slices. onion slices. cilantro leaves. tofu chunks. tortilla corn chips or tostadas",
+            "matched_query_terms": [
+              "peppers"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJu2L_tnyBhYARKaVNWBGlcKY:photo:3abfea8d7cc61d49",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMj92dXGD9biGv-qK1xZPjE3CE3yIn4gfMv7fGUXRZQDG1A-5OyUjIlOKI9oCqNP3uMXphnZTBMALlekp60sW3sDgfwYUU3mLLSycy-0xUSvrJ_qhQSESyHFD1gGmpJDTt6H5YSjX3uwEhP=w600-h450-p-k-no",
+            "match_text": "Crispy wings with arugula and peppers",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Stoa/data=!4m7!3m6!1s0x8085817cb6ff62bb:0xa670a511584da529!8m2!3d37.771455!4d-122.433855!16s%2Fg%2F11jzgskv5f!19sChIJu2L_tnyBhYARKaVNWBGlcKY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          },
+          {
+            "photo_id": "google:ChIJu2L_tnyBhYARKaVNWBGlcKY:photo:15870ea3fcd8a55a",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmP9xiIA9wLRHwAUPQiNKcbJKRIH7Hb4-yTe6zAWHQsCi9tA_nyrRAgdw-EeHEYQf65Y6xmGbo6NZtol8b6nCvj-LW6Oifzoq-IIiChDo8tfpzHJfW0nxJ6Uqs7jhhF98SNdHh6fM3Y4cD0=w600-h450-p-k-no",
+            "match_text": "Plated dish with crispy tofu, herbs, and vegetables on tortillas with lime wedge. tofu. cilantro. red onion. red chili peppers. lime. tortilla. soft lighting. round white bowl. green lime wedge. red chili slices. onion slices. cilantro leaves. tofu chunks. tortilla corn chips or tostadas",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Stoa/data=!4m7!3m6!1s0x8085817cb6ff62bb:0xa670a511584da529!8m2!3d37.771455!4d-122.433855!16s%2Fg%2F11jzgskv5f!19sChIJu2L_tnyBhYARKaVNWBGlcKY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact cuisine not identifiable",
+              "specific dish name not confirmed"
+            ]
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJG_UZTAB_j4ARS3MAu7fe6I0",
+        "name": "Namaste Indian Cuisine",
+        "neighborhood": "Mission District",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Namaste+Indian+Cuisine/data=!4m7!3m6!1s0x808f7f004c19f51b:0x8de8deb7bb00734b!8m2!3d37.75462!4d-122.40911!16s%2Fg%2F11yvy42njx!19sChIJG_UZTAB_j4ARS3MAu7fe6I0?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "peppers"
+        ],
+        "query_coverage": 0.5,
+        "match_type": "partial",
+        "score": 6.029214,
+        "matched_sources": 1,
+        "matched_evidence": [
+          {
+            "evidence_id": "google:ChIJG_UZTAB_j4ARS3MAu7fe6I0:photo:6bd30e483e8f5e3f",
+            "restaurant_id": "google:ChIJG_UZTAB_j4ARS3MAu7fe6I0",
+            "kind": "photo_source_caption",
+            "text": "Chili chicken with bell peppers",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmO33RLOTjkjxbDDUyWofVbNCL5ZL-1cw7Xw7liZPUyfn2KqoCRqnxM6rPPodmQEQvpFoCuijxIAzEOtqrAMzgcaLPl4mB8MA7hKSwQ1aVPQF3K--UMU1zGJ7YMPuIVwehZRzmC_h8EQnFg=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Namaste+Indian+Cuisine/data=!4m7!3m6!1s0x808f7f004c19f51b:0x8de8deb7bb00734b!8m2!3d37.75462!4d-122.40911!16s%2Fg%2F11yvy42njx!19sChIJG_UZTAB_j4ARS3MAu7fe6I0?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Narendar Sriram",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25BNVVVUTRaMFJPYWxsUlIwWnlYMVJSVkRSd1JsRRAB",
+            "retrieved_at": "2026-09-26T02:42:45.333Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJG_UZTAB_j4ARS3MAu7fe6I0:photo:6bd30e483e8f5e3f",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "peppers"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJG_UZTAB_j4ARS3MAu7fe6I0:photo:6bd30e483e8f5e3f",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmO33RLOTjkjxbDDUyWofVbNCL5ZL-1cw7Xw7liZPUyfn2KqoCRqnxM6rPPodmQEQvpFoCuijxIAzEOtqrAMzgcaLPl4mB8MA7hKSwQ1aVPQF3K--UMU1zGJ7YMPuIVwehZRzmC_h8EQnFg=w600-h450-p-k-no",
+            "match_text": "Chili chicken with bell peppers",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Namaste+Indian+Cuisine/data=!4m7!3m6!1s0x808f7f004c19f51b:0x8de8deb7bb00734b!8m2!3d37.75462!4d-122.40911!16s%2Fg%2F11yvy42njx!19sChIJG_UZTAB_j4ARS3MAu7fe6I0?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "query": "mint green",
+    "scope": "nearby",
+    "photos_only": true,
+    "results": [
+      {
+        "restaurant_id": "google:ChIJ9QKs3yR_j4ARHuXwnup3Rs0",
+        "name": "La Vaca Birria",
+        "neighborhood": "Mission District",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/La+Vaca+Birria/data=!4m7!3m6!1s0x808f7f24dfac02f5:0xcd4677ea9ef0e51e!8m2!3d37.7529153!4d-122.4114313!16s%2Fg%2F11q91znrp8!19sChIJ9QKs3yR_j4ARHuXwnup3Rs0?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "mint",
+          "green"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 9.693853,
+        "matched_sources": 1,
+        "matched_evidence": [
+          {
+            "restaurant_id": "google:ChIJ9QKs3yR_j4ARHuXwnup3Rs0",
+            "photo_id": "google:ChIJ9QKs3yR_j4ARHuXwnup3Rs0:photo:a34dc6d7e248268d",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNsKqnc5Gl3I9y9dxXt1h4sxyYAkZmNCv0SqTRTaiBsBRlet_PFOgPxFtz6V0v21HvF9O4JECopiUFrqSo5XSyZDnQSzs0VaPivNresaJ527ySkxsA7EQbz3vNHzJzQcF6nTDFFJX3bNhoN=w600-h900-p-k-no",
+            "source_url": "https://www.google.com/maps/place/La+Vaca+Birria/data=!4m7!3m6!1s0x808f7f24dfac02f5:0xcd4677ea9ef0e51e!8m2!3d37.7529153!4d-122.4114313!16s%2Fg%2F11q91znrp8!19sChIJ9QKs3yR_j4ARHuXwnup3Rs0?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Jack Wittmayer",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25KUFVVcE5lamxsTUZwR1Rrc3dkRzFyY2pSRWNFRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "assistant_visual_pilot",
+            "photo_type": "interior",
+            "uncertainties": [
+              "Noise level and atmosphere when busy cannot be inferred from an empty room."
+            ],
+            "processed_at": "2026-09-26T03:02:45.545617+00:00",
+            "evidence_id": "google:ChIJ9QKs3yR_j4ARHuXwnup3Rs0:photo:a34dc6d7e248268d:vision",
+            "kind": "photo_vision_caption",
+            "text": "Dining room with mint-green walls and metal chairs, pale marble-patterned tabletops, a peach ceiling, and woven pendant lamps.. mint-green walls. green metal chairs. marble-patterned tables. woven pendant lamps. bar-height seating",
+            "matched_query_terms": [
+              "green",
+              "mint"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJ9QKs3yR_j4ARHuXwnup3Rs0:photo:a34dc6d7e248268d",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNsKqnc5Gl3I9y9dxXt1h4sxyYAkZmNCv0SqTRTaiBsBRlet_PFOgPxFtz6V0v21HvF9O4JECopiUFrqSo5XSyZDnQSzs0VaPivNresaJ527ySkxsA7EQbz3vNHzJzQcF6nTDFFJX3bNhoN=w600-h900-p-k-no",
+            "match_text": "Dining room with mint-green walls and metal chairs, pale marble-patterned tabletops, a peach ceiling, and woven pendant lamps.. mint-green walls. green metal chairs. marble-patterned tables. woven pendant lamps. bar-height seating",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/La+Vaca+Birria/data=!4m7!3m6!1s0x808f7f24dfac02f5:0xcd4677ea9ef0e51e!8m2!3d37.7529153!4d-122.4114313!16s%2Fg%2F11q91znrp8!19sChIJ9QKs3yR_j4ARHuXwnup3Rs0?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "Noise level and atmosphere when busy cannot be inferred from an empty room."
+            ]
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc",
+        "name": "Pancake Boy",
+        "neighborhood": "Noe Valley",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "mint",
+          "green"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 8.937219,
+        "matched_sources": 3,
+        "matched_evidence": [
+          {
+            "restaurant_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc",
+            "photo_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:7fceb1b20d564c5b",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMnvjbPEHOctoiig4lQ0gIkcd8K2pGOZxOMyv4x7mFESkKAAQM4sYd6hI8JE3F99vdQb2TNa0XFrhKDuYY38yaWAVAsv9TzLbgfoVuvyGSYSNo6SxlTLTcJ_S2DBu2GNXM4M1xz1O3gb8k=w600-h900-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Eva B",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xGalZUTktSVXhrVkU1S1FWaEJiSFk0Y2pSaU1tYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact pancake flavor not determined",
+              "whether there are additional toppings beyond chocolate chips and syrup"
+            ],
+            "processed_at": "2026-09-26T03:30:42.842603+00:00",
+            "evidence_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:7fceb1b20d564c5b:vision",
+            "kind": "photo_vision_caption",
+            "text": "Pancake topped with chocolate chips and syrup, dusted with powdered sugar, with an orange slice and mint leaf on the side.. pancake. chocolate chips. syrup. powdered sugar. orange slice. mint leaf. brown syrup drizzle. powdered sugar dusting. pile of chocolate chips. plate with red floral pattern. orange wedge. green mint. thick pancake stack. side lighting. wooden table",
+            "matched_query_terms": [
+              "green",
+              "mint"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc",
+            "photo_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:43783b4d0e34a165",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMPA7k9ihQfVUO-3VcSTJk9YjNj8Z1EYavr7c0nAwTOcoDGTs1B0ykcEyWzfrecHbtqPjl989SnIdg0txAWPcrxgyFKi1OaEEHSq5dih7sSToSYOVU5LdxLZqldtBKQvyv4YBVbwQAUU2E=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Eva B",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xGalZUTktSVXhrVkU1S1FWaEJiSFk0Y2pSaU1tYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact salad type not named",
+              "dressing flavor not identifiable"
+            ],
+            "processed_at": "2026-09-26T03:30:42.343288+00:00",
+            "evidence_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:43783b4d0e34a165:vision",
+            "kind": "photo_vision_caption",
+            "text": "Fresh garden salad with cucumber, radish, carrot, greens, and citrus segments on a decorative plate with a small side of dressing.. cucumber. radish. carrot. greens/lettuce. orange segments. cherry tomato(s). mixed greens. round plate with red pattern. wooden table. small metal cup with dressing. salad arrangement. thinly sliced cucumber rounds. radish slices. tomato halves. shredded carrot",
+            "matched_query_terms": [
+              "green"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc",
+            "photo_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:361680878ad251c9",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOWp6ZTEwErTBmye1rkp-pC7V4wm9Cu0cmt4FHP9PDWS8HSpKMMO7BfOu71vpJBHmi0gvN67sU-kx3EjJa7zwtFzeZLbyYFMSfUuDH15E-olf2LjPQjt9jrzHAAYGNqrjzheBzZgyLMqxI=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Eva B",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xGalZUTktSVXhrVkU1S1FWaEJiSFk0Y2pSaU1tYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "ingredient specifics unknown (e.g., seasoning, dipping)",
+              "exact dish name not identifiable"
+            ],
+            "processed_at": "2026-09-26T03:30:41.491079+00:00",
+            "evidence_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:361680878ad251c9:vision",
+            "kind": "photo_vision_caption",
+            "text": "Basket of fried potato chunks with lemon wedge. potato chunks. red-and-white checkered basket liner. fried potatoes. parmesan/green herb dusting?. lemon wedge. warm lighting may imply casual setting",
+            "matched_query_terms": [
+              "green"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:7fceb1b20d564c5b",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMnvjbPEHOctoiig4lQ0gIkcd8K2pGOZxOMyv4x7mFESkKAAQM4sYd6hI8JE3F99vdQb2TNa0XFrhKDuYY38yaWAVAsv9TzLbgfoVuvyGSYSNo6SxlTLTcJ_S2DBu2GNXM4M1xz1O3gb8k=w600-h900-p-k-no",
+            "match_text": "Pancake topped with chocolate chips and syrup, dusted with powdered sugar, with an orange slice and mint leaf on the side.. pancake. chocolate chips. syrup. powdered sugar. orange slice. mint leaf. brown syrup drizzle. powdered sugar dusting. pile of chocolate chips. plate with red floral pattern. orange wedge. green mint. thick pancake stack. side lighting. wooden table",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact pancake flavor not determined",
+              "whether there are additional toppings beyond chocolate chips and syrup"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:43783b4d0e34a165",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMPA7k9ihQfVUO-3VcSTJk9YjNj8Z1EYavr7c0nAwTOcoDGTs1B0ykcEyWzfrecHbtqPjl989SnIdg0txAWPcrxgyFKi1OaEEHSq5dih7sSToSYOVU5LdxLZqldtBKQvyv4YBVbwQAUU2E=w600-h450-p-k-no",
+            "match_text": "Fresh garden salad with cucumber, radish, carrot, greens, and citrus segments on a decorative plate with a small side of dressing.. cucumber. radish. carrot. greens/lettuce. orange segments. cherry tomato(s). mixed greens. round plate with red pattern. wooden table. small metal cup with dressing. salad arrangement. thinly sliced cucumber rounds. radish slices. tomato halves. shredded carrot",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact salad type not named",
+              "dressing flavor not identifiable"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:361680878ad251c9",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOWp6ZTEwErTBmye1rkp-pC7V4wm9Cu0cmt4FHP9PDWS8HSpKMMO7BfOu71vpJBHmi0gvN67sU-kx3EjJa7zwtFzeZLbyYFMSfUuDH15E-olf2LjPQjt9jrzHAAYGNqrjzheBzZgyLMqxI=w600-h450-p-k-no",
+            "match_text": "Basket of fried potato chunks with lemon wedge. potato chunks. red-and-white checkered basket liner. fried potatoes. parmesan/green herb dusting?. lemon wedge. warm lighting may imply casual setting",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "ingredient specifics unknown (e.g., seasoning, dipping)",
+              "exact dish name not identifiable"
+            ]
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk",
+        "name": "Caprizza Ristorante",
+        "neighborhood": "Mission District",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Caprizza+Ristorante/data=!4m7!3m6!1s0x808f7f9942f23425:0x59253ef14a78ab3b!8m2!3d37.753049!4d-122.4067275!16s%2Fg%2F11x2krv7r2!19sChIJJTTyQpl_j4ARO6t4SvE-JVk?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "mint",
+          "green"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 7.932069,
+        "matched_sources": 2,
+        "matched_evidence": [
+          {
+            "restaurant_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk",
+            "photo_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk:photo:ca2efca73930de91",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNchWAgZAK1BU9Jgk3zS6smknvKod5qpLWrDbH6ruvs9Hm9ji0vtr3pbmVbnF2O2NHCCKAmFwrowLXA-a4jpf6pwm-_g_gj9y0atIMptMHwHmW0poD40buzbNKEfHLpx8U_t6U-8nidn5To=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Caprizza+Ristorante/data=!4m7!3m6!1s0x808f7f9942f23425:0x59253ef14a78ab3b!8m2!3d37.753049!4d-122.4067275!16s%2Fg%2F11x2krv7r2!19sChIJJTTyQpl_j4ARO6t4SvE-JVk?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Mehr Sharma",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2s0eU1YQlFjMFIyVVU1SFJuaHZkRlF6TWtkVE1uYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "ingredient specifics unknown",
+              "exact flavor not discernible"
+            ],
+            "processed_at": "2026-09-26T03:28:21.614311+00:00",
+            "evidence_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk:photo:ca2efca73930de91:vision",
+            "kind": "photo_vision_caption",
+            "text": "Dessert piece on a white plate with chocolate drizzle and mint garnish.. dessert square. brown tiled table. white plate. chocolate drizzle. mint leaf. crumbled topping. birthday candle",
+            "matched_query_terms": [
+              "mint"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk",
+            "photo_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk:photo:97f4a3c18de5c59f",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPk1zyF2c68_S4AAWj7ohfTsYCqI08M6cIDyezmxMT8-_JnXJQrpJFAyIUo1LZ1ZRnJqVu-1g5NaXeN1zFsR94gwgDQnsxgbTwxeXizZpPzjAUyhqvpF9CVIVJ8n6zVoQrX3Nl0G76ScqA=w600-h900-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Caprizza+Ristorante/data=!4m7!3m6!1s0x808f7f9942f23425:0x59253ef14a78ab3b!8m2!3d37.753049!4d-122.4067275!16s%2Fg%2F11x2krv7r2!19sChIJJTTyQpl_j4ARO6t4SvE-JVk?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Mehr Sharma",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2s0eU1YQlFjMFIyVVU1SFJuaHZkRlF6TWtkVE1uYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact type of meat not specified",
+              "sauce ingredients not fully identifiable"
+            ],
+            "processed_at": "2026-09-26T03:28:21.457586+00:00",
+            "evidence_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk:photo:97f4a3c18de5c59f:vision",
+            "kind": "photo_vision_caption",
+            "text": "Plate with meat in creamy sauce, mashed potato, and sautéed greens. sliced meat with creamy sauce. mashed potatoes. spinach or sautéed greens. white oval plate. creamy sauce with herbs and seeds. green herbs. pumpkin or sesame seeds on meat. fork on plate. dark wooden table. drinking glasses nearby. mashed potato mound. greens beside potatoes",
+            "matched_query_terms": [
+              "green"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk:photo:ca2efca73930de91",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNchWAgZAK1BU9Jgk3zS6smknvKod5qpLWrDbH6ruvs9Hm9ji0vtr3pbmVbnF2O2NHCCKAmFwrowLXA-a4jpf6pwm-_g_gj9y0atIMptMHwHmW0poD40buzbNKEfHLpx8U_t6U-8nidn5To=w600-h450-p-k-no",
+            "match_text": "Dessert piece on a white plate with chocolate drizzle and mint garnish.. dessert square. brown tiled table. white plate. chocolate drizzle. mint leaf. crumbled topping. birthday candle",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Caprizza+Ristorante/data=!4m7!3m6!1s0x808f7f9942f23425:0x59253ef14a78ab3b!8m2!3d37.753049!4d-122.4067275!16s%2Fg%2F11x2krv7r2!19sChIJJTTyQpl_j4ARO6t4SvE-JVk?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "ingredient specifics unknown",
+              "exact flavor not discernible"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk:photo:97f4a3c18de5c59f",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPk1zyF2c68_S4AAWj7ohfTsYCqI08M6cIDyezmxMT8-_JnXJQrpJFAyIUo1LZ1ZRnJqVu-1g5NaXeN1zFsR94gwgDQnsxgbTwxeXizZpPzjAUyhqvpF9CVIVJ8n6zVoQrX3Nl0G76ScqA=w600-h900-p-k-no",
+            "match_text": "Plate with meat in creamy sauce, mashed potato, and sautéed greens. sliced meat with creamy sauce. mashed potatoes. spinach or sautéed greens. white oval plate. creamy sauce with herbs and seeds. green herbs. pumpkin or sesame seeds on meat. fork on plate. dark wooden table. drinking glasses nearby. mashed potato mound. greens beside potatoes",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Caprizza+Ristorante/data=!4m7!3m6!1s0x808f7f9942f23425:0x59253ef14a78ab3b!8m2!3d37.753049!4d-122.4067275!16s%2Fg%2F11x2krv7r2!19sChIJJTTyQpl_j4ARO6t4SvE-JVk?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact type of meat not specified",
+              "sauce ingredients not fully identifiable"
+            ]
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s",
+        "name": "Dumpling House",
+        "neighborhood": "The Castro",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "mint",
+          "green"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 7.90184,
+        "matched_sources": 3,
+        "matched_evidence": [
+          {
+            "restaurant_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s",
+            "photo_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:2839d115a17758f5",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOVuhLzoWVK8VGgipTS1iCBXYTYZqSpJt6EKUyWc5WkcHoeOQRT2am3bncvcOFg_ysVcoMMJmxON6tTM5doMgQYo49NXkqwNG4YlgOIQ97r7WseeAYuw-315sIxrFn0Kfm6AQnp0AfRpGiD=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Big Mike",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tjM1ZFZGxjRFp3TWpCR1F6VnllbEZ6Ym5aMkxYYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "specific dumpling filling uncertain",
+              "exact noodle type unknown",
+              "exact dish name unknown"
+            ],
+            "processed_at": "2026-09-26T03:31:07.446762+00:00",
+            "evidence_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:2839d115a17758f5:vision",
+            "kind": "photo_vision_caption",
+            "text": "Close-up of dumplings with noodles and greens in broth. dumplings. noodles. greens. broth/stock. chopsticks. vegetables (bok choy). red chopsticks. light-colored broth. udon-like noodles. white plate or bowl. steamed greens. mint or leafy greens in background. date/time stamp reading May 4, 2016, 19:39",
+            "matched_query_terms": [
+              "green",
+              "mint"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s",
+            "photo_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:678e163a4b030c6e",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPQj4AZaavuAuM4TUHnKnI3hgqQjgHEzT-qhIY-4tlXBrxgPS1bqz6OEdpxMivOFOTr7EJp6bV4CUGfa3lEQFiHoFRUh4nUA67Q3tGY5n-wIiIjuYcx6LrqL4pNtxkcskTpNwWgHWbq4aFZ=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Big Mike",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tjM1ZFZGxjRFp3TWpCR1F6VnllbEZ6Ym5aMkxYYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact soup base unknown",
+              "specific greens uncertain",
+              "whether noodles are egg or wheat",
+              "dishes could be part of a larger dish not shown"
+            ],
+            "processed_at": "2026-09-26T03:31:08.159393+00:00",
+            "evidence_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:678e163a4b030c6e:vision",
+            "kind": "photo_vision_caption",
+            "text": "Dumplings with greens in a broth and noodles. dumplings. greens (bok choy or similar). noodles. white ceramic bowl. broth/clear sauce. green onions. spoon. wooden table. dim lighting. meal appears steaming or glossy",
+            "matched_query_terms": [
+              "green"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s",
+            "photo_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:0bd6d6962bcd373d",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPVh2-oklNvRnCojUH5Bv5VjiQrKW-l00kru4bWtRDVlfRqSk5HBdBqIdJ43QCMS0KiAiVAQYOl1IKQI2sGPe7mjrnJvZxJOvE1D7j9WLiv-2rXAWI1HL-Zl1OZPA_w2OpcODUpvpl8wvvt=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Big Mike",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tjM1ZFZGxjRFp3TWpCR1F6VnllbEZ6Ym5aMkxYYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact dish name",
+              "whether there are noodles in the broth",
+              "whether additional ingredients are present",
+              "whether the greens are bok choy or another leafy green"
+            ],
+            "processed_at": "2026-09-26T03:31:07.181659+00:00",
+            "evidence_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:0bd6d6962bcd373d:vision",
+            "kind": "photo_vision_caption",
+            "text": "Chopsticks hold a bite of greens over dumplings in a broth.. dumplings. bok choy. noodles?. broth. chopsticks. light-colored dumpling wrapper. green leafy vegetables. light broth. potsticker-like dumplings. white plate or bowl edge",
+            "matched_query_terms": [
+              "green"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:2839d115a17758f5",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOVuhLzoWVK8VGgipTS1iCBXYTYZqSpJt6EKUyWc5WkcHoeOQRT2am3bncvcOFg_ysVcoMMJmxON6tTM5doMgQYo49NXkqwNG4YlgOIQ97r7WseeAYuw-315sIxrFn0Kfm6AQnp0AfRpGiD=w600-h450-p-k-no",
+            "match_text": "Close-up of dumplings with noodles and greens in broth. dumplings. noodles. greens. broth/stock. chopsticks. vegetables (bok choy). red chopsticks. light-colored broth. udon-like noodles. white plate or bowl. steamed greens. mint or leafy greens in background. date/time stamp reading May 4, 2016, 19:39",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "specific dumpling filling uncertain",
+              "exact noodle type unknown",
+              "exact dish name unknown"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:678e163a4b030c6e",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPQj4AZaavuAuM4TUHnKnI3hgqQjgHEzT-qhIY-4tlXBrxgPS1bqz6OEdpxMivOFOTr7EJp6bV4CUGfa3lEQFiHoFRUh4nUA67Q3tGY5n-wIiIjuYcx6LrqL4pNtxkcskTpNwWgHWbq4aFZ=w600-h450-p-k-no",
+            "match_text": "Dumplings with greens in a broth and noodles. dumplings. greens (bok choy or similar). noodles. white ceramic bowl. broth/clear sauce. green onions. spoon. wooden table. dim lighting. meal appears steaming or glossy",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact soup base unknown",
+              "specific greens uncertain",
+              "whether noodles are egg or wheat",
+              "dishes could be part of a larger dish not shown"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:0bd6d6962bcd373d",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPVh2-oklNvRnCojUH5Bv5VjiQrKW-l00kru4bWtRDVlfRqSk5HBdBqIdJ43QCMS0KiAiVAQYOl1IKQI2sGPe7mjrnJvZxJOvE1D7j9WLiv-2rXAWI1HL-Zl1OZPA_w2OpcODUpvpl8wvvt=w600-h450-p-k-no",
+            "match_text": "Chopsticks hold a bite of greens over dumplings in a broth.. dumplings. bok choy. noodles?. broth. chopsticks. light-colored dumpling wrapper. green leafy vegetables. light broth. potsticker-like dumplings. white plate or bowl edge",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact dish name",
+              "whether there are noodles in the broth",
+              "whether additional ingredients are present",
+              "whether the greens are bok choy or another leafy green"
+            ]
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns",
+        "name": "Rich Table",
+        "neighborhood": "Lower Haight",
+        "area_priority": "nearby",
+        "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "mint",
+          "green"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 7.2358,
+        "matched_sources": 5,
+        "matched_evidence": [
+          {
+            "restaurant_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns",
+            "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:ef534f2e3639333b",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMDNG49Bgt6yVdVPoQdLj2_P90CEWoGL8Fi_-tsaZgBaZQ8awYVam7--wdvVMOGkrzizLQ1BAdZBXvkgSed8b8iAf1eVqqOs6ABaRGdrtondCLW1ax7apGexn92vq-0Z_uEzAagttXFi4Vn=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Travel panDa",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2paRVJrWTFUM3B3YkMxTU1HVldMVVl0T0hSalMxRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "The exact flavors or names of the desserts are not identifiable",
+              "It is uncertain if the brown dessert is chocolate-based"
+            ],
+            "processed_at": "2026-09-26T03:36:01.607855+00:00",
+            "evidence_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:ef534f2e3639333b:vision",
+            "kind": "photo_vision_caption",
+            "text": "Slices of creamy dessert on a plate with chocolate-topped treat in a pink bowl.. slices of dessert with creamy icing. brown dessert with mint garnish. pink ceramic bowl. white plate with cream desserts. brown wooden surface. mint leaf garnish. chocolate topping on dessert. creamy white dessert pieces",
+            "matched_query_terms": [
+              "mint"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns",
+            "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:63cc2b8322ed1a61",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmN05GD6HvG_H4gxgbz-mjq0FUml6gznmSgyIGQaSIebRUzjFPKjoy_exDxpf2PUkUx3474V35t51GVn0xa9n-eKFoMuMvFua8TubMrWui6ehMe4gFAocuwZgrag58CMUit_OxP80aA4xuM9=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Matt Green",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xwcmIxQm1WR3ByTUU0elpYQlNjRGhvUlZsTVVFRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "drink",
+            "uncertainties": [
+              "garnish exact herb",
+              "type of drink not specified",
+              "presence of other visible foods may be limited"
+            ],
+            "processed_at": "2026-09-26T03:36:00.247798+00:00",
+            "evidence_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:63cc2b8322ed1a61:vision",
+            "kind": "photo_vision_caption",
+            "text": "Two drinks on a wooden table with ice and garnish. sliced ice. garnish sprig. slice of citrus? (not clearly). wooden table. ice-filled glasses. garnish sprig (dill or herb). plate and cutlery in background. glass beverage with mint leaf or dill. candle or ambient lighting. crystal-clear ice cubes",
+            "matched_query_terms": [
+              "mint"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns",
+            "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:6ea82dd3ed3547f7",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPM-Sub178lgB5Jh3e4sLv22S438pOD-FL8OVQiqSl8ir0orSvB-kXDratmMlHKmk3RtVdF2Hn3WmARVbzbo64aqHre_JT30VHEWjBFqNhyalXY1S0gbFsgv5cg1yocW7WUBZrSKaLVoNs=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Travel panDa",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2paRVJrWTFUM3B3YkMxTU1HVldMVVl0T0hSalMxRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact pasta type unknown",
+              "specific cheese type unknown",
+              "whether herbs are parsley or another herb"
+            ],
+            "processed_at": "2026-09-26T03:36:00.773387+00:00",
+            "evidence_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:6ea82dd3ed3547f7:vision",
+            "kind": "photo_vision_caption",
+            "text": "Pink bowl with pasta topped with grated cheese and herbs.. pasta. grated cheese. green herb. black pepper. pink bowl. orange-yellow pasta. garlic? herbs. shaved cheese. green parsley. dark pepper flakes",
+            "matched_query_terms": [
+              "green"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns",
+            "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:d796a01ae4c5bc63",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNGIZuq0TbuvYQJ7CmEL8Pi6TH5wPxMxJbtMqASOzw1AmlUFO4j0XNtIw6DOjl56Gaih13pSoblUNHp_B0dKzB9N4qUF-tXx9dMt2acYjx9feIKDWtKFQBdxkohP-4CZa_g4k6XunsNFEY=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Travel panDa",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2paRVJrWTFUM3B3YkMxTU1HVldMVVl0T0hSalMxRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "Exact dish name unclear",
+              "specific ingredients not identifiable",
+              "presence of additional toppings not certain"
+            ],
+            "processed_at": "2026-09-26T03:36:01.019591+00:00",
+            "evidence_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:d796a01ae4c5bc63:vision",
+            "kind": "photo_vision_caption",
+            "text": "A bowl of porridge-like dish with orange sauce and shredded greens on top.. porridge/ gruel. orange sauce. shredded greens. julienned white strips. pink ceramic bowl. wooden table. soft lighting. centered presentation. garnish with chives. thin white noodles or stems",
+            "matched_query_terms": [
+              "green"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns",
+            "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:3627359abf8404b7",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPx54G3vt_gZPgO0qNu7ONTvyxO6mk7CUy1zZI1qLH2LAmQyoTSYir3JlTE3dSxyMCXRK56M6Lc4SmksJJCPDMk_Q4uPX4qK4qUye2UQIIZhOM0F6jBpGYWgVpO3sOk4LOvupC_ucwmX30=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Matt Green",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xwcmIxQm1WR3ByTUU0elpYQlNjRGhvUlZsTVVFRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "Exact identification of some morsels (crab, croquette, broccoli) is uncertain",
+              "Some items may be fried or baked",
+              "Plating includes a paper liner with design"
+            ],
+            "processed_at": "2026-09-26T03:35:59.968551+00:00",
+            "evidence_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:3627359abf8404b7:vision",
+            "kind": "photo_vision_caption",
+            "text": "A round platter with small bites and a central dipping sauce.. crab/crab-like bites. crackers or crostini. creamy dip. green vegetable bites (broccoli/cauliflower). crab croquettes. crumb-covered bites. roasted potato bites. round plate on wooden table. blue ceramic cup with white dip. small white cups with crumb topping. greens/herbs on top. bright lighting with warm tones. narrow paper napkins under some bites",
+            "matched_query_terms": [
+              "green"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:ef534f2e3639333b",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMDNG49Bgt6yVdVPoQdLj2_P90CEWoGL8Fi_-tsaZgBaZQ8awYVam7--wdvVMOGkrzizLQ1BAdZBXvkgSed8b8iAf1eVqqOs6ABaRGdrtondCLW1ax7apGexn92vq-0Z_uEzAagttXFi4Vn=w600-h450-p-k-no",
+            "match_text": "Slices of creamy dessert on a plate with chocolate-topped treat in a pink bowl.. slices of dessert with creamy icing. brown dessert with mint garnish. pink ceramic bowl. white plate with cream desserts. brown wooden surface. mint leaf garnish. chocolate topping on dessert. creamy white dessert pieces",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "The exact flavors or names of the desserts are not identifiable",
+              "It is uncertain if the brown dessert is chocolate-based"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:63cc2b8322ed1a61",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmN05GD6HvG_H4gxgbz-mjq0FUml6gznmSgyIGQaSIebRUzjFPKjoy_exDxpf2PUkUx3474V35t51GVn0xa9n-eKFoMuMvFua8TubMrWui6ehMe4gFAocuwZgrag58CMUit_OxP80aA4xuM9=w600-h450-p-k-no",
+            "match_text": "Two drinks on a wooden table with ice and garnish. sliced ice. garnish sprig. slice of citrus? (not clearly). wooden table. ice-filled glasses. garnish sprig (dill or herb). plate and cutlery in background. glass beverage with mint leaf or dill. candle or ambient lighting. crystal-clear ice cubes",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "garnish exact herb",
+              "type of drink not specified",
+              "presence of other visible foods may be limited"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:6ea82dd3ed3547f7",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPM-Sub178lgB5Jh3e4sLv22S438pOD-FL8OVQiqSl8ir0orSvB-kXDratmMlHKmk3RtVdF2Hn3WmARVbzbo64aqHre_JT30VHEWjBFqNhyalXY1S0gbFsgv5cg1yocW7WUBZrSKaLVoNs=w600-h450-p-k-no",
+            "match_text": "Pink bowl with pasta topped with grated cheese and herbs.. pasta. grated cheese. green herb. black pepper. pink bowl. orange-yellow pasta. garlic? herbs. shaved cheese. green parsley. dark pepper flakes",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact pasta type unknown",
+              "specific cheese type unknown",
+              "whether herbs are parsley or another herb"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:d796a01ae4c5bc63",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNGIZuq0TbuvYQJ7CmEL8Pi6TH5wPxMxJbtMqASOzw1AmlUFO4j0XNtIw6DOjl56Gaih13pSoblUNHp_B0dKzB9N4qUF-tXx9dMt2acYjx9feIKDWtKFQBdxkohP-4CZa_g4k6XunsNFEY=w600-h450-p-k-no",
+            "match_text": "A bowl of porridge-like dish with orange sauce and shredded greens on top.. porridge/ gruel. orange sauce. shredded greens. julienned white strips. pink ceramic bowl. wooden table. soft lighting. centered presentation. garnish with chives. thin white noodles or stems",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "Exact dish name unclear",
+              "specific ingredients not identifiable",
+              "presence of additional toppings not certain"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "query": "dog patio",
+    "scope": "nearby",
+    "photos_only": true,
+    "results": [
+      {
+        "restaurant_id": "google:ChIJ369T0Rp-j4ARftWt7DRMdo4",
+        "name": "Fable",
+        "neighborhood": "The Castro",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Fable/data=!4m7!3m6!1s0x808f7e1ad153afdf:0x8e764c34ecadd57e!8m2!3d37.7599424!4d-122.435178!16s%2Fg%2F1hhwkb3db!19sChIJ369T0Rp-j4ARftWt7DRMdo4?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "dog",
+          "patio"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 17.138361,
+        "matched_sources": 1,
+        "matched_evidence": [
+          {
+            "restaurant_id": "google:ChIJ369T0Rp-j4ARftWt7DRMdo4",
+            "photo_id": "google:ChIJ369T0Rp-j4ARftWt7DRMdo4:photo:a59e7552e6b3f7be",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNnpF8N2uyvBdSxN18vx-sV7BNUR6owvJ97wYnzp3HH5M9Fp7lndBZopViXxKvDIivgCoxIpZ6ww6pdPHfpid1IExKa14TYd3TAktohfDni8c6BNtTY_5Md1mE75h01c86ZzYqHkEqGDb1a=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Fable/data=!4m7!3m6!1s0x808f7e1ad153afdf:0x8e764c34ecadd57e!8m2!3d37.7599424!4d-122.435178!16s%2Fg%2F1hhwkb3db!19sChIJ369T0Rp-j4ARftWt7DRMdo4?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Janeen",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2pOYWFUSnFlbk5pT0hrdGREUkJkRTE2TTJaM2NrRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "assistant_visual_pilot",
+            "photo_type": "interior",
+            "uncertainties": [
+              "A dog in one photo does not establish the current pet policy.",
+              "The extent of roof coverage is not visible."
+            ],
+            "processed_at": "2026-09-26T03:02:45.545610+00:00",
+            "evidence_id": "google:ChIJ369T0Rp-j4ARftWt7DRMdo4:photo:a59e7552e6b3f7be:vision",
+            "kind": "photo_vision_caption",
+            "text": "A dog beside dining tables in a patio-style seating area with plants, wooden decking, and wicker chairs.. dog visible. patio-style seating. wooden deck. plants. wicker chairs",
+            "matched_query_terms": [
+              "dog",
+              "patio"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJ369T0Rp-j4ARftWt7DRMdo4:photo:a59e7552e6b3f7be",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNnpF8N2uyvBdSxN18vx-sV7BNUR6owvJ97wYnzp3HH5M9Fp7lndBZopViXxKvDIivgCoxIpZ6ww6pdPHfpid1IExKa14TYd3TAktohfDni8c6BNtTY_5Md1mE75h01c86ZzYqHkEqGDb1a=w600-h450-p-k-no",
+            "match_text": "A dog beside dining tables in a patio-style seating area with plants, wooden decking, and wicker chairs.. dog visible. patio-style seating. wooden deck. plants. wicker chairs",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Fable/data=!4m7!3m6!1s0x808f7e1ad153afdf:0x8e764c34ecadd57e!8m2!3d37.7599424!4d-122.435178!16s%2Fg%2F1hhwkb3db!19sChIJ369T0Rp-j4ARftWt7DRMdo4?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "A dog in one photo does not establish the current pet policy.",
+              "The extent of roof coverage is not visible."
+            ]
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJyXzXUgCHhYARexfIBlhthBc",
+        "name": "Lovely's",
+        "neighborhood": "Cole Valley",
+        "area_priority": "nearby",
+        "source_url": "https://www.google.com/maps/place/Lovely%27s/data=!4m7!3m6!1s0x8085870052d77cc9:0x17846d5806c8177b!8m2!3d37.7661366!4d-122.4497537!16s%2Fg%2F11lw966l5p!19sChIJyXzXUgCHhYARexfIBlhthBc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "dog",
+          "patio"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 11.867113,
+        "matched_sources": 2,
+        "matched_evidence": [
+          {
+            "evidence_id": "google:ChIJyXzXUgCHhYARexfIBlhthBc:photo:2db4c1ef2fee6dbe",
+            "restaurant_id": "google:ChIJyXzXUgCHhYARexfIBlhthBc",
+            "kind": "photo_source_caption",
+            "text": "Burger and hot dog menu",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmO-aJKhHZm-8czR4antIHTW0SHq8mnd2-tvsoCXyBn9WDNwuEF8F_QKcBZqjnF6YQ-08rc7I7pI5RPdBON4zr-g3xpqjlOcTxjshjMdovMxWkN5-fm8QF7uSid942pOx8lZ4wRghYEmFXQh=w600-h900-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Lovely%27s/data=!4m7!3m6!1s0x8085870052d77cc9:0x17846d5806c8177b!8m2!3d37.7661366!4d-122.4497537!16s%2Fg%2F11lw966l5p!19sChIJyXzXUgCHhYARexfIBlhthBc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Lou Naranjo",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT201RlNHMDRkbGxzVXpSdldHcEtNemxHTlZGWVMyYxAB",
+            "retrieved_at": "2026-09-26T02:36:02.939Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJyXzXUgCHhYARexfIBlhthBc:photo:2db4c1ef2fee6dbe",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "dog"
+            ]
+          },
+          {
+            "evidence_id": "google:ChIJyXzXUgCHhYARexfIBlhthBc:photo:4dd9e0ee449ec67c",
+            "restaurant_id": "google:ChIJyXzXUgCHhYARexfIBlhthBc",
+            "kind": "photo_source_caption",
+            "text": "Seating at bar or patio available",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOQQXlCGkLI4CwTrihR1ugbqWcfjr8SFW-d0vAwNg64J2aWkIpz6AfX29mQXd-3MMtaFatkXBicAgI7-15fLOfY2ZmaJ9wt0GB5MG_b2j1soNGqa9VhJmcCotjyKdgsY-an4brkwFuzEmFl=w600-h900-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Lovely%27s/data=!4m7!3m6!1s0x8085870052d77cc9:0x17846d5806c8177b!8m2!3d37.7661366!4d-122.4497537!16s%2Fg%2F11lw966l5p!19sChIJyXzXUgCHhYARexfIBlhthBc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Sarina Iwai",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2pCbWRrTktibGhsZFZVMGJta3hWR0ZFYzFKbWVXYxAB",
+            "retrieved_at": "2026-09-26T02:36:02.939Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJyXzXUgCHhYARexfIBlhthBc:photo:4dd9e0ee449ec67c",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "patio"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJyXzXUgCHhYARexfIBlhthBc:photo:2db4c1ef2fee6dbe",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmO-aJKhHZm-8czR4antIHTW0SHq8mnd2-tvsoCXyBn9WDNwuEF8F_QKcBZqjnF6YQ-08rc7I7pI5RPdBON4zr-g3xpqjlOcTxjshjMdovMxWkN5-fm8QF7uSid942pOx8lZ4wRghYEmFXQh=w600-h900-p-k-no",
+            "match_text": "Burger and hot dog menu",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Lovely%27s/data=!4m7!3m6!1s0x8085870052d77cc9:0x17846d5806c8177b!8m2!3d37.7661366!4d-122.4497537!16s%2Fg%2F11lw966l5p!19sChIJyXzXUgCHhYARexfIBlhthBc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          },
+          {
+            "photo_id": "google:ChIJyXzXUgCHhYARexfIBlhthBc:photo:4dd9e0ee449ec67c",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOQQXlCGkLI4CwTrihR1ugbqWcfjr8SFW-d0vAwNg64J2aWkIpz6AfX29mQXd-3MMtaFatkXBicAgI7-15fLOfY2ZmaJ9wt0GB5MG_b2j1soNGqa9VhJmcCotjyKdgsY-an4brkwFuzEmFl=w600-h900-p-k-no",
+            "match_text": "Seating at bar or patio available",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Lovely%27s/data=!4m7!3m6!1s0x8085870052d77cc9:0x17846d5806c8177b!8m2!3d37.7661366!4d-122.4497537!16s%2Fg%2F11lw966l5p!19sChIJyXzXUgCHhYARexfIBlhthBc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJky2knBt-j4ARXAdR3-GAWM8",
+        "name": "Frances",
+        "neighborhood": "The Castro",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Frances/data=!4m7!3m6!1s0x808f7e1b9ca42d93:0xcf5880e1df51075c!8m2!3d37.7627657!4d-122.4322519!16s%2Fm%2F0bd64wt!19sChIJky2knBt-j4ARXAdR3-GAWM8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "patio"
+        ],
+        "query_coverage": 0.5,
+        "match_type": "partial",
+        "score": 9.176286,
+        "matched_sources": 2,
+        "matched_evidence": [
+          {
+            "evidence_id": "google:ChIJky2knBt-j4ARXAdR3-GAWM8:photo:ab9f5569c23a363c",
+            "restaurant_id": "google:ChIJky2knBt-j4ARXAdR3-GAWM8",
+            "kind": "photo_source_caption",
+            "text": "Covered outdoor patio with heaters",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOmhKBVFXxfWvoaGnINWQFVGjDqlMVt6GZGkTwbFk_PrDbqgkLa8jDNGLHig3KJZEscN6zraQ2MeE4SSTdNs2X47xlYbIaJT4p-BIVTsH2_oguFwODm-d-79OQ5pxgC4ytHOZPopkET09Y=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Frances/data=!4m7!3m6!1s0x808f7e1b9ca42d93:0xcf5880e1df51075c!8m2!3d37.7627657!4d-122.4322519!16s%2Fm%2F0bd64wt!19sChIJky2knBt-j4ARXAdR3-GAWM8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Stephanie E Dilworth",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tzek9UUnBTMmg1TjJSUUxVaFBRM3BUZEVkTU1WRRAB",
+            "retrieved_at": "2026-09-26T02:46:52.318Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJky2knBt-j4ARXAdR3-GAWM8:photo:ab9f5569c23a363c",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "patio"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJky2knBt-j4ARXAdR3-GAWM8",
+            "photo_id": "google:ChIJky2knBt-j4ARXAdR3-GAWM8:photo:a6e888ecaa02fa1b",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMfpfvmpvDeuI3JTRE-wAP4lYiTRAlnMO4vjTdF77erkRiarh7kFVkg8IMRd4tNbqleeCUCEqSrJh-1qBwuJPLqov8lpyVjNCWNIXmO9MPR79F4KwZFHryyhEkc4Ct_fCaBmWk1DE6BLCtK=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Frances/data=!4m7!3m6!1s0x808f7e1b9ca42d93:0xcf5880e1df51075c!8m2!3d37.7627657!4d-122.4322519!16s%2Fm%2F0bd64wt!19sChIJky2knBt-j4ARXAdR3-GAWM8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "R H",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tKSmJYSTBVRFZvZFMxVFZXTXdkSE5qVVRWc2QwRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "interior",
+            "uncertainties": [
+              "unable to identify specific dishes or drinks",
+              "no readable menu text present"
+            ],
+            "processed_at": "2026-09-26T03:31:12.877043+00:00",
+            "evidence_id": "google:ChIJky2knBt-j4ARXAdR3-GAWM8:photo:a6e888ecaa02fa1b:vision",
+            "kind": "photo_vision_caption",
+            "text": "Sunlit interior with hanging pendant lights and a view to an outdoor patio.. none. high windows/clerestory. hanging pendant lights. shelf with jars. dried herbs hanging. wooden countertop. large glass windows. outdoor seating area with canopy. potted plants outside. barrier wall with greenery",
+            "matched_query_terms": [
+              "patio"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJky2knBt-j4ARXAdR3-GAWM8:photo:ab9f5569c23a363c",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOmhKBVFXxfWvoaGnINWQFVGjDqlMVt6GZGkTwbFk_PrDbqgkLa8jDNGLHig3KJZEscN6zraQ2MeE4SSTdNs2X47xlYbIaJT4p-BIVTsH2_oguFwODm-d-79OQ5pxgC4ytHOZPopkET09Y=w600-h450-p-k-no",
+            "match_text": "Covered outdoor patio with heaters",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Frances/data=!4m7!3m6!1s0x808f7e1b9ca42d93:0xcf5880e1df51075c!8m2!3d37.7627657!4d-122.4322519!16s%2Fm%2F0bd64wt!19sChIJky2knBt-j4ARXAdR3-GAWM8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          },
+          {
+            "photo_id": "google:ChIJky2knBt-j4ARXAdR3-GAWM8:photo:a6e888ecaa02fa1b",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMfpfvmpvDeuI3JTRE-wAP4lYiTRAlnMO4vjTdF77erkRiarh7kFVkg8IMRd4tNbqleeCUCEqSrJh-1qBwuJPLqov8lpyVjNCWNIXmO9MPR79F4KwZFHryyhEkc4Ct_fCaBmWk1DE6BLCtK=w600-h450-p-k-no",
+            "match_text": "Sunlit interior with hanging pendant lights and a view to an outdoor patio.. none. high windows/clerestory. hanging pendant lights. shelf with jars. dried herbs hanging. wooden countertop. large glass windows. outdoor seating area with canopy. potted plants outside. barrier wall with greenery",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Frances/data=!4m7!3m6!1s0x808f7e1b9ca42d93:0xcf5880e1df51075c!8m2!3d37.7627657!4d-122.4322519!16s%2Fm%2F0bd64wt!19sChIJky2knBt-j4ARXAdR3-GAWM8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "unable to identify specific dishes or drinks",
+              "no readable menu text present"
+            ]
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJOQVGUgB_j4ARLd3Yerml4TI",
+        "name": "The Rabbit Hole",
+        "neighborhood": "Bernal Heights",
+        "area_priority": "nearby",
+        "source_url": "https://www.google.com/maps/place/The+Rabbit+Hole/data=!4m7!3m6!1s0x808f7f0052460539:0x32e1a5b97ad8dd2d!8m2!3d37.7412154!4d-122.423023!16s%2Fg%2F11y27jrx5v!19sChIJOQVGUgB_j4ARLd3Yerml4TI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "patio"
+        ],
+        "query_coverage": 0.5,
+        "match_type": "partial",
+        "score": 8.781146,
+        "matched_sources": 1,
+        "matched_evidence": [
+          {
+            "evidence_id": "google:ChIJOQVGUgB_j4ARLd3Yerml4TI:photo:56d4b1c31874a45f",
+            "restaurant_id": "google:ChIJOQVGUgB_j4ARLd3Yerml4TI",
+            "kind": "photo_source_caption",
+            "text": "Outside patio",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPGV1qrOA3d-Z-1_eZIazpcWYimBDDBB0EvgNEo1qzEZcAojKeCaDI5erNnV8VuBmVGreZetXzDIY53yxNq8aN-vX4GsOkZXDhkYjBT9J-9iDQSXPcY8AZW70edj7HyTunoGdsTcJw7xrIk=w600-h900-p-k-no",
+            "source_url": "https://www.google.com/maps/place/The+Rabbit+Hole/data=!4m7!3m6!1s0x808f7f0052460539:0x32e1a5b97ad8dd2d!8m2!3d37.7412154!4d-122.423023!16s%2Fg%2F11y27jrx5v!19sChIJOQVGUgB_j4ARLd3Yerml4TI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "T Sripun",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xwbFIydzBhbVZYZUVkTlJqSXlMV3BaYzNGWmNHYxAB",
+            "retrieved_at": "2026-09-26T02:29:08.395Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJOQVGUgB_j4ARLd3Yerml4TI:photo:56d4b1c31874a45f",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "patio"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJOQVGUgB_j4ARLd3Yerml4TI:photo:56d4b1c31874a45f",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPGV1qrOA3d-Z-1_eZIazpcWYimBDDBB0EvgNEo1qzEZcAojKeCaDI5erNnV8VuBmVGreZetXzDIY53yxNq8aN-vX4GsOkZXDhkYjBT9J-9iDQSXPcY8AZW70edj7HyTunoGdsTcJw7xrIk=w600-h900-p-k-no",
+            "match_text": "Outside patio",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/The+Rabbit+Hole/data=!4m7!3m6!1s0x808f7f0052460539:0x32e1a5b97ad8dd2d!8m2!3d37.7412154!4d-122.423023!16s%2Fg%2F11y27jrx5v!19sChIJOQVGUgB_j4ARLd3Yerml4TI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJgSeZU1SHhYARQU-BswtkEiY",
+        "name": "Zazie",
+        "neighborhood": "Cole Valley",
+        "area_priority": "nearby",
+        "source_url": "https://www.google.com/maps/place/Zazie/data=!4m7!3m6!1s0x8085875453992781:0x2612640bb3814f41!8m2!3d37.7652402!4d-122.4500965!16s%2Fg%2F11css6znhq!19sChIJgSeZU1SHhYARQU-BswtkEiY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "patio"
+        ],
+        "query_coverage": 0.5,
+        "match_type": "partial",
+        "score": 8.245762,
+        "matched_sources": 1,
+        "matched_evidence": [
+          {
+            "evidence_id": "google:ChIJgSeZU1SHhYARQU-BswtkEiY:photo:ac764ace92e01b99",
+            "restaurant_id": "google:ChIJgSeZU1SHhYARQU-BswtkEiY",
+            "kind": "photo_source_caption",
+            "text": "Zazie garden patio outdoor dining",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPgh-j61jm7WaB7gjgp_zXPBiUT3i5jUESBPthY9F3dvw8j8DxKQhpCsGUrUDxcOPCs_IAH6BwS17gDr09IRfg57FUDaMR1rc9O6ocN2bgtmuxnJOPx_z-v1YTZs41-LQtO-_HzYosyMaK5=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Zazie/data=!4m7!3m6!1s0x8085875453992781:0x2612640bb3814f41!8m2!3d37.7652402!4d-122.4500965!16s%2Fg%2F11css6znhq!19sChIJgSeZU1SHhYARQU-BswtkEiY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Sheila Schroeder",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25sYVkwWjBaSEExVWxVM1lVTTROVEl5YlVWcmRVRRAB",
+            "retrieved_at": "2026-09-26T02:35:48.895Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJgSeZU1SHhYARQU-BswtkEiY:photo:ac764ace92e01b99",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "patio"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJgSeZU1SHhYARQU-BswtkEiY:photo:ac764ace92e01b99",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPgh-j61jm7WaB7gjgp_zXPBiUT3i5jUESBPthY9F3dvw8j8DxKQhpCsGUrUDxcOPCs_IAH6BwS17gDr09IRfg57FUDaMR1rc9O6ocN2bgtmuxnJOPx_z-v1YTZs41-LQtO-_HzYosyMaK5=w600-h450-p-k-no",
+            "match_text": "Zazie garden patio outdoor dining",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Zazie/data=!4m7!3m6!1s0x8085875453992781:0x2612640bb3814f41!8m2!3d37.7652402!4d-122.4500965!16s%2Fg%2F11css6znhq!19sChIJgSeZU1SHhYARQU-BswtkEiY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "query": "kebab",
+    "scope": "nearby",
+    "photos_only": true,
+    "results": [
+      {
+        "restaurant_id": "google:ChIJMTN5uKZ_j4ARh3u06X0WzZ8",
+        "name": "Delam",
+        "neighborhood": "Mission District",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Delam/data=!4m7!3m6!1s0x808f7fa6b8793331:0x9fcd167de9b47b87!8m2!3d37.7544716!4d-122.4211498!16s%2Fg%2F11mm6kxpkg!19sChIJMTN5uKZ_j4ARh3u06X0WzZ8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "kebab"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 12.856396,
+        "matched_sources": 1,
+        "matched_evidence": [
+          {
+            "evidence_id": "google:ChIJMTN5uKZ_j4ARh3u06X0WzZ8:photo:20e2050f2e557c1c",
+            "restaurant_id": "google:ChIJMTN5uKZ_j4ARh3u06X0WzZ8",
+            "kind": "photo_source_caption",
+            "text": "Persian kabob platters with rice",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmP4e4Xw0DLyklcJmNl6Sbj-GuaAbUg6zfdnag9mhcyg9jbuwODQsWspi3GAslEcJW8OfUiz8mNz2jjWydM2E7izCYjD-adr2znCewQ4kj0ixAQj7O2Hv60KxYtgtPUvS6MVveNQJGBnJOc=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Delam/data=!4m7!3m6!1s0x808f7fa6b8793331:0x9fcd167de9b47b87!8m2!3d37.7544716!4d-122.4211498!16s%2Fg%2F11mm6kxpkg!19sChIJMTN5uKZ_j4ARh3u06X0WzZ8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Neda Ghaeili",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25CVU9YbGtWMkp2Vm1aZlpYaExhMnAwVlRoMVFuYxAB",
+            "retrieved_at": "2026-09-26T02:40:01.016Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJMTN5uKZ_j4ARh3u06X0WzZ8:photo:20e2050f2e557c1c",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "kebab"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJMTN5uKZ_j4ARh3u06X0WzZ8:photo:20e2050f2e557c1c",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmP4e4Xw0DLyklcJmNl6Sbj-GuaAbUg6zfdnag9mhcyg9jbuwODQsWspi3GAslEcJW8OfUiz8mNz2jjWydM2E7izCYjD-adr2znCewQ4kj0ixAQj7O2Hv60KxYtgtPUvS6MVveNQJGBnJOc=w600-h450-p-k-no",
+            "match_text": "Persian kabob platters with rice",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Delam/data=!4m7!3m6!1s0x808f7fa6b8793331:0x9fcd167de9b47b87!8m2!3d37.7544716!4d-122.4211498!16s%2Fg%2F11mm6kxpkg!19sChIJMTN5uKZ_j4ARh3u06X0WzZ8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY",
+        "name": "SF Grill",
+        "neighborhood": "Mission District",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "kebab"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 11.108655,
+        "matched_sources": 1,
+        "matched_evidence": [
+          {
+            "evidence_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY:photo:21c150e290f17652",
+            "restaurant_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY",
+            "kind": "photo_source_caption",
+            "text": "Chicken and beef kebab platter",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMqap1nSsWasp-RWaIuyfnJGnp0MUKmgEEGvFVN4htuff5OZwUWT4b9HXqVvLn5l5DtdodSH-0P_lWGNFbt7xcs7R4WVtPl9qvVqzrh1Wxvw9rf3QcwTnC7iERPz_Yb9abLNduqyiIB8ok=w600-h900-p-k-no",
+            "source_url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Ximena",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2t0VVFYcDVSVEY0TVVGVVkyNXRZMGRqVEZoSWFFRRAB",
+            "retrieved_at": "2026-09-26T02:07:17.449Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY:photo:21c150e290f17652",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "kebab"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY:photo:21c150e290f17652",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMqap1nSsWasp-RWaIuyfnJGnp0MUKmgEEGvFVN4htuff5OZwUWT4b9HXqVvLn5l5DtdodSH-0P_lWGNFbt7xcs7R4WVtPl9qvVqzrh1Wxvw9rf3QcwTnC7iERPz_Yb9abLNduqyiIB8ok=w600-h900-p-k-no",
+            "match_text": "Chicken and beef kebab platter",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA",
+        "name": "Kebab Patrol",
+        "neighborhood": "Mission District",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Kebab+Patrol/data=!4m7!3m6!1s0x808f7f29eb12ac83:0x90162ffc73c44bb9!8m2!3d37.7687655!4d-122.4139544!16s%2Fg%2F11nvcszssc!19sChIJg6wS6yl_j4ARuUvEc_wvFpA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "kebab"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 9.919361,
+        "matched_sources": 1,
+        "matched_evidence": [
+          {
+            "restaurant_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA",
+            "photo_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA:photo:ebd0fcbba4e791ee",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOMGowfOqanX3O4ea6Q-z59dktSFQNePiJWqmt8ZDRymJ34-I2g31UdGubk2M7DY4z255QnN4PxQCpNQaDivEv3kEDNHF-969sXYNj-j6rkmH3tgG-UBQYTZaZlaYBdgnBd5iVRqgeIapb1=w1200-h900-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Kebab+Patrol/data=!4m7!3m6!1s0x808f7f29eb12ac83:0x90162ffc73c44bb9!8m2!3d37.7687655!4d-122.4139544!16s%2Fg%2F11nvcszssc!19sChIJg6wS6yl_j4ARuUvEc_wvFpA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Samantha Mcleod",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xCVWMyTjJTRXRPWm05VWNucGtZbEJQWkZWbk1IYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "exterior",
+            "uncertainties": [
+              "unclear distance to truck peak",
+              "specific location from text"
+            ],
+            "processed_at": "2026-09-26T03:30:52.226181+00:00",
+            "evidence_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA:photo:ebd0fcbba4e791ee:vision",
+            "kind": "photo_vision_caption",
+            "text": "Kebab Patrol food truck parked on street under clear blue sky.. kebab. sliced meat. white food truck. large front windshield. black side mirror. green logo. street scene. power lines. blue sky. trees",
+            "matched_query_terms": [
+              "kebab"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA:photo:ebd0fcbba4e791ee",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOMGowfOqanX3O4ea6Q-z59dktSFQNePiJWqmt8ZDRymJ34-I2g31UdGubk2M7DY4z255QnN4PxQCpNQaDivEv3kEDNHF-969sXYNj-j6rkmH3tgG-UBQYTZaZlaYBdgnBd5iVRqgeIapb1=w1200-h900-p-k-no",
+            "match_text": "Kebab Patrol food truck parked on street under clear blue sky.. kebab. sliced meat. white food truck. large front windshield. black side mirror. green logo. street scene. power lines. blue sky. trees",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Kebab+Patrol/data=!4m7!3m6!1s0x808f7f29eb12ac83:0x90162ffc73c44bb9!8m2!3d37.7687655!4d-122.4139544!16s%2Fg%2F11nvcszssc!19sChIJg6wS6yl_j4ARuUvEc_wvFpA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "unclear distance to truck peak",
+              "specific location from text"
+            ]
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJ7xfIcqaAhYARzMQnmddsVrI",
+        "name": "Palmyra",
+        "neighborhood": "Lower Haight",
+        "area_priority": "nearby",
+        "source_url": "https://www.google.com/maps/place/Palmyra/data=!4m7!3m6!1s0x808580a672c817ef:0xb2566cd79927c4cc!8m2!3d37.7718217!4d-122.4339358!16s%2Fg%2F1tg5v8dv!19sChIJ7xfIcqaAhYARzMQnmddsVrI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "kebab"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 7.182236,
+        "matched_sources": 1,
+        "matched_evidence": [
+          {
+            "restaurant_id": "google:ChIJ7xfIcqaAhYARzMQnmddsVrI",
+            "photo_id": "google:ChIJ7xfIcqaAhYARzMQnmddsVrI:photo:401eb1d60874233f",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOkMxN-w4Up2S5jpvSPYVd0sgjK3zI7sXQo1WCBNzC3ThorgXmb6mVwVbgCWh0XxwAkB-rxh5TTnzKbrvkm_81K3vRYFLZN24ehbpXPKMvd2BYpZI2puZA7Grd9-PmEEX25mjBam_gXgSjC=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Palmyra/data=!4m7!3m6!1s0x808580a672c817ef:0xb2566cd79927c4cc!8m2!3d37.7718217!4d-122.4339358!16s%2Fg%2F1tg5v8dv!19sChIJ7xfIcqaAhYARzMQnmddsVrI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Sara Karbensi",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT21WRk1raEhXWGc0VFVkeVVEVlNNMjUwYURCSlpYYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "unclear exact dish names for kebabs",
+              "specific origin of sauce",
+              "whether plate is from a restaurant or takeout",
+              "whether there are more unseen ingredients under the rice"
+            ],
+            "processed_at": "2026-09-26T03:32:35.337718+00:00",
+            "evidence_id": "google:ChIJ7xfIcqaAhYARzMQnmddsVrI:photo:401eb1d60874233f:vision",
+            "kind": "photo_vision_caption",
+            "text": "Two grilled kebab skewers over yellow rice with pita, hummus, cucumber-tomato salad, and a side of sauce.. yellow rice. grilled kebab skewers. pita bread. hummus. cucumber. tomato. salad with cucumber and tomato. salsa/sauce cup. white dipping sauce. pita chips/pita bread. hummus dollop. creamy white sauce cup with lid. side salad with cucumber and tomato pieces. stacked seating area not visible. bright lighting. metal or plastic takeout container lid in sauce cup",
+            "matched_query_terms": [
+              "kebab"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJ7xfIcqaAhYARzMQnmddsVrI:photo:401eb1d60874233f",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOkMxN-w4Up2S5jpvSPYVd0sgjK3zI7sXQo1WCBNzC3ThorgXmb6mVwVbgCWh0XxwAkB-rxh5TTnzKbrvkm_81K3vRYFLZN24ehbpXPKMvd2BYpZI2puZA7Grd9-PmEEX25mjBam_gXgSjC=w600-h450-p-k-no",
+            "match_text": "Two grilled kebab skewers over yellow rice with pita, hummus, cucumber-tomato salad, and a side of sauce.. yellow rice. grilled kebab skewers. pita bread. hummus. cucumber. tomato. salad with cucumber and tomato. salsa/sauce cup. white dipping sauce. pita chips/pita bread. hummus dollop. creamy white sauce cup with lid. side salad with cucumber and tomato pieces. stacked seating area not visible. bright lighting. metal or plastic takeout container lid in sauce cup",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Palmyra/data=!4m7!3m6!1s0x808580a672c817ef:0xb2566cd79927c4cc!8m2!3d37.7718217!4d-122.4339358!16s%2Fg%2F1tg5v8dv!19sChIJ7xfIcqaAhYARzMQnmddsVrI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "unclear exact dish names for kebabs",
+              "specific origin of sauce",
+              "whether plate is from a restaurant or takeout",
+              "whether there are more unseen ingredients under the rice"
+            ]
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJl2XEtSF-j4AR7gkhr14PD94",
+        "name": "Dancing Yak Restaurant & Bar",
+        "neighborhood": "Mission Dolores",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Dancing+Yak+Restaurant+%26+Bar/data=!4m7!3m6!1s0x808f7e21b5c46597:0xde0f0f5eaf2109ee!8m2!3d37.7685299!4d-122.4225396!16s%2Fg%2F11f57h239r!19sChIJl2XEtSF-j4AR7gkhr14PD94?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "kebab"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 2.154267,
+        "matched_sources": 1,
+        "matched_evidence": [
+          {
+            "restaurant_id": "google:ChIJl2XEtSF-j4AR7gkhr14PD94",
+            "photo_id": "google:ChIJl2XEtSF-j4AR7gkhr14PD94:photo:295125e469da768d",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmN3dWkwGEMktimv2ckWuAPLX-Z24K4lHTWEHdejIQSCIdspGt9dRWVG42zs8gbC3BvYGx7MxP_0qaYjnkSbMqUoVDnBxlEMTSg40v5Fb_5sYbmv2-VZ9u2GWp6Ui_awHOjmDb_pa_KrJtQ=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Dancing+Yak+Restaurant+%26+Bar/data=!4m7!3m6!1s0x808f7e21b5c46597:0xde0f0f5eaf2109ee!8m2!3d37.7685299!4d-122.4225396!16s%2Fg%2F11f57h239r!19sChIJl2XEtSF-j4AR7gkhr14PD94?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Skeeb Khan",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT201M2JIcG1ORXhHVEVZNGVFUnRTblY0YUc0MVkxRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "menu",
+            "uncertainties": [
+              "Exact dish names not fully legible",
+              "Some foods not clearly identifiable due to cropping",
+              "Colors may mislead about ingredients",
+              "Automatic OCR may misread small or handwritten text; menu items and prices may be outdated."
+            ],
+            "processed_at": "2026-09-26T03:31:19.670587+00:00",
+            "evidence_id": "google:ChIJl2XEtSF-j4AR7gkhr14PD94:photo:295125e469da768d:ocr",
+            "kind": "photo_ocr",
+            "text": "SMALL PLATES\nLANB SKEWER -. 1 ®\nSkewers known as 'sekuwa\" in Napol is a\nvery trodifional way of cooking red meot.\nLeg of lomb, marinated ovemight with\ncumin, corionder, ginger-garlic paste.\n-served with tomato aochar and\npickled ginger -. delicious!\nCHICKEN CHILI... 15 G\nMarinated boneless chicken battered\nwith chickpea flour. Cooked in sweet and\nspicy sauce with red onion, bell pepper\nand tomato.\nPORK BELLY .. 5 O@\nPork is a delicacy in the eastem part of\nNepal, where 1 grew up. Skinless pork\nbelly is cooked until soft with Nepali\nspices, cumin-coriander poste, ginger\ngarlic paste, and onions....\n- served with tomato and Tibetan\neppercom souce to cut the fat.\nSHTAWA..5 OC\nKALE CHAAT..14@@\nCrispy kale with homemade yogurt, mint,\ntamarind, chopped onions, tomatoes, and\npotato. Crunchy ond delicious - our most\nloved dish at the Yok.\nSPICY CAULIFLOWER... 1 OC®\nBattered with chickpea flour - tossed in\nginger garlic and spicy homemade chili\nsauce... spicy & crunchy!\nSAMOSA SOUP .. 14 0®\nin Nepal, samosas are usually eaten as\nbreakfast or late afteroon snacks.\nThis dish replicates the samoso soup\nserved in the Terai (southem flatlands) of\nNepal: - chopped samosas in yellow\nbean soup with onion and cilantro.\nWATERMELON FETA SALAD... 14 ®®\nRefreshing andsimple watermelon and\nfeta salad - tossed with avocado oil,\nhoney, garlic, and turmeric dressing.\nMOMO@(SERVED 4 PCS)\nIntroduced to Nopal by Newari traders\nwho travelled to Tibet centuries ago.\nthese Juicy cumplings arenow the\nnational food of Nepal.\n- your choice of protein with onions,\nchive, garlic, and momo seasoning.\nCHICKEN, PORK, OR VEGAN ... 10\nCHOWMEIN G\nLike Momo, Chowmein is another popular\ndish sold in almost all street carts, tea\nsnops, and restauronis savory a spicy,\nChowmein is a Nepali favorite; - beans,\nSHAPTA ®\nShapta is a traditional stir fry dish that\noriginated in Tibet, If includes red onion,\ngarlic, Tibetan peppercomn, and chili.\n•Served with a side of Tingmo (steamed bun).\nthis dish brings back memories of my favorite\nTibetan restaurant Yang Ling' in Kathmandu.\nPORK,TOFU, OR LAMB...15/14/16\nHOUSE SPECIALS\nalll vegetarian dishes can be mode vegan\nGOAT CURRY ...23\nfresh Sacromento form goat cooked in\nginger, garlic paste & onion gravy\nDHADING CHICKEN ...20 O©\nroasted spices, tomatoes, onion, ginger,\ngarlic, and cilantro\nBUTTER CHICKEN ...20\nOC\nstrips of chicken thighs in decadent\ncream sauce with home-roasted spices\nSEAFOOD CURRY ..23 C\nblack cod, manilla clams & shrimp cooked with\ntomatoes, onions, mustard powder & cumin\nLAMBSHISH KABAB...22O®\nminced lamb kabab, seasoned with\nmint, cumin, coriander - cooked in\nchunky tomato sauce.\nMATAR PANEER ...20\npaneer (cow cheese) cooked with green\npeas in a savory tomato & onion gravy\nBAIGUN TARKARI..20 OS\nfandoor roasted minced eggplant;\ncooked with cumin, corlander & onion\nALOO CAULI...20\ncauliflower, green peas, and potatoes\ncooked with spices in tomato & onion\nBHINDI TARKARI..20 ©©\nfresh okra sautéed with onion, chopped\ntomatoes, ginger garlic paste, and spices\nDAAL MAKHANI...20\nlentils cooked with cream, fomato, onion,\ncumin, and roasted corander",
+            "ocr_engine": "Apple Vision VNRecognizeTextRequest accurate",
+            "matched_query_terms": [
+              "kebab"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJl2XEtSF-j4AR7gkhr14PD94:photo:295125e469da768d",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmN3dWkwGEMktimv2ckWuAPLX-Z24K4lHTWEHdejIQSCIdspGt9dRWVG42zs8gbC3BvYGx7MxP_0qaYjnkSbMqUoVDnBxlEMTSg40v5Fb_5sYbmv2-VZ9u2GWp6Ui_awHOjmDb_pa_KrJtQ=w600-h450-p-k-no",
+            "match_text": "SMALL PLATES\nLANB SKEWER -. 1 ®\nSkewers known as 'sekuwa\" in Napol is a\nvery trodifional way of cooking red meot.\nLeg of lomb, marinated ovemight with\ncumin, corionder, ginger-garlic paste.\n-served with tomato aochar and\npickled ginger -. delicious!\nCHICKEN CHILI... 15 G\nMarinated boneless chicken battered\nwith chickpea flour. Cooked in sweet and\nspicy sauce with red onion, bell pepper\nand tomato.\nPORK BELLY .. 5 O@\nPork is a delicacy in the eastem part of\nNepal, where 1 grew up. Skinless pork\nbelly is cooked until soft with Nepali\nspices, cumin-coriander poste, ginger\ngarlic paste, and onions....\n- served with tomato and Tibetan\neppercom souce to cut the fat.\nSHTAWA..5 OC\nKALE CHAAT..14@@\nCrispy kale with homemade yogurt, mint,\ntamarind, chopped onions, tomatoes, and\npotato. Crunchy ond delicious - our most\nloved dish at the Yok.\nSPICY CAULIFLOWER... 1 OC®\nBattered with chickpea flour - tossed in\nginger garlic and spicy homemade chili\nsauce... spicy & crunchy!\nSAMOSA SOUP .. 14 0®\nin Nepal, samosas are usually eaten as\nbreakfast or late afteroon snacks.\nThis dish replicates the samoso soup\nserved in the Terai (southem flatlands) of\nNepal: - chopped samosas in yellow\nbean soup with onion and cilantro.\nWATERMELON FETA SALAD... 14 ®®\nRefreshing andsimple watermelon and\nfeta salad - tossed with avocado oil,\nhoney, garlic, and turmeric dressing.\nMOMO@(SERVED 4 PCS)\nIntroduced to Nopal by Newari traders\nwho travelled to Tibet centuries ago.\nthese Juicy cumplings arenow the\nnational food of Nepal.\n- your choice of protein with onions,\nchive, garlic, and momo seasoning.\nCHICKEN, PORK, OR VEGAN ... 10\nCHOWMEIN G\nLike Momo, Chowmein is another popular\ndish sold in almost all street carts, tea\nsnops, and restauronis savory a spicy,\nChowmein is a Nepali favorite; - beans,\nSHAPTA ®\nShapta is a traditional stir fry dish that\noriginated in Tibet, If includes red onion,\ngarlic, Tibetan peppercomn, and chili.\n•Served with a side of Tingmo (steamed bun).\nthis dish brings back memories of my favorite\nTibetan restaurant Yang Ling' in Kathmandu.\nPORK,TOFU, OR LAMB...15/14/16\nHOUSE SPECIALS\nalll vegetarian dishes can be mode vegan\nGOAT CURRY ...23\nfresh Sacromento form goat cooked in\nginger, garlic paste & onion gravy\nDHADING CHICKEN ...20 O©\nroasted spices, tomatoes, onion, ginger,\ngarlic, and cilantro\nBUTTER CHICKEN ...20\nOC\nstrips of chicken thighs in decadent\ncream sauce with home-roasted spices\nSEAFOOD CURRY ..23 C\nblack cod, manilla clams & shrimp cooked with\ntomatoes, onions, mustard powder & cumin\nLAMBSHISH KABAB...22O®\nminced lamb kabab, seasoned with\nmint, cumin, coriander - cooked in\nchunky tomato sauce.\nMATAR PANEER ...20\npaneer (cow cheese) cooked with green\npeas in a savory tomato & onion gravy\nBAIGUN TARKARI..20 OS\nfandoor roasted minced eggplant;\ncooked with cumin, corlander & onion\nALOO CAULI...20\ncauliflower, green peas, and potatoes\ncooked with spices in tomato & onion\nBHINDI TARKARI..20 ©©\nfresh okra sautéed with onion, chopped\ntomatoes, ginger garlic paste, and spices\nDAAL MAKHANI...20\nlentils cooked with cream, fomato, onion,\ncumin, and roasted corander",
+            "evidence_kind": "photo_ocr",
+            "source_url": "https://www.google.com/maps/place/Dancing+Yak+Restaurant+%26+Bar/data=!4m7!3m6!1s0x808f7e21b5c46597:0xde0f0f5eaf2109ee!8m2!3d37.7685299!4d-122.4225396!16s%2Fg%2F11f57h239r!19sChIJl2XEtSF-j4AR7gkhr14PD94?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "Exact dish names not fully legible",
+              "Some foods not clearly identifiable due to cropping",
+              "Colors may mislead about ingredients",
+              "Automatic OCR may misread small or handwritten text; menu items and prices may be outdated."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "query": "sushi",
+    "scope": "nearby",
+    "photos_only": true,
+    "results": [
+      {
+        "restaurant_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o",
+        "name": "GOKUMI SUSHI",
+        "neighborhood": "Mission District",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/GOKUMI+SUSHI/data=!4m7!3m6!1s0x808f7f0003d9112d:0x4a5b280e3c6e93c7!8m2!3d37.7640633!4d-122.417702!16s%2Fg%2F11z2_gxy8s!19sChIJLRHZAwB_j4ARx5NuPA4oW0o?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "sushi"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 9.185829,
+        "matched_sources": 5,
+        "matched_evidence": [
+          {
+            "evidence_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:46b868d84786cd0e",
+            "restaurant_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o",
+            "kind": "photo_source_caption",
+            "text": "Assorted nigiri sushi platter",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNBdPf_z2eT6P1A4AelqyFcYDnZWD0r7OAKtpmsSLJ6NP9vT3LLcCGfPusADS8WiDkchb8JebOIaqVpSFRG-duQnsWjLxoMPj2LNtD51rFqpsY7_FNsE6DNfvEskGIB-UbEc8tfArDklZUd=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/GOKUMI+SUSHI/data=!4m7!3m6!1s0x808f7f0003d9112d:0x4a5b280e3c6e93c7!8m2!3d37.7640633!4d-122.417702!16s%2Fg%2F11z2_gxy8s!19sChIJLRHZAwB_j4ARx5NuPA4oW0o?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Nire Lewis",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25WaVowTkpVVzlqVFhoVmNqRjVZeTFsZVVKTFNYYxAB",
+            "retrieved_at": "2026-09-26T02:42:02.408Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:46b868d84786cd0e",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "evidence_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:6cdefb8c903cfed3",
+            "restaurant_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o",
+            "kind": "photo_source_caption",
+            "text": "Assorted sushi rolls and poke",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOudxdTzhxVX7EQpkg5ync5TuTwHRau-gKQioA_rrQSMeR-8_1OxESOBpauyhd349Sgfr2tJ7_tttLy8c0zCkKsdljCUhv77hu_7bX4JfbmLSMpToQWet7Lz-ym7hKwDzsqRAUE0H2ylNI=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/GOKUMI+SUSHI/data=!4m7!3m6!1s0x808f7f0003d9112d:0x4a5b280e3c6e93c7!8m2!3d37.7640633!4d-122.417702!16s%2Fg%2F11z2_gxy8s!19sChIJLRHZAwB_j4ARx5NuPA4oW0o?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "soul searched",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2pSaE5UVm9ObGR6VlhOR1lVaGtZV3BCUXpKamRWRRAB",
+            "retrieved_at": "2026-09-26T02:42:02.408Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:6cdefb8c903cfed3",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "evidence_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:7e589d887c744594",
+            "restaurant_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o",
+            "kind": "photo_source_caption",
+            "text": "Gokumi Sushi menu with prices",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOvgvR4bSM5aeKknRvYYTTdk9hfkZZYAIqd9unXyrJYepy-iT3kb2i9QpFGJLQ_yJ26-Mhz_AxoGTAEOG--U9p6EVruuTJPJKdBKuzl3XHkMTIZv-OWgxpF9kXsVfvSOgJ8qVFwmJ9kGXUr=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/GOKUMI+SUSHI/data=!4m7!3m6!1s0x808f7f0003d9112d:0x4a5b280e3c6e93c7!8m2!3d37.7640633!4d-122.417702!16s%2Fg%2F11z2_gxy8s!19sChIJLRHZAwB_j4ARx5NuPA4oW0o?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Nire Lewis",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25WaVowTkpVVzlqVFhoVmNqRjVZeTFsZVVKTFNYYxAB",
+            "retrieved_at": "2026-09-26T02:42:02.408Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:7e589d887c744594",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "evidence_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:40151b52d508a982",
+            "restaurant_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o",
+            "kind": "photo_source_caption",
+            "text": "Assorted sashimi and sushi rolls",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOnWSpIVbrwKxoBoozdXEhgGVWVYscdWjMQpY62ZwYnfMAvKE-KTk-0CLRuoc1AKkFe1EFdhNAXItn_QI36XSUIfTFvKZTIMexYUNP6AfVGXQWIs_pj2vaQIK1bI_qDc_Q9N0IHQgSuuK8K=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/GOKUMI+SUSHI/data=!4m7!3m6!1s0x808f7f0003d9112d:0x4a5b280e3c6e93c7!8m2!3d37.7640633!4d-122.417702!16s%2Fg%2F11z2_gxy8s!19sChIJLRHZAwB_j4ARx5NuPA4oW0o?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Eduardo Sánchez-Ubanell",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT21neFJ6bG5Xa2hWWDFCT1NIaGtSMHhHTWtoU2JFRRAB",
+            "retrieved_at": "2026-09-26T02:42:02.408Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:40151b52d508a982",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "evidence_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:a41a54b4a564e8b0",
+            "restaurant_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o",
+            "kind": "photo_source_caption",
+            "text": "Unagi sushi roll with tobiko",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPBhSWtyJwmNojfr6NDylBz99Lyrl3fNfXNetBrGwMp_VzAOuUl_An2G5plz88dlse8hM_ul6MlgRZFnsknbggWEfaZX4Q1UnCd3eJ66cxAwK-nDoKRK6MFlDDQQYAcAydde9SSzsO_tpjL=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/GOKUMI+SUSHI/data=!4m7!3m6!1s0x808f7f0003d9112d:0x4a5b280e3c6e93c7!8m2!3d37.7640633!4d-122.417702!16s%2Fg%2F11z2_gxy8s!19sChIJLRHZAwB_j4ARx5NuPA4oW0o?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Eduardo Sánchez-Ubanell",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT21neFJ6bG5Xa2hWWDFCT1NIaGtSMHhHTWtoU2JFRRAB",
+            "retrieved_at": "2026-09-26T02:42:02.408Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:a41a54b4a564e8b0",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "sushi"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:46b868d84786cd0e",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNBdPf_z2eT6P1A4AelqyFcYDnZWD0r7OAKtpmsSLJ6NP9vT3LLcCGfPusADS8WiDkchb8JebOIaqVpSFRG-duQnsWjLxoMPj2LNtD51rFqpsY7_FNsE6DNfvEskGIB-UbEc8tfArDklZUd=w600-h450-p-k-no",
+            "match_text": "Assorted nigiri sushi platter",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/GOKUMI+SUSHI/data=!4m7!3m6!1s0x808f7f0003d9112d:0x4a5b280e3c6e93c7!8m2!3d37.7640633!4d-122.417702!16s%2Fg%2F11z2_gxy8s!19sChIJLRHZAwB_j4ARx5NuPA4oW0o?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          },
+          {
+            "photo_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:6cdefb8c903cfed3",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOudxdTzhxVX7EQpkg5ync5TuTwHRau-gKQioA_rrQSMeR-8_1OxESOBpauyhd349Sgfr2tJ7_tttLy8c0zCkKsdljCUhv77hu_7bX4JfbmLSMpToQWet7Lz-ym7hKwDzsqRAUE0H2ylNI=w600-h450-p-k-no",
+            "match_text": "Assorted sushi rolls and poke",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/GOKUMI+SUSHI/data=!4m7!3m6!1s0x808f7f0003d9112d:0x4a5b280e3c6e93c7!8m2!3d37.7640633!4d-122.417702!16s%2Fg%2F11z2_gxy8s!19sChIJLRHZAwB_j4ARx5NuPA4oW0o?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          },
+          {
+            "photo_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:7e589d887c744594",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOvgvR4bSM5aeKknRvYYTTdk9hfkZZYAIqd9unXyrJYepy-iT3kb2i9QpFGJLQ_yJ26-Mhz_AxoGTAEOG--U9p6EVruuTJPJKdBKuzl3XHkMTIZv-OWgxpF9kXsVfvSOgJ8qVFwmJ9kGXUr=w600-h450-p-k-no",
+            "match_text": "Gokumi Sushi menu with prices",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/GOKUMI+SUSHI/data=!4m7!3m6!1s0x808f7f0003d9112d:0x4a5b280e3c6e93c7!8m2!3d37.7640633!4d-122.417702!16s%2Fg%2F11z2_gxy8s!19sChIJLRHZAwB_j4ARx5NuPA4oW0o?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          },
+          {
+            "photo_id": "google:ChIJLRHZAwB_j4ARx5NuPA4oW0o:photo:40151b52d508a982",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOnWSpIVbrwKxoBoozdXEhgGVWVYscdWjMQpY62ZwYnfMAvKE-KTk-0CLRuoc1AKkFe1EFdhNAXItn_QI36XSUIfTFvKZTIMexYUNP6AfVGXQWIs_pj2vaQIK1bI_qDc_Q9N0IHQgSuuK8K=w600-h450-p-k-no",
+            "match_text": "Assorted sashimi and sushi rolls",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/GOKUMI+SUSHI/data=!4m7!3m6!1s0x808f7f0003d9112d:0x4a5b280e3c6e93c7!8m2!3d37.7640633!4d-122.417702!16s%2Fg%2F11z2_gxy8s!19sChIJLRHZAwB_j4ARx5NuPA4oW0o?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE",
+        "name": "Okaeri Japanese Bistro",
+        "neighborhood": "Mission District",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Okaeri+Japanese+Bistro/data=!4m7!3m6!1s0x808f7fd5297e6c73:0xc12d39e4d3397baf!8m2!3d37.7584431!4d-122.4195833!16s%2Fg%2F11jr43dv83!19sChIJc2x-KdV_j4ARr3s50-Q5LcE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "sushi"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 9.141145,
+        "matched_sources": 8,
+        "matched_evidence": [
+          {
+            "restaurant_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE",
+            "photo_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:6d3083487e044000",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMWSu7csYKpUKoG7yD7XjX2hRMHiUKsGx-HIxthS5TSr8XIDHt58RV9yyWRssSmhUR_GAGu-T0g_aZce4c0l87LnoZwvmrVaIJctSd3mwvDm7CZd1JZATQodv25LEGhexTlAmSa9QophaUr=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Okaeri+Japanese+Bistro/data=!4m7!3m6!1s0x808f7fd5297e6c73:0xc12d39e4d3397baf!8m2!3d37.7584431!4d-122.4195833!16s%2Fg%2F11jr43dv83!19sChIJc2x-KdV_j4ARr3s50-Q5LcE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "keith k",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2s4MldXTlZkV2R1UlVkRGMyRk1OV1pTTVhGMVNYYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact sushi type not fully determined",
+              "specific ingredients beyond salmon and greens not confirmed"
+            ],
+            "processed_at": "2026-09-26T03:28:58.139283+00:00",
+            "evidence_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:6d3083487e044000:vision",
+            "kind": "photo_vision_caption",
+            "text": "Sliced salmon sushi with greens. sushi rolls with salmon. salmon slices. greens/garnish. wooden table. soft lighting. plate with multiple sushi pieces. green herb garnish. background diners. white plate. streamlined service area",
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE",
+            "photo_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:dabcb2fa606fa746",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPQ6_zfSZy_OYsccpVJoV7EIiaeXJ_AgnSnyCGT75ZqmvVwLTQu6JSmZadTvMmISot3RF72EtATbmhd_kPU15bWJmkGZzIBYL-QJz0ZTwm1DKkKsQJHr7ADkj1jXzjWm4HSDtthGyGkONp1=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Okaeri+Japanese+Bistro/data=!4m7!3m6!1s0x808f7fd5297e6c73:0xc12d39e4d3397baf!8m2!3d37.7584431!4d-122.4195833!16s%2Fg%2F11jr43dv83!19sChIJc2x-KdV_j4ARr3s50-Q5LcE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Jase",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2t0SWJFbEdaMXB0TWxCR2VVVjJZbXRVTkdwT1MwRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact fish type of the white piece",
+              "whether there are more items off-frame"
+            ],
+            "processed_at": "2026-09-26T03:30:35.384701+00:00",
+            "evidence_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:dabcb2fa606fa746:vision",
+            "kind": "photo_vision_caption",
+            "text": "Two pieces of sushi on a textured plate with a blurred background. sushi (nigiri) with tuna. sushi (nigiri) with white fish/crumbled topping?. wooden counter. glassy plate. dim lighting. background chefs. glass of water",
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE",
+            "photo_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:eaf870aa0963fe2d",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNYgOq4CNHCoLF7ENhzdTlDorTyN6t282HyjfjBCWel8JVevodFoOu6SyLOQpl0bm9U0iRvnKaWFOjE--t_PHzynftkQrT9NwrUi5-wT8GscFROwiytpBZ4YVurmLaNIK2Iq6Yr-tlr2pzl=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Okaeri+Japanese+Bistro/data=!4m7!3m6!1s0x808f7fd5297e6c73:0xc12d39e4d3397baf!8m2!3d37.7584431!4d-122.4195833!16s%2Fg%2F11jr43dv83!19sChIJc2x-KdV_j4ARr3s50-Q5LcE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "RM I.",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT21aMVFXNWtRalV5V2sxc1NEbEtOVzFvTURsSGFuYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact fish varieties uncertain",
+              "presence of rice amounts uncertain",
+              "whether there are additional garnish details not clearly visible"
+            ],
+            "processed_at": "2026-09-26T03:28:59.548718+00:00",
+            "evidence_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:eaf870aa0963fe2d:vision",
+            "kind": "photo_vision_caption",
+            "text": "Assorted sushi pieces lined on a rectangular plate.. sushi pieces (various nigiri). sliced fish. rolled sushi? (plate does not show roll). green garnish on first piece. orange fish. pink fish. rectangular dark plate. wooden table. chopsticks and small dipping bowls in background. varied nigiri types with different toppings. dim lighting. arranged in a row",
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE",
+            "photo_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:df2e17814d1ca442",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmO5D9V3dfSRhV3jAhkDF6JTc5k6oRnwa7RvGk-mken0EPszeuKXwQeQILUR1K974Pk20c32M-1Nb5oC4JLz-2FoSxclEGhljCjuhYU4CMbVk4pfgKGIqPkeuajWL6sPYUcYCswKyFgWjJxL=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Okaeri+Japanese+Bistro/data=!4m7!3m6!1s0x808f7fd5297e6c73:0xc12d39e4d3397baf!8m2!3d37.7584431!4d-122.4195833!16s%2Fg%2F11jr43dv83!19sChIJc2x-KdV_j4ARr3s50-Q5LcE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "keith k",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2s4MldXTlZkV2R1UlVkRGMyRk1OV1pTTVhGMVNYYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "type of fish/protein",
+              "exact topping",
+              "source restaurant decor"
+            ],
+            "processed_at": "2026-09-26T03:28:59.535392+00:00",
+            "evidence_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:df2e17814d1ca442:vision",
+            "kind": "photo_vision_caption",
+            "text": "A row of sushi pieces with toppings and greens on top.. sushi pieces. greens. sauce. fried topping?. rolled rice. slice of fish/seafood. drizzled sauce. green leafy garnish. porcelain serving dish. wooden table. natural light from window",
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE",
+            "photo_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:087f150e960d6320",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMLM77MOp61tHVnVx_KE44WpjewmA5rJUaOlKC_mKcIt8ciRvZoB4bVOSZvgN_Nlv7utblzNEHlEJiGK1zHiyGLH_N3kMGmNkBuPDy5wfVUz19VuN1v4Bax6B6X-cQkCIcprb0q2VxcWjY1=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Okaeri+Japanese+Bistro/data=!4m7!3m6!1s0x808f7fd5297e6c73:0xc12d39e4d3397baf!8m2!3d37.7584431!4d-122.4195833!16s%2Fg%2F11jr43dv83!19sChIJc2x-KdV_j4ARr3s50-Q5LcE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "RM I.",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT21aMVFXNWtRalV5V2sxc1NEbEtOVzFvTURsSGFuYxAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact ingredients of the filling",
+              "specific type of sauce",
+              "whether there are sesame seeds or tempura flakes"
+            ],
+            "processed_at": "2026-09-26T03:28:58.341571+00:00",
+            "evidence_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:087f150e960d6320:vision",
+            "kind": "photo_vision_caption",
+            "text": "Sushi rolls on a long plate with orange sauce and crispy garnish.. sushi rolls. orange sauce. crispy garnish. greens/sprouts. drizzle sauce. brown sauce on plate. wooden table. white ceramic plate. glasses. small dipping bowls. green plant-like garnish on plate. arranged row of rolls. dark soy-based sauce drizzle",
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE",
+            "photo_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:b795514838ce643b",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNe9FT7quzF4e0e4y463iDv8PPTfy2Zq5wpj-8XHaOcokbUNRctr_bljJhapnDUEKoJBzC04ohWFcCqWNBtOB-DjsPY9Lk6Z30zJWxD_0otpinb29LnbglemgKPH80jSqiyw5JbRnAngI4=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Okaeri+Japanese+Bistro/data=!4m7!3m6!1s0x808f7fd5297e6c73:0xc12d39e4d3397baf!8m2!3d37.7584431!4d-122.4195833!16s%2Fg%2F11jr43dv83!19sChIJc2x-KdV_j4ARr3s50-Q5LcE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Jase",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2t0SWJFbEdaMXB0TWxCR2VVVjJZbXRVTkdwT1MwRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "Exact types of sushi pieces not clearly identifiable",
+              "Potentially unclear meat type or ingredients in some pieces"
+            ],
+            "processed_at": "2026-09-26T03:28:59.911124+00:00",
+            "evidence_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:b795514838ce643b:vision",
+            "kind": "photo_vision_caption",
+            "text": "Assorted sushi and small bites arranged on a decorative plate with a yellow dipping sauce cup.. sushi pieces. rolled pastry. presentations with greens. white fish. crisp fried item with orange roe. sliced meat? (ambiguous). decorative ceramic plate with colorful patterns. yellow dipping sauce cup. small skewers with berries. wooden table. kitchen background with a person in apron. green leaf garnish",
+            "matched_query_terms": [
+              "sushi"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:6d3083487e044000",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMWSu7csYKpUKoG7yD7XjX2hRMHiUKsGx-HIxthS5TSr8XIDHt58RV9yyWRssSmhUR_GAGu-T0g_aZce4c0l87LnoZwvmrVaIJctSd3mwvDm7CZd1JZATQodv25LEGhexTlAmSa9QophaUr=w600-h450-p-k-no",
+            "match_text": "Sliced salmon sushi with greens. sushi rolls with salmon. salmon slices. greens/garnish. wooden table. soft lighting. plate with multiple sushi pieces. green herb garnish. background diners. white plate. streamlined service area",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Okaeri+Japanese+Bistro/data=!4m7!3m6!1s0x808f7fd5297e6c73:0xc12d39e4d3397baf!8m2!3d37.7584431!4d-122.4195833!16s%2Fg%2F11jr43dv83!19sChIJc2x-KdV_j4ARr3s50-Q5LcE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact sushi type not fully determined",
+              "specific ingredients beyond salmon and greens not confirmed"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:dabcb2fa606fa746",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPQ6_zfSZy_OYsccpVJoV7EIiaeXJ_AgnSnyCGT75ZqmvVwLTQu6JSmZadTvMmISot3RF72EtATbmhd_kPU15bWJmkGZzIBYL-QJz0ZTwm1DKkKsQJHr7ADkj1jXzjWm4HSDtthGyGkONp1=w600-h450-p-k-no",
+            "match_text": "Two pieces of sushi on a textured plate with a blurred background. sushi (nigiri) with tuna. sushi (nigiri) with white fish/crumbled topping?. wooden counter. glassy plate. dim lighting. background chefs. glass of water",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Okaeri+Japanese+Bistro/data=!4m7!3m6!1s0x808f7fd5297e6c73:0xc12d39e4d3397baf!8m2!3d37.7584431!4d-122.4195833!16s%2Fg%2F11jr43dv83!19sChIJc2x-KdV_j4ARr3s50-Q5LcE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact fish type of the white piece",
+              "whether there are more items off-frame"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:eaf870aa0963fe2d",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNYgOq4CNHCoLF7ENhzdTlDorTyN6t282HyjfjBCWel8JVevodFoOu6SyLOQpl0bm9U0iRvnKaWFOjE--t_PHzynftkQrT9NwrUi5-wT8GscFROwiytpBZ4YVurmLaNIK2Iq6Yr-tlr2pzl=w600-h450-p-k-no",
+            "match_text": "Assorted sushi pieces lined on a rectangular plate.. sushi pieces (various nigiri). sliced fish. rolled sushi? (plate does not show roll). green garnish on first piece. orange fish. pink fish. rectangular dark plate. wooden table. chopsticks and small dipping bowls in background. varied nigiri types with different toppings. dim lighting. arranged in a row",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Okaeri+Japanese+Bistro/data=!4m7!3m6!1s0x808f7fd5297e6c73:0xc12d39e4d3397baf!8m2!3d37.7584431!4d-122.4195833!16s%2Fg%2F11jr43dv83!19sChIJc2x-KdV_j4ARr3s50-Q5LcE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact fish varieties uncertain",
+              "presence of rice amounts uncertain",
+              "whether there are additional garnish details not clearly visible"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJc2x-KdV_j4ARr3s50-Q5LcE:photo:df2e17814d1ca442",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmO5D9V3dfSRhV3jAhkDF6JTc5k6oRnwa7RvGk-mken0EPszeuKXwQeQILUR1K974Pk20c32M-1Nb5oC4JLz-2FoSxclEGhljCjuhYU4CMbVk4pfgKGIqPkeuajWL6sPYUcYCswKyFgWjJxL=w600-h450-p-k-no",
+            "match_text": "A row of sushi pieces with toppings and greens on top.. sushi pieces. greens. sauce. fried topping?. rolled rice. slice of fish/seafood. drizzled sauce. green leafy garnish. porcelain serving dish. wooden table. natural light from window",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Okaeri+Japanese+Bistro/data=!4m7!3m6!1s0x808f7fd5297e6c73:0xc12d39e4d3397baf!8m2!3d37.7584431!4d-122.4195833!16s%2Fg%2F11jr43dv83!19sChIJc2x-KdV_j4ARr3s50-Q5LcE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "type of fish/protein",
+              "exact topping",
+              "source restaurant decor"
+            ]
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJIVHOoCF-j4ARnw6y25XWmMA",
+        "name": "Shizen",
+        "neighborhood": "Mission District",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Shizen/data=!4m7!3m6!1s0x808f7e21a0ce5121:0xc098d695dbb20e9f!8m2!3d37.7683125!4d-122.4216815!16s%2Fg%2F11b6_gwvm0!19sChIJIVHOoCF-j4ARnw6y25XWmMA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "sushi"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 9.041548,
+        "matched_sources": 3,
+        "matched_evidence": [
+          {
+            "evidence_id": "google:ChIJIVHOoCF-j4ARnw6y25XWmMA:photo:5030242bf4b21fbb",
+            "restaurant_id": "google:ChIJIVHOoCF-j4ARnw6y25XWmMA",
+            "kind": "photo_source_caption",
+            "text": "Vegan sushi roll with asparagus",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMXsi2nLbQduzuvPemJDQxe9ugad-e-fVIgBj9Ah1iSKrukviT_SdjLnJOZx8Hf0yD5aQllQIyYbJyCgIczMkFzS3PPKUGO0SNxZLBGGjYd-MVYELY7oDgpJg_PcVPCi8393bO4tS2JCII=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Shizen/data=!4m7!3m6!1s0x808f7e21a0ce5121:0xc098d695dbb20e9f!8m2!3d37.7683125!4d-122.4216815!16s%2Fg%2F11b6_gwvm0!19sChIJIVHOoCF-j4ARnw6y25XWmMA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Apurva Bhiwapurkar",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25CNlRXUkRhVE5wTVZZMVdHZEdNRFZDVGxkS09WRRAB",
+            "retrieved_at": "2026-09-26T02:16:03.007Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJIVHOoCF-j4ARnw6y25XWmMA:photo:5030242bf4b21fbb",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "evidence_id": "google:ChIJIVHOoCF-j4ARnw6y25XWmMA:photo:0fcb6b304c552f04",
+            "restaurant_id": "google:ChIJIVHOoCF-j4ARnw6y25XWmMA",
+            "kind": "photo_source_caption",
+            "text": "Vegan sushi with soy glaze",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmM8f04VHET2ga05q62iVcw41w6hsfuv-lmI5BSWxRZuUMcedNMILcRW91e6EccOoxo_mgjsgWjZpCEbHRA1KZRsneJAOX8-Yq4BbhuaqS2HgCjrdcIg1vSbBXA09DjMKtz9J792WmuH3NiM=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Shizen/data=!4m7!3m6!1s0x808f7e21a0ce5121:0xc098d695dbb20e9f!8m2!3d37.7683125!4d-122.4216815!16s%2Fg%2F11b6_gwvm0!19sChIJIVHOoCF-j4ARnw6y25XWmMA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Apurva Bhiwapurkar",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25CNlRXUkRhVE5wTVZZMVdHZEdNRFZDVGxkS09WRRAB",
+            "retrieved_at": "2026-09-26T02:16:03.007Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJIVHOoCF-j4ARnw6y25XWmMA:photo:0fcb6b304c552f04",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "evidence_id": "google:ChIJIVHOoCF-j4ARnw6y25XWmMA:photo:15d431e313c1478b",
+            "restaurant_id": "google:ChIJIVHOoCF-j4ARnw6y25XWmMA",
+            "kind": "photo_source_caption",
+            "text": "Vegan sushi roll with sauce",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOpQrQQRk0xBLL-PpVQaMGegoqn44qihAVsHXRIMFn629YSAyxFeLJO2w4Hfmy8OwQrC5DqV6qt07jzRY1thC-s2fo75nPudoUNgcwl2nIPeQ1YlIRcGk3RmSbTQmb-zrbRheqgMjC8MqQK=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Shizen/data=!4m7!3m6!1s0x808f7e21a0ce5121:0xc098d695dbb20e9f!8m2!3d37.7683125!4d-122.4216815!16s%2Fg%2F11b6_gwvm0!19sChIJIVHOoCF-j4ARnw6y25XWmMA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Apurva Bhiwapurkar",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25CNlRXUkRhVE5wTVZZMVdHZEdNRFZDVGxkS09WRRAB",
+            "retrieved_at": "2026-09-26T02:16:03.007Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJIVHOoCF-j4ARnw6y25XWmMA:photo:15d431e313c1478b",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "sushi"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJIVHOoCF-j4ARnw6y25XWmMA:photo:5030242bf4b21fbb",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMXsi2nLbQduzuvPemJDQxe9ugad-e-fVIgBj9Ah1iSKrukviT_SdjLnJOZx8Hf0yD5aQllQIyYbJyCgIczMkFzS3PPKUGO0SNxZLBGGjYd-MVYELY7oDgpJg_PcVPCi8393bO4tS2JCII=w600-h450-p-k-no",
+            "match_text": "Vegan sushi roll with asparagus",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Shizen/data=!4m7!3m6!1s0x808f7e21a0ce5121:0xc098d695dbb20e9f!8m2!3d37.7683125!4d-122.4216815!16s%2Fg%2F11b6_gwvm0!19sChIJIVHOoCF-j4ARnw6y25XWmMA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          },
+          {
+            "photo_id": "google:ChIJIVHOoCF-j4ARnw6y25XWmMA:photo:0fcb6b304c552f04",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmM8f04VHET2ga05q62iVcw41w6hsfuv-lmI5BSWxRZuUMcedNMILcRW91e6EccOoxo_mgjsgWjZpCEbHRA1KZRsneJAOX8-Yq4BbhuaqS2HgCjrdcIg1vSbBXA09DjMKtz9J792WmuH3NiM=w600-h450-p-k-no",
+            "match_text": "Vegan sushi with soy glaze",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Shizen/data=!4m7!3m6!1s0x808f7e21a0ce5121:0xc098d695dbb20e9f!8m2!3d37.7683125!4d-122.4216815!16s%2Fg%2F11b6_gwvm0!19sChIJIVHOoCF-j4ARnw6y25XWmMA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          },
+          {
+            "photo_id": "google:ChIJIVHOoCF-j4ARnw6y25XWmMA:photo:15d431e313c1478b",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOpQrQQRk0xBLL-PpVQaMGegoqn44qihAVsHXRIMFn629YSAyxFeLJO2w4Hfmy8OwQrC5DqV6qt07jzRY1thC-s2fo75nPudoUNgcwl2nIPeQ1YlIRcGk3RmSbTQmb-zrbRheqgMjC8MqQK=w600-h450-p-k-no",
+            "match_text": "Vegan sushi roll with sauce",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Shizen/data=!4m7!3m6!1s0x808f7e21a0ce5121:0xc098d695dbb20e9f!8m2!3d37.7683125!4d-122.4216815!16s%2Fg%2F11b6_gwvm0!19sChIJIVHOoCF-j4ARnw6y25XWmMA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q",
+        "name": "Hamano Sushi",
+        "neighborhood": "Noe Valley",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Hamano+Sushi/data=!4m7!3m6!1s0x808f7e128a5c68cf:0x541b14d9df8d94f3!8m2!3d37.7507861!4d-122.4342472!16s%2Fg%2F1tj4h8kw!19sChIJz2hcihJ-j4AR85SN39kUG1Q?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "sushi"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 9.022986,
+        "matched_sources": 4,
+        "matched_evidence": [
+          {
+            "evidence_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q:photo:dc2e55e8c6c74a0c",
+            "restaurant_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q",
+            "kind": "photo_source_caption",
+            "text": "Assorted nigiri and ikura sushi",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMJc8phXzl2AiQDYjdKeenwfUh1wMkzCVbsqgxhK8472ISI3xzV4vzE0kl_-E64qDbrpNlmr4uIEUPOm9yIBxt6AgAsLasEERZuau7eaSt9Y2A8VpK-vSxcE-FOH5EKEyK1604HILMtQR2k=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Hamano+Sushi/data=!4m7!3m6!1s0x808f7e128a5c68cf:0x541b14d9df8d94f3!8m2!3d37.7507861!4d-122.4342472!16s%2Fg%2F1tj4h8kw!19sChIJz2hcihJ-j4AR85SN39kUG1Q?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Alan S",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xWUFJqSnFlVzFQY2tOSGJWcFFSMUJ5VTE5aVdtYxAB",
+            "retrieved_at": "2026-09-26T02:40:23.815Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q:photo:dc2e55e8c6c74a0c",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "evidence_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q:photo:b996753ce050fdd1",
+            "restaurant_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q",
+            "kind": "photo_source_caption",
+            "text": "Assorted sashimi and sushi rolls",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNmK_7x785Jfc7J0-IlgKDeFfqZZ5MOfqlmCN4pek7ku7Gn0ATKCSc3hVoY8tjmuKY9416Har4Jn6Ny4tw-1FeONfNdx5auKHrKlGqasFDTPm3IaUF8htCe5oBL1LcgRlv2lL0q0F8gyCtX=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Hamano+Sushi/data=!4m7!3m6!1s0x808f7e128a5c68cf:0x541b14d9df8d94f3!8m2!3d37.7507861!4d-122.4342472!16s%2Fg%2F1tj4h8kw!19sChIJz2hcihJ-j4AR85SN39kUG1Q?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Alan S",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xWUFJqSnFlVzFQY2tOSGJWcFFSMUJ5VTE5aVdtYxAB",
+            "retrieved_at": "2026-09-26T02:40:23.815Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q:photo:b996753ce050fdd1",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q",
+            "photo_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q:photo:1f5ab48adb1650a4",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmM--lGxe-nedlQkl8f6S0u8DVXC3s-0xhbBJDVSOA9XidEfaxhyD632iY1Y1sG6rlnPWSRbGUPepp0_zz63VggjtOvBHHi6zOgQfVgvUfvp-OSkQJ0ljqszLP3_ZFE6BWWbPzZoU6o3WZg=w600-h900-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Hamano+Sushi/data=!4m7!3m6!1s0x808f7e128a5c68cf:0x541b14d9df8d94f3!8m2!3d37.7507861!4d-122.4342472!16s%2Fg%2F1tj4h8kw!19sChIJz2hcihJ-j4AR85SN39kUG1Q?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Natalya M",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT21GVFRHOWlja3RCWm1OMGMxbGtObWN5YVhoTk9FRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact fish types not clearly identifiable",
+              "whether soy sauce or other condiments present off-camera"
+            ],
+            "processed_at": "2026-09-26T03:32:10.050524+00:00",
+            "evidence_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q:photo:1f5ab48adb1650a4:vision",
+            "kind": "photo_vision_caption",
+            "text": "Assorted sushi pieces on a white rectangular plate with ginger and wasabi.. sushi rolls with rice and tuna/avocado. nigiri with tuna. sushi with slices of fish and avocado. pickled ginger. wasabi. rolled sushi with shrimp or fish. wooden table surface. white plate. green onions topping on some pieces. wasabi dollop. drizzle of sauce possibly soy",
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q",
+            "photo_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q:photo:fd748a172facc767",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmO4FsPWBB7PInLL09Zwj5JNBLjNImfa4XBm4uWd2CsLK9CbKjAdx5B5SplJaFRcQgTZyOpmKs77EBz2Fb841bRulfHnlU4oBkQH9IDYbqrkbrJcoSd9ajoUBoMurtNQHW3Dy55JkSF9r_t9=w600-h900-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Hamano+Sushi/data=!4m7!3m6!1s0x808f7e128a5c68cf:0x541b14d9df8d94f3!8m2!3d37.7507861!4d-122.4342472!16s%2Fg%2F1tj4h8kw!19sChIJz2hcihJ-j4AR85SN39kUG1Q?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Natalya M",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT21GVFRHOWlja3RCWm1OMGMxbGtObWN5YVhoTk9FRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "assistant_visual_pilot",
+            "photo_type": "food",
+            "uncertainties": [
+              "Specific fish species and exact roll names cannot be confirmed."
+            ],
+            "processed_at": "2026-09-26T03:02:45.545619+00:00",
+            "evidence_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q:photo:fd748a172facc767:vision",
+            "kind": "photo_vision_caption",
+            "text": "Assorted sushi rolls with rice and seaweed, pale and red fish slices, avocado, and scallion garnish on a rectangular white plate.. sushi rolls. fish. avocado. rice. seaweed. scallion garnish. rectangular serving plate",
+            "matched_query_terms": [
+              "sushi"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q:photo:dc2e55e8c6c74a0c",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMJc8phXzl2AiQDYjdKeenwfUh1wMkzCVbsqgxhK8472ISI3xzV4vzE0kl_-E64qDbrpNlmr4uIEUPOm9yIBxt6AgAsLasEERZuau7eaSt9Y2A8VpK-vSxcE-FOH5EKEyK1604HILMtQR2k=w600-h450-p-k-no",
+            "match_text": "Assorted nigiri and ikura sushi",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Hamano+Sushi/data=!4m7!3m6!1s0x808f7e128a5c68cf:0x541b14d9df8d94f3!8m2!3d37.7507861!4d-122.4342472!16s%2Fg%2F1tj4h8kw!19sChIJz2hcihJ-j4AR85SN39kUG1Q?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          },
+          {
+            "photo_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q:photo:b996753ce050fdd1",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNmK_7x785Jfc7J0-IlgKDeFfqZZ5MOfqlmCN4pek7ku7Gn0ATKCSc3hVoY8tjmuKY9416Har4Jn6Ny4tw-1FeONfNdx5auKHrKlGqasFDTPm3IaUF8htCe5oBL1LcgRlv2lL0q0F8gyCtX=w600-h450-p-k-no",
+            "match_text": "Assorted sashimi and sushi rolls",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Hamano+Sushi/data=!4m7!3m6!1s0x808f7e128a5c68cf:0x541b14d9df8d94f3!8m2!3d37.7507861!4d-122.4342472!16s%2Fg%2F1tj4h8kw!19sChIJz2hcihJ-j4AR85SN39kUG1Q?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          },
+          {
+            "photo_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q:photo:1f5ab48adb1650a4",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmM--lGxe-nedlQkl8f6S0u8DVXC3s-0xhbBJDVSOA9XidEfaxhyD632iY1Y1sG6rlnPWSRbGUPepp0_zz63VggjtOvBHHi6zOgQfVgvUfvp-OSkQJ0ljqszLP3_ZFE6BWWbPzZoU6o3WZg=w600-h900-p-k-no",
+            "match_text": "Assorted sushi pieces on a white rectangular plate with ginger and wasabi.. sushi rolls with rice and tuna/avocado. nigiri with tuna. sushi with slices of fish and avocado. pickled ginger. wasabi. rolled sushi with shrimp or fish. wooden table surface. white plate. green onions topping on some pieces. wasabi dollop. drizzle of sauce possibly soy",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Hamano+Sushi/data=!4m7!3m6!1s0x808f7e128a5c68cf:0x541b14d9df8d94f3!8m2!3d37.7507861!4d-122.4342472!16s%2Fg%2F1tj4h8kw!19sChIJz2hcihJ-j4AR85SN39kUG1Q?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact fish types not clearly identifiable",
+              "whether soy sauce or other condiments present off-camera"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJz2hcihJ-j4AR85SN39kUG1Q:photo:fd748a172facc767",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmO4FsPWBB7PInLL09Zwj5JNBLjNImfa4XBm4uWd2CsLK9CbKjAdx5B5SplJaFRcQgTZyOpmKs77EBz2Fb841bRulfHnlU4oBkQH9IDYbqrkbrJcoSd9ajoUBoMurtNQHW3Dy55JkSF9r_t9=w600-h900-p-k-no",
+            "match_text": "Assorted sushi rolls with rice and seaweed, pale and red fish slices, avocado, and scallion garnish on a rectangular white plate.. sushi rolls. fish. avocado. rice. seaweed. scallion garnish. rectangular serving plate",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Hamano+Sushi/data=!4m7!3m6!1s0x808f7e128a5c68cf:0x541b14d9df8d94f3!8m2!3d37.7507861!4d-122.4342472!16s%2Fg%2F1tj4h8kw!19sChIJz2hcihJ-j4AR85SN39kUG1Q?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "Specific fish species and exact roll names cannot be confirmed."
+            ]
+          }
+        ]
+      },
+      {
+        "restaurant_id": "google:ChIJ9z0VIj1-j4ARX0AIXi5qEQE",
+        "name": "Cha-Ya",
+        "neighborhood": "Mission Dolores",
+        "area_priority": "focus",
+        "source_url": "https://www.google.com/maps/place/Cha-Ya/data=!4m7!3m6!1s0x808f7e3d22153df7:0x1116a2e5e08405f!8m2!3d37.760768!4d-122.421698!16s%2Fm%2F04fj_6_!19sChIJ9z0VIj1-j4ARX0AIXi5qEQE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+        "matched_query_terms": [
+          "sushi"
+        ],
+        "query_coverage": 1.0,
+        "match_type": "all_terms",
+        "score": 8.900519,
+        "matched_sources": 3,
+        "matched_evidence": [
+          {
+            "evidence_id": "google:ChIJ9z0VIj1-j4ARX0AIXi5qEQE:photo:8ae9115de7671969",
+            "restaurant_id": "google:ChIJ9z0VIj1-j4ARX0AIXi5qEQE",
+            "kind": "photo_source_caption",
+            "text": "Vegan sushi, tempura, and udon",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOmRIX7fpvH3fS1jKXtrwFJKFAsRGiuiR0hinEnq2d6FN2SKFoA5aMzYRbI0pBcw32QFNw9gTYMLbkEFhPqxqsiLC-aqIvqluMNIgPVUs8IfVlquk5p-wQPLRGB3yNo8UfUBTk7qoUMG9EK=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Cha-Ya/data=!4m7!3m6!1s0x808f7e3d22153df7:0x1116a2e5e08405f!8m2!3d37.760768!4d-122.421698!16s%2Fm%2F04fj_6_!19sChIJ9z0VIj1-j4ARX0AIXi5qEQE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Neesh Shah",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25nMFNGZGZSMHRyVlhaa1lVWk9NVmxzUjA5WlltYxAB",
+            "retrieved_at": "2026-09-26T02:45:19.478Z",
+            "caption_origin": "Google Maps rendered accessibility label",
+            "visually_verified": false,
+            "photo_id": "google:ChIJ9z0VIj1-j4ARX0AIXi5qEQE:photo:8ae9115de7671969",
+            "image_inspected": false,
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJ9z0VIj1-j4ARX0AIXi5qEQE",
+            "photo_id": "google:ChIJ9z0VIj1-j4ARX0AIXi5qEQE:photo:48da039f48525624",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMyecsbloeDUC0zYrOBK6iDRKR9kmLhf0Dt3wJHDUVPvZHvzi78ZjyBfIZSittBaDC4ykFFSr3DJmFTb0ma4dk_i90yEtOkPt_6chUSOv6L_pfoB1OTrZ-_OMTolhmrljuBeGofmyzykIPN=w600-h900-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Cha-Ya/data=!4m7!3m6!1s0x808f7e3d22153df7:0x1116a2e5e08405f!8m2!3d37.760768!4d-122.421698!16s%2Fm%2F04fj_6_!19sChIJ9z0VIj1-j4ARX0AIXi5qEQE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Food & Travel Lover",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25WRk5WVkJWV2RFTlcwMlZUSkZXSGRmT1ZFeVRWRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "type of protein in roll (appears like tofu/egg)",
+              "whether additional fillings are present"
+            ],
+            "processed_at": "2026-09-26T03:27:58.893673+00:00",
+            "evidence_id": "google:ChIJ9z0VIj1-j4ARX0AIXi5qEQE:photo:48da039f48525624:vision",
+            "kind": "photo_vision_caption",
+            "text": "Two maki-style sushi rolls with pickled ginger, wasabi, and soy sauce nearby.. sushi rolls. white plate. wasabi. pickled ginger. soy sauce cup. wooden table. green filling inside sushi. orange carrot pieces. cucumber. tofu or white cheese in roll. seaweed wrap. rice",
+            "matched_query_terms": [
+              "sushi"
+            ]
+          },
+          {
+            "restaurant_id": "google:ChIJ9z0VIj1-j4ARX0AIXi5qEQE",
+            "photo_id": "google:ChIJ9z0VIj1-j4ARX0AIXi5qEQE:photo:a153e2ec85f8e5d2",
+            "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMxCZfswXqjPliyl5HN672kAruX3LG2YiQ_rxlCfoIlSAVHNviu8yb79hDIiFReZj84ONThOLQsRdwqaeRdsxrMlpuaO7Kra3X7iCmmDAY3A_E4Fzv8UHPl-pVhrq5MOo0RJrfZOUQtPQiy=w600-h450-p-k-no",
+            "source_url": "https://www.google.com/maps/place/Cha-Ya/data=!4m7!3m6!1s0x808f7e3d22153df7:0x1116a2e5e08405f!8m2!3d37.760768!4d-122.421698!16s%2Fm%2F04fj_6_!19sChIJ9z0VIj1-j4ARX0AIXi5qEQE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "author": "Katia",
+            "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xoa1ZrZDBaekIwV2pFeVNURmljRzg1WVhNeU5WRRAB",
+            "image_inspected": true,
+            "human_verified": false,
+            "extraction_method": "openai_responses_vision",
+            "photo_type": "food",
+            "uncertainties": [
+              "exact tofu flavor not determined",
+              "specific sushi types not identified"
+            ],
+            "processed_at": "2026-09-26T03:27:59.821346+00:00",
+            "evidence_id": "google:ChIJ9z0VIj1-j4ARX0AIXi5qEQE:photo:a153e2ec85f8e5d2:vision",
+            "kind": "photo_vision_caption",
+            "text": "Two dishes on a wooden table: a bowl with tofu in a dark sauce and garnishes, and a small plate of sushi rolls with sauce.. tofu in broth. sliced green onions. nori strips. sushi rolls with sauce. wooden table. ceramic bowl. garnishes. small pink plate with sushi. drinking glass edge. silverware. cup/saucer in background",
+            "matched_query_terms": [
+              "sushi"
+            ]
+          }
+        ],
+        "photos": [
+          {
+            "photo_id": "google:ChIJ9z0VIj1-j4ARX0AIXi5qEQE:photo:8ae9115de7671969",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOmRIX7fpvH3fS1jKXtrwFJKFAsRGiuiR0hinEnq2d6FN2SKFoA5aMzYRbI0pBcw32QFNw9gTYMLbkEFhPqxqsiLC-aqIvqluMNIgPVUs8IfVlquk5p-wQPLRGB3yNo8UfUBTk7qoUMG9EK=w600-h450-p-k-no",
+            "match_text": "Vegan sushi, tempura, and udon",
+            "evidence_kind": "photo_source_caption",
+            "source_url": "https://www.google.com/maps/place/Cha-Ya/data=!4m7!3m6!1s0x808f7e3d22153df7:0x1116a2e5e08405f!8m2!3d37.760768!4d-122.421698!16s%2Fm%2F04fj_6_!19sChIJ9z0VIj1-j4ARX0AIXi5qEQE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": false,
+            "uncertainties": []
+          },
+          {
+            "photo_id": "google:ChIJ9z0VIj1-j4ARX0AIXi5qEQE:photo:48da039f48525624",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMyecsbloeDUC0zYrOBK6iDRKR9kmLhf0Dt3wJHDUVPvZHvzi78ZjyBfIZSittBaDC4ykFFSr3DJmFTb0ma4dk_i90yEtOkPt_6chUSOv6L_pfoB1OTrZ-_OMTolhmrljuBeGofmyzykIPN=w600-h900-p-k-no",
+            "match_text": "Two maki-style sushi rolls with pickled ginger, wasabi, and soy sauce nearby.. sushi rolls. white plate. wasabi. pickled ginger. soy sauce cup. wooden table. green filling inside sushi. orange carrot pieces. cucumber. tofu or white cheese in roll. seaweed wrap. rice",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Cha-Ya/data=!4m7!3m6!1s0x808f7e3d22153df7:0x1116a2e5e08405f!8m2!3d37.760768!4d-122.421698!16s%2Fm%2F04fj_6_!19sChIJ9z0VIj1-j4ARX0AIXi5qEQE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "type of protein in roll (appears like tofu/egg)",
+              "whether additional fillings are present"
+            ]
+          },
+          {
+            "photo_id": "google:ChIJ9z0VIj1-j4ARX0AIXi5qEQE:photo:a153e2ec85f8e5d2",
+            "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMxCZfswXqjPliyl5HN672kAruX3LG2YiQ_rxlCfoIlSAVHNviu8yb79hDIiFReZj84ONThOLQsRdwqaeRdsxrMlpuaO7Kra3X7iCmmDAY3A_E4Fzv8UHPl-pVhrq5MOo0RJrfZOUQtPQiy=w600-h450-p-k-no",
+            "match_text": "Two dishes on a wooden table: a bowl with tofu in a dark sauce and garnishes, and a small plate of sushi rolls with sauce.. tofu in broth. sliced green onions. nori strips. sushi rolls with sauce. wooden table. ceramic bowl. garnishes. small pink plate with sushi. drinking glass edge. silverware. cup/saucer in background",
+            "evidence_kind": "photo_vision_caption",
+            "source_url": "https://www.google.com/maps/place/Cha-Ya/data=!4m7!3m6!1s0x808f7e3d22153df7:0x1116a2e5e08405f!8m2!3d37.760768!4d-122.421698!16s%2Fm%2F04fj_6_!19sChIJ9z0VIj1-j4ARX0AIXi5qEQE?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+            "image_inspected": true,
+            "uncertainties": [
+              "exact tofu flavor not determined",
+              "specific sushi types not identified"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

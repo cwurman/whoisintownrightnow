@@ -1,0 +1,732 @@
+{
+  "query": "mint green",
+  "scope": "nearby",
+  "candidate_count": 5,
+  "status": "reranked",
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 6194,
+    "output_tokens": 348
+  },
+  "cache_hit": false,
+  "cache_key": "0d1540d59bd5905b141b6bdabe4a40d2f607e1ac63b2aefc76a4bea344954b04",
+  "api_ms": 311.7,
+  "widget": "space_photos",
+  "widget_decision": {
+    "type": "choice",
+    "choice": "space_photos",
+    "confidence": 0.96,
+    "probabilities": {
+      "dish_photos": 0.03,
+      "menu_photos": 0.0,
+      "compact": 0.0,
+      "space_photos": 0.97
+    }
+  },
+  "results": [
+    {
+      "restaurant_id": "google:ChIJ9QKs3yR_j4ARHuXwnup3Rs0",
+      "name": "La Vaca Birria",
+      "neighborhood": "Mission District",
+      "area_priority": "focus",
+      "source_url": "https://www.google.com/maps/place/La+Vaca+Birria/data=!4m7!3m6!1s0x808f7f24dfac02f5:0xcd4677ea9ef0e51e!8m2!3d37.7529153!4d-122.4114313!16s%2Fg%2F11q91znrp8!19sChIJ9QKs3yR_j4ARHuXwnup3Rs0?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "mint",
+        "green"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 10.083779,
+      "matched_sources": 1,
+      "matched_evidence": [
+        {
+          "restaurant_id": "google:ChIJ9QKs3yR_j4ARHuXwnup3Rs0",
+          "photo_id": "google:ChIJ9QKs3yR_j4ARHuXwnup3Rs0:photo:a34dc6d7e248268d",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNsKqnc5Gl3I9y9dxXt1h4sxyYAkZmNCv0SqTRTaiBsBRlet_PFOgPxFtz6V0v21HvF9O4JECopiUFrqSo5XSyZDnQSzs0VaPivNresaJ527ySkxsA7EQbz3vNHzJzQcF6nTDFFJX3bNhoN=w600-h900-p-k-no",
+          "source_url": "https://www.google.com/maps/place/La+Vaca+Birria/data=!4m7!3m6!1s0x808f7f24dfac02f5:0xcd4677ea9ef0e51e!8m2!3d37.7529153!4d-122.4114313!16s%2Fg%2F11q91znrp8!19sChIJ9QKs3yR_j4ARHuXwnup3Rs0?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Jack Wittmayer",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25KUFVVcE5lamxsTUZwR1Rrc3dkRzFyY2pSRWNFRRAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "assistant_visual_pilot",
+          "photo_type": "interior",
+          "uncertainties": [
+            "Noise level and atmosphere when busy cannot be inferred from an empty room."
+          ],
+          "processed_at": "2026-09-26T03:02:45.545617+00:00",
+          "evidence_id": "google:ChIJ9QKs3yR_j4ARHuXwnup3Rs0:photo:a34dc6d7e248268d:vision",
+          "kind": "photo_vision_caption",
+          "text": "Dining room with mint-green walls and metal chairs, pale marble-patterned tabletops, a peach ceiling, and woven pendant lamps.. mint-green walls. green metal chairs. marble-patterned tables. woven pendant lamps. bar-height seating",
+          "matched_query_terms": [
+            "green",
+            "mint"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJ9QKs3yR_j4ARHuXwnup3Rs0:photo:a34dc6d7e248268d",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNsKqnc5Gl3I9y9dxXt1h4sxyYAkZmNCv0SqTRTaiBsBRlet_PFOgPxFtz6V0v21HvF9O4JECopiUFrqSo5XSyZDnQSzs0VaPivNresaJ527ySkxsA7EQbz3vNHzJzQcF6nTDFFJX3bNhoN=w600-h900-p-k-no",
+          "match_text": "Dining room with mint-green walls and metal chairs, pale marble-patterned tabletops, a peach ceiling, and woven pendant lamps.. mint-green walls. green metal chairs. marble-patterned tables. woven pendant lamps. bar-height seating",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/La+Vaca+Birria/data=!4m7!3m6!1s0x808f7f24dfac02f5:0xcd4677ea9ef0e51e!8m2!3d37.7529153!4d-122.4114313!16s%2Fg%2F11q91znrp8!19sChIJ9QKs3yR_j4ARHuXwnup3Rs0?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "Noise level and atmosphere when busy cannot be inferred from an empty room."
+          ]
+        }
+      ],
+      "jev": {
+        "relevance_score": 2.86,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.86,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "p0",
+          "confidence": 1.0,
+          "probabilities": {
+            "none": 0.0,
+            "p0": 1.0
+          }
+        },
+        "recommended_widget": "space_photos",
+        "selected_photo": {
+          "photo_id": "google:ChIJ9QKs3yR_j4ARHuXwnup3Rs0:photo:a34dc6d7e248268d",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNsKqnc5Gl3I9y9dxXt1h4sxyYAkZmNCv0SqTRTaiBsBRlet_PFOgPxFtz6V0v21HvF9O4JECopiUFrqSo5XSyZDnQSzs0VaPivNresaJ527ySkxsA7EQbz3vNHzJzQcF6nTDFFJX3bNhoN=w600-h900-p-k-no",
+          "match_text": "Dining room with mint-green walls and metal chairs, pale marble-patterned tabletops, a peach ceiling, and woven pendant lamps.. mint-green walls. green metal chairs. marble-patterned tables. woven pendant lamps. bar-height seating",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/La+Vaca+Birria/data=!4m7!3m6!1s0x808f7f24dfac02f5:0xcd4677ea9ef0e51e!8m2!3d37.7529153!4d-122.4114313!16s%2Fg%2F11q91znrp8!19sChIJ9QKs3yR_j4ARHuXwnup3Rs0?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "Noise level and atmosphere when busy cannot be inferred from an empty room."
+          ]
+        }
+      }
+    },
+    {
+      "restaurant_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc",
+      "name": "Pancake Boy",
+      "neighborhood": "Noe Valley",
+      "area_priority": "focus",
+      "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "mint",
+        "green"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 9.230319,
+      "matched_sources": 3,
+      "matched_evidence": [
+        {
+          "restaurant_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc",
+          "photo_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:7fceb1b20d564c5b",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMnvjbPEHOctoiig4lQ0gIkcd8K2pGOZxOMyv4x7mFESkKAAQM4sYd6hI8JE3F99vdQb2TNa0XFrhKDuYY38yaWAVAsv9TzLbgfoVuvyGSYSNo6SxlTLTcJ_S2DBu2GNXM4M1xz1O3gb8k=w600-h900-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Eva B",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xGalZUTktSVXhrVkU1S1FWaEJiSFk0Y2pSaU1tYxAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "food",
+          "uncertainties": [
+            "exact pancake flavor not determined",
+            "whether there are additional toppings beyond chocolate chips and syrup"
+          ],
+          "processed_at": "2026-09-26T03:30:42.842603+00:00",
+          "evidence_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:7fceb1b20d564c5b:vision",
+          "kind": "photo_vision_caption",
+          "text": "Pancake topped with chocolate chips and syrup, dusted with powdered sugar, with an orange slice and mint leaf on the side.. pancake. chocolate chips. syrup. powdered sugar. orange slice. mint leaf. brown syrup drizzle. powdered sugar dusting. pile of chocolate chips. plate with red floral pattern. orange wedge. green mint. thick pancake stack. side lighting. wooden table",
+          "matched_query_terms": [
+            "green",
+            "mint"
+          ]
+        },
+        {
+          "restaurant_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc",
+          "photo_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:43783b4d0e34a165",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMPA7k9ihQfVUO-3VcSTJk9YjNj8Z1EYavr7c0nAwTOcoDGTs1B0ykcEyWzfrecHbtqPjl989SnIdg0txAWPcrxgyFKi1OaEEHSq5dih7sSToSYOVU5LdxLZqldtBKQvyv4YBVbwQAUU2E=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Eva B",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xGalZUTktSVXhrVkU1S1FWaEJiSFk0Y2pSaU1tYxAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "food",
+          "uncertainties": [
+            "exact salad type not named",
+            "dressing flavor not identifiable"
+          ],
+          "processed_at": "2026-09-26T03:30:42.343288+00:00",
+          "evidence_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:43783b4d0e34a165:vision",
+          "kind": "photo_vision_caption",
+          "text": "Fresh garden salad with cucumber, radish, carrot, greens, and citrus segments on a decorative plate with a small side of dressing.. cucumber. radish. carrot. greens/lettuce. orange segments. cherry tomato(s). mixed greens. round plate with red pattern. wooden table. small metal cup with dressing. salad arrangement. thinly sliced cucumber rounds. radish slices. tomato halves. shredded carrot",
+          "matched_query_terms": [
+            "green"
+          ]
+        },
+        {
+          "restaurant_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc",
+          "photo_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:361680878ad251c9",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOWp6ZTEwErTBmye1rkp-pC7V4wm9Cu0cmt4FHP9PDWS8HSpKMMO7BfOu71vpJBHmi0gvN67sU-kx3EjJa7zwtFzeZLbyYFMSfUuDH15E-olf2LjPQjt9jrzHAAYGNqrjzheBzZgyLMqxI=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Eva B",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xGalZUTktSVXhrVkU1S1FWaEJiSFk0Y2pSaU1tYxAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "food",
+          "uncertainties": [
+            "ingredient specifics unknown (e.g., seasoning, dipping)",
+            "exact dish name not identifiable"
+          ],
+          "processed_at": "2026-09-26T03:30:41.491079+00:00",
+          "evidence_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:361680878ad251c9:vision",
+          "kind": "photo_vision_caption",
+          "text": "Basket of fried potato chunks with lemon wedge. potato chunks. red-and-white checkered basket liner. fried potatoes. parmesan/green herb dusting?. lemon wedge. warm lighting may imply casual setting",
+          "matched_query_terms": [
+            "green"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:7fceb1b20d564c5b",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMnvjbPEHOctoiig4lQ0gIkcd8K2pGOZxOMyv4x7mFESkKAAQM4sYd6hI8JE3F99vdQb2TNa0XFrhKDuYY38yaWAVAsv9TzLbgfoVuvyGSYSNo6SxlTLTcJ_S2DBu2GNXM4M1xz1O3gb8k=w600-h900-p-k-no",
+          "match_text": "Pancake topped with chocolate chips and syrup, dusted with powdered sugar, with an orange slice and mint leaf on the side.. pancake. chocolate chips. syrup. powdered sugar. orange slice. mint leaf. brown syrup drizzle. powdered sugar dusting. pile of chocolate chips. plate with red floral pattern. orange wedge. green mint. thick pancake stack. side lighting. wooden table",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "exact pancake flavor not determined",
+            "whether there are additional toppings beyond chocolate chips and syrup"
+          ]
+        },
+        {
+          "photo_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:43783b4d0e34a165",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMPA7k9ihQfVUO-3VcSTJk9YjNj8Z1EYavr7c0nAwTOcoDGTs1B0ykcEyWzfrecHbtqPjl989SnIdg0txAWPcrxgyFKi1OaEEHSq5dih7sSToSYOVU5LdxLZqldtBKQvyv4YBVbwQAUU2E=w600-h450-p-k-no",
+          "match_text": "Fresh garden salad with cucumber, radish, carrot, greens, and citrus segments on a decorative plate with a small side of dressing.. cucumber. radish. carrot. greens/lettuce. orange segments. cherry tomato(s). mixed greens. round plate with red pattern. wooden table. small metal cup with dressing. salad arrangement. thinly sliced cucumber rounds. radish slices. tomato halves. shredded carrot",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "exact salad type not named",
+            "dressing flavor not identifiable"
+          ]
+        },
+        {
+          "photo_id": "google:ChIJd9dRZRN-j4ARD1I5IoANJbc:photo:361680878ad251c9",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOWp6ZTEwErTBmye1rkp-pC7V4wm9Cu0cmt4FHP9PDWS8HSpKMMO7BfOu71vpJBHmi0gvN67sU-kx3EjJa7zwtFzeZLbyYFMSfUuDH15E-olf2LjPQjt9jrzHAAYGNqrjzheBzZgyLMqxI=w600-h450-p-k-no",
+          "match_text": "Basket of fried potato chunks with lemon wedge. potato chunks. red-and-white checkered basket liner. fried potatoes. parmesan/green herb dusting?. lemon wedge. warm lighting may imply casual setting",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Pancake+Boy/data=!4m7!3m6!1s0x808f7e136551d777:0xb7250d802239520f!8m2!3d37.751307!4d-122.432177!16s%2Fg%2F1pp2tvnky!19sChIJd9dRZRN-j4ARD1I5IoANJbc?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "ingredient specifics unknown (e.g., seasoning, dipping)",
+            "exact dish name not identifiable"
+          ]
+        }
+      ],
+      "jev": {
+        "relevance_score": 0.71,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.55,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "none",
+          "confidence": 0.41,
+          "probabilities": {
+            "none": 0.56,
+            "p2": 0.0,
+            "p0": 0.35,
+            "p1": 0.09
+          }
+        },
+        "recommended_widget": "compact",
+        "selected_photo": null
+      }
+    },
+    {
+      "restaurant_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s",
+      "name": "Dumpling House",
+      "neighborhood": "The Castro",
+      "area_priority": "focus",
+      "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "mint",
+        "green"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 8.280219,
+      "matched_sources": 3,
+      "matched_evidence": [
+        {
+          "restaurant_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s",
+          "photo_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:2839d115a17758f5",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOVuhLzoWVK8VGgipTS1iCBXYTYZqSpJt6EKUyWc5WkcHoeOQRT2am3bncvcOFg_ysVcoMMJmxON6tTM5doMgQYo49NXkqwNG4YlgOIQ97r7WseeAYuw-315sIxrFn0Kfm6AQnp0AfRpGiD=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Big Mike",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tjM1ZFZGxjRFp3TWpCR1F6VnllbEZ6Ym5aMkxYYxAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "food",
+          "uncertainties": [
+            "specific dumpling filling uncertain",
+            "exact noodle type unknown",
+            "exact dish name unknown"
+          ],
+          "processed_at": "2026-09-26T03:31:07.446762+00:00",
+          "evidence_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:2839d115a17758f5:vision",
+          "kind": "photo_vision_caption",
+          "text": "Close-up of dumplings with noodles and greens in broth. dumplings. noodles. greens. broth/stock. chopsticks. vegetables (bok choy). red chopsticks. light-colored broth. udon-like noodles. white plate or bowl. steamed greens. mint or leafy greens in background. date/time stamp reading May 4, 2016, 19:39",
+          "matched_query_terms": [
+            "green",
+            "mint"
+          ]
+        },
+        {
+          "restaurant_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s",
+          "photo_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:678e163a4b030c6e",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPQj4AZaavuAuM4TUHnKnI3hgqQjgHEzT-qhIY-4tlXBrxgPS1bqz6OEdpxMivOFOTr7EJp6bV4CUGfa3lEQFiHoFRUh4nUA67Q3tGY5n-wIiIjuYcx6LrqL4pNtxkcskTpNwWgHWbq4aFZ=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Big Mike",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tjM1ZFZGxjRFp3TWpCR1F6VnllbEZ6Ym5aMkxYYxAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "food",
+          "uncertainties": [
+            "exact soup base unknown",
+            "specific greens uncertain",
+            "whether noodles are egg or wheat",
+            "dishes could be part of a larger dish not shown"
+          ],
+          "processed_at": "2026-09-26T03:31:08.159393+00:00",
+          "evidence_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:678e163a4b030c6e:vision",
+          "kind": "photo_vision_caption",
+          "text": "Dumplings with greens in a broth and noodles. dumplings. greens (bok choy or similar). noodles. white ceramic bowl. broth/clear sauce. green onions. spoon. wooden table. dim lighting. meal appears steaming or glossy",
+          "matched_query_terms": [
+            "green"
+          ]
+        },
+        {
+          "restaurant_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s",
+          "photo_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:0bd6d6962bcd373d",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPVh2-oklNvRnCojUH5Bv5VjiQrKW-l00kru4bWtRDVlfRqSk5HBdBqIdJ43QCMS0KiAiVAQYOl1IKQI2sGPe7mjrnJvZxJOvE1D7j9WLiv-2rXAWI1HL-Zl1OZPA_w2OpcODUpvpl8wvvt=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Big Mike",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tjM1ZFZGxjRFp3TWpCR1F6VnllbEZ6Ym5aMkxYYxAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "food",
+          "uncertainties": [
+            "exact dish name",
+            "whether there are noodles in the broth",
+            "whether additional ingredients are present",
+            "whether the greens are bok choy or another leafy green"
+          ],
+          "processed_at": "2026-09-26T03:31:07.181659+00:00",
+          "evidence_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:0bd6d6962bcd373d:vision",
+          "kind": "photo_vision_caption",
+          "text": "Chopsticks hold a bite of greens over dumplings in a broth.. dumplings. bok choy. noodles?. broth. chopsticks. light-colored dumpling wrapper. green leafy vegetables. light broth. potsticker-like dumplings. white plate or bowl edge",
+          "matched_query_terms": [
+            "green"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:2839d115a17758f5",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOVuhLzoWVK8VGgipTS1iCBXYTYZqSpJt6EKUyWc5WkcHoeOQRT2am3bncvcOFg_ysVcoMMJmxON6tTM5doMgQYo49NXkqwNG4YlgOIQ97r7WseeAYuw-315sIxrFn0Kfm6AQnp0AfRpGiD=w600-h450-p-k-no",
+          "match_text": "Close-up of dumplings with noodles and greens in broth. dumplings. noodles. greens. broth/stock. chopsticks. vegetables (bok choy). red chopsticks. light-colored broth. udon-like noodles. white plate or bowl. steamed greens. mint or leafy greens in background. date/time stamp reading May 4, 2016, 19:39",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "specific dumpling filling uncertain",
+            "exact noodle type unknown",
+            "exact dish name unknown"
+          ]
+        },
+        {
+          "photo_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:678e163a4b030c6e",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPQj4AZaavuAuM4TUHnKnI3hgqQjgHEzT-qhIY-4tlXBrxgPS1bqz6OEdpxMivOFOTr7EJp6bV4CUGfa3lEQFiHoFRUh4nUA67Q3tGY5n-wIiIjuYcx6LrqL4pNtxkcskTpNwWgHWbq4aFZ=w600-h450-p-k-no",
+          "match_text": "Dumplings with greens in a broth and noodles. dumplings. greens (bok choy or similar). noodles. white ceramic bowl. broth/clear sauce. green onions. spoon. wooden table. dim lighting. meal appears steaming or glossy",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "exact soup base unknown",
+            "specific greens uncertain",
+            "whether noodles are egg or wheat",
+            "dishes could be part of a larger dish not shown"
+          ]
+        },
+        {
+          "photo_id": "google:ChIJidaiT9N_j4ARM84-udN1z2s:photo:0bd6d6962bcd373d",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPVh2-oklNvRnCojUH5Bv5VjiQrKW-l00kru4bWtRDVlfRqSk5HBdBqIdJ43QCMS0KiAiVAQYOl1IKQI2sGPe7mjrnJvZxJOvE1D7j9WLiv-2rXAWI1HL-Zl1OZPA_w2OpcODUpvpl8wvvt=w600-h450-p-k-no",
+          "match_text": "Chopsticks hold a bite of greens over dumplings in a broth.. dumplings. bok choy. noodles?. broth. chopsticks. light-colored dumpling wrapper. green leafy vegetables. light broth. potsticker-like dumplings. white plate or bowl edge",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Dumpling+House/data=!4m7!3m6!1s0x808f7fd34fa2d689:0x6bcf75d3b93ece33!8m2!3d37.7635606!4d-122.4328039!16s%2Fg%2F11hzzymxb7!19sChIJidaiT9N_j4ARM84-udN1z2s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "exact dish name",
+            "whether there are noodles in the broth",
+            "whether additional ingredients are present",
+            "whether the greens are bok choy or another leafy green"
+          ]
+        }
+      ],
+      "jev": {
+        "relevance_score": 0.65,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.47,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "none",
+          "confidence": 0.62,
+          "probabilities": {
+            "none": 0.71,
+            "p2": 0.02,
+            "p0": 0.23,
+            "p1": 0.04
+          }
+        },
+        "recommended_widget": "compact",
+        "selected_photo": null
+      }
+    },
+    {
+      "restaurant_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns",
+      "name": "Rich Table",
+      "neighborhood": "Lower Haight",
+      "area_priority": "nearby",
+      "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "mint",
+        "green"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 7.37522,
+      "matched_sources": 5,
+      "matched_evidence": [
+        {
+          "restaurant_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns",
+          "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:ef534f2e3639333b",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMDNG49Bgt6yVdVPoQdLj2_P90CEWoGL8Fi_-tsaZgBaZQ8awYVam7--wdvVMOGkrzizLQ1BAdZBXvkgSed8b8iAf1eVqqOs6ABaRGdrtondCLW1ax7apGexn92vq-0Z_uEzAagttXFi4Vn=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Travel panDa",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2paRVJrWTFUM3B3YkMxTU1HVldMVVl0T0hSalMxRRAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "food",
+          "uncertainties": [
+            "The exact flavors or names of the desserts are not identifiable",
+            "It is uncertain if the brown dessert is chocolate-based"
+          ],
+          "processed_at": "2026-09-26T03:36:01.607855+00:00",
+          "evidence_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:ef534f2e3639333b:vision",
+          "kind": "photo_vision_caption",
+          "text": "Slices of creamy dessert on a plate with chocolate-topped treat in a pink bowl.. slices of dessert with creamy icing. brown dessert with mint garnish. pink ceramic bowl. white plate with cream desserts. brown wooden surface. mint leaf garnish. chocolate topping on dessert. creamy white dessert pieces",
+          "matched_query_terms": [
+            "mint"
+          ]
+        },
+        {
+          "restaurant_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns",
+          "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:63cc2b8322ed1a61",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmN05GD6HvG_H4gxgbz-mjq0FUml6gznmSgyIGQaSIebRUzjFPKjoy_exDxpf2PUkUx3474V35t51GVn0xa9n-eKFoMuMvFua8TubMrWui6ehMe4gFAocuwZgrag58CMUit_OxP80aA4xuM9=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Matt Green",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xwcmIxQm1WR3ByTUU0elpYQlNjRGhvUlZsTVVFRRAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "drink",
+          "uncertainties": [
+            "garnish exact herb",
+            "type of drink not specified",
+            "presence of other visible foods may be limited"
+          ],
+          "processed_at": "2026-09-26T03:36:00.247798+00:00",
+          "evidence_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:63cc2b8322ed1a61:vision",
+          "kind": "photo_vision_caption",
+          "text": "Two drinks on a wooden table with ice and garnish. sliced ice. garnish sprig. slice of citrus? (not clearly). wooden table. ice-filled glasses. garnish sprig (dill or herb). plate and cutlery in background. glass beverage with mint leaf or dill. candle or ambient lighting. crystal-clear ice cubes",
+          "matched_query_terms": [
+            "mint"
+          ]
+        },
+        {
+          "restaurant_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns",
+          "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:6ea82dd3ed3547f7",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPM-Sub178lgB5Jh3e4sLv22S438pOD-FL8OVQiqSl8ir0orSvB-kXDratmMlHKmk3RtVdF2Hn3WmARVbzbo64aqHre_JT30VHEWjBFqNhyalXY1S0gbFsgv5cg1yocW7WUBZrSKaLVoNs=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Travel panDa",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2paRVJrWTFUM3B3YkMxTU1HVldMVVl0T0hSalMxRRAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "food",
+          "uncertainties": [
+            "exact pasta type unknown",
+            "specific cheese type unknown",
+            "whether herbs are parsley or another herb"
+          ],
+          "processed_at": "2026-09-26T03:36:00.773387+00:00",
+          "evidence_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:6ea82dd3ed3547f7:vision",
+          "kind": "photo_vision_caption",
+          "text": "Pink bowl with pasta topped with grated cheese and herbs.. pasta. grated cheese. green herb. black pepper. pink bowl. orange-yellow pasta. garlic? herbs. shaved cheese. green parsley. dark pepper flakes",
+          "matched_query_terms": [
+            "green"
+          ]
+        },
+        {
+          "restaurant_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns",
+          "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:d796a01ae4c5bc63",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNGIZuq0TbuvYQJ7CmEL8Pi6TH5wPxMxJbtMqASOzw1AmlUFO4j0XNtIw6DOjl56Gaih13pSoblUNHp_B0dKzB9N4qUF-tXx9dMt2acYjx9feIKDWtKFQBdxkohP-4CZa_g4k6XunsNFEY=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Travel panDa",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2paRVJrWTFUM3B3YkMxTU1HVldMVVl0T0hSalMxRRAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "food",
+          "uncertainties": [
+            "Exact dish name unclear",
+            "specific ingredients not identifiable",
+            "presence of additional toppings not certain"
+          ],
+          "processed_at": "2026-09-26T03:36:01.019591+00:00",
+          "evidence_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:d796a01ae4c5bc63:vision",
+          "kind": "photo_vision_caption",
+          "text": "A bowl of porridge-like dish with orange sauce and shredded greens on top.. porridge/ gruel. orange sauce. shredded greens. julienned white strips. pink ceramic bowl. wooden table. soft lighting. centered presentation. garnish with chives. thin white noodles or stems",
+          "matched_query_terms": [
+            "green"
+          ]
+        },
+        {
+          "restaurant_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns",
+          "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:3627359abf8404b7",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPx54G3vt_gZPgO0qNu7ONTvyxO6mk7CUy1zZI1qLH2LAmQyoTSYir3JlTE3dSxyMCXRK56M6Lc4SmksJJCPDMk_Q4uPX4qK4qUye2UQIIZhOM0F6jBpGYWgVpO3sOk4LOvupC_ucwmX30=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Matt Green",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xwcmIxQm1WR3ByTUU0elpYQlNjRGhvUlZsTVVFRRAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "food",
+          "uncertainties": [
+            "Exact identification of some morsels (crab, croquette, broccoli) is uncertain",
+            "Some items may be fried or baked",
+            "Plating includes a paper liner with design"
+          ],
+          "processed_at": "2026-09-26T03:35:59.968551+00:00",
+          "evidence_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:3627359abf8404b7:vision",
+          "kind": "photo_vision_caption",
+          "text": "A round platter with small bites and a central dipping sauce.. crab/crab-like bites. crackers or crostini. creamy dip. green vegetable bites (broccoli/cauliflower). crab croquettes. crumb-covered bites. roasted potato bites. round plate on wooden table. blue ceramic cup with white dip. small white cups with crumb topping. greens/herbs on top. bright lighting with warm tones. narrow paper napkins under some bites",
+          "matched_query_terms": [
+            "green"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:ef534f2e3639333b",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMDNG49Bgt6yVdVPoQdLj2_P90CEWoGL8Fi_-tsaZgBaZQ8awYVam7--wdvVMOGkrzizLQ1BAdZBXvkgSed8b8iAf1eVqqOs6ABaRGdrtondCLW1ax7apGexn92vq-0Z_uEzAagttXFi4Vn=w600-h450-p-k-no",
+          "match_text": "Slices of creamy dessert on a plate with chocolate-topped treat in a pink bowl.. slices of dessert with creamy icing. brown dessert with mint garnish. pink ceramic bowl. white plate with cream desserts. brown wooden surface. mint leaf garnish. chocolate topping on dessert. creamy white dessert pieces",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "The exact flavors or names of the desserts are not identifiable",
+            "It is uncertain if the brown dessert is chocolate-based"
+          ]
+        },
+        {
+          "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:63cc2b8322ed1a61",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmN05GD6HvG_H4gxgbz-mjq0FUml6gznmSgyIGQaSIebRUzjFPKjoy_exDxpf2PUkUx3474V35t51GVn0xa9n-eKFoMuMvFua8TubMrWui6ehMe4gFAocuwZgrag58CMUit_OxP80aA4xuM9=w600-h450-p-k-no",
+          "match_text": "Two drinks on a wooden table with ice and garnish. sliced ice. garnish sprig. slice of citrus? (not clearly). wooden table. ice-filled glasses. garnish sprig (dill or herb). plate and cutlery in background. glass beverage with mint leaf or dill. candle or ambient lighting. crystal-clear ice cubes",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "garnish exact herb",
+            "type of drink not specified",
+            "presence of other visible foods may be limited"
+          ]
+        },
+        {
+          "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:6ea82dd3ed3547f7",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPM-Sub178lgB5Jh3e4sLv22S438pOD-FL8OVQiqSl8ir0orSvB-kXDratmMlHKmk3RtVdF2Hn3WmARVbzbo64aqHre_JT30VHEWjBFqNhyalXY1S0gbFsgv5cg1yocW7WUBZrSKaLVoNs=w600-h450-p-k-no",
+          "match_text": "Pink bowl with pasta topped with grated cheese and herbs.. pasta. grated cheese. green herb. black pepper. pink bowl. orange-yellow pasta. garlic? herbs. shaved cheese. green parsley. dark pepper flakes",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "exact pasta type unknown",
+            "specific cheese type unknown",
+            "whether herbs are parsley or another herb"
+          ]
+        },
+        {
+          "photo_id": "google:ChIJh_24QJ-AhYAR_xbUNVN2Xns:photo:d796a01ae4c5bc63",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNGIZuq0TbuvYQJ7CmEL8Pi6TH5wPxMxJbtMqASOzw1AmlUFO4j0XNtIw6DOjl56Gaih13pSoblUNHp_B0dKzB9N4qUF-tXx9dMt2acYjx9feIKDWtKFQBdxkohP-4CZa_g4k6XunsNFEY=w600-h450-p-k-no",
+          "match_text": "A bowl of porridge-like dish with orange sauce and shredded greens on top.. porridge/ gruel. orange sauce. shredded greens. julienned white strips. pink ceramic bowl. wooden table. soft lighting. centered presentation. garnish with chives. thin white noodles or stems",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Rich+Table/data=!4m7!3m6!1s0x8085809f40b8fd87:0x7b5e765335d416ff!8m2!3d37.7748657!4d-122.4228497!16s%2Fg%2F11h18mfkk!19sChIJh_24QJ-AhYAR_xbUNVN2Xns?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "Exact dish name unclear",
+            "specific ingredients not identifiable",
+            "presence of additional toppings not certain"
+          ]
+        }
+      ],
+      "jev": {
+        "relevance_score": 0.49,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.51,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "none",
+          "confidence": 0.79,
+          "probabilities": {
+            "p3": 0.01,
+            "p2": 0.05,
+            "none": 0.83,
+            "p0": 0.08,
+            "p1": 0.03
+          }
+        },
+        "recommended_widget": "compact",
+        "selected_photo": null
+      }
+    },
+    {
+      "restaurant_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk",
+      "name": "Caprizza Ristorante",
+      "neighborhood": "Mission District",
+      "area_priority": "focus",
+      "source_url": "https://www.google.com/maps/place/Caprizza+Ristorante/data=!4m7!3m6!1s0x808f7f9942f23425:0x59253ef14a78ab3b!8m2!3d37.753049!4d-122.4067275!16s%2Fg%2F11x2krv7r2!19sChIJJTTyQpl_j4ARO6t4SvE-JVk?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "mint",
+        "green"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 8.143333,
+      "matched_sources": 2,
+      "matched_evidence": [
+        {
+          "restaurant_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk",
+          "photo_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk:photo:ca2efca73930de91",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNchWAgZAK1BU9Jgk3zS6smknvKod5qpLWrDbH6ruvs9Hm9ji0vtr3pbmVbnF2O2NHCCKAmFwrowLXA-a4jpf6pwm-_g_gj9y0atIMptMHwHmW0poD40buzbNKEfHLpx8U_t6U-8nidn5To=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Caprizza+Ristorante/data=!4m7!3m6!1s0x808f7f9942f23425:0x59253ef14a78ab3b!8m2!3d37.753049!4d-122.4067275!16s%2Fg%2F11x2krv7r2!19sChIJJTTyQpl_j4ARO6t4SvE-JVk?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Mehr Sharma",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2s0eU1YQlFjMFIyVVU1SFJuaHZkRlF6TWtkVE1uYxAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "food",
+          "uncertainties": [
+            "ingredient specifics unknown",
+            "exact flavor not discernible"
+          ],
+          "processed_at": "2026-09-26T03:28:21.614311+00:00",
+          "evidence_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk:photo:ca2efca73930de91:vision",
+          "kind": "photo_vision_caption",
+          "text": "Dessert piece on a white plate with chocolate drizzle and mint garnish.. dessert square. brown tiled table. white plate. chocolate drizzle. mint leaf. crumbled topping. birthday candle",
+          "matched_query_terms": [
+            "mint"
+          ]
+        },
+        {
+          "restaurant_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk",
+          "photo_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk:photo:97f4a3c18de5c59f",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPk1zyF2c68_S4AAWj7ohfTsYCqI08M6cIDyezmxMT8-_JnXJQrpJFAyIUo1LZ1ZRnJqVu-1g5NaXeN1zFsR94gwgDQnsxgbTwxeXizZpPzjAUyhqvpF9CVIVJ8n6zVoQrX3Nl0G76ScqA=w600-h900-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Caprizza+Ristorante/data=!4m7!3m6!1s0x808f7f9942f23425:0x59253ef14a78ab3b!8m2!3d37.753049!4d-122.4067275!16s%2Fg%2F11x2krv7r2!19sChIJJTTyQpl_j4ARO6t4SvE-JVk?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Mehr Sharma",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2s0eU1YQlFjMFIyVVU1SFJuaHZkRlF6TWtkVE1uYxAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "food",
+          "uncertainties": [
+            "exact type of meat not specified",
+            "sauce ingredients not fully identifiable"
+          ],
+          "processed_at": "2026-09-26T03:28:21.457586+00:00",
+          "evidence_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk:photo:97f4a3c18de5c59f:vision",
+          "kind": "photo_vision_caption",
+          "text": "Plate with meat in creamy sauce, mashed potato, and sautéed greens. sliced meat with creamy sauce. mashed potatoes. spinach or sautéed greens. white oval plate. creamy sauce with herbs and seeds. green herbs. pumpkin or sesame seeds on meat. fork on plate. dark wooden table. drinking glasses nearby. mashed potato mound. greens beside potatoes",
+          "matched_query_terms": [
+            "green"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk:photo:ca2efca73930de91",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmNchWAgZAK1BU9Jgk3zS6smknvKod5qpLWrDbH6ruvs9Hm9ji0vtr3pbmVbnF2O2NHCCKAmFwrowLXA-a4jpf6pwm-_g_gj9y0atIMptMHwHmW0poD40buzbNKEfHLpx8U_t6U-8nidn5To=w600-h450-p-k-no",
+          "match_text": "Dessert piece on a white plate with chocolate drizzle and mint garnish.. dessert square. brown tiled table. white plate. chocolate drizzle. mint leaf. crumbled topping. birthday candle",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Caprizza+Ristorante/data=!4m7!3m6!1s0x808f7f9942f23425:0x59253ef14a78ab3b!8m2!3d37.753049!4d-122.4067275!16s%2Fg%2F11x2krv7r2!19sChIJJTTyQpl_j4ARO6t4SvE-JVk?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "ingredient specifics unknown",
+            "exact flavor not discernible"
+          ]
+        },
+        {
+          "photo_id": "google:ChIJJTTyQpl_j4ARO6t4SvE-JVk:photo:97f4a3c18de5c59f",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPk1zyF2c68_S4AAWj7ohfTsYCqI08M6cIDyezmxMT8-_JnXJQrpJFAyIUo1LZ1ZRnJqVu-1g5NaXeN1zFsR94gwgDQnsxgbTwxeXizZpPzjAUyhqvpF9CVIVJ8n6zVoQrX3Nl0G76ScqA=w600-h900-p-k-no",
+          "match_text": "Plate with meat in creamy sauce, mashed potato, and sautéed greens. sliced meat with creamy sauce. mashed potatoes. spinach or sautéed greens. white oval plate. creamy sauce with herbs and seeds. green herbs. pumpkin or sesame seeds on meat. fork on plate. dark wooden table. drinking glasses nearby. mashed potato mound. greens beside potatoes",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Caprizza+Ristorante/data=!4m7!3m6!1s0x808f7f9942f23425:0x59253ef14a78ab3b!8m2!3d37.753049!4d-122.4067275!16s%2Fg%2F11x2krv7r2!19sChIJJTTyQpl_j4ARO6t4SvE-JVk?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "exact type of meat not specified",
+            "sauce ingredients not fully identifiable"
+          ]
+        }
+      ],
+      "jev": {
+        "relevance_score": 0.38,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.62,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "none",
+          "confidence": 0.7,
+          "probabilities": {
+            "none": 0.8,
+            "p0": 0.1,
+            "p1": 0.1
+          }
+        },
+        "recommended_widget": "compact",
+        "selected_photo": null
+      }
+    }
+  ]
+}

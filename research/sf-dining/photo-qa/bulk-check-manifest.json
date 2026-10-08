@@ -1,0 +1,150 @@
+[
+  {
+    "photo_id": "google:ChIJkx01dwC3j4AR0ouAV9Nmm-w:photo:bbd772b61f4f8a85",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/bbd772b61f4f8a85.jpg",
+    "sha256": "43ec7ed1863fbc7de42a0d99c4706995bc6a3c4c648af4262336aedebd2452ec",
+    "extraction": {
+      "photo_type": "food",
+      "caption": "Three fried bread rolls with curry and vegetable mix in a blue divided tray.",
+      "visible_foods": [
+        "fried bread rolls",
+        "curry with chunks",
+        "vegetable curry pieces"
+      ],
+      "visible_features": [
+        "blue divided tray",
+        "three rounded bread-like items",
+        "wooden table",
+        "white plate with remnants in background",
+        "orange-brown curry sauce",
+        "green garnish in curry",
+        "other vegetable pieces in sauce"
+      ],
+      "ocr_text": "",
+      "uncertainties": [
+        "Exact dish names not determinable",
+        "Curry type not identifiable",
+        "Ingredients within sauces not fully clear"
+      ],
+      "use_for_search": true
+    },
+    "assistant_visual_review": {
+      "reviewed_at": "2026-09-26T03:37:52.161354+00:00",
+      "note": "Image supports puffed fried bread with curry and vegetables in a blue divided tray. The model description is generic; it does not establish an exact dish name.",
+      "human_verified": false
+    }
+  },
+  {
+    "photo_id": "google:ChIJuQNxW1SHhYARzXi-ZSpU108:photo:520e0be1aa8675fa",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/520e0be1aa8675fa.jpg",
+    "sha256": "d45e623d13af40d09c526b18f3054472473e40e113f9620a4809cb71243ba990",
+    "extraction": {
+      "photo_type": "drink",
+      "caption": "Latte in a blue mug with leaf latte art on a wooden table",
+      "visible_foods": [
+        "latte"
+      ],
+      "visible_features": [
+        "blue mug",
+        "wooden table",
+        "latte art",
+        "creamy foam",
+        "ceramic handle",
+        "top-down perspective"
+      ],
+      "ocr_text": "",
+      "uncertainties": [
+        "identity of drink beyond being a coffee-based beverage",
+        "whether any additional toppings are present"
+      ],
+      "use_for_search": true
+    },
+    "assistant_visual_review": {
+      "reviewed_at": "2026-09-26T03:37:52.161502+00:00",
+      "note": "Image supports a blue mug containing a foamy coffee-style drink with leaf-shaped latte art on a wooden table.",
+      "human_verified": false
+    }
+  },
+  {
+    "photo_id": "google:ChIJg_JACQB_j4ARtbVgbqdFMs8:photo:97e580c4a7852192",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/97e580c4a7852192.jpg",
+    "sha256": "2fd1fddc8ff2588c85cf3d6880a80941a3faf37a0f64c2641cbbe32c7f8972ee",
+    "extraction": {
+      "photo_type": "interior",
+      "caption": "A kitchen view from a wooden counter with plating area and dining setup.",
+      "visible_foods": [
+        "plate with remnants",
+        "crumbs or sauce on plate"
+      ],
+      "visible_features": [
+        "wooden bar counter",
+        "tableware with plates and glasses",
+        "hanging pots and pans",
+        "industrial kitchen stove and grill",
+        "metal backsplash",
+        "hanging herbs/greens",
+        "bottle and glassware on counter",
+        "potted plant or leaves",
+        "mirror/window reflection",
+        "chef or staff in background"
+      ],
+      "ocr_text": "",
+      "uncertainties": [
+        "unclear specific dish names",
+        "exact kitchen equipment not fully identifiable",
+        "lighting may affect color perception"
+      ],
+      "use_for_search": true
+    },
+    "assistant_visual_review": {
+      "reviewed_at": "2026-09-26T03:37:52.161505+00:00",
+      "note": "Image supports a kitchen/grill area viewed across a wooden counter with plates and glasses in front.",
+      "human_verified": false
+    }
+  },
+  {
+    "photo_id": "google:ChIJiWMWSqt_j4ARa7ylEQPxAK4:photo:e98aeb1a2662f3eb",
+    "path": "/Users/douglasqian/Documents/ChatGPT/whosintownrightnow/research/sf-dining/photo-qa/e98aeb1a2662f3eb.jpg",
+    "sha256": "c7488ee21e1c237ec257cb392a1058a0537bb3238116b37f989f5b3cfbe83b52",
+    "extraction": {
+      "photo_type": "menu",
+      "caption": "Meatless Chicken and seafood sections with small dish photos on the right side.",
+      "visible_foods": [
+        "Meatless Chicken dishes (various)",
+        "Garlic Prawns or Fish",
+        "KungPao Prawns or Calamari",
+        "Lemon Fish",
+        "Prawns with Lobster Sauce",
+        "Orange Meatless Chicken",
+        "Szechuan Meatless Chicken",
+        "Garlic Meatless Chicken",
+        "Spinach Meatless Chicken",
+        "String Bean Meatless Chicken",
+        "Seafood section items (various)"
+      ],
+      "visible_features": [
+        "red header bars for sections",
+        "small dish images on right",
+        "text lines of menu items",
+        "section dividers",
+        "laminated menu",
+        "tinted pink/orange color theme",
+        "pictures of dishes on the right side",
+        "grid layout for items"
+      ],
+      "ocr_text": "MEATLESS CHICKEN\nMeatless Chicken: GMO Free (Made with NON Genetically Modified soy)\nIngredient: Soy Bean Protein, Soy Bean Fiber, Flour, Vegetable Oil.\n19.95\n/ Basil Meatless Chicken\n19.95\nCurry Meatless Chicken\nCumin Meatless Chicken\n19.95\n\u2022 Dry Braised Meatless Chicken..\n19.95\n\u203a General Tsao Meatless Chicken.\n19.95\nBasil Meatless Chicken\nLemon Meatless Chicken.\n19.95\n/ KungPao Meatless Chicken (contain peanuts)\n19.95\nOrange Meatless Chicken\n19.95\nSweet & Sour Meatless Chicken\n19.95\nSalt & Pepper Meatless Chicken\n19.95\nSalt & Pepper Meatless Chicken\nSzechuan Meatless Chicken.\n19.95\nGarlic Meatless Chicken ...\n19.95\n/ Sesame Meatless Chicken..\n19.95\nString Bean Meatless Chicken.\n19.95\nGarlic Meatless Chicken\nSEAFOOD\n/ Garlic Prawns or Fish.\nKungPao Prawns or Calamari (contain peanuts)\nLemon Fish\nPrawns w/ Lobster Sauce.\n20.95\n20.95\n20.95\n20.95",
+      "uncertainties": [
+        "Exact dish names may vary",
+        "Some items may be partially cropped",
+        "Photos of dishes could be generic representations",
+        "Automatic OCR may misread small or handwritten text; menu items and prices may be outdated."
+      ],
+      "use_for_search": true
+    },
+    "assistant_visual_review": {
+      "reviewed_at": "2026-09-26T03:37:52.161506+00:00",
+      "note": "Image visibly contains Meatless Chicken and Seafood menu sections with dish photos. Small text and prices remain subject to OCR errors and may be outdated.",
+      "human_verified": false
+    }
+  }
+]

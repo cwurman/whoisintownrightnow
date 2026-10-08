@@ -1,0 +1,450 @@
+{
+  "query": "mediterranean food",
+  "scope": "nearby",
+  "candidate_count": 5,
+  "status": "reranked",
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 3381,
+    "output_tokens": 262
+  },
+  "cache_hit": true,
+  "cache_key": "8ef903ffa44d10d8a801721f5f19294e9626952ca764897b93799ce6c2845e14",
+  "api_ms": 183.9,
+  "widget": "compact",
+  "widget_decision": {
+    "type": "choice",
+    "choice": "compact",
+    "confidence": 0.4,
+    "probabilities": {
+      "menu_photos": 0.0,
+      "dish_photos": 0.44,
+      "compact": 0.56,
+      "space_photos": 0.0
+    }
+  },
+  "results": [
+    {
+      "restaurant_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY",
+      "name": "SF Grill",
+      "neighborhood": "Mission District",
+      "area_priority": "focus",
+      "source_url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "mediterranean"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 10.482829,
+      "matched_sources": 3,
+      "matched_evidence": [
+        {
+          "evidence_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY:photo:414afd0e2aa2b3c8",
+          "restaurant_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY",
+          "kind": "photo_source_caption",
+          "text": "Mediterranean platter with pita hummus",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMyhtJppIqaq4eWY7T5I4a7PX2-L6ldX-vb8o7PcHA06xATwF9vgzOHxoYLzLzWSFqWEs0BMKYiGd9PsC5PKQ7-ZCcK4PGUI9IRzas8v7p0bBFO7dhp0m5GaKPrKB4BU_yGjo16pI4g7y5R=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Ximena",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2t0VVFYcDVSVEY0TVVGVVkyNXRZMGRqVEZoSWFFRRAB",
+          "retrieved_at": "2026-09-26T02:07:17.449Z",
+          "caption_origin": "Google Maps rendered accessibility label",
+          "visually_verified": false,
+          "photo_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY:photo:414afd0e2aa2b3c8",
+          "image_inspected": false,
+          "matched_query_terms": [
+            "mediterranean"
+          ]
+        },
+        {
+          "evidence_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY:review:Ci9DQUlRQUNvZENodHljRjlvT2w5Wk9FcGpOSFpHYm1veE0yRnNhR013YVd4eExXYxAB",
+          "restaurant_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY",
+          "kind": "customer_review_excerpt",
+          "text": "My fiancé and I strolled into SF Grill cause we love Mediterranean food. Love is an understatement, I’d say we’re connoisseurs of Mediterranean cuisine. This place did not disappoint! We got the fattoush salad with chicken, eggplant spread, …",
+          "author": "Bradley Mansour",
+          "rating_label": "5 stars",
+          "may_be_truncated": true,
+          "source_url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2w5Wk9FcGpOSFpHYm1veE0yRnNhR013YVd4eExXYxAB",
+          "retrieved_at": "2026-09-26T02:07:17.449Z",
+          "matched_query_terms": [
+            "mediterranean"
+          ]
+        },
+        {
+          "evidence_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY:metadata",
+          "restaurant_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY",
+          "kind": "restaurant_metadata",
+          "text": "SF Grill. Mediterranean restaurant. Mission District. 799 Valencia St, San Francisco, CA 94110. $10–20",
+          "source_url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "retrieved_at": "2026-09-26T02:07:17.449Z",
+          "matched_query_terms": [
+            "mediterranean"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY:photo:414afd0e2aa2b3c8",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMyhtJppIqaq4eWY7T5I4a7PX2-L6ldX-vb8o7PcHA06xATwF9vgzOHxoYLzLzWSFqWEs0BMKYiGd9PsC5PKQ7-ZCcK4PGUI9IRzas8v7p0bBFO7dhp0m5GaKPrKB4BU_yGjo16pI4g7y5R=w600-h450-p-k-no",
+          "match_text": "Mediterranean platter with pita hummus",
+          "evidence_kind": "photo_source_caption",
+          "source_url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": false,
+          "uncertainties": []
+        }
+      ],
+      "jev": {
+        "relevance_score": 2.98,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.98,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "p0",
+          "confidence": 1.0,
+          "probabilities": {
+            "p0": 1.0,
+            "none": 0.0
+          }
+        },
+        "recommended_widget": "compact",
+        "selected_photo": {
+          "photo_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY:photo:414afd0e2aa2b3c8",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMyhtJppIqaq4eWY7T5I4a7PX2-L6ldX-vb8o7PcHA06xATwF9vgzOHxoYLzLzWSFqWEs0BMKYiGd9PsC5PKQ7-ZCcK4PGUI9IRzas8v7p0bBFO7dhp0m5GaKPrKB4BU_yGjo16pI4g7y5R=w600-h450-p-k-no",
+          "match_text": "Mediterranean platter with pita hummus",
+          "evidence_kind": "photo_source_caption",
+          "source_url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": false,
+          "uncertainties": []
+        }
+      }
+    },
+    {
+      "restaurant_id": "google:ChIJt5h4q_d_j4AR4K_2lVxLjPg",
+      "name": "Gola Restaurant SF",
+      "neighborhood": "Mission District",
+      "area_priority": "focus",
+      "source_url": "https://www.google.com/maps/place/Gola+Restaurant+SF/data=!4m7!3m6!1s0x808f7ff7ab7898b7:0xf88c4b5c95f6afe0!8m2!3d37.7597582!4d-122.4212092!16s%2Fg%2F11k9qfn8m5!19sChIJt5h4q_d_j4AR4K_2lVxLjPg?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "mediterranean"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 10.973122,
+      "matched_sources": 3,
+      "matched_evidence": [
+        {
+          "evidence_id": "google:ChIJt5h4q_d_j4AR4K_2lVxLjPg:photo:abedf7287c5b4b97",
+          "restaurant_id": "google:ChIJt5h4q_d_j4AR4K_2lVxLjPg",
+          "kind": "photo_source_caption",
+          "text": "Mediterranean decor with patterned booth",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMRMDg6oZsMAY8stxJ0z5p2rsK9y5PnMH2TcRnRVoYcl73zEyUyi_k4zCIQw0kZi5eL3tdz40rba8-jH0-CARwn7yIzhqXPGLgHhkswdWeo50RzWZdEbpOaPC-CVwMGVeh2nkCh5NjRbu38=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Gola+Restaurant+SF/data=!4m7!3m6!1s0x808f7ff7ab7898b7:0xf88c4b5c95f6afe0!8m2!3d37.7597582!4d-122.4212092!16s%2Fg%2F11k9qfn8m5!19sChIJt5h4q_d_j4AR4K_2lVxLjPg?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Christine Chao",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xWbFRESnFlbWxCZGpod1FUUmtkVGs1U2xSYVZrRRAB",
+          "retrieved_at": "2026-09-26T02:37:15.406Z",
+          "caption_origin": "Google Maps rendered accessibility label",
+          "visually_verified": false,
+          "photo_id": "google:ChIJt5h4q_d_j4AR4K_2lVxLjPg:photo:abedf7287c5b4b97",
+          "image_inspected": false,
+          "matched_query_terms": [
+            "mediterranean"
+          ]
+        },
+        {
+          "evidence_id": "google:ChIJt5h4q_d_j4AR4K_2lVxLjPg:photo:4abd478a58d77402",
+          "restaurant_id": "google:ChIJt5h4q_d_j4AR4K_2lVxLjPg",
+          "kind": "photo_source_caption",
+          "text": "Grilled octopus and Mediterranean appetizers",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMi4GNQ9uzTWlsN98sMGeWi5N4eiRyD38a5zLMmv_9yQoQRU4TrLXK17xKWBEeX_ukezjukHq-5SAEEIv82SHw_M6K7gbt9t8-plMx8jq913EV7e6z-aukWMMkAht7iwtKF1WdsBz4lE5pR=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Gola+Restaurant+SF/data=!4m7!3m6!1s0x808f7ff7ab7898b7:0xf88c4b5c95f6afe0!8m2!3d37.7597582!4d-122.4212092!16s%2Fg%2F11k9qfn8m5!19sChIJt5h4q_d_j4AR4K_2lVxLjPg?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Christine Chao",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xWbFRESnFlbWxCZGpod1FUUmtkVGs1U2xSYVZrRRAB",
+          "retrieved_at": "2026-09-26T02:37:15.406Z",
+          "caption_origin": "Google Maps rendered accessibility label",
+          "visually_verified": false,
+          "photo_id": "google:ChIJt5h4q_d_j4AR4K_2lVxLjPg:photo:4abd478a58d77402",
+          "image_inspected": false,
+          "matched_query_terms": [
+            "mediterranean"
+          ]
+        },
+        {
+          "evidence_id": "google:ChIJt5h4q_d_j4AR4K_2lVxLjPg:metadata",
+          "restaurant_id": "google:ChIJt5h4q_d_j4AR4K_2lVxLjPg",
+          "kind": "restaurant_metadata",
+          "text": "Gola Restaurant SF. Mediterranean restaurant. Mission District. 819 Valencia St, San Francisco, CA 94110. $30–70",
+          "source_url": "https://www.google.com/maps/place/Gola+Restaurant+SF/data=!4m7!3m6!1s0x808f7ff7ab7898b7:0xf88c4b5c95f6afe0!8m2!3d37.7597582!4d-122.4212092!16s%2Fg%2F11k9qfn8m5!19sChIJt5h4q_d_j4AR4K_2lVxLjPg?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "retrieved_at": "2026-09-26T02:37:15.406Z",
+          "matched_query_terms": [
+            "mediterranean"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJt5h4q_d_j4AR4K_2lVxLjPg:photo:abedf7287c5b4b97",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMRMDg6oZsMAY8stxJ0z5p2rsK9y5PnMH2TcRnRVoYcl73zEyUyi_k4zCIQw0kZi5eL3tdz40rba8-jH0-CARwn7yIzhqXPGLgHhkswdWeo50RzWZdEbpOaPC-CVwMGVeh2nkCh5NjRbu38=w600-h450-p-k-no",
+          "match_text": "Mediterranean decor with patterned booth",
+          "evidence_kind": "photo_source_caption",
+          "source_url": "https://www.google.com/maps/place/Gola+Restaurant+SF/data=!4m7!3m6!1s0x808f7ff7ab7898b7:0xf88c4b5c95f6afe0!8m2!3d37.7597582!4d-122.4212092!16s%2Fg%2F11k9qfn8m5!19sChIJt5h4q_d_j4AR4K_2lVxLjPg?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": false,
+          "uncertainties": []
+        },
+        {
+          "photo_id": "google:ChIJt5h4q_d_j4AR4K_2lVxLjPg:photo:4abd478a58d77402",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMi4GNQ9uzTWlsN98sMGeWi5N4eiRyD38a5zLMmv_9yQoQRU4TrLXK17xKWBEeX_ukezjukHq-5SAEEIv82SHw_M6K7gbt9t8-plMx8jq913EV7e6z-aukWMMkAht7iwtKF1WdsBz4lE5pR=w600-h450-p-k-no",
+          "match_text": "Grilled octopus and Mediterranean appetizers",
+          "evidence_kind": "photo_source_caption",
+          "source_url": "https://www.google.com/maps/place/Gola+Restaurant+SF/data=!4m7!3m6!1s0x808f7ff7ab7898b7:0xf88c4b5c95f6afe0!8m2!3d37.7597582!4d-122.4212092!16s%2Fg%2F11k9qfn8m5!19sChIJt5h4q_d_j4AR4K_2lVxLjPg?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": false,
+          "uncertainties": []
+        }
+      ],
+      "jev": {
+        "relevance_score": 2.93,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.93,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "p1",
+          "confidence": 1.0,
+          "probabilities": {
+            "p1": 1.0,
+            "p0": 0.0,
+            "none": 0.0
+          }
+        },
+        "recommended_widget": "compact",
+        "selected_photo": {
+          "photo_id": "google:ChIJt5h4q_d_j4AR4K_2lVxLjPg:photo:4abd478a58d77402",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMi4GNQ9uzTWlsN98sMGeWi5N4eiRyD38a5zLMmv_9yQoQRU4TrLXK17xKWBEeX_ukezjukHq-5SAEEIv82SHw_M6K7gbt9t8-plMx8jq913EV7e6z-aukWMMkAht7iwtKF1WdsBz4lE5pR=w600-h450-p-k-no",
+          "match_text": "Grilled octopus and Mediterranean appetizers",
+          "evidence_kind": "photo_source_caption",
+          "source_url": "https://www.google.com/maps/place/Gola+Restaurant+SF/data=!4m7!3m6!1s0x808f7ff7ab7898b7:0xf88c4b5c95f6afe0!8m2!3d37.7597582!4d-122.4212092!16s%2Fg%2F11k9qfn8m5!19sChIJt5h4q_d_j4AR4K_2lVxLjPg?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": false,
+          "uncertainties": []
+        }
+      }
+    },
+    {
+      "restaurant_id": "google:ChIJ8Xu9Nst_j4ARpyAx9_RoH5I",
+      "name": "TRULY Mediterranean",
+      "neighborhood": "Mission Dolores",
+      "area_priority": "focus",
+      "source_url": "https://www.google.com/maps/place/TRULY+Mediterranean/data=!4m7!3m6!1s0x808f7fcb36bd7bf1:0x921f68f4f73120a7!8m2!3d37.764788!4d-122.4222596!16s%2Fg%2F1jlk0q7mf!19sChIJ8Xu9Nst_j4ARpyAx9_RoH5I?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "mediterranean"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 6.138085,
+      "matched_sources": 2,
+      "matched_evidence": [
+        {
+          "evidence_id": "google:ChIJ8Xu9Nst_j4ARpyAx9_RoH5I:metadata",
+          "restaurant_id": "google:ChIJ8Xu9Nst_j4ARpyAx9_RoH5I",
+          "kind": "restaurant_metadata",
+          "text": "TRULY Mediterranean. Mediterranean restaurant. Mission Dolores. 3109 16th St, San Francisco, CA 94103. $10–20",
+          "source_url": "https://www.google.com/maps/place/TRULY+Mediterranean/data=!4m7!3m6!1s0x808f7fcb36bd7bf1:0x921f68f4f73120a7!8m2!3d37.764788!4d-122.4222596!16s%2Fg%2F1jlk0q7mf!19sChIJ8Xu9Nst_j4ARpyAx9_RoH5I?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "retrieved_at": "2026-09-26T02:42:53.382Z",
+          "matched_query_terms": [
+            "mediterranean"
+          ]
+        },
+        {
+          "evidence_id": "google:ChIJ8Xu9Nst_j4ARpyAx9_RoH5I:review:Ci9DQUlRQUNvZENodHljRjlvT21sUExURmtVRk40WldkWWNYRnBSRFF0VlhScWNrRRAB",
+          "restaurant_id": "google:ChIJ8Xu9Nst_j4ARpyAx9_RoH5I",
+          "kind": "customer_review_excerpt",
+          "text": "Next level Mediterranean food at this hole in the wall restaurant.  The menu is simple, and the falafel was incredibly delicious.  The falafel balls in the falafel sandwich were perfectly seasoned and had an amazing texture.  The sauce was …",
+          "author": "Matthew Diaz",
+          "rating_label": "5 stars",
+          "may_be_truncated": true,
+          "source_url": "https://www.google.com/maps/place/TRULY+Mediterranean/data=!4m7!3m6!1s0x808f7fcb36bd7bf1:0x921f68f4f73120a7!8m2!3d37.764788!4d-122.4222596!16s%2Fg%2F1jlk0q7mf!19sChIJ8Xu9Nst_j4ARpyAx9_RoH5I?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT21sUExURmtVRk40WldkWWNYRnBSRFF0VlhScWNrRRAB",
+          "retrieved_at": "2026-09-26T02:42:53.382Z",
+          "matched_query_terms": [
+            "mediterranean"
+          ]
+        }
+      ],
+      "photos": [],
+      "jev": {
+        "relevance_score": 2.85,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.85,
+        "photo_decision": null,
+        "recommended_widget": "compact",
+        "selected_photo": null
+      }
+    },
+    {
+      "restaurant_id": "google:ChIJZ229fuZ_j4ARX7OHtdIEriI",
+      "name": "Healthyish Republic",
+      "neighborhood": "Mission District",
+      "area_priority": "focus",
+      "source_url": "https://www.google.com/maps/place/Healthyish+Republic/data=!4m7!3m6!1s0x808f7fe67ebd6d67:0x22ae04d2b587b35f!8m2!3d37.7528206!4d-122.4117298!16s%2Fg%2F11jw6c4132!19sChIJZ229fuZ_j4ARX7OHtdIEriI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "mediterranean"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 9.79233,
+      "matched_sources": 2,
+      "matched_evidence": [
+        {
+          "evidence_id": "google:ChIJZ229fuZ_j4ARX7OHtdIEriI:photo:b0544b8bbb9755b3",
+          "restaurant_id": "google:ChIJZ229fuZ_j4ARX7OHtdIEriI",
+          "kind": "photo_source_caption",
+          "text": "Mediterranean bowl with salmon",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOBHVtoyQmq9G3fg0gxa-XawenvwQujzhA_wEojRXbGrXd1qzFbBIn8qic7KSTeczrGaLCMFoaW9VNofgrejXt3upFDJSGov_X-ihKtFDNgyiCJJJmLRrW2Y4x0X03hb3bfAP3uEXaqQlBQ=w1200-h900-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Healthyish+Republic/data=!4m7!3m6!1s0x808f7fe67ebd6d67:0x22ae04d2b587b35f!8m2!3d37.7528206!4d-122.4117298!16s%2Fg%2F11jw6c4132!19sChIJZ229fuZ_j4ARX7OHtdIEriI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Kaylah M",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT21wUFdUQkdXRGQyZVVKV1Iyb3pXRTlsWjBOSFdFRRAB",
+          "retrieved_at": "2026-09-26T02:45:22.051Z",
+          "caption_origin": "Google Maps rendered accessibility label",
+          "visually_verified": false,
+          "photo_id": "google:ChIJZ229fuZ_j4ARX7OHtdIEriI:photo:b0544b8bbb9755b3",
+          "image_inspected": false,
+          "matched_query_terms": [
+            "mediterranean"
+          ]
+        },
+        {
+          "evidence_id": "google:ChIJZ229fuZ_j4ARX7OHtdIEriI:review:Ci9DQUlRQUNvZENodHljRjlvT21wUFdUQkdXRGQyZVVKV1Iyb3pXRTlsWjBOSFdFRRAB",
+          "restaurant_id": "google:ChIJZ229fuZ_j4ARX7OHtdIEriI",
+          "kind": "customer_review_excerpt",
+          "text": "My first time coming here I was really confused on what to get but thanks to chatGPT I was able to figure it out. I ordered Togo since I was on my lunch break. I went with the Mediterranean bowl for my protein I got salmon it was so …",
+          "author": "Kaylah M",
+          "rating_label": "5 stars",
+          "may_be_truncated": true,
+          "source_url": "https://www.google.com/maps/place/Healthyish+Republic/data=!4m7!3m6!1s0x808f7fe67ebd6d67:0x22ae04d2b587b35f!8m2!3d37.7528206!4d-122.4117298!16s%2Fg%2F11jw6c4132!19sChIJZ229fuZ_j4ARX7OHtdIEriI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT21wUFdUQkdXRGQyZVVKV1Iyb3pXRTlsWjBOSFdFRRAB",
+          "retrieved_at": "2026-09-26T02:45:22.051Z",
+          "matched_query_terms": [
+            "mediterranean"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJZ229fuZ_j4ARX7OHtdIEriI:photo:b0544b8bbb9755b3",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOBHVtoyQmq9G3fg0gxa-XawenvwQujzhA_wEojRXbGrXd1qzFbBIn8qic7KSTeczrGaLCMFoaW9VNofgrejXt3upFDJSGov_X-ihKtFDNgyiCJJJmLRrW2Y4x0X03hb3bfAP3uEXaqQlBQ=w1200-h900-p-k-no",
+          "match_text": "Mediterranean bowl with salmon",
+          "evidence_kind": "photo_source_caption",
+          "source_url": "https://www.google.com/maps/place/Healthyish+Republic/data=!4m7!3m6!1s0x808f7fe67ebd6d67:0x22ae04d2b587b35f!8m2!3d37.7528206!4d-122.4117298!16s%2Fg%2F11jw6c4132!19sChIJZ229fuZ_j4ARX7OHtdIEriI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": false,
+          "uncertainties": []
+        }
+      ],
+      "jev": {
+        "relevance_score": 2.83,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.83,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "p0",
+          "confidence": 0.99,
+          "probabilities": {
+            "p0": 1.0,
+            "none": 0.0
+          }
+        },
+        "recommended_widget": "compact",
+        "selected_photo": {
+          "photo_id": "google:ChIJZ229fuZ_j4ARX7OHtdIEriI:photo:b0544b8bbb9755b3",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOBHVtoyQmq9G3fg0gxa-XawenvwQujzhA_wEojRXbGrXd1qzFbBIn8qic7KSTeczrGaLCMFoaW9VNofgrejXt3upFDJSGov_X-ihKtFDNgyiCJJJmLRrW2Y4x0X03hb3bfAP3uEXaqQlBQ=w1200-h900-p-k-no",
+          "match_text": "Mediterranean bowl with salmon",
+          "evidence_kind": "photo_source_caption",
+          "source_url": "https://www.google.com/maps/place/Healthyish+Republic/data=!4m7!3m6!1s0x808f7fe67ebd6d67:0x22ae04d2b587b35f!8m2!3d37.7528206!4d-122.4117298!16s%2Fg%2F11jw6c4132!19sChIJZ229fuZ_j4ARX7OHtdIEriI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": false,
+          "uncertainties": []
+        }
+      }
+    },
+    {
+      "restaurant_id": "google:ChIJcfYurMR_j4ARA2itYR1tC1s",
+      "name": "Angie’s Pizza",
+      "neighborhood": "Mission Dolores",
+      "area_priority": "focus",
+      "source_url": "https://www.google.com/maps/place/Angie%E2%80%99s+Pizza/data=!4m7!3m6!1s0x808f7fc4ac2ef671:0x5b0b6d1d61ad6803!8m2!3d37.764954!4d-122.424804!16s%2Fg%2F11sbtr4q39!19sChIJcfYurMR_j4ARA2itYR1tC1s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "mediterranean"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 8.626158,
+      "matched_sources": 1,
+      "matched_evidence": [
+        {
+          "evidence_id": "google:ChIJcfYurMR_j4ARA2itYR1tC1s:photo:f106c81863ebf506",
+          "restaurant_id": "google:ChIJcfYurMR_j4ARA2itYR1tC1s",
+          "kind": "photo_source_caption",
+          "text": "Lamb pizza with onions - Mediterranean style",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPcqT0OipzeC0ELSdn2Sgr_xOtOuItd4TBqkhJVY4ghejqIeCt3GCog6XGn5Zz0xz3HYHXwRZa95zWGmV6xwba90LKno1hSTr3PC_g90B8_WHByYJCltDdoYgGIx3g7U1QwTfhM84MIpsc8=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Angie%E2%80%99s+Pizza/data=!4m7!3m6!1s0x808f7fc4ac2ef671:0x5b0b6d1d61ad6803!8m2!3d37.764954!4d-122.424804!16s%2Fg%2F11sbtr4q39!19sChIJcfYurMR_j4ARA2itYR1tC1s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Manny Yap",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xVdFdHdGhTak5HYUROSlRETktNMUV6WkdOa1lVRRAB",
+          "retrieved_at": "2026-09-26T02:42:23.548Z",
+          "caption_origin": "Google Maps rendered accessibility label",
+          "visually_verified": false,
+          "photo_id": "google:ChIJcfYurMR_j4ARA2itYR1tC1s:photo:f106c81863ebf506",
+          "image_inspected": false,
+          "matched_query_terms": [
+            "mediterranean"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJcfYurMR_j4ARA2itYR1tC1s:photo:f106c81863ebf506",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPcqT0OipzeC0ELSdn2Sgr_xOtOuItd4TBqkhJVY4ghejqIeCt3GCog6XGn5Zz0xz3HYHXwRZa95zWGmV6xwba90LKno1hSTr3PC_g90B8_WHByYJCltDdoYgGIx3g7U1QwTfhM84MIpsc8=w600-h450-p-k-no",
+          "match_text": "Lamb pizza with onions - Mediterranean style",
+          "evidence_kind": "photo_source_caption",
+          "source_url": "https://www.google.com/maps/place/Angie%E2%80%99s+Pizza/data=!4m7!3m6!1s0x808f7fc4ac2ef671:0x5b0b6d1d61ad6803!8m2!3d37.764954!4d-122.424804!16s%2Fg%2F11sbtr4q39!19sChIJcfYurMR_j4ARA2itYR1tC1s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": false,
+          "uncertainties": []
+        }
+      ],
+      "jev": {
+        "relevance_score": 2.57,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.57,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "p0",
+          "confidence": 0.96,
+          "probabilities": {
+            "p0": 0.98,
+            "none": 0.02
+          }
+        },
+        "recommended_widget": "compact",
+        "selected_photo": {
+          "photo_id": "google:ChIJcfYurMR_j4ARA2itYR1tC1s:photo:f106c81863ebf506",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmPcqT0OipzeC0ELSdn2Sgr_xOtOuItd4TBqkhJVY4ghejqIeCt3GCog6XGn5Zz0xz3HYHXwRZa95zWGmV6xwba90LKno1hSTr3PC_g90B8_WHByYJCltDdoYgGIx3g7U1QwTfhM84MIpsc8=w600-h450-p-k-no",
+          "match_text": "Lamb pizza with onions - Mediterranean style",
+          "evidence_kind": "photo_source_caption",
+          "source_url": "https://www.google.com/maps/place/Angie%E2%80%99s+Pizza/data=!4m7!3m6!1s0x808f7fc4ac2ef671:0x5b0b6d1d61ad6803!8m2!3d37.764954!4d-122.424804!16s%2Fg%2F11sbtr4q39!19sChIJcfYurMR_j4ARA2itYR1tC1s?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": false,
+          "uncertainties": []
+        }
+      }
+    }
+  ]
+}

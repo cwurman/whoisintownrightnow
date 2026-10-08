@@ -1,0 +1,63 @@
+[
+  {
+    "name": "Dumpling Bites",
+    "url": "https://www.google.com/maps/place/Dumpling+Bites/data=!4m7!3m6!1s0x8085872c7734c399:0xcb840955a51448d!8m2!3d37.7542081!4d-122.4804645!16s%2Fg%2F11vb8w4tbz!19sChIJmcM0dyyHhYARjURRWpVAuAw?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+    "error": "Error: Error: Playwright selector deadline exceeded\nwaiting on click for selector internal:role=feed[name=\"Results for restaurants Parkside San Francisco\"s] >> internal:role=link[name=\"Dumpling Bites\"s] >> nth=0\nLocator diagnostics: {\"kind\":\"no_matches\",\"action\":\"click\",\"locator\":\"internal:role=feed[name=\\\"Results for restaurants Parkside San Francisco\\\"s] >> internal:role=link[name=\\\"Dumpling Bites\\\"s] >> nth=0\",\"matchCount\":0,\"matches\":[],\"visibleCount\":0,\"truncated\":false}",
+    "retrieved_at": "2026-09-26T02:29:52.323Z"
+  },
+  {
+    "name": "Izakaya Sozai",
+    "url": "https://www.google.com/maps/place/Izakaya+Sozai/data=!4m7!3m6!1s0x8085876611809d6b:0x2ef9674a8b754536!8m2!3d37.7638466!4d-122.4741211!16s%2Fg%2F1tfhztsv!19sChIJa52AEWaHhYARNkV1i0pn-S4?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+    "error": "Error: Error: Playwright selector deadline exceeded\nlocator.waitFor(visible) timed out for selector internal:role=main[name=\"Izakaya Sozai\"s] >> internal:role=heading[name=\"Izakaya Sozai\"s]\nLocator diagnostics: {\"kind\":\"no_matches\",\"action\":\"waitFor\",\"locator\":\"internal:role=main[name=\\\"Izakaya Sozai\\\"s] >> internal:role=heading[name=\\\"Izakaya Sozai\\\"s]\",\"matchCount\":0,\"matches\":[],\"visibleCount\":0,\"truncated\":false}",
+    "retrieved_at": "2026-09-26T02:31:49.036Z"
+  },
+  {
+    "name": "The Laundromat SF",
+    "url": "https://www.google.com/maps/place/The+Laundromat+SF/data=!4m7!3m6!1s0x808587f9cfaf6df5:0x93e625a01c4e06ca!8m2!3d37.7755094!4d-122.4989031!16s%2Fg%2F11rtsjcmkp!19sChIJ9W2vz_mHhYARygZOHKAl5pM?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+    "error": "Error: Error: Playwright selector deadline exceeded\nlocator.waitFor(visible) timed out for selector internal:role=main[name=\"The Laundromat SF\"s] >> internal:role=heading[name=\"The Laundromat SF\"s]\nLocator diagnostics: {\"kind\":\"no_matches\",\"action\":\"waitFor\",\"locator\":\"internal:role=main[name=\\\"The Laundromat SF\\\"s] >> internal:role=heading[name=\\\"The Laundromat SF\\\"s]\",\"matchCount\":0,\"matches\":[],\"visibleCount\":0,\"truncated\":false}",
+    "retrieved_at": "2026-09-26T02:31:53.199Z"
+  },
+  {
+    "name": "The Laundromat SF",
+    "url": "https://www.google.com/maps/place/The+Laundromat+SF/data=!4m7!3m6!1s0x808587f9cfaf6df5:0x93e625a01c4e06ca!8m2!3d37.7755094!4d-122.4989031!16s%2Fg%2F11rtsjcmkp!19sChIJ9W2vz_mHhYARygZOHKAl5pM?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+    "error": "Error: Timed out after 3000ms evaluating selector internal:role=main[name=\"The Laundromat SF\"s]: Playwright selector deadline exceeded",
+    "retrieved_at": "2026-09-26T02:32:22.503Z"
+  },
+  {
+    "name": "The Laundromat SF",
+    "url": "https://www.google.com/maps/place/The+Laundromat+SF/data=!4m7!3m6!1s0x808587f9cfaf6df5:0x93e625a01c4e06ca!8m2!3d37.7755094!4d-122.4989031!16s%2Fg%2F11rtsjcmkp!19sChIJ9W2vz_mHhYARygZOHKAl5pM?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+    "error": "Error: Timed out after 3000ms evaluating selector internal:role=main[name=\"The Laundromat SF\"s]: Playwright selector deadline exceeded",
+    "retrieved_at": "2026-09-26T02:33:24.019Z"
+  },
+  {
+    "name": "Canela Bistro Bar",
+    "source_url": "https://www.google.com/maps/place/Canela+Bistro+Bar/data=!4m7!3m6!1s0x808f7e1cf7d3c387:0xe1bf8c2eb2fdcca9!8m2!3d37.764962!4d-122.4325827!16s%2Fg%2F1tgj918y!19sChIJh8PT9xx-j4ARqcz9si6Mv-E?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+    "status": "excluded_non_restaurant",
+    "category": "Spanish restaurant"
+  },
+  {
+    "name": "Destapas SF",
+    "source_url": "https://www.google.com/maps/place/Destapas+SF/data=!4m7!3m6!1s0x808f7f20153b25fd:0x24a7eced4707cf2e!8m2!3d37.7531052!4d-122.4068629!16s%2Fg%2F11gh6z69fj!19sChIJ_SU7FSB_j4ARLs8HR-3spyQ?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+    "status": "excluded_non_restaurant",
+    "category": "Spanish restaurant"
+  },
+  {
+    "name": "Picaro",
+    "source_url": "https://www.google.com/maps/place/Picaro/data=!4m7!3m6!1s0x808f7e22417b5dbf:0x391f6a0257126015!8m2!3d37.7650784!4d-122.4225222!16s%2Fm%2F04fjz_s!19sChIJv117QSJ-j4ARFWASVwJqHzk?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+    "status": "excluded_non_restaurant",
+    "category": "Spanish restaurant"
+  },
+  {
+    "name": "Esperpento Restaurant",
+    "source_url": "https://www.google.com/maps/place/Esperpento+Restaurant/data=!4m7!3m6!1s0x808f7e3efcee0fa5:0x20911ceae783f609!8m2!3d37.7551671!4d-122.420679!16s%2Fm%2F04fjlzh!19sChIJpQ_u_D5-j4ARCfaD5-ockSA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+    "status": "excluded_non_restaurant",
+    "category": "Spanish restaurant"
+  },
+  {
+    "name": "Al Fin Restaurant",
+    "source_url": "https://www.google.com/maps/place/Al+Fin+Restaurant/data=!4m7!3m6!1s0x808f7c0da3b3f1d9:0x9d6378e7c05d04d6!8m2!3d37.6898814!4d-122.466113!16s%2Fg%2F1tqpzgyy!19sChIJ2fGzow18j4AR1gRdwOd4Y50?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+    "status": "excluded_non_sf_or_missing_address",
+    "address": "Address: 7398 Mission St, Daly City, CA 94014 ",
+    "retrieved_at": "2026-09-26T02:46:31.678Z"
+  }
+]

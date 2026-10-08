@@ -1,0 +1,462 @@
+{
+  "query": "kebab",
+  "scope": "nearby",
+  "candidate_count": 5,
+  "status": "reranked",
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 4244,
+    "output_tokens": 288
+  },
+  "cache_hit": false,
+  "cache_key": "9c9379002f2b920224e1f7748397a426fc4562407596274debfeaf062b60db28",
+  "api_ms": 302.6,
+  "widget": "dish_photos",
+  "widget_decision": {
+    "type": "choice",
+    "choice": "dish_photos",
+    "confidence": 1.0,
+    "probabilities": {
+      "dish_photos": 1.0,
+      "space_photos": 0.0,
+      "compact": 0.0,
+      "menu_photos": 0.0
+    }
+  },
+  "results": [
+    {
+      "restaurant_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA",
+      "name": "Kebab Patrol",
+      "neighborhood": "Mission District",
+      "area_priority": "focus",
+      "source_url": "https://www.google.com/maps/place/Kebab+Patrol/data=!4m7!3m6!1s0x808f7f29eb12ac83:0x90162ffc73c44bb9!8m2!3d37.7687655!4d-122.4139544!16s%2Fg%2F11nvcszssc!19sChIJg6wS6yl_j4ARuUvEc_wvFpA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "kebab"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 12.070784,
+      "matched_sources": 4,
+      "matched_evidence": [
+        {
+          "restaurant_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA",
+          "photo_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA:photo:ebd0fcbba4e791ee",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOMGowfOqanX3O4ea6Q-z59dktSFQNePiJWqmt8ZDRymJ34-I2g31UdGubk2M7DY4z255QnN4PxQCpNQaDivEv3kEDNHF-969sXYNj-j6rkmH3tgG-UBQYTZaZlaYBdgnBd5iVRqgeIapb1=w1200-h900-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Kebab+Patrol/data=!4m7!3m6!1s0x808f7f29eb12ac83:0x90162ffc73c44bb9!8m2!3d37.7687655!4d-122.4139544!16s%2Fg%2F11nvcszssc!19sChIJg6wS6yl_j4ARuUvEc_wvFpA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Samantha Mcleod",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xCVWMyTjJTRXRPWm05VWNucGtZbEJQWkZWbk1IYxAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "exterior",
+          "uncertainties": [
+            "unclear distance to truck peak",
+            "specific location from text"
+          ],
+          "processed_at": "2026-09-26T03:30:52.226181+00:00",
+          "evidence_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA:photo:ebd0fcbba4e791ee:vision",
+          "kind": "photo_vision_caption",
+          "text": "Kebab Patrol food truck parked on street under clear blue sky.. kebab. sliced meat. white food truck. large front windshield. black side mirror. green logo. street scene. power lines. blue sky. trees",
+          "matched_query_terms": [
+            "kebab"
+          ]
+        },
+        {
+          "evidence_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA:review:Ci9DQUlRQUNvZENodHljRjlvT2poUk9UQTJjRmhVUzFKRU0xVldibXRNTm10dFZsRRAB",
+          "restaurant_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA",
+          "kind": "customer_review_excerpt",
+          "text": "Kebab Patrol is an awesome new addition to the neighborhood. Conveniently parked on 14th Street near Harrison, this food truck is slinging incredibly flavorful Turkish kebabs wrapped in wonderful, fresh homemade lavaş bread.The food is …",
+          "author": "B E",
+          "rating_label": "5 stars",
+          "may_be_truncated": true,
+          "source_url": "https://www.google.com/maps/place/Kebab+Patrol/data=!4m7!3m6!1s0x808f7f29eb12ac83:0x90162ffc73c44bb9!8m2!3d37.7687655!4d-122.4139544!16s%2Fg%2F11nvcszssc!19sChIJg6wS6yl_j4ARuUvEc_wvFpA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2poUk9UQTJjRmhVUzFKRU0xVldibXRNTm10dFZsRRAB",
+          "retrieved_at": "2026-09-26T02:14:29.445Z",
+          "matched_query_terms": [
+            "kebab"
+          ]
+        },
+        {
+          "evidence_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA:review:Ci9DQUlRQUNvZENodHljRjlvT2xCVWMyTjJTRXRPWm05VWNucGtZbEJQWkZWbk1IYxAB",
+          "restaurant_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA",
+          "kind": "customer_review_excerpt",
+          "text": "Kebab patrol is amazing! They were super nice, large portions, and great food. Putting this place on my weekly rotation.",
+          "author": "Samantha Mcleod",
+          "rating_label": "5 stars",
+          "may_be_truncated": true,
+          "source_url": "https://www.google.com/maps/place/Kebab+Patrol/data=!4m7!3m6!1s0x808f7f29eb12ac83:0x90162ffc73c44bb9!8m2!3d37.7687655!4d-122.4139544!16s%2Fg%2F11nvcszssc!19sChIJg6wS6yl_j4ARuUvEc_wvFpA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2xCVWMyTjJTRXRPWm05VWNucGtZbEJQWkZWbk1IYxAB",
+          "retrieved_at": "2026-09-26T02:14:29.445Z",
+          "matched_query_terms": [
+            "kebab"
+          ]
+        },
+        {
+          "evidence_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA:metadata",
+          "restaurant_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA",
+          "kind": "restaurant_metadata",
+          "text": "Kebab Patrol. Doner kebab restaurant. Mission District. 1750 Harrison St, San Francisco, CA 94103",
+          "source_url": "https://www.google.com/maps/place/Kebab+Patrol/data=!4m7!3m6!1s0x808f7f29eb12ac83:0x90162ffc73c44bb9!8m2!3d37.7687655!4d-122.4139544!16s%2Fg%2F11nvcszssc!19sChIJg6wS6yl_j4ARuUvEc_wvFpA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "retrieved_at": "2026-09-26T02:14:29.445Z",
+          "matched_query_terms": [
+            "kebab"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA:photo:ebd0fcbba4e791ee",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOMGowfOqanX3O4ea6Q-z59dktSFQNePiJWqmt8ZDRymJ34-I2g31UdGubk2M7DY4z255QnN4PxQCpNQaDivEv3kEDNHF-969sXYNj-j6rkmH3tgG-UBQYTZaZlaYBdgnBd5iVRqgeIapb1=w1200-h900-p-k-no",
+          "match_text": "Kebab Patrol food truck parked on street under clear blue sky.. kebab. sliced meat. white food truck. large front windshield. black side mirror. green logo. street scene. power lines. blue sky. trees",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Kebab+Patrol/data=!4m7!3m6!1s0x808f7f29eb12ac83:0x90162ffc73c44bb9!8m2!3d37.7687655!4d-122.4139544!16s%2Fg%2F11nvcszssc!19sChIJg6wS6yl_j4ARuUvEc_wvFpA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "unclear distance to truck peak",
+            "specific location from text"
+          ]
+        }
+      ],
+      "jev": {
+        "relevance_score": 2.94,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.94,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "p0",
+          "confidence": 0.99,
+          "probabilities": {
+            "p0": 1.0,
+            "none": 0.0
+          }
+        },
+        "recommended_widget": "dish_photos",
+        "selected_photo": {
+          "photo_id": "google:ChIJg6wS6yl_j4ARuUvEc_wvFpA:photo:ebd0fcbba4e791ee",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOMGowfOqanX3O4ea6Q-z59dktSFQNePiJWqmt8ZDRymJ34-I2g31UdGubk2M7DY4z255QnN4PxQCpNQaDivEv3kEDNHF-969sXYNj-j6rkmH3tgG-UBQYTZaZlaYBdgnBd5iVRqgeIapb1=w1200-h900-p-k-no",
+          "match_text": "Kebab Patrol food truck parked on street under clear blue sky.. kebab. sliced meat. white food truck. large front windshield. black side mirror. green logo. street scene. power lines. blue sky. trees",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Kebab+Patrol/data=!4m7!3m6!1s0x808f7f29eb12ac83:0x90162ffc73c44bb9!8m2!3d37.7687655!4d-122.4139544!16s%2Fg%2F11nvcszssc!19sChIJg6wS6yl_j4ARuUvEc_wvFpA?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "unclear distance to truck peak",
+            "specific location from text"
+          ]
+        }
+      }
+    },
+    {
+      "restaurant_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY",
+      "name": "SF Grill",
+      "neighborhood": "Mission District",
+      "area_priority": "focus",
+      "source_url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "kebab"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 10.957492,
+      "matched_sources": 1,
+      "matched_evidence": [
+        {
+          "evidence_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY:photo:21c150e290f17652",
+          "restaurant_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY",
+          "kind": "photo_source_caption",
+          "text": "Chicken and beef kebab platter",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMqap1nSsWasp-RWaIuyfnJGnp0MUKmgEEGvFVN4htuff5OZwUWT4b9HXqVvLn5l5DtdodSH-0P_lWGNFbt7xcs7R4WVtPl9qvVqzrh1Wxvw9rf3QcwTnC7iERPz_Yb9abLNduqyiIB8ok=w600-h900-p-k-no",
+          "source_url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Ximena",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT2t0VVFYcDVSVEY0TVVGVVkyNXRZMGRqVEZoSWFFRRAB",
+          "retrieved_at": "2026-09-26T02:07:17.449Z",
+          "caption_origin": "Google Maps rendered accessibility label",
+          "visually_verified": false,
+          "photo_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY:photo:21c150e290f17652",
+          "image_inspected": false,
+          "matched_query_terms": [
+            "kebab"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY:photo:21c150e290f17652",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMqap1nSsWasp-RWaIuyfnJGnp0MUKmgEEGvFVN4htuff5OZwUWT4b9HXqVvLn5l5DtdodSH-0P_lWGNFbt7xcs7R4WVtPl9qvVqzrh1Wxvw9rf3QcwTnC7iERPz_Yb9abLNduqyiIB8ok=w600-h900-p-k-no",
+          "match_text": "Chicken and beef kebab platter",
+          "evidence_kind": "photo_source_caption",
+          "source_url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": false,
+          "uncertainties": []
+        }
+      ],
+      "jev": {
+        "relevance_score": 2.81,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.81,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "p0",
+          "confidence": 0.99,
+          "probabilities": {
+            "p0": 1.0,
+            "none": 0.0
+          }
+        },
+        "recommended_widget": "dish_photos",
+        "selected_photo": {
+          "photo_id": "google:ChIJhzHzCAB_j4ARBrSM13ar3oY:photo:21c150e290f17652",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmMqap1nSsWasp-RWaIuyfnJGnp0MUKmgEEGvFVN4htuff5OZwUWT4b9HXqVvLn5l5DtdodSH-0P_lWGNFbt7xcs7R4WVtPl9qvVqzrh1Wxvw9rf3QcwTnC7iERPz_Yb9abLNduqyiIB8ok=w600-h900-p-k-no",
+          "match_text": "Chicken and beef kebab platter",
+          "evidence_kind": "photo_source_caption",
+          "source_url": "https://www.google.com/maps/place/SF+Grill/data=!4m7!3m6!1s0x808f7f0008f33187:0x86deab76d78cb406!8m2!3d37.7602153!4d-122.4213161!16s%2Fg%2F11mlt7np8_!19sChIJhzHzCAB_j4ARBrSM13ar3oY?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": false,
+          "uncertainties": []
+        }
+      }
+    },
+    {
+      "restaurant_id": "google:ChIJMTN5uKZ_j4ARh3u06X0WzZ8",
+      "name": "Delam",
+      "neighborhood": "Mission District",
+      "area_priority": "focus",
+      "source_url": "https://www.google.com/maps/place/Delam/data=!4m7!3m6!1s0x808f7fa6b8793331:0x9fcd167de9b47b87!8m2!3d37.7544716!4d-122.4211498!16s%2Fg%2F11mm6kxpkg!19sChIJMTN5uKZ_j4ARh3u06X0WzZ8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "kebab"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 12.698826,
+      "matched_sources": 1,
+      "matched_evidence": [
+        {
+          "evidence_id": "google:ChIJMTN5uKZ_j4ARh3u06X0WzZ8:photo:20e2050f2e557c1c",
+          "restaurant_id": "google:ChIJMTN5uKZ_j4ARh3u06X0WzZ8",
+          "kind": "photo_source_caption",
+          "text": "Persian kabob platters with rice",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmP4e4Xw0DLyklcJmNl6Sbj-GuaAbUg6zfdnag9mhcyg9jbuwODQsWspi3GAslEcJW8OfUiz8mNz2jjWydM2E7izCYjD-adr2znCewQ4kj0ixAQj7O2Hv60KxYtgtPUvS6MVveNQJGBnJOc=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Delam/data=!4m7!3m6!1s0x808f7fa6b8793331:0x9fcd167de9b47b87!8m2!3d37.7544716!4d-122.4211498!16s%2Fg%2F11mm6kxpkg!19sChIJMTN5uKZ_j4ARh3u06X0WzZ8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Neda Ghaeili",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT25CVU9YbGtWMkp2Vm1aZlpYaExhMnAwVlRoMVFuYxAB",
+          "retrieved_at": "2026-09-26T02:40:01.016Z",
+          "caption_origin": "Google Maps rendered accessibility label",
+          "visually_verified": false,
+          "photo_id": "google:ChIJMTN5uKZ_j4ARh3u06X0WzZ8:photo:20e2050f2e557c1c",
+          "image_inspected": false,
+          "matched_query_terms": [
+            "kebab"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJMTN5uKZ_j4ARh3u06X0WzZ8:photo:20e2050f2e557c1c",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmP4e4Xw0DLyklcJmNl6Sbj-GuaAbUg6zfdnag9mhcyg9jbuwODQsWspi3GAslEcJW8OfUiz8mNz2jjWydM2E7izCYjD-adr2znCewQ4kj0ixAQj7O2Hv60KxYtgtPUvS6MVveNQJGBnJOc=w600-h450-p-k-no",
+          "match_text": "Persian kabob platters with rice",
+          "evidence_kind": "photo_source_caption",
+          "source_url": "https://www.google.com/maps/place/Delam/data=!4m7!3m6!1s0x808f7fa6b8793331:0x9fcd167de9b47b87!8m2!3d37.7544716!4d-122.4211498!16s%2Fg%2F11mm6kxpkg!19sChIJMTN5uKZ_j4ARh3u06X0WzZ8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": false,
+          "uncertainties": []
+        }
+      ],
+      "jev": {
+        "relevance_score": 2.7,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.7,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "p0",
+          "confidence": 0.98,
+          "probabilities": {
+            "p0": 0.99,
+            "none": 0.01
+          }
+        },
+        "recommended_widget": "dish_photos",
+        "selected_photo": {
+          "photo_id": "google:ChIJMTN5uKZ_j4ARh3u06X0WzZ8:photo:20e2050f2e557c1c",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmP4e4Xw0DLyklcJmNl6Sbj-GuaAbUg6zfdnag9mhcyg9jbuwODQsWspi3GAslEcJW8OfUiz8mNz2jjWydM2E7izCYjD-adr2znCewQ4kj0ixAQj7O2Hv60KxYtgtPUvS6MVveNQJGBnJOc=w600-h450-p-k-no",
+          "match_text": "Persian kabob platters with rice",
+          "evidence_kind": "photo_source_caption",
+          "source_url": "https://www.google.com/maps/place/Delam/data=!4m7!3m6!1s0x808f7fa6b8793331:0x9fcd167de9b47b87!8m2!3d37.7544716!4d-122.4211498!16s%2Fg%2F11mm6kxpkg!19sChIJMTN5uKZ_j4ARh3u06X0WzZ8?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": false,
+          "uncertainties": []
+        }
+      }
+    },
+    {
+      "restaurant_id": "google:ChIJ7xfIcqaAhYARzMQnmddsVrI",
+      "name": "Palmyra",
+      "neighborhood": "Lower Haight",
+      "area_priority": "nearby",
+      "source_url": "https://www.google.com/maps/place/Palmyra/data=!4m7!3m6!1s0x808580a672c817ef:0xb2566cd79927c4cc!8m2!3d37.7718217!4d-122.4339358!16s%2Fg%2F1tg5v8dv!19sChIJ7xfIcqaAhYARzMQnmddsVrI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "kebab"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 6.985693,
+      "matched_sources": 1,
+      "matched_evidence": [
+        {
+          "restaurant_id": "google:ChIJ7xfIcqaAhYARzMQnmddsVrI",
+          "photo_id": "google:ChIJ7xfIcqaAhYARzMQnmddsVrI:photo:401eb1d60874233f",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOkMxN-w4Up2S5jpvSPYVd0sgjK3zI7sXQo1WCBNzC3ThorgXmb6mVwVbgCWh0XxwAkB-rxh5TTnzKbrvkm_81K3vRYFLZN24ehbpXPKMvd2BYpZI2puZA7Grd9-PmEEX25mjBam_gXgSjC=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Palmyra/data=!4m7!3m6!1s0x808580a672c817ef:0xb2566cd79927c4cc!8m2!3d37.7718217!4d-122.4339358!16s%2Fg%2F1tg5v8dv!19sChIJ7xfIcqaAhYARzMQnmddsVrI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Sara Karbensi",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT21WRk1raEhXWGc0VFVkeVVEVlNNMjUwYURCSlpYYxAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "food",
+          "uncertainties": [
+            "unclear exact dish names for kebabs",
+            "specific origin of sauce",
+            "whether plate is from a restaurant or takeout",
+            "whether there are more unseen ingredients under the rice"
+          ],
+          "processed_at": "2026-09-26T03:32:35.337718+00:00",
+          "evidence_id": "google:ChIJ7xfIcqaAhYARzMQnmddsVrI:photo:401eb1d60874233f:vision",
+          "kind": "photo_vision_caption",
+          "text": "Two grilled kebab skewers over yellow rice with pita, hummus, cucumber-tomato salad, and a side of sauce.. yellow rice. grilled kebab skewers. pita bread. hummus. cucumber. tomato. salad with cucumber and tomato. salsa/sauce cup. white dipping sauce. pita chips/pita bread. hummus dollop. creamy white sauce cup with lid. side salad with cucumber and tomato pieces. stacked seating area not visible. bright lighting. metal or plastic takeout container lid in sauce cup",
+          "matched_query_terms": [
+            "kebab"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJ7xfIcqaAhYARzMQnmddsVrI:photo:401eb1d60874233f",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOkMxN-w4Up2S5jpvSPYVd0sgjK3zI7sXQo1WCBNzC3ThorgXmb6mVwVbgCWh0XxwAkB-rxh5TTnzKbrvkm_81K3vRYFLZN24ehbpXPKMvd2BYpZI2puZA7Grd9-PmEEX25mjBam_gXgSjC=w600-h450-p-k-no",
+          "match_text": "Two grilled kebab skewers over yellow rice with pita, hummus, cucumber-tomato salad, and a side of sauce.. yellow rice. grilled kebab skewers. pita bread. hummus. cucumber. tomato. salad with cucumber and tomato. salsa/sauce cup. white dipping sauce. pita chips/pita bread. hummus dollop. creamy white sauce cup with lid. side salad with cucumber and tomato pieces. stacked seating area not visible. bright lighting. metal or plastic takeout container lid in sauce cup",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Palmyra/data=!4m7!3m6!1s0x808580a672c817ef:0xb2566cd79927c4cc!8m2!3d37.7718217!4d-122.4339358!16s%2Fg%2F1tg5v8dv!19sChIJ7xfIcqaAhYARzMQnmddsVrI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "unclear exact dish names for kebabs",
+            "specific origin of sauce",
+            "whether plate is from a restaurant or takeout",
+            "whether there are more unseen ingredients under the rice"
+          ]
+        }
+      ],
+      "jev": {
+        "relevance_score": 2.67,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.67,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "p0",
+          "confidence": 1.0,
+          "probabilities": {
+            "p0": 1.0,
+            "none": 0.0
+          }
+        },
+        "recommended_widget": "dish_photos",
+        "selected_photo": {
+          "photo_id": "google:ChIJ7xfIcqaAhYARzMQnmddsVrI:photo:401eb1d60874233f",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmOkMxN-w4Up2S5jpvSPYVd0sgjK3zI7sXQo1WCBNzC3ThorgXmb6mVwVbgCWh0XxwAkB-rxh5TTnzKbrvkm_81K3vRYFLZN24ehbpXPKMvd2BYpZI2puZA7Grd9-PmEEX25mjBam_gXgSjC=w600-h450-p-k-no",
+          "match_text": "Two grilled kebab skewers over yellow rice with pita, hummus, cucumber-tomato salad, and a side of sauce.. yellow rice. grilled kebab skewers. pita bread. hummus. cucumber. tomato. salad with cucumber and tomato. salsa/sauce cup. white dipping sauce. pita chips/pita bread. hummus dollop. creamy white sauce cup with lid. side salad with cucumber and tomato pieces. stacked seating area not visible. bright lighting. metal or plastic takeout container lid in sauce cup",
+          "evidence_kind": "photo_vision_caption",
+          "source_url": "https://www.google.com/maps/place/Palmyra/data=!4m7!3m6!1s0x808580a672c817ef:0xb2566cd79927c4cc!8m2!3d37.7718217!4d-122.4339358!16s%2Fg%2F1tg5v8dv!19sChIJ7xfIcqaAhYARzMQnmddsVrI?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "unclear exact dish names for kebabs",
+            "specific origin of sauce",
+            "whether plate is from a restaurant or takeout",
+            "whether there are more unseen ingredients under the rice"
+          ]
+        }
+      }
+    },
+    {
+      "restaurant_id": "google:ChIJl2XEtSF-j4AR7gkhr14PD94",
+      "name": "Dancing Yak Restaurant & Bar",
+      "neighborhood": "Mission Dolores",
+      "area_priority": "focus",
+      "source_url": "https://www.google.com/maps/place/Dancing+Yak+Restaurant+%26+Bar/data=!4m7!3m6!1s0x808f7e21b5c46597:0xde0f0f5eaf2109ee!8m2!3d37.7685299!4d-122.4225396!16s%2Fg%2F11f57h239r!19sChIJl2XEtSF-j4AR7gkhr14PD94?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+      "matched_query_terms": [
+        "kebab"
+      ],
+      "query_coverage": 1.0,
+      "match_type": "all_terms",
+      "score": 2.069327,
+      "matched_sources": 1,
+      "matched_evidence": [
+        {
+          "restaurant_id": "google:ChIJl2XEtSF-j4AR7gkhr14PD94",
+          "photo_id": "google:ChIJl2XEtSF-j4AR7gkhr14PD94:photo:295125e469da768d",
+          "photo_url": "https://lh3.googleusercontent.com/grass-cs/ACvplmN3dWkwGEMktimv2ckWuAPLX-Z24K4lHTWEHdejIQSCIdspGt9dRWVG42zs8gbC3BvYGx7MxP_0qaYjnkSbMqUoVDnBxlEMTSg40v5Fb_5sYbmv2-VZ9u2GWp6Ui_awHOjmDb_pa_KrJtQ=w600-h450-p-k-no",
+          "source_url": "https://www.google.com/maps/place/Dancing+Yak+Restaurant+%26+Bar/data=!4m7!3m6!1s0x808f7e21b5c46597:0xde0f0f5eaf2109ee!8m2!3d37.7685299!4d-122.4225396!16s%2Fg%2F11f57h239r!19sChIJl2XEtSF-j4AR7gkhr14PD94?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "author": "Skeeb Khan",
+          "source_review_id": "Ci9DQUlRQUNvZENodHljRjlvT201M2JIcG1ORXhHVEVZNGVFUnRTblY0YUc0MVkxRRAB",
+          "image_inspected": true,
+          "human_verified": false,
+          "extraction_method": "openai_responses_vision",
+          "photo_type": "menu",
+          "uncertainties": [
+            "Exact dish names not fully legible",
+            "Some foods not clearly identifiable due to cropping",
+            "Colors may mislead about ingredients",
+            "Automatic OCR may misread small or handwritten text; menu items and prices may be outdated."
+          ],
+          "processed_at": "2026-09-26T03:31:19.670587+00:00",
+          "evidence_id": "google:ChIJl2XEtSF-j4AR7gkhr14PD94:photo:295125e469da768d:ocr",
+          "kind": "photo_ocr",
+          "text": "SMALL PLATES\nLANB SKEWER -. 1 ®\nSkewers known as 'sekuwa\" in Napol is a\nvery trodifional way of cooking red meot.\nLeg of lomb, marinated ovemight with\ncumin, corionder, ginger-garlic paste.\n-served with tomato aochar and\npickled ginger -. delicious!\nCHICKEN CHILI... 15 G\nMarinated boneless chicken battered\nwith chickpea flour. Cooked in sweet and\nspicy sauce with red onion, bell pepper\nand tomato.\nPORK BELLY .. 5 O@\nPork is a delicacy in the eastem part of\nNepal, where 1 grew up. Skinless pork\nbelly is cooked until soft with Nepali\nspices, cumin-coriander poste, ginger\ngarlic paste, and onions....\n- served with tomato and Tibetan\neppercom souce to cut the fat.\nSHTAWA..5 OC\nKALE CHAAT..14@@\nCrispy kale with homemade yogurt, mint,\ntamarind, chopped onions, tomatoes, and\npotato. Crunchy ond delicious - our most\nloved dish at the Yok.\nSPICY CAULIFLOWER... 1 OC®\nBattered with chickpea flour - tossed in\nginger garlic and spicy homemade chili\nsauce... spicy & crunchy!\nSAMOSA SOUP .. 14 0®\nin Nepal, samosas are usually eaten as\nbreakfast or late afteroon snacks.\nThis dish replicates the samoso soup\nserved in the Terai (southem flatlands) of\nNepal: - chopped samosas in yellow\nbean soup with onion and cilantro.\nWATERMELON FETA SALAD... 14 ®®\nRefreshing andsimple watermelon and\nfeta salad - tossed with avocado oil,\nhoney, garlic, and turmeric dressing.\nMOMO@(SERVED 4 PCS)\nIntroduced to Nopal by Newari traders\nwho travelled to Tibet centuries ago.\nthese Juicy cumplings arenow the\nnational food of Nepal.\n- your choice of protein with onions,\nchive, garlic, and momo seasoning.\nCHICKEN, PORK, OR VEGAN ... 10\nCHOWMEIN G\nLike Momo, Chowmein is another popular\ndish sold in almost all street carts, tea\nsnops, and restauronis savory a spicy,\nChowmein is a Nepali favorite; - beans,\nSHAPTA ®\nShapta is a traditional stir fry dish that\noriginated in Tibet, If includes red onion,\ngarlic, Tibetan peppercomn, and chili.\n•Served with a side of Tingmo (steamed bun).\nthis dish brings back memories of my favorite\nTibetan restaurant Yang Ling' in Kathmandu.\nPORK,TOFU, OR LAMB...15/14/16\nHOUSE SPECIALS\nalll vegetarian dishes can be mode vegan\nGOAT CURRY ...23\nfresh Sacromento form goat cooked in\nginger, garlic paste & onion gravy\nDHADING CHICKEN ...20 O©\nroasted spices, tomatoes, onion, ginger,\ngarlic, and cilantro\nBUTTER CHICKEN ...20\nOC\nstrips of chicken thighs in decadent\ncream sauce with home-roasted spices\nSEAFOOD CURRY ..23 C\nblack cod, manilla clams & shrimp cooked with\ntomatoes, onions, mustard powder & cumin\nLAMBSHISH KABAB...22O®\nminced lamb kabab, seasoned with\nmint, cumin, coriander - cooked in\nchunky tomato sauce.\nMATAR PANEER ...20\npaneer (cow cheese) cooked with green\npeas in a savory tomato & onion gravy\nBAIGUN TARKARI..20 OS\nfandoor roasted minced eggplant;\ncooked with cumin, corlander & onion\nALOO CAULI...20\ncauliflower, green peas, and potatoes\ncooked with spices in tomato & onion\nBHINDI TARKARI..20 ©©\nfresh okra sautéed with onion, chopped\ntomatoes, ginger garlic paste, and spices\nDAAL MAKHANI...20\nlentils cooked with cream, fomato, onion,\ncumin, and roasted corander",
+          "ocr_engine": "Apple Vision VNRecognizeTextRequest accurate",
+          "matched_query_terms": [
+            "kebab"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "photo_id": "google:ChIJl2XEtSF-j4AR7gkhr14PD94:photo:295125e469da768d",
+          "url": "https://lh3.googleusercontent.com/grass-cs/ACvplmN3dWkwGEMktimv2ckWuAPLX-Z24K4lHTWEHdejIQSCIdspGt9dRWVG42zs8gbC3BvYGx7MxP_0qaYjnkSbMqUoVDnBxlEMTSg40v5Fb_5sYbmv2-VZ9u2GWp6Ui_awHOjmDb_pa_KrJtQ=w600-h450-p-k-no",
+          "match_text": "SMALL PLATES\nLANB SKEWER -. 1 ®\nSkewers known as 'sekuwa\" in Napol is a\nvery trodifional way of cooking red meot.\nLeg of lomb, marinated ovemight with\ncumin, corionder, ginger-garlic paste.\n-served with tomato aochar and\npickled ginger -. delicious!\nCHICKEN CHILI... 15 G\nMarinated boneless chicken battered\nwith chickpea flour. Cooked in sweet and\nspicy sauce with red onion, bell pepper\nand tomato.\nPORK BELLY .. 5 O@\nPork is a delicacy in the eastem part of\nNepal, where 1 grew up. Skinless pork\nbelly is cooked until soft with Nepali\nspices, cumin-coriander poste, ginger\ngarlic paste, and onions....\n- served with tomato and Tibetan\neppercom souce to cut the fat.\nSHTAWA..5 OC\nKALE CHAAT..14@@\nCrispy kale with homemade yogurt, mint,\ntamarind, chopped onions, tomatoes, and\npotato. Crunchy ond delicious - our most\nloved dish at the Yok.\nSPICY CAULIFLOWER... 1 OC®\nBattered with chickpea flour - tossed in\nginger garlic and spicy homemade chili\nsauce... spicy & crunchy!\nSAMOSA SOUP .. 14 0®\nin Nepal, samosas are usually eaten as\nbreakfast or late afteroon snacks.\nThis dish replicates the samoso soup\nserved in the Terai (southem flatlands) of\nNepal: - chopped samosas in yellow\nbean soup with onion and cilantro.\nWATERMELON FETA SALAD... 14 ®®\nRefreshing andsimple watermelon and\nfeta salad - tossed with avocado oil,\nhoney, garlic, and turmeric dressing.\nMOMO@(SERVED 4 PCS)\nIntroduced to Nopal by Newari traders\nwho travelled to Tibet centuries ago.\nthese Juicy cumplings arenow the\nnational food of Nepal.\n- your choice of protein with onions,\nchive, garlic, and momo seasoning.\nCHICKEN, PORK, OR VEGAN ... 10\nCHOWMEIN G\nLike Momo, Chowmein is another popular\ndish sold in almost all street carts, tea\nsnops, and restauronis savory a spicy,\nChowmein is a Nepali favorite; - beans,\nSHAPTA ®\nShapta is a traditional stir fry dish that\noriginated in Tibet, If includes red onion,\ngarlic, Tibetan peppercomn, and chili.\n•Served with a side of Tingmo (steamed bun).\nthis dish brings back memories of my favorite\nTibetan restaurant Yang Ling' in Kathmandu.\nPORK,TOFU, OR LAMB...15/14/16\nHOUSE SPECIALS\nalll vegetarian dishes can be mode vegan\nGOAT CURRY ...23\nfresh Sacromento form goat cooked in\nginger, garlic paste & onion gravy\nDHADING CHICKEN ...20 O©\nroasted spices, tomatoes, onion, ginger,\ngarlic, and cilantro\nBUTTER CHICKEN ...20\nOC\nstrips of chicken thighs in decadent\ncream sauce with home-roasted spices\nSEAFOOD CURRY ..23 C\nblack cod, manilla clams & shrimp cooked with\ntomatoes, onions, mustard powder & cumin\nLAMBSHISH KABAB...22O®\nminced lamb kabab, seasoned with\nmint, cumin, coriander - cooked in\nchunky tomato sauce.\nMATAR PANEER ...20\npaneer (cow cheese) cooked with green\npeas in a savory tomato & onion gravy\nBAIGUN TARKARI..20 OS\nfandoor roasted minced eggplant;\ncooked with cumin, corlander & onion\nALOO CAULI...20\ncauliflower, green peas, and potatoes\ncooked with spices in tomato & onion\nBHINDI TARKARI..20 ©©\nfresh okra sautéed with onion, chopped\ntomatoes, ginger garlic paste, and spices\nDAAL MAKHANI...20\nlentils cooked with cream, fomato, onion,\ncumin, and roasted corander",
+          "evidence_kind": "photo_ocr",
+          "source_url": "https://www.google.com/maps/place/Dancing+Yak+Restaurant+%26+Bar/data=!4m7!3m6!1s0x808f7e21b5c46597:0xde0f0f5eaf2109ee!8m2!3d37.7685299!4d-122.4225396!16s%2Fg%2F11f57h239r!19sChIJl2XEtSF-j4AR7gkhr14PD94?authuser=0&hl=en&g_ep=EgoyMDI2MDkyMy4wIJJjKgBIAVAD&rclk=1",
+          "image_inspected": true,
+          "uncertainties": [
+            "Exact dish names not fully legible",
+            "Some foods not clearly identifiable due to cropping",
+            "Colors may mislead about ingredients",
+            "Automatic OCR may misread small or handwritten text; menu items and prices may be outdated."
+          ]
+        }
+      ],
+      "jev": {
+        "relevance_score": 1.61,
+        "score_scale": [
+          0,
+          3
+        ],
+        "confidence": 0.28,
+        "photo_decision": {
+          "type": "choice",
+          "choice": "p0",
+          "confidence": 0.34,
+          "probabilities": {
+            "p0": 0.67,
+            "none": 0.33
+          }
+        },
+        "recommended_widget": "compact",
+        "selected_photo": null
+      }
+    }
+  ]
+}

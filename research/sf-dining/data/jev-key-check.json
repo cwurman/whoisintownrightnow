@@ -1,0 +1,28 @@
+{
+  "tested_at": "2026-09-26T03:18:43.962478+00:00",
+  "request": {
+    "model": "jev-latest",
+    "state": {
+      "query": "kebab"
+    },
+    "questions": {
+      "specific_dish": {
+        "type": "noul",
+        "instructions": "Does the query name a specific dish rather than only a broad cuisine?"
+      }
+    }
+  },
+  "response": {
+    "model": "jev-1.13.0",
+    "answers": {
+      "specific_dish": {
+        "type": "noul",
+        "noul": 0.88
+      }
+    },
+    "usage": {
+      "input_tokens": 288,
+      "output_tokens": 22
+    }
+  }
+}

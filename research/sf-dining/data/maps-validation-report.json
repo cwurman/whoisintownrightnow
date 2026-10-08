@@ -1,0 +1,42 @@
+{
+  "restaurants": 500,
+  "unique_place_ids": 500,
+  "unique_addresses": 500,
+  "unique_photo_urls_across_all_restaurants": 3373,
+  "area_priority_counts": {
+    "focus": 192,
+    "nearby": 81,
+    "other_sf": 227
+  },
+  "missing_fields": {
+    "address": 0,
+    "latitude": 0,
+    "longitude": 0,
+    "category": 0,
+    "neighborhood": 0,
+    "rating": 0,
+    "google_review_count": 0,
+    "price_display": 45,
+    "website": 43,
+    "phone": 29
+  },
+  "restaurants_without_review_photos": [
+    "asu mare peruvian restaurant",
+    "MrBeast Burger",
+    "Veg-O-licious"
+  ],
+  "checks_passed": [
+    "500 unique place IDs and addresses",
+    "SF address and coordinate bounds",
+    "Names match source place panels",
+    "Three text reviews per restaurant",
+    "No source-marked permanent or temporary closures retained",
+    "Unique evidence IDs and image references",
+    "Photo-review and subset-evidence referential integrity"
+  ],
+  "limitations": [
+    "No image bytes downloaded or visually validated",
+    "Neighborhood priority uses source locality labels, not user GPS",
+    "Current operation and review factual accuracy not independently verified"
+  ]
+}

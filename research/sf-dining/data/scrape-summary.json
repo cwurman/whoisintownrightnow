@@ -1,0 +1,9 @@
+{
+  "restaurants_attempted": 9,
+  "restaurants_with_content": 9,
+  "html_pages": 19,
+  "menu_pdfs": 3,
+  "photo_urls": 146,
+  "customer_reviews": 0,
+  "note": "Photo URLs are discovered candidates, not yet visually classified or verified as food photos. No paid service used."
+}

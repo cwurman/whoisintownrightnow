@@ -1,0 +1,19 @@
+{
+  "restaurants": 500,
+  "indexed_evidence": 5467,
+  "evidence_kinds": {
+    "restaurant_metadata": 500,
+    "customer_review_excerpt": 1500,
+    "photo_source_caption": 1652,
+    "photo_vision_caption": 1716,
+    "photo_ocr": 99
+  },
+  "photos_total": 3373,
+  "vision_completed": 1721,
+  "vision_useful": 1716,
+  "pending_uncaptioned": 0,
+  "pending_uncaptioned_by_area": {},
+  "pending_vision_all": 1652,
+  "engine": "SQLite FTS5 lexical baseline; not Jev or semantic embeddings",
+  "default_scope": "nearby"
+}
