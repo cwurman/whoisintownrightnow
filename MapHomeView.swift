@@ -60,8 +60,18 @@ struct MapHomeView: View {
         return bounds.insetBy(dx: -bounds.width * 0.12, dy: -bounds.height * 0.12)
     }
     private enum MapSection: String, CaseIterable { case signals = "Hangs", people = "People" }
+    private struct CollapsedHangDetent: CustomPresentationDetent {
+        static func height(in context: Context) -> CGFloat? {
+            context.dynamicTypeSize.isAccessibilitySize ? 140 : 90
+        }
+    }
+    private static let collapsedDetent = PresentationDetent.custom(CollapsedHangDetent.self)
     private var selectedSignal: Signal? { signals.first { $0.id == selectedSignalID } }
     private var hasSelection: Bool { selectedSignal != nil || selectedFriend != nil }
+    private var isPanelCollapsed: Bool { !hasSelection && panelDetent == Self.collapsedDetent }
+    private var panelDetents: Set<PresentationDetent> {
+        hasSelection ? [.medium, .large] : [Self.collapsedDetent, .height(300), .large]
+    }
     private var panelTitle: String {
         selectedSignal != nil ? "" : selectedFriend?.firstName ?? (section == .signals ? "Today" : "People")
     }
@@ -89,6 +99,13 @@ struct MapHomeView: View {
             .onChange(of: dynamicTypeSize) {
                 if dynamicTypeSize.isAccessibilitySize { panelDetent = .large }
             }
+            .onChange(of: panelDetent) {
+                // Sheet resizing should reveal more of the map without refitting the
+                // initial overview bounds (which can zoom far out at the largest detent).
+                if !hasSelection, returnCamera == nil, let lastCamera {
+                    cameraPosition = .camera(lastCamera)
+                }
+            }
             .task(id: "\(cameraRequestID)-\(Int(panelHeight))") {
                 guard hasSelection || returnCamera != nil else { return }
                 // In both directions, let the sheet and map insets settle before moving
@@ -113,9 +130,9 @@ struct MapHomeView: View {
             }
             .sheet(isPresented: $showPanel) {
                 panel
-                    .presentationDetents([.height(300), .medium, .large], selection: $panelDetent)
+                    .presentationDetents(panelDetents, selection: $panelDetent)
                     .presentationDragIndicator(.visible)
-                    .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+                    .presentationBackgroundInteraction(.enabled(upThrough: hasSelection ? .medium : .height(300)))
                     .interactiveDismissDisabled()
                     .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { panelHeight = $0 }
             }
@@ -229,7 +246,12 @@ struct MapHomeView: View {
     private var panel: some View {
         NavigationStack {
             Group {
-                if let selectedSignal {
+                if isPanelCollapsed {
+                    createHangButton
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        // Center within the glass, including the sheet's bottom safe area.
+                        .ignoresSafeArea(.container, edges: .bottom)
+                } else if let selectedSignal {
                     SignalDetailSheet(signal: selectedSignal, onJoin: { join(selectedSignal) })
                 } else if let selectedFriend {
                     friendDetails(selectedFriend)
@@ -249,7 +271,7 @@ struct MapHomeView: View {
                 }
             }
             .safeAreaInset(edge: .bottom) {
-                if let toast {
+                if let toast, !isPanelCollapsed {
                     Text(toast).font(.footnote).foregroundStyle(Theme.secondaryLabel)
                         .padding().frame(maxWidth: .infinity)
                         .background(.regularMaterial)
@@ -349,28 +371,29 @@ struct MapHomeView: View {
             .padding(.bottom, 16)
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            Button { showComposer = true } label: {
-                Label("Let’s hang", systemImage: "plus")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, minHeight: 36)
-            }
-            .buttonStyle(.glassProminent)
-            .buttonBorderShape(.capsule)
-            .tint(Theme.orchid)
-            .foregroundStyle(Theme.ink)
-            .accessibilityIdentifier("new-signal")
-            .padding(.horizontal, 20).padding(.vertical, 12)
-            .background(.regularMaterial)
+            createHangButton.background(.regularMaterial)
         }
         .animation(focusAnimation, value: section)
-        .onChange(of: section) {
-            if section == .people && panelDetent == .height(300) { panelDetent = .medium }
-        }
         .task(id: section) {
             guard section == .people else { return }
             if accountStore == nil && !activeContacts.didChoose { await activeContacts.connect(account: nil) }
             else { await activeContacts.refresh(account: accountStore) }
         }
+    }
+
+    private var createHangButton: some View {
+        Button { showComposer = true } label: {
+            Label("Let’s hang", systemImage: "plus")
+                .font(.headline)
+                .frame(maxWidth: .infinity, minHeight: 36)
+        }
+        .buttonStyle(.glassProminent)
+        .buttonBorderShape(.capsule)
+        .tint(Theme.orchid)
+        .foregroundStyle(Theme.ink)
+        .accessibilityIdentifier("new-signal")
+        .padding(.horizontal, 20)
+        .padding(.vertical, 12)
     }
 
     private func friendDetails(_ friend: Friend) -> some View {
