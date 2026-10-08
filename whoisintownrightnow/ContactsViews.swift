@@ -118,6 +118,7 @@ struct FriendsView: View {
                     Text("Friends")
                         .font(.title2.bold())
                         .fixedSize(horizontal: true, vertical: false)
+                        .padding(.leading, 12)
                         .foregroundStyle(Theme.label)
                         .accessibilityAddTraits(.isHeader)
                 }
