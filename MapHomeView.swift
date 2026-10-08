@@ -137,24 +137,14 @@ struct MapHomeView: View {
                         // Center within the glass, including the sheet's bottom safe area.
                         .ignoresSafeArea(.container, edges: .bottom)
                 } else if let selectedSignal {
-                    SignalDetailSheet(signal: selectedSignal, onJoin: { join(selectedSignal) })
+                    SignalDetailSheet(signal: selectedSignal, onJoin: { join(selectedSignal) }, onClose: clearFocus)
                 } else if let selectedFriend {
-                    friendDetails(selectedFriend)
+                    FriendDetailSheet(friend: selectedFriend, onClose: clearFocus)
                 } else {
                     overviewList
                 }
             }
-            .navigationTitle(hasSelection ? panelTitle : "")
-            .toolbarTitleDisplayMode(.inline)
-            .toolbarVisibility(hasSelection ? .visible : .hidden, for: .navigationBar)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    if hasSelection {
-                        Button("Back", systemImage: "chevron.left", action: clearFocus)
-                            .accessibilityIdentifier("close-signal-detail")
-                    }
-                }
-            }
+            .toolbarVisibility(.hidden, for: .navigationBar)
             .safeAreaInset(edge: .bottom) {
                 if let toast, !isPanelCollapsed {
                     Text(toast).font(.footnote).foregroundStyle(Theme.secondaryLabel)
@@ -248,41 +238,6 @@ struct MapHomeView: View {
         .padding(.vertical, 12)
     }
 
-    private func friendDetails(_ friend: Friend) -> some View {
-        List {
-            Section {
-                HStack(spacing: 16) {
-                    PersonAvatar(initials: friend.initials, color: friend.color, size: 64)
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text(friend.name).font(.title2.bold())
-                        Label(friend.isFree ? "Free to hang out" : "Not available", systemImage: friend.isFree ? "circle.fill" : "moon.fill")
-                            .font(.subheadline).foregroundStyle(friend.isFree ? Theme.accent : Theme.secondaryLabel)
-                    }
-                }.padding(.vertical, 8)
-                Label(friend.hood, systemImage: "location")
-                LabeledContent("Distance", value: friend.distanceLabel)
-                Text(friend.note).foregroundStyle(Theme.secondaryLabel)
-            }
-            .listRowBackground(Theme.panelRow)
-            let hosted = signals.filter { $0.hostID == friend.id }
-            if !hosted.isEmpty {
-                Section("Hangs") {
-                    ForEach(hosted) { signal in
-                        Button { focus(on: signal) } label: {
-                            Label { Text(signal.title) } icon: {
-                                Text(signal.activityEmoji).accessibilityHidden(true)
-                            }
-                        }
-                    }
-                }
-                .listRowBackground(Theme.panelRow)
-            }
-            Section { Text("This is a sample profile and location.").font(.footnote).foregroundStyle(Theme.secondaryLabel) }
-                .listRowBackground(Theme.panelRow)
-        }
-        .scrollContentBackground(.hidden)
-    }
-
     private func panelExtent(for detent: PresentationDetent) -> MapPanelExtent {
         if detent == Self.collapsedDetent { return .collapsed }
         if detent == .height(300) { return .overview }
@@ -337,7 +292,8 @@ struct MapHomeView: View {
             window: draft.whenText, distance: "you", seats: draft.seats ?? 0,
             going: [activeProfile?.initials ?? "You"], isJoined: true, isMine: true,
             anchorCoordinate: Friend.youCoordinate, anchorPlace: "Mission", destinationCoordinate: draft.placeCoordinate,
-            video: draft.videoAttachment.video)
+            video: draft.videoAttachment.video,
+            placeDetail: draft.mode == .pin ? draft.selectedVenue?.candidate.address : nil)
         signals.insert(signal, at: 0)
         clearFocus()
         pendingConfirmation = PostedConfirmation(signal: signal, pinged: draft.selectedFriends,
@@ -346,7 +302,7 @@ struct MapHomeView: View {
     }
 
     private func join(_ signal: Signal) {
-        guard let index = signals.firstIndex(where: { $0.id == signal.id }), !signals[index].isJoined, !signals[index].isMine else { return }
+        guard let index = signals.firstIndex(where: { $0.id == signal.id }), signals[index].canJoin else { return }
         signals[index].isJoined = true
         signals[index].going.append(activeProfile?.initials ?? "You")
         toastTask?.cancel()
@@ -516,73 +472,12 @@ struct SignalRowView: View {
             }.buttonStyle(.plain).accessibilityHint(signal.video == nil ? "Show hang details" : "Show hang details and video invitation")
             Button(action: onJoin) {
                 if signal.isJoined || signal.isMine { Image(systemName: "checkmark") }
-                else { Text("Join").fontWeight(.semibold) }
+                else { Text(signal.isFull ? "Full" : "Join").fontWeight(.semibold) }
             }
             .buttonStyle(.bordered).buttonBorderShape(.capsule)
-            .disabled(signal.isJoined || signal.isMine)
-            .accessibilityLabel(signal.isMine ? "Your hang" : signal.isJoined ? "Already joined" : "Join \(signal.hostFirstName)’s hang")
+            .disabled(!signal.canJoin)
+            .accessibilityLabel(signal.isMine ? "Your hang" : signal.isJoined ? "Already joined" : signal.isFull ? "Hang is full" : "Join \(signal.hostFirstName)’s hang")
         }.padding(.vertical, 5)
-    }
-}
-
-struct SignalDetailSheet: View {
-    let signal: Signal
-    let onJoin: () -> Void
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                HStack(spacing: 12) {
-                    PersonAvatar(initials: signal.hostInitials, color: signal.hostColor)
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text(signal.isMine ? "Your invitation" : "\(signal.hostFirstName) wants to hang").font(.headline)
-                        Text(signal.anchorPlace).font(.subheadline).foregroundStyle(Theme.secondaryLabel)
-                    }
-                }
-                if let video = signal.video {
-                    HangVideoPoster(video: video, title: signal.isMine ? "your invitation" : "\(signal.hostFirstName)’s invitation")
-                }
-                Text(signal.title).font(.title2.bold())
-                    .accessibilityAddTraits(.isHeader)
-                VStack(alignment: .leading, spacing: 10) {
-                    Label(signal.place, systemImage: "mappin.and.ellipse")
-                    Label(signal.window, systemImage: "clock")
-                        .foregroundStyle(Theme.secondaryLabel)
-                }
-                attendance
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, 24)
-            .padding(.top, 8)
-            .padding(.bottom, 20)
-        }
-        .accessibilityIdentifier("signal-detail")
-        .safeAreaInset(edge: .bottom) {
-            VStack(spacing: 8) {
-                Button(action: onJoin) {
-                    Label(signal.isMine ? "Your hang" : signal.isJoined ? "You’re in" : "Join \(signal.hostFirstName)",
-                          systemImage: signal.isJoined ? "checkmark.circle.fill" : "person.badge.plus")
-                        .frame(maxWidth: .infinity).font(.headline).padding(.vertical, 6)
-                }
-                .buttonStyle(.glassProminent).buttonBorderShape(.capsule)
-                .tint(Theme.orchid).foregroundStyle(Theme.ink)
-                .disabled(signal.isMine || signal.isJoined).accessibilityIdentifier("join-signal")
-                Text("Preview only · No notifications sent").font(.caption).foregroundStyle(Theme.secondaryLabel)
-            }.padding(.horizontal, 20).padding(.vertical, 12).background(.regularMaterial)
-        }
-    }
-
-    private var attendance: some View {
-        let layout = dynamicTypeSize.isAccessibilitySize
-            ? AnyLayout(VStackLayout(alignment: .leading, spacing: 8))
-            : AnyLayout(HStackLayout(spacing: 20))
-        return layout {
-            Label("\(signal.going.count) going", systemImage: "person.2")
-            if signal.seats > 0 { Text("Group limit: \(signal.seats)") }
-        }
-        .font(.subheadline)
-        .foregroundStyle(Theme.secondaryLabel)
     }
 }
 

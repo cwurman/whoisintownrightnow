@@ -23,14 +23,14 @@ final class MapLifetimeTests: XCTestCase {
             releasedMap = map
             releasedHost = host
             let initialMarkers = Set(map.annotations.map { ObjectIdentifier($0) })
-            XCTAssertEqual(initialMarkers.count, 7)
+            XCTAssertEqual(initialMarkers.count, Friend.mock.count + 1)
 
             for index in 0..<80 {
                 let signal = Signal.mock[index % Signal.mock.count]
                 model.selection = signal
                 model.camera.focus(on: SignalConnection(signal: signal).mapRect, panel: .details, animated: false)
                 try await Task.sleep(for: .milliseconds(25))
-                XCTAssertEqual(map.annotations.count, 8, "Each selection should add exactly one destination")
+                XCTAssertEqual(map.annotations.count, initialMarkers.count + 1, "Each selection should add exactly one destination")
                 XCTAssertEqual(map.overlays.count, 2, "Only the current connection's two lines should remain")
                 XCTAssertTrue(initialMarkers.isSubset(of: Set(map.annotations.map { ObjectIdentifier($0) })),
                               "The same avatar annotations should survive selection changes")

@@ -56,6 +56,44 @@ extension Color {
 
 // MARK: - Friend
 
+enum LocationFreshness {
+    case live
+    case updated(Date)
+    case updating(lastUpdated: Date?)
+    case unavailable(lastUpdated: Date?)
+
+    func label(at now: Date) -> String {
+        switch self {
+        case .live: "Now"
+        case .updated(let date): Self.age(of: date, at: now)
+        case .updating: "Updating"
+        case .unavailable: "Location unavailable"
+        }
+    }
+
+    func detail(at now: Date) -> String? {
+        switch self {
+        case .updating(let date), .unavailable(let date):
+            date.map { "Last updated \(Self.age(of: $0, at: now).lowercased())" }
+        default: nil
+        }
+    }
+
+    var isUpdating: Bool { if case .updating = self { true } else { false } }
+    var isLive: Bool { if case .live = self { true } else { false } }
+
+    private static func age(of date: Date, at now: Date) -> String {
+        let minutes = max(0, Int(now.timeIntervalSince(date) / 60))
+        if minutes < 1 { return "Now" }
+        if minutes < 60 { return "\(minutes) min ago" }
+        if minutes < 24 * 60 { return "\(minutes / 60) hr ago" }
+        let calendar = Calendar.current
+        let days = calendar.dateComponents([.day], from: calendar.startOfDay(for: date),
+                                          to: calendar.startOfDay(for: now)).day ?? 1
+        return days == 1 ? "Yesterday" : "\(days) days ago"
+    }
+}
+
 struct Friend: Identifiable {
     let id: String
     let name: String
@@ -66,6 +104,8 @@ struct Friend: Identifiable {
     let distanceMiles: Double
     let isFree: Bool
     let note: String
+    var locationName: String? = nil
+    var locationFreshness: LocationFreshness = .unavailable(lastUpdated: nil)
 
     var firstName: String { name.split(separator: " ").first.map(String.init) ?? name }
     var distanceLabel: String { String(format: "%.1f mi", distanceMiles) }
@@ -74,14 +114,16 @@ struct Friend: Identifiable {
         id: "tw", name: "Tara Weiss", initials: "TW", color: Theme.ink,
         hood: "Duboce Triangle",
         coordinate: CLLocationCoordinate2D(latitude: 37.7702, longitude: -122.4313),
-        distanceMiles: 0.9, isFree: true, note: "Heading out for dinner."
+        distanceMiles: 0.9, isFree: true, note: "Heading out for dinner.",
+        locationFreshness: .live
     )
     static let rae = Friend(
         id: "rs", name: "Rae Solis", initials: "RS", color: Color(hex: 0x79608F),
         hood: "Hayes Valley",
         coordinate: CLLocationCoordinate2D(latitude: 37.7765, longitude: -122.4262),
         distanceMiles: 1.1, isFree: true,
-        note: "Out walking with no destination. Posted a hang 20 minutes ago."
+        note: "Out walking with no destination. Posted a hang 20 minutes ago.",
+        locationFreshness: .updated(.now.addingTimeInterval(-120))
     )
 
     static let mock: [Friend] = [
@@ -90,22 +132,38 @@ struct Friend: Identifiable {
                hood: "Mission",
                coordinate: CLLocationCoordinate2D(latitude: 37.7614, longitude: -122.4216),
                distanceMiles: 0.6, isFree: true,
-               note: "Free for the next couple hours. Somewhere around 18th & Valencia."),
+               note: "Free for the next couple hours.", locationName: "18th & Valencia",
+               locationFreshness: .live),
         Friend(id: "al", name: "Alex Lund", initials: "AL", color: Color(hex: 0x82577F),
                hood: "Nob Hill",
                coordinate: CLLocationCoordinate2D(latitude: 37.7930, longitude: -122.4155),
                distanceMiles: 2.3, isFree: false,
-               note: "Home-ish. No hangs tonight."),
+               note: "Home-ish. No hangs tonight.", locationName: "California & Hyde",
+               locationFreshness: .updated(.now.addingTimeInterval(-120))),
         Friend(id: "dv", name: "Devi Rao", initials: "DV", color: Color(hex: 0x6B596F),
                hood: "North Beach",
                coordinate: CLLocationCoordinate2D(latitude: 37.8003, longitude: -122.4098),
                distanceMiles: 3.0, isFree: false,
-               note: "Neighborhood only — this is as close as the map gets."),
+               note: "Sharing a nearby area, rather than an exact location.",
+               locationFreshness: .updating(lastUpdated: .now.addingTimeInterval(-300))),
         Friend(id: "jp", name: "Jonas Pike", initials: "JP", color: Color(hex: 0x87695A),
                hood: "Presidio",
                coordinate: CLLocationCoordinate2D(latitude: 37.7989, longitude: -122.4550),
                distanceMiles: 4.2, isFree: false,
-               note: "Way out west. Probably running."),
+               note: "Out for a run.", locationName: "Presidio trails",
+               locationFreshness: .updated(.now.addingTimeInterval(-900))),
+        Friend(id: "jl", name: "Jules Laurent", initials: "JL", color: Color(hex: 0x9B729E),
+               hood: "Inner Sunset", coordinate: CLLocationCoordinate2D(latitude: 37.7638, longitude: -122.4633),
+               distanceMiles: 2.8, isFree: true, note: "Coffee and a good book.", locationName: "9th & Irving",
+               locationFreshness: .updated(.now.addingTimeInterval(-3600))),
+        Friend(id: "sm", name: "Sofia Martinez", initials: "SM", color: Color(hex: 0x637C75),
+               hood: "Cole Valley", coordinate: CLLocationCoordinate2D(latitude: 37.7655, longitude: -122.4499),
+               distanceMiles: 2.0, isFree: false, note: "Catching up on some quiet time.", locationName: "Cole & Carl",
+               locationFreshness: .updated(Calendar.current.date(byAdding: .day, value: -1, to: .now)!)),
+        Friend(id: "nc", name: "Nico Chen", initials: "NC", color: Color(hex: 0x687A97),
+               hood: "Alamo Square", coordinate: CLLocationCoordinate2D(latitude: 37.7764, longitude: -122.4346),
+               distanceMiles: 1.5, isFree: false, note: "This pin shows the last shared location.",
+               locationFreshness: .unavailable(lastUpdated: .now.addingTimeInterval(-7200))),
     ]
 
     /// Where "you" sit on the map (the Mission, per the prototype).
@@ -218,9 +276,15 @@ struct Signal: Identifiable {
     /// Kept separate from the host anchor; only revealed on the map in focus.
     let destinationCoordinate: CLLocationCoordinate2D
     var video: HangVideo? = nil
+    /// Destination context; this can differ from the host's current neighborhood.
+    var placeDetail: String? = nil
 
     var hostFirstName: String { hostName.split(separator: " ").first.map(String.init) ?? hostName }
     var activityEmoji: String { HangActivity.emoji(for: title) }
+    /// The composer treats seats as the total group size, including the host.
+    var remainingSpots: Int? { seats > 0 ? max(0, seats - going.count) : nil }
+    var isFull: Bool { remainingSpots == 0 }
+    var canJoin: Bool { !isMine && !isJoined && !isFull }
 
     var destinationIsAtAnchor: Bool {
         MKMapPoint(anchorCoordinate).distance(to: MKMapPoint(destinationCoordinate)) < 1
@@ -236,10 +300,11 @@ struct Signal: Identifiable {
 
     static let mock: [Signal] = [
         Signal(id: "s1", hostID: Friend.tara.id, hostName: "Tara Weiss", hostInitials: "TW", hostColor: Theme.ink,
-               title: "Dinner at Lucia", place: "Lucia · 18th St", window: "8:00pm",
-               distance: "0.4 mi", seats: 2, going: ["TW", "MK"], isJoined: false, isMine: false,
+               title: "Dinner at Lucia", place: "Lucia · 18th St", window: "Tonight · 8:00 PM",
+               distance: "0.4 mi", seats: 4, going: ["TW", "MK"], isJoined: false, isMine: false,
                anchorCoordinate: Friend.tara.coordinate, anchorPlace: Friend.tara.hood,
-               destinationCoordinate: CLLocationCoordinate2D(latitude: 37.7635, longitude: -122.4395)),
+               destinationCoordinate: CLLocationCoordinate2D(latitude: 37.7635, longitude: -122.4395),
+               placeDetail: "Castro, San Francisco"),
         Signal(id: "s2", hostID: Friend.rae.id, hostName: "Rae Solis", hostInitials: "RS", hostColor: Friend.rae.color,
                title: "Aimless, walking around", place: "Hayes Valley", window: "next 2 hrs",
                distance: "1.1 mi", seats: 0, going: ["RS"], isJoined: false, isMine: false,
