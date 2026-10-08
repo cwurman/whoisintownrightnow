@@ -15,7 +15,12 @@ struct ContentView: View {
         } else if ProcessInfo.processInfo.arguments.contains("--preview-map") {
             MapHomeView()
         } else {
+            #if LOCAL_PREVIEW
+            // Temporary phone preview while signing with a free Personal Team.
+            MapHomeView()
+            #else
             AccountRootView()
+            #endif
         }
         #else
         AccountRootView()
