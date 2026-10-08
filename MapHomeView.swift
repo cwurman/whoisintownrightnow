@@ -15,19 +15,14 @@ struct MapHomeView: View {
     @State private var showPanel = false
     @State private var panelDetent: PresentationDetent = .height(300)
     @State private var panelHeight: CGFloat = 334
-    @State private var viewportHeight: CGFloat = 800
+    @State private var isChangingPanelDetents = false
     @State private var showComposer = false
     @State private var showSettings = false
     @State private var showFriends = false
     @State private var confirmation: PostedConfirmation?
     @State private var pendingConfirmation: PostedConfirmation?
-    @State private var cameraPosition: MapCameraPosition = .rect(overviewRect)
-    @State private var lastCamera: MapCamera?
-    @State private var overviewViewport: OverviewViewport?
-    @State private var returnCamera: MapCameraPosition?
-    @State private var cameraRequestID = UUID()
-    @State private var focusProjection: SignalMapProjection?
-    @State private var connectionProgress = 0.0
+    @State private var mapCamera = HangMapCameraController()
+    @State private var overviewPanelDetent: PresentationDetent?
     @State private var toast: String?
     @State private var toastTask: Task<Void, Never>?
     #if DEBUG
@@ -57,16 +52,13 @@ struct MapHomeView: View {
     private var hasSelection: Bool { selectedSignal != nil || selectedFriend != nil }
     private var isPanelCollapsed: Bool { !hasSelection && panelDetent == Self.collapsedDetent }
     private var panelDetents: Set<PresentationDetent> {
-        hasSelection ? [.medium, .large] : [Self.collapsedDetent, .height(300), .large]
+        // Keep the departing stop valid until the native transition finishes.
+        // Removing a selected detent first makes UIKit snap to its smallest stop.
+        if isChangingPanelDetents { return [Self.collapsedDetent, .height(300), .medium, .large] }
+        return hasSelection ? [.medium, .large] : [Self.collapsedDetent, .height(300), .large]
     }
     private var panelTitle: String {
         selectedSignal != nil ? "" : selectedFriend?.firstName ?? "Today"
-    }
-    private var focusAnimation: Animation? { reduceMotion ? nil : .smooth(duration: 0.4) }
-    private var returnAnimation: Animation? { reduceMotion ? nil : .smooth(duration: 0.55) }
-    private struct OverviewViewport {
-        let camera: MapCameraPosition
-        let panelDetent: PresentationDetent
     }
     private var mapSignals: [Signal] {
         var seen = Set<String>()
@@ -78,7 +70,6 @@ struct MapHomeView: View {
     var body: some View {
         map
             .overlay(alignment: .topTrailing) { mapControls.padding(16) }
-            .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { viewportHeight = $0 }
             .task {
                 if dynamicTypeSize.isAccessibilitySize { panelDetent = .large }
                 showPanel = true
@@ -86,40 +77,11 @@ struct MapHomeView: View {
             .onChange(of: dynamicTypeSize) {
                 if dynamicTypeSize.isAccessibilitySize { panelDetent = .large }
             }
-            .onChange(of: panelDetent) {
-                // Sheet resizing should reveal more of the map without refitting the
-                // initial overview bounds (which can zoom far out at the largest detent).
-                if !hasSelection, returnCamera == nil, let lastCamera {
-                    cameraPosition = .camera(lastCamera)
-                }
-            }
-            .task(id: "\(cameraRequestID)-\(Int(panelHeight))") {
-                guard hasSelection || returnCamera != nil else { return }
-                // In both directions, let the sheet and map insets settle before moving
-                // the camera. Changing the layout during the return can interrupt its animation.
-                do { try await Task.sleep(for: .milliseconds(reduceMotion ? 0 : 200)) } catch { return }
-                if let selectedSignal {
-                    withAnimation(focusAnimation) { cameraPosition = .rect(SignalConnection(signal: selectedSignal).mapRect) }
-                    await drawConnection()
-                } else if let selectedFriend {
-                    withAnimation(focusAnimation) {
-                        cameraPosition = .region(MKCoordinateRegion(center: selectedFriend.coordinate,
-                            latitudinalMeters: 2000, longitudinalMeters: 2000))
-                    }
-                } else if let returnCamera {
-                    withAnimation(returnAnimation) { cameraPosition = returnCamera }
-                    // Keep the original overview through the animation so a quick refocus
-                    // doesn't replace it with a camera sampled halfway through the return.
-                    do { try await Task.sleep(for: .milliseconds(reduceMotion ? 0 : 550)) } catch { return }
-                    self.returnCamera = nil
-                    overviewViewport = nil
-                }
-            }
             .sheet(isPresented: $showPanel) {
                 panel
                     .presentationDetents(panelDetents, selection: $panelDetent)
                     .presentationDragIndicator(.visible)
-                    .presentationBackgroundInteraction(.enabled(upThrough: hasSelection ? .medium : .height(300)))
+                    .presentationBackgroundInteraction(.enabled(upThrough: hasSelection || isChangingPanelDetents ? .medium : .height(300)))
                     .interactiveDismissDisabled()
                     .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { panelHeight = $0 }
             }
@@ -128,75 +90,20 @@ struct MapHomeView: View {
     }
 
     private var map: some View {
-        MapReader { proxy in
-            Map(position: $cameraPosition) {
-                ForEach(Friend.mock) { friend in
-                    if selectedFriend?.id == friend.id {
-                        MapCircle(center: friend.coordinate, radius: 805)
-                            .foregroundStyle(Theme.orchid.opacity(0.15))
-                            .stroke(Theme.orchid.opacity(0.65), lineWidth: 1)
-                    }
-                    if !mapSignals.contains(where: { $0.hostID == friend.id }) {
-                        Annotation(friend.name, coordinate: friend.coordinate) {
-                            Button { focus(on: friend) } label: {
-                                PersonMapMarker(initials: friend.initials, name: friend.firstName, color: friend.color)
-                            }
-                            .buttonStyle(.plain)
-                            .opacity(selectedSignalID == nil ? 1 : 0.35)
-                            .accessibilityLabel("\(friend.name), \(friend.hood)")
-                        }.annotationTitles(.hidden)
-                    }
-                }
-                ForEach(mapSignals) { signal in
-                    Annotation(signal.hostName, coordinate: signal.anchorCoordinate) {
-                        Button { focus(on: signal) } label: {
-                            SignalPinView(signal: signal, animatesHalo: selectedSignalID == nil)
-                        }
-                            .buttonStyle(.plain)
-                            .opacity(selectedSignalID == signal.id ? 0 : selectedSignalID == nil ? 1 : 0.35)
-                            .accessibilityLabel("\(signal.hostName)’s hang: \(signal.title)")
-                            .accessibilityIdentifier("signal-pin-\(signal.id)")
-                    }.annotationTitles(.hidden)
-                }
-                if !mapSignals.contains(where: { $0.hostID == (activeProfile?.id.uuidString.lowercased() ?? "you") }) {
-                    Annotation("You", coordinate: Friend.youCoordinate) { YouDotView() }
-                        .annotationTitles(.hidden)
-                }
-            }
-            .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
-            .mapControls { MapScaleView() }
-            .safeAreaPadding(.top, 115)
-            .safeAreaPadding(.bottom, min(panelHeight + 16, viewportHeight * 0.78))
-            .safeAreaPadding(.horizontal, hasSelection ? 55 : 20)
-            .onMapCameraChange(frequency: .continuous) { context in
-                lastCamera = context.camera
-                focusProjection = selectedSignal.flatMap { SignalMapProjection(signal: $0, proxy: proxy) }
-            }
-            .onChange(of: selectedSignalID) {
-                focusProjection = selectedSignal.flatMap { SignalMapProjection(signal: $0, proxy: proxy) }
-            }
-            .overlay {
-                GeometryReader { geometry in
-                    if let selectedSignal, let focusProjection, focusProjection.signalID == selectedSignal.id {
-                        SignalFocusOverlay(signal: selectedSignal, projection: focusProjection,
-                                           progress: connectionProgress, reduceMotion: reduceMotion)
-                            .offset(x: -geometry.frame(in: .global).minX, y: -geometry.frame(in: .global).minY)
-                            .transaction { $0.animation = nil }
-                    }
-                }
-                .allowsHitTesting(false)
-                .accessibilityHidden(true)
-            }
+        HangMapView(camera: mapCamera, overviewRect: Self.overviewRect,
+                    signals: mapSignals, selectedSignal: selectedSignal, selectedFriend: selectedFriend,
+                    ownHostID: activeProfile?.id.uuidString.lowercased() ?? "you",
+                    panelHeight: panelHeight, reduceMotion: reduceMotion,
+                    onSelectSignal: { focus(on: $0) }, onSelectFriend: { focus(on: $0) },
+                    onCameraSettled: { isChangingPanelDetents = false })
             .ignoresSafeArea()
-        }
+            .transaction { $0.animation = nil }
     }
 
     private var mapControls: some View {
         HStack(spacing: 2) {
             Button {
                 clearFocus()
-                returnCamera = .rect(Self.overviewRect)
-                cameraRequestID = UUID()
             } label: {
                 Image(systemName: "location.fill").font(.system(size: 20))
                     .frame(width: 44, height: 44).contentShape(Rectangle())
@@ -376,51 +283,49 @@ struct MapHomeView: View {
         .scrollContentBackground(.hidden)
     }
 
+    private func panelExtent(for detent: PresentationDetent) -> MapPanelExtent {
+        if detent == Self.collapsedDetent { return .collapsed }
+        if detent == .height(300) { return .overview }
+        if detent == .large { return .expanded }
+        return .details
+    }
+
     private func rememberOverview() {
-        if !hasSelection, overviewViewport == nil {
-            overviewViewport = OverviewViewport(camera: lastCamera.map { .camera($0) } ?? cameraPosition,
-                                                panelDetent: panelDetent)
-        }
-        returnCamera = nil
-        cameraRequestID = UUID()
+        if !hasSelection { overviewPanelDetent = panelDetent }
     }
 
     private func focus(on signal: Signal) {
         rememberOverview()
+        let detent: PresentationDetent = dynamicTypeSize.isAccessibilitySize || signal.video != nil ? .large : .medium
+        let moved = mapCamera.focus(on: SignalConnection(signal: signal).mapRect,
+                        panel: panelExtent(for: detent), animated: !reduceMotion)
+        isChangingPanelDetents = moved && !reduceMotion
         selectedFriend = nil
         selectedSignalID = signal.id
-        panelDetent = dynamicTypeSize.isAccessibilitySize || signal.video != nil ? .large : .medium
+        panelDetent = detent
     }
 
     private func focus(on friend: Friend) {
         rememberOverview()
+        let detent: PresentationDetent = dynamicTypeSize.isAccessibilitySize ? .large : .medium
+        let center = MKMapPoint(friend.coordinate)
+        let size = MKMapPointsPerMeterAtLatitude(friend.coordinate.latitude) * 2000
+        let rect = MKMapRect(x: center.x - size / 2, y: center.y - size / 2, width: size, height: size)
+        let moved = mapCamera.focus(on: rect, panel: panelExtent(for: detent), animated: !reduceMotion)
+        isChangingPanelDetents = moved && !reduceMotion
         selectedSignalID = nil
         selectedFriend = friend
-        panelDetent = dynamicTypeSize.isAccessibilitySize ? .large : .medium
+        panelDetent = detent
     }
 
     private func clearFocus() {
-        returnCamera = overviewViewport?.camera
-        cameraRequestID = UUID()
-        withAnimation(returnAnimation) {
-            selectedSignalID = nil
-            selectedFriend = nil
-            connectionProgress = 0
-            if let overviewViewport {
-                panelDetent = dynamicTypeSize.isAccessibilitySize ? .large : overviewViewport.panelDetent
-            }
-        }
-    }
-
-    @MainActor private func drawConnection() async {
-        guard let selectedSignal, !selectedSignal.destinationIsAtAnchor else { return }
-        connectionProgress = 0
-        if reduceMotion { connectionProgress = 1; return }
-        do {
-            try await Task.sleep(for: .milliseconds(300))
-            try Task.checkCancellation()
-            connectionProgress = 1
-        } catch { }
+        let detent = dynamicTypeSize.isAccessibilitySize ? .large : overviewPanelDetent ?? panelDetent
+        let moved = mapCamera.showOverview(panel: panelExtent(for: detent), animated: !reduceMotion)
+        isChangingPanelDetents = moved && !reduceMotion
+        selectedSignalID = nil
+        selectedFriend = nil
+        panelDetent = detent
+        overviewPanelDetent = nil
     }
 
     private func handlePost(_ draft: ComposerDraft) {
@@ -464,7 +369,7 @@ struct PersonAvatar: View {
     }
 }
 
-private struct PersonMapMarker: View {
+struct PersonMapMarker: View {
     let initials: String
     let name: String
     let color: Color
@@ -689,60 +594,6 @@ struct YouDotView: View {
             .accessibilityLabel("Your sample location")
     }
 }
-
-private struct SignalMapProjection {
-    let signalID: Signal.ID
-    let origin: CGPoint
-    let destination: CGPoint
-    let connection: [CGPoint]
-
-    init?(signal: Signal, proxy: MapProxy) {
-        guard let origin = proxy.convert(signal.anchorCoordinate, to: .global),
-              let destination = proxy.convert(signal.destinationCoordinate, to: .global) else { return nil }
-        self.signalID = signal.id
-        self.origin = origin
-        self.destination = destination
-        self.connection = SignalConnection(signal: signal).coordinates(through: 1).compactMap {
-            proxy.convert($0, to: .global)
-        }
-    }
-}
-
-private struct SignalFocusOverlay: View {
-    let signal: Signal
-    let projection: SignalMapProjection
-    let progress: Double
-    let reduceMotion: Bool
-
-    var body: some View {
-        ZStack {
-            if !signal.destinationIsAtAnchor {
-                ZStack {
-                    connectionPath
-                        .trim(from: 0, to: progress)
-                        .stroke(.white.opacity(0.95), style: StrokeStyle(lineWidth: 8, lineCap: .round, lineJoin: .round))
-                    connectionPath
-                        .trim(from: 0, to: progress)
-                        .stroke(Theme.orchid, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
-                }
-                .animation(reduceMotion ? nil : .easeOut(duration: 0.9), value: progress)
-
-                SignalDestinationView(signal: signal)
-                    .position(projection.destination)
-            }
-
-            SignalPinView(signal: signal)
-                .position(projection.origin)
-        }
-    }
-
-    private var connectionPath: Path {
-        Path { path in
-            path.addLines(projection.connection)
-        }
-    }
-}
-
 
 struct BatSignalShape: Shape {
     func path(in rect: CGRect) -> Path {
