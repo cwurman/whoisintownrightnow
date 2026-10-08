@@ -193,12 +193,6 @@ struct MapHomeView: View {
 
     private var mapControls: some View {
         HStack(spacing: 2) {
-            Button { showFriends = true } label: {
-                Image(systemName: "person.2.fill").font(.system(size: 20))
-                    .frame(width: 44, height: 44).contentShape(Rectangle())
-            }
-            .accessibilityLabel("Friends")
-            .accessibilityIdentifier("show-friends")
             Button {
                 clearFocus()
                 returnCamera = .rect(Self.overviewRect)
@@ -208,6 +202,12 @@ struct MapHomeView: View {
                     .frame(width: 44, height: 44).contentShape(Rectangle())
             }
             .accessibilityLabel("Show everyone on the map")
+            Button { showFriends = true } label: {
+                Image(systemName: "person.2.fill").font(.system(size: 20))
+                    .frame(width: 44, height: 44).contentShape(Rectangle())
+            }
+            .accessibilityLabel("Friends")
+            .accessibilityIdentifier("show-friends")
             Button { showSettings = true } label: {
                 Image(systemName: "gearshape").font(.system(size: 20))
                     .frame(width: 44, height: 44).contentShape(Rectangle())
