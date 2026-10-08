@@ -201,13 +201,6 @@ struct AccountSettingsView: View {
     var body: some View {
         NavigationStack {
             ThemedForm {
-                if store == nil {
-                    Section {
-                        Label("Preview profile", systemImage: "info.circle")
-                        Text("Try your name, photo, and preferences. Changes last for this map preview and aren’t saved to an account.")
-                            .font(.footnote).foregroundStyle(Theme.secondaryLabel)
-                    }
-                }
                 Section {
                     VStack(spacing: 12) {
                         AccountAvatar(data: pendingPhoto ?? (removePhoto ? nil : source.avatarData), initials: initials, size: 88)
