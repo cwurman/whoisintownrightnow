@@ -166,7 +166,7 @@ struct MapHomeView: View {
             .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
             .mapControls { MapScaleView() }
             .safeAreaPadding(.top, 115)
-            .safeAreaPadding(.bottom, min(panelHeight + 70, viewportHeight * 0.78))
+            .safeAreaPadding(.bottom, min(panelHeight + 16, viewportHeight * 0.78))
             .safeAreaPadding(.horizontal, hasSelection ? 55 : 20)
             .onMapCameraChange(frequency: .continuous) { context in
                 lastCamera = context.camera
