@@ -739,9 +739,9 @@ struct SignalDetailSheet: View {
 
 struct YouDotView: View {
     var body: some View {
-        Circle().fill(Theme.orchid).frame(width: 16, height: 16)
+        Circle().fill(.blue).frame(width: 16, height: 16)
             .overlay(Circle().stroke(.white, lineWidth: 3))
-            .padding(12).background(Theme.orchid.opacity(0.20), in: Circle())
+            .padding(12).background(Color.blue.opacity(0.20), in: Circle())
             .accessibilityLabel("Your sample location")
     }
 }
