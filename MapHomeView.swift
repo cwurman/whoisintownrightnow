@@ -27,7 +27,9 @@ struct MapHomeView: View {
     @State private var satellite = false
     @State private var cameraPosition: MapCameraPosition = .rect(overviewRect)
     @State private var lastCamera: MapCamera?
-    @State private var overviewCamera: MapCameraPosition?
+    @State private var overviewViewport: OverviewViewport?
+    @State private var returnCamera: MapCameraPosition?
+    @State private var cameraRequestID = UUID()
     @State private var focusProjection: SignalMapProjection?
     @State private var connectionProgress = 0.0
     @State private var toast: String?
@@ -64,6 +66,11 @@ struct MapHomeView: View {
         selectedSignal != nil ? "" : selectedFriend?.firstName ?? (section == .signals ? "Today" : "People")
     }
     private var focusAnimation: Animation? { reduceMotion ? nil : .smooth(duration: 0.4) }
+    private var returnAnimation: Animation? { reduceMotion ? nil : .smooth(duration: 0.55) }
+    private struct OverviewViewport {
+        let camera: MapCameraPosition
+        let panelDetent: PresentationDetent
+    }
     private var mapSignals: [Signal] {
         var seen = Set<String>()
         return signals.filter { seen.insert($0.hostID).inserted }.map { signal in
@@ -82,9 +89,10 @@ struct MapHomeView: View {
             .onChange(of: dynamicTypeSize) {
                 if dynamicTypeSize.isAccessibilitySize { panelDetent = .large }
             }
-            .task(id: "\(selectedSignalID ?? selectedFriend?.id ?? "")-\(Int(panelHeight))") {
-                guard hasSelection else { return }
-                // Fit after the native sheet settles, using its actual occupied map area.
+            .task(id: "\(cameraRequestID)-\(Int(panelHeight))") {
+                guard hasSelection || returnCamera != nil else { return }
+                // In both directions, let the sheet and map insets settle before moving
+                // the camera. Changing the layout during the return can interrupt its animation.
                 do { try await Task.sleep(for: .milliseconds(reduceMotion ? 0 : 200)) } catch { return }
                 if let selectedSignal {
                     withAnimation(focusAnimation) { cameraPosition = .rect(SignalConnection(signal: selectedSignal).mapRect) }
@@ -94,6 +102,13 @@ struct MapHomeView: View {
                         cameraPosition = .region(MKCoordinateRegion(center: selectedFriend.coordinate,
                             latitudinalMeters: 2000, longitudinalMeters: 2000))
                     }
+                } else if let returnCamera {
+                    withAnimation(returnAnimation) { cameraPosition = returnCamera }
+                    // Keep the original overview through the animation so a quick refocus
+                    // doesn't replace it with a camera sampled halfway through the return.
+                    do { try await Task.sleep(for: .milliseconds(reduceMotion ? 0 : 550)) } catch { return }
+                    self.returnCamera = nil
+                    overviewViewport = nil
                 }
             }
             .sheet(isPresented: $showPanel) {
@@ -186,7 +201,8 @@ struct MapHomeView: View {
             .accessibilityLabel("Map appearance")
             Button {
                 clearFocus()
-                withAnimation(focusAnimation) { cameraPosition = .rect(Self.overviewRect) }
+                returnCamera = .rect(Self.overviewRect)
+                cameraRequestID = UUID()
             } label: {
                 Image(systemName: "location.fill").font(.system(size: 20))
                     .frame(width: 44, height: 44).contentShape(Rectangle())
@@ -393,7 +409,12 @@ struct MapHomeView: View {
     }
 
     private func rememberOverview() {
-        if !hasSelection { overviewCamera = lastCamera.map { .camera($0) } ?? cameraPosition }
+        if !hasSelection, overviewViewport == nil {
+            overviewViewport = OverviewViewport(camera: lastCamera.map { .camera($0) } ?? cameraPosition,
+                                                panelDetent: panelDetent)
+        }
+        returnCamera = nil
+        cameraRequestID = UUID()
     }
 
     private func focus(on signal: Signal) {
@@ -411,11 +432,16 @@ struct MapHomeView: View {
     }
 
     private func clearFocus() {
-        selectedSignalID = nil
-        selectedFriend = nil
-        connectionProgress = 0
-        if let overviewCamera { withAnimation(focusAnimation) { cameraPosition = overviewCamera } }
-        overviewCamera = nil
+        returnCamera = overviewViewport?.camera
+        cameraRequestID = UUID()
+        withAnimation(returnAnimation) {
+            selectedSignalID = nil
+            selectedFriend = nil
+            connectionProgress = 0
+            if let overviewViewport {
+                panelDetent = dynamicTypeSize.isAccessibilitySize ? .large : overviewViewport.panelDetent
+            }
+        }
     }
 
     @MainActor private func drawConnection() async {
