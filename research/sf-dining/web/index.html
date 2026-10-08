@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f2">
+  <title>Supper — find your kind of place</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Supper home"><span class="brand-mark" aria-hidden="true">✳</span>supper<span class="brand-period">.</span></a>
+    <span class="header-note">A little less scrolling. A little more eating.</span>
+    <button id="saved-button" class="saved-button" aria-pressed="false"><span aria-hidden="true">♡</span> Saved <span id="saved-count">0</span></button>
+  </header>
+  <main class="shell">
+    <section class="search-section" aria-label="Restaurant search">
+      <div class="eyebrow"><span class="location-dot"></span> SAN FRANCISCO, ONE GOOD MEAL AT A TIME</div>
+      <h1>What sounds <em>good?</em></h1>
+      <p class="intro">A dish, a feeling, a very specific craving. Find a place that fits.</p>
+      <form id="search-form" role="search" autocomplete="off">
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 4.6 4.6"/></svg>
+          <label class="sr-only" for="query">What would you like to eat?</label>
+          <input id="query" type="search" maxlength="300" placeholder="Try “kebab with outdoor seating”" spellcheck="false" autofocus>
+          <button id="clear-query" type="button" class="icon-button" aria-label="Clear search" hidden>×</button>
+          <kbd id="search-shortcut">/</kbd>
+          <button class="search-submit" type="submit" aria-label="Search restaurants">↗</button>
+        </div>
+      </form>
+      <div class="suggestions" aria-label="Search ideas">
+        <span>A few ideas</span>
+        <button data-query="kebab">Kebab <span>↗</span></button>
+        <button data-query="cozy date night">Cozy date night <span>↗</span></button>
+        <button data-query="outdoor seating">A table outside <span>↗</span></button>
+        <button data-query="menu">Menu browsing <span>↗</span></button>
+      </div>
+    </section>
+    <div class="workspace">
+      <aside class="sidebar" aria-label="Search filters">
+        <div class="sidebar-title"><span>YOUR NEIGHBORHOOD</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div class="neighborhoods">
+          <label><input type="checkbox" value="castro" name="neighborhood"><span>The Castro</span><small id="count-castro">—</small></label>
+          <label><input type="checkbox" value="mission" name="neighborhood"><span>The Mission</span><small id="count-mission">—</small></label>
+          <label><input type="checkbox" value="noe" name="neighborhood"><span>Noe Valley</span><small id="count-noe">—</small></label>
+        </div>
+        <label class="field-label" for="scope">Search area</label>
+        <select id="scope"><option value="nearby">These neighborhoods + nearby</option><option value="focus">Castro, Mission & Noe only</option><option value="all">All of San Francisco</option></select>
+        <button id="reset-filters" class="text-button" hidden>Reset neighborhood filters</button>
+        <div class="sidebar-rule"></div>
+        <div class="little-note"><span class="note-star" aria-hidden="true">✳</span><h2>The details make the place.</h2><p>Describe what matters. We’ll bring the right photos, menu details, and reviews into view.</p></div>
+        <div class="collection-note"><span class="collection-dot"></span><span><b id="catalog-count">500</b> places to discover<br><span>Collected September 2026</span></span></div>
+      </aside>
+      <section class="results-section" aria-label="Restaurants">
+        <div class="results-heading"><div><div id="result-eyebrow" class="result-eyebrow">AROUND YOUR CORNER</div><h2 id="result-title">Good places, close by<span>.</span></h2></div><label class="sort-control"><span class="sr-only">Sort restaurants</span><select id="sort"><option value="relevance">Recommended</option><option value="rating">Highest rated</option></select></label></div>
+        <div class="results-toolbar">
+          <div class="view-tabs" role="group" aria-label="Result view">
+            <button data-view="auto" aria-pressed="true"><span aria-hidden="true">✧</span> Auto</button>
+            <button data-view="compact" aria-pressed="false">List</button>
+            <button data-view="food" aria-pressed="false">Food</button>
+            <button data-view="space" aria-pressed="false">Spaces</button>
+            <button data-view="menu" aria-pressed="false">Menus</button>
+            <button data-view="reviews" aria-pressed="false">Reviews</button>
+          </div>
+          <span id="result-count">Finding your next favorite…</span>
+        </div>
+        <div class="search-feedback"><span id="status" role="status" aria-live="polite">Looking around the neighborhood</span><button id="return-auto" class="text-button" hidden>Return to auto ↗</button></div>
+        <div id="active-modules" class="active-modules" aria-label="Visible evidence types"></div>
+        <div id="results" aria-busy="true"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+        <div id="empty-state" class="empty-state" hidden><span class="empty-icon" aria-hidden="true">⌁</span><h3 id="empty-title">Nothing on the table yet.</h3><p id="empty-copy">Try a different dish or a wider neighborhood.</p><button id="empty-reset" class="primary-button">Explore nearby places</button></div>
+        <button id="load-more" class="load-more" hidden>More good places <span>↓</span></button>
+      </section>
+    </div>
+    <footer><a class="footer-brand" href="/">supper.</a><p>Made for the way you actually decide where to eat.</p><span>SF demo · Photos & reviews via Google Maps</span></footer>
+  </main>
+  <dialog id="details" aria-labelledby="detail-title"><div id="detail-content"></div></dialog>
+  <dialog id="lightbox" aria-label="Restaurant photo"><div id="lightbox-content"></div></dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

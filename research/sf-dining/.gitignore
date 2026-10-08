@@ -1,0 +1,5 @@
+__pycache__/
+data/.photo-vision.lock
+data/*.tmp.sqlite3
+.bin/
+data/jev-cache/*.tmp
