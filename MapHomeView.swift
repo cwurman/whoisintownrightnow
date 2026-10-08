@@ -3,7 +3,6 @@ import MapKit
 
 struct MapHomeView: View {
     var profile: AccountProfile? = nil
-    var avatarData: Data? = nil
     var accountStore: AccountStore? = nil
     var contactsStore: ContactsStore? = nil
     @State private var previewContacts = ContactsStore(accountID: nil)
@@ -11,7 +10,6 @@ struct MapHomeView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var signals = Signal.mock
-    @State private var section: MapSection = .signals
     @State private var selectedSignalID: Signal.ID?
     @State private var selectedFriend: Friend?
     @State private var showPanel = false
@@ -20,11 +18,9 @@ struct MapHomeView: View {
     @State private var viewportHeight: CGFloat = 800
     @State private var showComposer = false
     @State private var showSettings = false
-    @State private var showContactsSettings = false
-    @State private var invitedContact: DeviceContact?
+    @State private var showFriends = false
     @State private var confirmation: PostedConfirmation?
     @State private var pendingConfirmation: PostedConfirmation?
-    @State private var satellite = false
     @State private var cameraPosition: MapCameraPosition = .rect(overviewRect)
     @State private var lastCamera: MapCamera?
     @State private var overviewViewport: OverviewViewport?
@@ -46,20 +42,11 @@ struct MapHomeView: View {
         #endif
     }
 
-    private var activeAvatarData: Data? {
-        #if DEBUG
-        accountStore == nil ? previewSettings.avatarData : avatarData
-        #else
-        avatarData
-        #endif
-    }
-
     private static var overviewRect: MKMapRect {
         let points = (Friend.mock.map(\.coordinate) + [Friend.youCoordinate]).map(MKMapPoint.init)
         let bounds = points.reduce(MKMapRect.null) { $0.union(MKMapRect(origin: $1, size: MKMapSize(width: 1, height: 1))) }
         return bounds.insetBy(dx: -bounds.width * 0.12, dy: -bounds.height * 0.12)
     }
-    private enum MapSection: String, CaseIterable { case signals = "Hangs", people = "People" }
     private struct CollapsedHangDetent: CustomPresentationDetent {
         static func height(in context: Context) -> CGFloat? {
             context.dynamicTypeSize.isAccessibilitySize ? 140 : 90
@@ -73,7 +60,7 @@ struct MapHomeView: View {
         hasSelection ? [.medium, .large] : [Self.collapsedDetent, .height(300), .large]
     }
     private var panelTitle: String {
-        selectedSignal != nil ? "" : selectedFriend?.firstName ?? (section == .signals ? "Today" : "People")
+        selectedSignal != nil ? "" : selectedFriend?.firstName ?? "Today"
     }
     private var focusAnimation: Animation? { reduceMotion ? nil : .smooth(duration: 0.4) }
     private var returnAnimation: Animation? { reduceMotion ? nil : .smooth(duration: 0.55) }
@@ -176,7 +163,7 @@ struct MapHomeView: View {
                         .annotationTitles(.hidden)
                 }
             }
-            .mapStyle(satellite ? .hybrid(elevation: .flat) : .standard(elevation: .flat, pointsOfInterest: .excludingAll))
+            .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
             .mapControls { MapScaleView() }
             .safeAreaPadding(.top, 115)
             .safeAreaPadding(.bottom, min(panelHeight + 70, viewportHeight * 0.78))
@@ -206,16 +193,12 @@ struct MapHomeView: View {
 
     private var mapControls: some View {
         HStack(spacing: 2) {
-            Menu {
-                Picker("Map appearance", selection: $satellite) {
-                    Text("Standard").tag(false)
-                    Text("Satellite").tag(true)
-                }
-            } label: {
-                Image(systemName: "map").font(.system(size: 20))
+            Button { showFriends = true } label: {
+                Image(systemName: "person.2.fill").font(.system(size: 20))
                     .frame(width: 44, height: 44).contentShape(Rectangle())
             }
-            .accessibilityLabel("Map appearance")
+            .accessibilityLabel("Friends")
+            .accessibilityIdentifier("show-friends")
             Button {
                 clearFocus()
                 returnCamera = .rect(Self.overviewRect)
@@ -226,15 +209,10 @@ struct MapHomeView: View {
             }
             .accessibilityLabel("Show everyone on the map")
             Button { showSettings = true } label: {
-                Group {
-                    if let profile = activeProfile, accountStore != nil || profile.displayName != "You" || activeAvatarData != nil {
-                        AccountAvatar(data: activeAvatarData, initials: profile.initials, size: 30)
-                    } else {
-                        Image(systemName: "person.crop.circle").font(.system(size: 20))
-                    }
-                }.frame(width: 44, height: 44).contentShape(Rectangle())
+                Image(systemName: "gearshape").font(.system(size: 20))
+                    .frame(width: 44, height: 44).contentShape(Rectangle())
             }
-            .accessibilityLabel("Profile and settings")
+            .accessibilityLabel("Settings")
             .accessibilityIdentifier("profile-settings")
         }
         .buttonStyle(.plain)
@@ -311,73 +289,40 @@ struct MapHomeView: View {
                 #endif
             }
         }
-        .sheet(isPresented: $showContactsSettings) {
-            NavigationStack {
-                ContactsSettingsView(contacts: activeContacts, account: accountStore)
-                    .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { showContactsSettings = false } } }
-            }
-            .presentationBackground(Theme.background)
-        }
-        .sheet(item: $invitedContact) { contact in
-            InviteContactView(contact: contact, isPreview: accountStore == nil)
+        .sheet(isPresented: $showFriends) {
+            FriendsView(contacts: activeContacts, account: accountStore)
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
         }
     }
 
     private var overviewList: some View {
         List {
-            if section == .people {
-                ContactsPeopleSections(contacts: activeContacts, account: accountStore,
-                    onManage: { showContactsSettings = true }, onInvite: { invitedContact = $0 })
-            } else {
-                Section {
-                    ForEach(signals) { signal in
-                        SignalRowView(signal: signal, onJoin: { join(signal) }, onTap: { focus(on: signal) })
-                    }
-                } footer: {
-                    Label("Preview · sample people and plans", systemImage: "info.circle")
-                        .font(.footnote).padding(.top, 8)
+            Section {
+                ForEach(signals) { signal in
+                    SignalRowView(signal: signal, onJoin: { join(signal) }, onTap: { focus(on: signal) })
                 }
-                .listRowBackground(Theme.panelRow)
+            } footer: {
+                Label("Preview · sample people and plans", systemImage: "info.circle")
+                    .font(.footnote).padding(.top, 8)
             }
+            .listRowBackground(Theme.panelRow)
         }
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
         .contentMargins(.top, 0)
         .safeAreaInset(edge: .top, spacing: 0) {
-            VStack(alignment: .leading, spacing: 16) {
-                HStack(spacing: 16) {
-                    Text(panelTitle)
-                        .font(.largeTitle.bold())
-                        .foregroundStyle(Theme.label)
-                        .accessibilityAddTraits(.isHeader)
-                    Spacer(minLength: 0)
-                    if section == .people {
-                        Button("Manage contacts", systemImage: "person.crop.rectangle") { showContactsSettings = true }
-                            .labelStyle(.iconOnly)
-                            .frame(minWidth: 44, minHeight: 44)
-                            .buttonStyle(.glass)
-                            .buttonBorderShape(.circle)
-                    }
-                }
+            Text(panelTitle)
+                .font(.largeTitle.bold())
+                .foregroundStyle(Theme.label)
+                .accessibilityAddTraits(.isHeader)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 28)
-
-                Picker("Map content", selection: $section) {
-                    ForEach(MapSection.allCases, id: \.self) { Text($0.rawValue).tag($0) }
-                }
-                .pickerStyle(.segmented)
-                .padding(.horizontal, 20)
-            }
-            .padding(.top, 24)
-            .padding(.bottom, 16)
+                .padding(.top, 24)
+                .padding(.bottom, 16)
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             createHangButton.background(.regularMaterial)
-        }
-        .animation(focusAnimation, value: section)
-        .task(id: section) {
-            guard section == .people else { return }
-            if accountStore == nil && !activeContacts.didChoose { await activeContacts.connect(account: nil) }
-            else { await activeContacts.refresh(account: accountStore) }
         }
     }
 
@@ -489,7 +434,6 @@ struct MapHomeView: View {
             anchorCoordinate: Friend.youCoordinate, anchorPlace: "Mission", destinationCoordinate: draft.placeCoordinate,
             video: draft.videoAttachment.video)
         signals.insert(signal, at: 0)
-        section = .signals
         clearFocus()
         pendingConfirmation = PostedConfirmation(signal: signal, pinged: draft.selectedFriends,
             note: draft.selectedFriends.isEmpty ? "No friends selected" : "\(draft.selectedFriends.count) friends selected")

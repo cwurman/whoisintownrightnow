@@ -16,8 +16,7 @@ struct ContactAccountView: View {
     var body: some View {
         ZStack {
             if contacts.didChoose {
-                MapHomeView(profile: account.account?.profile, avatarData: account.avatarData,
-                            accountStore: account, contactsStore: contacts)
+                MapHomeView(profile: account.account?.profile, accountStore: account, contactsStore: contacts)
             } else {
                 ContactsOnboardingView(contacts: contacts, account: account)
             }
@@ -89,6 +88,56 @@ struct ContactsOnboardingView: View {
             }
             .background(Theme.background)
         }.tint(Theme.accent)
+    }
+}
+
+struct FriendsView: View {
+    let contacts: ContactsStore
+    let account: AccountStore?
+    @Environment(\.dismiss) private var dismiss
+    @State private var showContactsSettings = false
+    @State private var invitedContact: DeviceContact?
+
+    var body: some View {
+        NavigationStack {
+            List {
+                ContactsPeopleSections(contacts: contacts, account: account,
+                    onManage: { showContactsSettings = true }, onInvite: { invitedContact = $0 })
+            }
+            .listStyle(.insetGrouped)
+            .scrollContentBackground(.hidden)
+            .navigationTitle("Friends")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Manage contacts", systemImage: "person.crop.rectangle") { showContactsSettings = true }
+                        .labelStyle(.iconOnly)
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") { dismiss() }
+                }
+            }
+            .refreshable { await contacts.refresh(account: account, force: true) }
+            .task {
+                if account == nil && !contacts.didChoose { await contacts.connect(account: nil) }
+                else { await contacts.refresh(account: account) }
+            }
+        }
+        .tint(Theme.accent)
+        .sheet(isPresented: $showContactsSettings) {
+            NavigationStack {
+                ContactsSettingsView(contacts: contacts, account: account)
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Done") { showContactsSettings = false }
+                        }
+                    }
+            }
+            .presentationBackground(Theme.background)
+        }
+        .sheet(item: $invitedContact) { contact in
+            InviteContactView(contact: contact, isPreview: account == nil)
+        }
     }
 }
 
