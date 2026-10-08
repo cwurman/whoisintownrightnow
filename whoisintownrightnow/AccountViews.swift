@@ -290,11 +290,18 @@ struct AccountSettingsView: View {
                 }
             }
             .disabled(isWorking)
-            .navigationTitle(isOnboarding ? "Your profile" : "Profile & settings")
+            .navigationTitle(isOnboarding ? "Your profile" : "")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 if !isOnboarding {
-                    ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() }.disabled(isWorking) }
+                    ToolbarItem(placement: .topBarLeading) {
+                        Text("Settings")
+                            .font(.title2.bold())
+                            .fixedSize(horizontal: true, vertical: false)
+                            .foregroundStyle(Theme.label)
+                            .accessibilityAddTraits(.isHeader)
+                    }
+                    .sharedBackgroundVisibility(.hidden)
                     ToolbarItem(placement: .confirmationAction) { saveButton }
                 }
             }

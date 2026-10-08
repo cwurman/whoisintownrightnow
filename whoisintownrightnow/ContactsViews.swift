@@ -103,16 +103,25 @@ struct FriendsView: View {
             List {
                 ContactsPeopleSections(contacts: contacts, account: account,
                     onManage: { showContactsSettings = true }, onInvite: { invitedContact = $0 })
+                if contacts.isEnabled && contacts.hasAccess {
+                    Section {
+                        Button("Manage contacts") { showContactsSettings = true }
+                    }
+                    .listRowBackground(Theme.panelRow)
+                }
             }
             .listStyle(.insetGrouped)
             .scrollContentBackground(.hidden)
-            .navigationTitle("Friends")
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("Manage contacts", systemImage: "person.crop.rectangle") { showContactsSettings = true }
-                        .labelStyle(.iconOnly)
+                    Text("Friends")
+                        .font(.title2.bold())
+                        .fixedSize(horizontal: true, vertical: false)
+                        .foregroundStyle(Theme.label)
+                        .accessibilityAddTraits(.isHeader)
                 }
+                .sharedBackgroundVisibility(.hidden)
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") { dismiss() }
                 }
